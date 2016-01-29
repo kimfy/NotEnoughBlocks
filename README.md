@@ -1,1 +1,1 @@
-#(NotEnoughBlocks)[http://kimfy.github.io/NotEnoughBlocks/]
+#[NotEnoughBlocks](http://kimfy.github.io/NotEnoughBlocks/)

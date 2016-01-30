@@ -24,6 +24,12 @@
 						Not Enough Blocks
 					</a>
 				</div>
+				<div class="header-right">
+					<a href="https://github.com/kimfy/NotEnoughBlocks/" class="header-item" target="_blank">
+						<i class="fa fa-github"></i>
+						GitHub
+					</a>
+				</div>
 			</div>
 		</header>
 	</div>
@@ -33,16 +39,23 @@
 				Documentation
 			</p>
 			<p class="subtitle">
-				Everything you need to create a Not Enough Blocks json
+				Everything you need to get started with Not Enough Blocks
 			</p>
 		</div>
 	</div>
 </section>
+<nav class="header">
+	<div class="container">
+		<div class="header-left">
+			<a href="pages/downloads.html" class="header-tab">Downloads</a>
+			<a href="index.html" class="header-tab is-active">Installing</a>
+		</div>
+	</div>
+</nav>
 <section class="section">
 	<div class="container">
-		<h1 class="title">Installing</h1>
+		<h1 class="title" id="installing">Installing</h1>
 		<h1 class="subtitle">Installing Not Enough Blocks is no different from other Forge mods</h1> 
-		<hr>
 		<div class="tabs is-boxed">
 			<ul id="tabs">
 				<li class="is-active">
@@ -55,16 +68,48 @@
 					<a href="#devmc"><i class="fa fa-cogs"></i> Developer</a>
 				</li>
 			</ul>
-			<content class="tabContent" id="mmc">
-				<p>multimc content</p>
+		</div>
+		<content class="tabContent" id="mmc">
+			<section class="section">
+				<div class="container">
+					<div class="content">
+						<blockquote>
+						MultiMC is a free, open source launcher for Minecraft, managed by @peterixxx and @02JanDal. It allows you to have multiple, separate instances of Minecraft (each with their own mods, texture packs, saves, etc) and helps you manage them and their associated options with a simple interface.
+						<br>- From the MultiMC website
+						</blockquote>
+						<a class="button is-primary" href="http://multimc.org" target="_blank">
+							<i class="fa fa-download"></i> MultiMC
+						</a>
+						<h1 class="title is-3">Set up</h1>
+						<hr>
+						<p>
+							<ol>
+								<li>Create a new instance in MultiMC. Select either Minecraft version <span class="tag is-success">1.8.9</span> or <span class="tag is-danger">1.7.10</span></li>
+								<li>Right click the instance and hit <code>Edit Instance</code>, go to the <code>Version</code> tab and click <code>Install Forge</code>, select the latest version for the version of Minecraft you chose. It will now download and install Forge for you. Close the <code>Edit Instance</code> window when it's done.</li>
+								<li>Right click the instance and hit <code>Instance Folder</code>. Open the <code>minecraft</code> folder and go to the <code>mods</code> folder. Put <code>notenoughblocks-x.x.x-x.x.x.jar</code> and it's dependencies from your downloads to this folder. Close the folder when you're done.</li>
+								<li>Double click the instance to run Minecraft - you need to do this before you add any resource packs. When Minecraft has finished loading, close it.</li>
+								<li>Open the <code>Instance Folder</code> again, go to <code>minecraft>config>notenoughblocks>resourcepacks</code> and put any resource pack you'd like in there.</li>
+								<li>That's it, launch the game and enjoy your new blocks.</li>
+							</ol>
+							<p class="subtitle is-6">
+								<span class="tag is-success">Supported</span>
+								<span class="tag is-danger">Unsupported</span>
+							</p>
+						</p>
+					</div>
+				</div>
+			</section>
 			</content>
 			<content class="tabContent" id="vmc">
 				<p>vanillamc content</p>
 			</content>
 			<content class="tabContent" id="devmc">
 				<p>developer content</p>
-			</content>
-		</div>
+		</content>
+		<hr>
+		<p class="subtitle is-5">
+			Not Enough Blocks <strong>requires</strong> <a href="http://minecraft.curseforge.com/projects/resource-loader" target="_blank">ResourceLoader</a> by Lumien
+		</p>
 	</div>
 </section>
 </body>

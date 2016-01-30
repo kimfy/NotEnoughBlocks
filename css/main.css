@@ -12,3 +12,11 @@ content.tabContent.hide { display: none; }
 #vmc, #devmc {
 	display: none;
 }
+
+/*.tabContent > section*/
+
+@media screen and (min-width: 980px) { 
+	.tabContent > .section { padding: 0px 0; }
+	.tabContent > .section.is-medium { padding: 120px 0; }
+	.tabContent > .section.is-large { padding: 240px 0; }
+}

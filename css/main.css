@@ -1,2 +1,14 @@
 .hero-content { padding: 40px 20px; }
 @media screen and (min-width: 980px) { .hero-content { padding: 40px 0; } }
+
+.section { background: white; padding: 40px 20px; }
+.section + .section { border-top: 1px solid rgba(211, 214, 219, 0.5); }
+@media screen and (min-width: 980px) { .section { padding: 40px 0; }
+  .section.is-medium { padding: 120px 0; }
+  .section.is-large { padding: 240px 0; } }
+
+content.tabContent.hide { display: none; }
+
+#vmc, #devmc {
+	display: none;
+}

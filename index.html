@@ -6,10 +6,15 @@
 
 	<!-- User links -->
 	<link rel="stylesheet" href="css/main.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 
 	<title>Not Enough Blocks</title>
+	<script type="text/javascript">
+
+	</script>
 </head>
-<body style="zoom: 1;">
+<body style="zoom: 1;" onload="init()">
 <section class="hero is-info is-left is-bold">
 	<div class="hero-header">
 		<header class="header">
@@ -30,6 +35,35 @@
 			<p class="subtitle">
 				Everything you need to create a Not Enough Blocks json
 			</p>
+		</div>
+	</div>
+</section>
+<section class="section">
+	<div class="container">
+		<h1 class="title">Installing</h1>
+		<h1 class="subtitle">Installing Not Enough Blocks is no different from other Forge mods</h1> 
+		<hr>
+		<div class="tabs is-boxed">
+			<ul id="tabs">
+				<li class="is-active">
+					<a href="#mmc"><i class="fa fa-bolt"></i> MultiMC</a>
+				</li>
+				<li>
+					<a href="#vmc"><i class="fa fa-image"></i> Minecraft Launcher</a>
+				</li>
+				<li>
+					<a href="#devmc"><i class="fa fa-cogs"></i> Developer</a>
+				</li>
+			</ul>
+			<content class="tabContent" id="mmc">
+				<p>multimc content</p>
+			</content>
+			<content class="tabContent" id="vmc">
+				<p>vanillamc content</p>
+			</content>
+			<content class="tabContent" id="devmc">
+				<p>developer content</p>
+			</content>
 		</div>
 	</div>
 </section>

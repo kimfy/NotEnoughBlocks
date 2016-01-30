@@ -1,0 +1,2 @@
+.hero-content { padding: 40px 20px; }
+@media screen and (min-width: 980px) { .hero-content { padding: 40px 0; } }

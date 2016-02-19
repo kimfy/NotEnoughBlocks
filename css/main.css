@@ -20,3 +20,7 @@ content.tabContent.hide { display: none; }
 	.tabContent > .section.is-medium { padding: 120px 0; }
 	.tabContent > .section.is-large { padding: 240px 0; }
 }
+
+.header-item {
+	color: #fff;
+}

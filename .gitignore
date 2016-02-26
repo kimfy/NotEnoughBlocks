@@ -32,3 +32,4 @@
 /libs/*javadoc
 
 OneEight.java
+*.DS_Store

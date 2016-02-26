@@ -19,7 +19,6 @@ public class ClientProxy extends ServerProxy
     {
         super.init(event);
 
-        //OneEight.blocks = OneEight.getBlocksFromMod(Constants.MOD_ID);
         OneEight.writeBlockStateFiles();
         OneEight.registerItemModels();
     }

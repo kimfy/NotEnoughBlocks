@@ -39,14 +39,14 @@ public class OneEight
 {
     private static Logger logger = NotEnoughBlocks.logger;
     public static List<Block> blocks = new ArrayList<>();
+    // The folder my blockstate files are written to
+    private static File blockstateFolder    = new File("resources/" + Constants.MOD_ID + "/blockstates/");
 
     static
     {
         blocks = getBlocksFromMod(Constants.MOD_ID);
+        blockstateFolder.mkdirs();
     }
-
-    // The folder my blockstate files are written to
-    private static File blockstateFolder    = new File("resources/" + Constants.MOD_ID + "/blockstates/");
 
     public static void writeBlockStateFiles()
     {

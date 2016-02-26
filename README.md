@@ -1,0 +1,7 @@
+<img src="https://raw.githubusercontent.com/kimfy/NotEnoughBlocks/master/resources/artwork/buttons/logo-button-blue-512px.png" width="4%"></img> NotEnoughBlocks
+===
+[![Build Status](https://drone.io/github.com/kimfy/NotEnoughBlocks/status.png)](https://drone.io/github.com/kimfy/NotEnoughBlocks/latest)
+
+Cloning NotEnoughBlocks:
+
+1.8.9: `git clone https://github.com/kimfy/NotEnoughBlocks.git`

@@ -1,0 +1,13 @@
+{
+	"forge_marker": 1,
+	"variants": {
+		"half=bottom,metadata=#metadata": {
+        	"model": "notenoughblocks:half_slab",
+		    "parent": "notenoughblocks:block/half_slab"
+		},
+		"half=top,metadata=#metadata": {
+        	"model": "notenoughblocks:upper_slab",
+		    "parent": "notenoughblocks:block/upper_slab"
+		}
+	}
+}

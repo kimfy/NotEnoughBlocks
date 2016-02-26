@@ -1,0 +1,5 @@
+{
+	"variants": {
+		"metadata=#metadata": { "model": "notenoughblocks:carpet", "parent": "notenoughblocks:block/carpet" }
+	}
+}

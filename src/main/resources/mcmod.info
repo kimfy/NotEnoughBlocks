@@ -1,0 +1,16 @@
+[
+{
+  "modid": "notenoughblocks",
+  "name": "NotEnoughBlocks",
+  "description": "With this mod, you can simply drop a resourcepack inside config/NotEnoughBlocks/resourcepacks and NEB will build all the blocks from that resource pack",
+  "version": "1.0.0",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["kimfy"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": ["chisel"]
+}
+]

@@ -1,0 +1,12 @@
+{
+	"forge_marker": 1,
+	"variants": {
+		"metadata=#metadata": {
+        	"model": "cube",
+		    "parent": "block/cube",
+		    "textures": {
+		    	
+		    }
+		}
+	}
+}

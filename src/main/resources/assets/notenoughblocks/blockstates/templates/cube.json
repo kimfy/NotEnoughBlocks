@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "metadata=#metadata":
+        {
+            "model": "cube",
+            "uvLock": true,
+            "parent": "block/cube"
+        }
+    }
+}

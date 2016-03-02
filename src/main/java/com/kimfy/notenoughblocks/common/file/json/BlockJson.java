@@ -73,7 +73,7 @@ public class BlockJson implements Serializable
     {
         if (block == null)
         {
-            throw new IllegalArgumentException("Argument " + block.toString() + " is null");
+            throw new IllegalArgumentException("BlockJson cannot be null");
         }
 
         int trues = 0;
@@ -105,7 +105,7 @@ public class BlockJson implements Serializable
 
     private transient Material realMaterial;
 
-    Material getRealMaterial()
+    public Material getRealMaterial()
     {
         if (this.realMaterial == null)
         {
@@ -116,7 +116,7 @@ public class BlockJson implements Serializable
 
     private transient Block.SoundType realSoundType;
 
-    Block.SoundType getRealSoundType()
+    public Block.SoundType getRealSoundType()
     {
         if (this.realSoundType == null)
         {
@@ -127,7 +127,7 @@ public class BlockJson implements Serializable
 
     private transient CreativeTabs realCreativeTab;
 
-    CreativeTabs getRealCreativeTab()
+    public CreativeTabs getRealCreativeTab()
     {
         if (this.realCreativeTab == null)
         {
@@ -136,7 +136,7 @@ public class BlockJson implements Serializable
         return this.realCreativeTab;
     }
 
-    BlockPressurePlate.Sensitivity getRealSensitivity()
+    public BlockPressurePlate.Sensitivity getRealSensitivity()
     {
         String tmp = sensitivity.toUpperCase();
         return BlockPressurePlate.Sensitivity.valueOf(tmp);

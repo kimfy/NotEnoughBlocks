@@ -76,6 +76,12 @@ public class NEBBlockGrass extends Block implements IGrowable, IBlockProperties
         return blockState.getValue(VARIANT);
     }
 
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return getMetaFromState(state);
+    }
+
     // BlockGrass
     /**
      * Get the actual Block state of this Block at the given position. This applies properties not visible in the

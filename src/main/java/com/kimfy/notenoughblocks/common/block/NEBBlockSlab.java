@@ -138,7 +138,8 @@ public abstract class NEBBlockSlab extends BlockSlab implements IBlockProperties
     @Override
     public int damageDropped(IBlockState state)
     {
-        return getMetaFromState(state);
+        //return getMetaFromState(state);
+        return state.getValue(VARIANT);
     }
 
     @Override

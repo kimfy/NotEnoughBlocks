@@ -229,4 +229,10 @@ public class NEBBlockFence extends Block implements IBlockProperties
     {
         return state.withProperty(NORTH, this.canConnectTo(worldIn, pos.north())).withProperty(EAST, this.canConnectTo(worldIn, pos.east())).withProperty(SOUTH, this.canConnectTo(worldIn, pos.south())).withProperty(WEST, this.canConnectTo(worldIn, pos.west())).withProperty(PROPERTY_METADATA, state.getValue(PROPERTY_METADATA));
     }
+
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return getMetaFromState(state);
+    }
 }

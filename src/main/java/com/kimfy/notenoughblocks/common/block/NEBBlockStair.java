@@ -4,6 +4,7 @@ import com.kimfy.notenoughblocks.common.file.json.BlockJson;
 import lombok.experimental.Delegate;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 
 import java.util.List;
 
@@ -19,5 +20,11 @@ public class NEBBlockStair extends BlockStairs implements IBlockProperties
     {
         super(NEBBlock.buildModBlock(material, data).getDefaultState());
         this.agent = new BlockAgent<>(this);
+    }
+
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return 0;
     }
 }

@@ -5,6 +5,7 @@ import lombok.experimental.Delegate;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.item.Item;
 import net.minecraft.util.BlockPos;
@@ -14,6 +15,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
+import java.util.Random;
 
 public class NEBBlockDoor extends BlockDoor implements IBlockProperties
 {
@@ -28,9 +30,24 @@ public class NEBBlockDoor extends BlockDoor implements IBlockProperties
         ModelLoader.setCustomStateMapper(this, new StateMap.Builder().ignore(new IProperty[]{POWERED}).build());
     }
 
+    @Override
     @SideOnly(Side.CLIENT)
     public Item getItem(World worldIn, BlockPos pos)
     {
         return Item.getItemFromBlock(this);
+    }
+
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return 0;
+    }
+
+    /**
+     * Get the Item that this Block should drop when harvested.
+     */
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return state.getValue(HALF) == BlockDoor.EnumDoorHalf.UPPER ? null : Item.getItemFromBlock(this);
     }
 }

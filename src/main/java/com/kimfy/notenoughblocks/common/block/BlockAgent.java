@@ -3,9 +3,13 @@ package com.kimfy.notenoughblocks.common.block;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
 import lombok.Getter;
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -23,6 +27,9 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
         this.block = block;
     }
 
+    /**
+     * returns a list of blocks with the same ID, but different meta (eg: wood returns 4 blocks)
+     */
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(Item itemIn, CreativeTabs tab, List<ItemStack> list)
     {
@@ -41,10 +48,11 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
      * @param player The player doing the harvesting
      * @return True if the block can be directly harvested using silk touch
      */
-    //public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player)
-    //{
-    //    return block.canSilkHarvest(world, pos, state, player); // TODO Implement this
-    //}
+    public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player)
+    {
+        int metadata = world.getBlockState(pos).getBlock().getDamageValue(world, pos);
+        return getData().get(metadata).isSilkTouch(); // This should be safe, as long as all damageDropped methods are valid and legal
+    }
 
     @Getter
     private boolean isBeaconBase;

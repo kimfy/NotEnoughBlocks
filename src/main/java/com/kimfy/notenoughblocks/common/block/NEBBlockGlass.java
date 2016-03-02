@@ -19,6 +19,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  * Look into ASM'ing {@link net.minecraft.block.BlockBeacon#updateColorAsync} to allow
@@ -31,8 +32,8 @@ import java.util.List;
  */
 public class NEBBlockGlass extends BlockGlass implements IBlockProperties
 {
-    private final ModPropertyInteger PROPERTY_METADATA;
-    private final BlockState BLOCK_STATE_REAL;
+    private final ModPropertyInteger VARIANT;
+    private final BlockState BLOCKSTATE_REAL;
 
     @Delegate(excludes = Excludes.class)
     private final BlockAgent<NEBBlockGlass> agent;
@@ -43,23 +44,23 @@ public class NEBBlockGlass extends BlockGlass implements IBlockProperties
         this.agent = new BlockAgent<>(this);
 
         int blockCount = data.size();
-        this.PROPERTY_METADATA = ModPropertyInteger.create("metadata", blockCount);
-        this.BLOCK_STATE_REAL = createRealBlockState(PROPERTY_METADATA);
+        this.VARIANT = ModPropertyInteger.create("metadata", blockCount);
+        this.BLOCKSTATE_REAL = createRealBlockState(VARIANT);
         this.setupStates();
     }
 
 
     private void setupStates()
     {
-        IBlockState blockState = getBlockState().getBaseState().withProperty(PROPERTY_METADATA, 0);
-        blockState = blockState.withProperty(PROPERTY_METADATA, 0);
+        IBlockState blockState = getBlockState().getBaseState().withProperty(VARIANT, 0);
+        blockState = blockState.withProperty(VARIANT, 0);
         this.setDefaultState(blockState);
     }
 
     @Override
     public BlockState getBlockState()
     {
-        return this.BLOCK_STATE_REAL;
+        return this.BLOCKSTATE_REAL;
     }
 
     private BlockState createRealBlockState(ModPropertyInteger property)
@@ -76,13 +77,13 @@ public class NEBBlockGlass extends BlockGlass implements IBlockProperties
     @Override
     public IBlockState getStateFromMeta(int metadata)
     {
-        return getDefaultState().withProperty(PROPERTY_METADATA, metadata);
+        return getDefaultState().withProperty(VARIANT, metadata);
     }
 
     @Override
     public int getMetaFromState(IBlockState blockState)
     {
-        return blockState.getValue(PROPERTY_METADATA);
+        return blockState.getValue(VARIANT);
     }
 
     @Override
@@ -111,5 +112,13 @@ public class NEBBlockGlass extends BlockGlass implements IBlockProperties
     public EnumWorldBlockLayer getBlockLayer()
     {
         return this.isStained() ? EnumWorldBlockLayer.TRANSLUCENT : EnumWorldBlockLayer.CUTOUT;
+    }
+
+    /**
+     * Returns the quantity of items to drop on block destruction.
+     */
+    public int quantityDropped(Random random)
+    {
+        return 1;
     }
 }

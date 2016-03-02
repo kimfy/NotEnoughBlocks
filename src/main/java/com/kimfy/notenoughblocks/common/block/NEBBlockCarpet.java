@@ -150,6 +150,6 @@ public class NEBBlockCarpet extends Block implements IBlockProperties
      */
     public int damageDropped(IBlockState state)
     {
-        return state.getValue(VARIANT);
+        return getMetaFromState(state);
     }
 }

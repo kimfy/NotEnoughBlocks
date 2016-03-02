@@ -115,8 +115,8 @@ public class Blocks
         blockList.add(new BlockJson().displayName("Nether Brick Slab").parent(rockSlab).textures("all: nether_brick"));
         blockList.add(new BlockJson().displayName("Quartz Slab").parent(rockSlab).textures("down: quartz_block_bottom, up: quartz_block_top, allSides: quartz_block_side"));
         blockList.add(new BlockJson().displayName("Bricks").hardness(2.0F).resistance(10.0F).stepSound("piston").textures("all: brick"));
-        blockList.add(new BlockJson().displayName("TNT").hardness(0.0F).stepSound("grass").textures("down: tnt_bottom, up: tnt_top, allSides: tnt_side"));
-        blockList.add(new BlockJson().displayName("Bookshelf").hardness(1.5F).stepSound("wood").textures("down: planks_oak, up: planks_oak, allSides: bookshelf"));
+        blockList.add(new BlockJson().displayName("TNT").hardness(0.0F).material("tnt").stepSound("grass").textures("down: tnt_bottom, up: tnt_top, allSides: tnt_side"));
+        blockList.add(new BlockJson().displayName("Bookshelf").hardness(1.5F).stepSound("wood").material("wood").textures("down: planks_oak, up: planks_oak, allSides: bookshelf"));
         blockList.add(new BlockJson().displayName("Obsidian").hardness(50.0F).resistance(2000.0F).stepSound("piston").textures("all: obsidian"));
         blockList.add(new BlockJson().displayName("Torch").shape("torch").hardness(0.0F).material("circuits").lightLevel(0.9375F).stepSound("wood").textures("on: torch_on"));
         // Fire

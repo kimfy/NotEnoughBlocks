@@ -123,6 +123,6 @@ public class NEBBlockRotating extends BlockLog implements IBlockProperties
      */
     public int damageDropped(IBlockState state)
     {
-        return (state.getValue(VARIANT));
+        return state.getValue(VARIANT);
     }
 }

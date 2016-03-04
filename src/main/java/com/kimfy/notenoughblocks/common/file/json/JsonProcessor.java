@@ -1,9 +1,7 @@
 package com.kimfy.notenoughblocks.common.file.json;
 
 import com.kimfy.notenoughblocks.NotEnoughBlocks;
-import com.kimfy.notenoughblocks.common.block.IBlockProperties;
-import com.kimfy.notenoughblocks.common.block.NEBBlockSlabDouble;
-import com.kimfy.notenoughblocks.common.block.NEBBlockSlabHalf;
+import com.kimfy.notenoughblocks.common.block.*;
 import com.kimfy.notenoughblocks.common.item.NEBItemBlockSlab;
 import com.kimfy.notenoughblocks.common.util.Constants;
 import com.kimfy.notenoughblocks.common.util.Utilities;
@@ -18,10 +16,7 @@ import org.apache.logging.log4j.Logger;
 import java.io.File;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class JsonProcessor
 {
@@ -218,14 +213,37 @@ public class JsonProcessor
             BlockJson entry = blocks.get(metadata);
 
             block.isSilkTouchable(entry.isSilkTouch(), metadata);
-            setDisplayName(unlocalizedName, metadata, entry.getDisplayName());
+            setDisplayName(block, unlocalizedName, metadata, entry.getDisplayName());
         }
     }
 
+    private static Map<String, String> lang = new HashMap<>();
 
-    private static void setDisplayName(String unlocalizedName, int metadata, String displayName)
+    // TODO: Add support for all shapes
+    private static void setDisplayName(Block block, String unlocalizedName, int metadata, String displayName)
     {
-        LanguageRegistry.instance()
-                .addStringLocalization("tile." + Constants.MOD_ID + ":" + unlocalizedName + "_" + metadata + ".name", displayName);
+        //LanguageRegistry.instance().addStringLocalization("tile." + Constants.MOD_ID + ":" + unlocalizedName + "_" + metadata + ".name", displayName);
+        String key;
+        if (block instanceof NEBBlockDoor)
+        {
+            key = "tile." + Constants.MOD_ID + ":" + unlocalizedName + "_#metadata.name";
+            for (int i = 0; i < 10; i++)
+            {
+                lang.put(key.replace("#metadata", String.valueOf(i)), displayName);
+            }
+        }
+        else
+        {
+            key = "tile." + Constants.MOD_ID + ":" + unlocalizedName + "_" + metadata + ".name";
+            lang.put(key, displayName);
+        }
+    }
+
+    public static void injectLanguageMap()
+    {
+        if (lang != null && !lang.isEmpty())
+        {
+            LanguageRegistry.instance().injectLanguage("en_US", (HashMap<String, String>) lang);
+        }
     }
 }

@@ -22,6 +22,8 @@ public class ServerProxy
         JsonProcessor jsonProcessor = new JsonProcessor();
             jsonProcessor.loadFiles();
             jsonProcessor.processData();
+
+        JsonProcessor.injectLanguageMap();
     }
     
     @Mod.EventHandler

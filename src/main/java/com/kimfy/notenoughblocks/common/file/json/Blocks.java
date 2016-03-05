@@ -144,7 +144,7 @@ public class Blocks
         blockList.add(new BlockJson().displayName("Wooden Pressure Plate").shape("pressure_plate").sensitivity("everything").material("wood").hardness(0.5F).stepSound("wood").textures("all: planks_oak"));
         blockList.add(new BlockJson().displayName("Redstone Torch").shape("redstone_torch").hardness(0.0F).material("wood").stepSound("wood").textures("on: redstone_torch_on, off: redstone_torch_off")); // TODO: Implement
         blockList.add(new BlockJson().displayName("Stone Button").shape("button").hardness(0.5F).stepSound("piston").textures("all: stone")); // TODO: Implement
-        blockList.add(new BlockJson().displayName("Snow").shape("snow_layer").material("snow").hardness(0.1F).stepSound("snow").lightOpacity(0).textures("all: snow"));
+        blockList.add(new BlockJson().displayName("Snow").shape("layer").material("snow").hardness(0.1F).stepSound("snow").lightOpacity(0).textures("all: snow"));
         blockList.add(new BlockJson().displayName("Ice").material("ice").slipperiness(0.98F).hardness(0.5F).stepSound("glass").textures("all: ice"));
         blockList.add(new BlockJson().displayName("Snow Block").material("crafted_snow").hardness(0.2F).stepSound("snow").textures("all: snow"));
         blockList.add(new BlockJson().displayName("Cactus").shape("cactus").material("cactus").hardness(0.4F).stepSound("cloth").textures("bottom: cactus_bottom, top: cactus_top, side: cactus_side")); // TODO: Implement

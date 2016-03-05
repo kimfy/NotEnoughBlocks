@@ -170,12 +170,15 @@ public class BlockJson implements Serializable
          */
         if (textures.containsKey("allSides"))
         {
-            String val = textures.get("allSides");
+            String texture = textures.get("allSides");
             textures.remove("allSides");
 
             sides.stream()
                     .filter(notUpNotDown::apply)
-                    .forEach(s -> textures.put(s, val));
+                    .forEach(side -> {
+                        if (!textures.containsKey(side))
+                             textures.put(side, texture);
+                    });
         }
 
         /*

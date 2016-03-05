@@ -1,10 +1,7 @@
 package com.kimfy.notenoughblocks.common.util.block;
 
 import com.kimfy.notenoughblocks.common.block.*;
-import com.kimfy.notenoughblocks.common.item.NEBItemBlock;
-import com.kimfy.notenoughblocks.common.item.NEBItemBlockDoor;
-import com.kimfy.notenoughblocks.common.item.NEBItemBlockSlab;
-import com.kimfy.notenoughblocks.common.item.NEBItemBlockStair;
+import com.kimfy.notenoughblocks.common.item.*;
 import lombok.Getter;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
@@ -63,7 +60,7 @@ public enum Shape
     SIGN(16, null, null),
     SKULL(16, null, null),
     SLIME_BLOCK(16, null, null),
-    SNOW_LAYER(1, null, null),
+    LAYER(1, NEBBlockLayer.class, NEBItemBlockLayer.class),
     TALLGRASS(16, null, null), // {@link BlockTallGrass}. Shrub(unused), Tallgrass, Fern
     TORCH(1, null, null),
     TRAPDOOR(4, null, null),

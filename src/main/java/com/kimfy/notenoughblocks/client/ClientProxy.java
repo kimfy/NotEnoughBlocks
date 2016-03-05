@@ -12,6 +12,10 @@ public class ClientProxy extends ServerProxy
     public void preInit(FMLPreInitializationEvent event)
     {   
         super.preInit(event);
+
+        /* registerItemModels() need to be called from preInit */
+        OneEight.writeBlockStateFiles();
+        OneEight.registerItemModels();
     }
 
     @Override
@@ -19,8 +23,8 @@ public class ClientProxy extends ServerProxy
     {
         super.init(event);
 
-        OneEight.writeBlockStateFiles();
-        OneEight.registerItemModels();
+        //OneEight.writeBlockStateFiles();
+        //OneEight.registerItemModels();
     }
 
     @Override

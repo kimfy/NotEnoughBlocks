@@ -80,6 +80,7 @@ public class OneEight
                         case "wall":     writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "east=false,metadata=#metadata,north=true,south=true,up=true,west=false"); break;
                         case "grass":    writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "metadata=#metadata,snowy=false"); break;
                         case "door":     writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "facing=north,half=lower,hinge=right,open=false"); break;
+                        case "layer":    writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "layers=1"); break;
                         default:
                         {
                             logger.info("[NEB]: INFORMATION: Shape: " + shape + " is not yet supported!");
@@ -93,40 +94,15 @@ public class OneEight
 
     public static void registerItemModels()
     {
-        /**
-         * The way it works is we create a new model resource location
-         * for the variant of the item.
-         * E.g say the variant for the block is "metadata=0" in the blockstate.json
-         * the itemblock variant would also be "metadata=0" for obvious reasons.
-         * Still need to register #inventory
-         */
-        //Minecraft.getMinecraft()
-        //        .getRenderItem()
-        //        .getItemModelMesher()
-        //        .register(
-        //                Item.getItemFromBlock(block),
-        //                metadata,
-        //                new ModelResourceLocation(Constants.MOD_ID + ":" + blockName, "metadata=" + metadata)
-        //                 );
-
-        //Minecraft.getMinecraft()
-        //        .getRenderItem()
-        //        .getItemModelMesher()
-        //        .register(
-        //                Item.getItemFromBlock(block),
-        //                metadata,
-        //                MRL(blockName, "variantName")
-        //                 );
-
-        logger.info("[NEB]: registerItemModels()");
+        //logger.info("[NEB]: registerItemModels()");
         if (blockstateFolder.listFiles().length >= 1)
         {
-            logger.info("[NEB]: listFiles() is over 1");
+            //logger.info("[NEB]: listFiles() is over 1");
             Gson gson = new Gson();
 
             for (File f : blockstateFolder.listFiles())
             {
-                logger.info("[NEB]: Found file: " + f.getName());
+                //logger.info("[NEB]: Found file: " + f.getName());
 
                 if (f.isFile() && f.getName().endsWith(".json"))
                 {
@@ -147,26 +123,23 @@ public class OneEight
                                 int metadata = ((Number) entry.get("metadata")).intValue();
                                 String variant   = (String) entry.get("variant");
 
-                                logger.info("===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # =====");
-                                logger.info("INFORMATION: Got block with given information:");
-                                logger.info("Name: " + blockName);
-                                logger.info("Metadata: " + metadata);
-                                logger.info("Variant: " + variant);
-                                logger.info("===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # =====");
+                                //logger.info("===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # =====");
+                                //logger.info("INFORMATION: Got block with given information:");
+                                //logger.info("Name: " + blockName);
+                                //logger.info("Metadata: " + metadata);
+                                //logger.info("Variant: " + variant);
+                                //logger.info("===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # =====");
 
                                 Block block = GameRegistry.findBlock(Constants.MOD_ID, blockName);
                                 if (block != null)
                                 {
-                                    logger.info("[NEB]: block is not null, registering item model");
-                                    registerItem(block, metadata, MRL(blockName, variant));
-                                    ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), metadata, new ModelResourceLocation(Constants.MOD_ID + ":" + blockName, variant));
-                                    //ItemModelMesher mesher = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
-                                    //mesher.register(Item.getItemFromBlock(block), metadata, new ModelResourceLocation(Constants.MOD_ID+":"+blockName, "inventory"));
+                                    //logger.info("[NEB]: block is not null, registering item model");
+                                    registerItem(block, metadata, blockName, variant);
                                 }
                                 else
                                 {
                                     logger.error("===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # =====");
-                                    logger.error("ERROR: Tried to find block with given information:");
+                                    logger.error("ERROR: Could not register item variant for block with given information:");
                                     logger.error("Name: " + blockName);
                                     logger.error("Metadata: " + metadata);
                                     logger.error("Variant: " + variant);
@@ -209,14 +182,17 @@ public class OneEight
 
     private static void registerItem(Block block, int metadata, ModelResourceLocation mrl)
     {
-        Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(block), metadata, mrl);
-        // The line under me does not seem to work. What do?
-        //ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), metadata, mrl);
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), metadata, mrl);
     }
 
-    private static ModelResourceLocation MRL(String key, String variant)
+    private static void registerItem(Block block, int metadata, String blockName, String variant)
     {
-        return new ModelResourceLocation(Constants.MOD_ID + ":" + key, variant);
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), metadata, MRL(blockName, variant));
+    }
+
+    private static ModelResourceLocation MRL(String name, String variant)
+    {
+        return new ModelResourceLocation(Constants.MOD_ID + ":" + name, variant);
     }
 
     public static List<Block> getBlocksFromMod(String modId)
@@ -247,6 +223,7 @@ public class OneEight
 
         return ret;
     }
+
     private static Gson gson = new Gson();
     private static Gson gsonBuilder = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 

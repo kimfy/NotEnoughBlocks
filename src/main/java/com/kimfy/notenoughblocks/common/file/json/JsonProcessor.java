@@ -203,7 +203,7 @@ public class JsonProcessor
         block.setData(Utilities.deepCloneList(blocks));
         block.setBeaconBaseable(model.isBeaconBase());
         block.setBlockLightOpacity(model.getLightOpacity());
-        //block.setBlockOpaqueness(model.isOpaque());
+        //block.setBlockOpaqueness(model.isOpaque()); // Removed because inconvenient for everyone
         block.setBlockStainable(model.isStained());
         block.setSlipperiness(model.getSlipperiness());
 
@@ -220,6 +220,13 @@ public class JsonProcessor
     private static Map<String, String> lang = new HashMap<>();
 
     // TODO: Add support for all shapes
+    /*
+        Shapes that need support:
+        Stairs
+        Slabs
+        Doors
+        Rotating
+     */
     private static void setDisplayName(Block block, String unlocalizedName, int metadata, String displayName)
     {
         //LanguageRegistry.instance().addStringLocalization("tile." + Constants.MOD_ID + ":" + unlocalizedName + "_" + metadata + ".name", displayName);

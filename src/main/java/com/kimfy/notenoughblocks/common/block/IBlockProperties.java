@@ -11,7 +11,8 @@ import java.util.Map;
 public interface IBlockProperties
 {   
     void setBeaconBaseable(boolean isBeaconBase);
-    
+
+    @Deprecated
     void setBlockOpaqueness(boolean isOpaque);
     
     void setBlockStainable(boolean isStained);

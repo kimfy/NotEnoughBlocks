@@ -72,9 +72,9 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
     }
 
     @Override
+    @Deprecated
     public void setBlockOpaqueness(boolean isOpaque)
     {
-        this.isOpaque = isOpaque;
     }
 
     @Override

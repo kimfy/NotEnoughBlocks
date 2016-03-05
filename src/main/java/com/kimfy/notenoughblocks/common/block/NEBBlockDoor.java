@@ -26,7 +26,7 @@ public class NEBBlockDoor extends BlockDoor implements IBlockProperties
     {
         super(materialIn);
         this.agent = new BlockAgent<>(this);
-        // Removes the need to specify the 'powered' property in it's blockstate json
+        // Tells our blockstate model that we do not have to specify the POWERED property
         ModelLoader.setCustomStateMapper(this, new StateMap.Builder().ignore(new IProperty[]{POWERED}).build());
     }
 

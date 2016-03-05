@@ -528,5 +528,7 @@ public class BlockJson implements Serializable
         this.unlocalizedName = unlocalizedName;
         return this;
     }
+
+    /* ========== Getters ========== */
 }
 

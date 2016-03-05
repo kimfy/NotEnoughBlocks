@@ -215,10 +215,10 @@ public class OneEight
 
         for (Map.Entry<String, String> entry : textureMap.entrySet())
         {
-            String key = entry.getKey();
-            String val = Constants.MOD_ID + ":blocks/" + entry.getValue();
+            String side = entry.getKey();
+            String texture = entry.getValue();
 
-            ret.put(key, val);
+            ret.put(side, !texture.contains(":") ? Constants.MOD_ID + ":blocks/" + texture : texture);
         }
 
         return ret;

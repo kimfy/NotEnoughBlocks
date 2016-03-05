@@ -203,7 +203,7 @@ public class JsonProcessor
         block.setData(Utilities.deepCloneList(blocks));
         block.setBeaconBaseable(model.isBeaconBase());
         block.setBlockLightOpacity(model.getLightOpacity());
-        block.setBlockOpaqueness(model.isOpaque());
+        //block.setBlockOpaqueness(model.isOpaque());
         block.setBlockStainable(model.isStained());
         block.setSlipperiness(model.getSlipperiness());
 

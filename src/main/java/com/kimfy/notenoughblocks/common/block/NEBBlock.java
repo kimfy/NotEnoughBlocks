@@ -13,6 +13,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
@@ -36,6 +37,17 @@ public class NEBBlock  extends Block implements IBlockProperties
         this.BLOCKSTATE_REAL = createRealBlockState(VARIANT);
         this.setupStates();
     }
+
+    //public <T extends Block & IBlockProperties>NEBBlock(Material material, List<BlockJson> data, T block)
+    //{
+    //    super(material);
+    //    this.agent = new BlockAgent<T>(block);
+//
+    //    int blockCount = data.size();
+    //    this.VARIANT = ModPropertyInteger.create("metadata", blockCount);
+    //    this.BLOCKSTATE_REAL = createRealBlockState(VARIANT);
+    //    this.setupStates();
+    //}
 
     private void setupStates()
     {
@@ -107,5 +119,11 @@ public class NEBBlock  extends Block implements IBlockProperties
         block.setStepSound(EnumSoundType.get(modelBlock.stepSound).getSoundType());
 
         return block;
+    }
+
+    @Override
+    public EnumWorldBlockLayer getBlockLayer()
+    {
+        return super.getBlockLayer();
     }
 }

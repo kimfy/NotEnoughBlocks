@@ -42,7 +42,7 @@ public enum Shape
     FLOWER(16, null, null),
     FLOWER_POT(16, null, null),
     GRASS(16, NEBBlockGrass.class, NEBItemBlock.class),
-    ICE(16, null, null),
+    ICE(16, CUBE.getBlockClass(), CUBE.getItemClass()),
     LADDER(16, null, null),
     LEAVES(16, null, null),
     LEVER(16, null, null),

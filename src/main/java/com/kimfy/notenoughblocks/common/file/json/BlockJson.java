@@ -530,5 +530,15 @@ public class BlockJson implements Serializable
     }
 
     /* ========== Getters ========== */
+
+    public String getShape()
+    {
+        if (shape.equalsIgnoreCase("ice"))
+        {
+            return "cube";
+        }
+
+        return shape;
+    }
 }
 

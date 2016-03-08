@@ -28,6 +28,17 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
     }
 
     /**
+     * If data is needed when constructing a block, this constructor should be used
+     * @param block
+     * @param data
+     */
+    public BlockAgent(T block, List<BlockJson> data)
+    {
+        this.block = block;
+        this.data = data;
+    }
+
+    /**
      * returns a list of blocks with the same ID, but different meta (eg: wood returns 4 blocks)
      */
     @SideOnly(Side.CLIENT)
@@ -113,5 +124,26 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
     public List<BlockJson> getData()
     {
         return this.data;
+    }
+
+    private BlockJson modelBlock;
+
+    public BlockJson getModelBlock()
+    {
+        if (data == null)
+        {
+            throw new NullPointerException("BlockAgent#getModelBlock(): data is null");
+        }
+        if (data.isEmpty())
+        {
+            throw new IndexOutOfBoundsException("BlockAgent#getModelBlock(): data is empty");
+        }
+
+        if (modelBlock == null)
+        {
+            modelBlock = data.get(0);
+        }
+
+        return modelBlock;
     }
 }

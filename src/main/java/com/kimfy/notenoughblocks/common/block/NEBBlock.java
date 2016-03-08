@@ -3,6 +3,7 @@ package com.kimfy.notenoughblocks.common.block;
 import com.kimfy.notenoughblocks.common.block.properties.ModPropertyInteger;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
 import com.kimfy.notenoughblocks.common.util.block.EnumSoundType;
+import com.kimfy.notenoughblocks.common.util.block.Shape;
 import lombok.experimental.Delegate;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -13,16 +14,21 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class NEBBlock  extends Block implements IBlockProperties
+public class NEBBlock extends Block implements IBlockProperties
 {
     private final ModPropertyInteger VARIANT;
     private final BlockState BLOCKSTATE_REAL;
+    private final Shape blockShape;
 
     @Delegate(excludes = Excludes.class)
     private final BlockAgent<NEBBlock> agent;
@@ -30,24 +36,14 @@ public class NEBBlock  extends Block implements IBlockProperties
     public NEBBlock(Material material, List<BlockJson> data)
     {
         super(material);
-        this.agent = new BlockAgent<>(this);
+        this.agent = new BlockAgent<>(this, data);
+        this.blockShape = agent.getModelBlock().getRealShape();
 
         int blockCount = data.size();
         this.VARIANT = ModPropertyInteger.create("metadata", blockCount);
         this.BLOCKSTATE_REAL = createRealBlockState(VARIANT);
         this.setupStates();
     }
-
-    //public <T extends Block & IBlockProperties>NEBBlock(Material material, List<BlockJson> data, T block)
-    //{
-    //    super(material);
-    //    this.agent = new BlockAgent<T>(block);
-//
-    //    int blockCount = data.size();
-    //    this.VARIANT = ModPropertyInteger.create("metadata", blockCount);
-    //    this.BLOCKSTATE_REAL = createRealBlockState(VARIANT);
-    //    this.setupStates();
-    //}
 
     private void setupStates()
     {
@@ -105,6 +101,9 @@ public class NEBBlock  extends Block implements IBlockProperties
     {
         int damageDropped(IBlockState blockState);
         ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos, EntityPlayer player);
+        EnumWorldBlockLayer getBlockLayer();
+        boolean isOpaqueCube();
+        boolean shouldSideBeRendered(IBlockAccess worldIn, BlockPos pos, EnumFacing side);
     }
 
     /**
@@ -121,9 +120,46 @@ public class NEBBlock  extends Block implements IBlockProperties
         return block;
     }
 
+    public Shape getBlockShape()
+    {
+        return this.blockShape;
+    }
+
+    /* ========== Layer / Render / Client ========== */
+
     @Override
     public EnumWorldBlockLayer getBlockLayer()
     {
+        if (getBlockShape() == Shape.ICE)
+        {
+            return EnumWorldBlockLayer.TRANSLUCENT;
+        }
         return super.getBlockLayer();
+    }
+
+    @Override
+    public boolean isOpaqueCube()
+    {
+        if (getBlockShape() == Shape.ICE)
+        {
+            return false;
+        }
+        return super.isOpaqueCube();
+    }
+
+    @SideOnly(Side.CLIENT)
+    public boolean shouldSideBeRendered(IBlockAccess worldIn, BlockPos pos, EnumFacing side)
+    {
+        IBlockState iblockstate = worldIn.getBlockState(pos);
+        Block block = iblockstate.getBlock();
+
+        if (getBlockShape() == Shape.ICE)
+        {
+            if (block == this)
+            {
+                return false;
+            }
+        }
+        return super.shouldSideBeRendered(worldIn, pos, side);
     }
 }

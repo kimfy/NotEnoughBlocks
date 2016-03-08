@@ -72,6 +72,7 @@ public class OneEight
                     {
                         case "carpet":   // Fall through to "cube" as they share the same item variant identifier
                         case "glass":    // ^
+                        case "ice":      // ^
                         case "cube":     writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "metadata=#metadata"); break;
                         case "stair":    writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "facing=west,half=bottom,shape=straight"); break;
                         case "slab":     writeBlockStateForSlab(blockName, blockJsons, null, outputFile); break;

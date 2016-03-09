@@ -1,0 +1,7 @@
+{
+	"forge_marker": 1,
+	"variants": {
+		"half=lower,metadata=#metadata": { "model": "notenoughblocks:double_plant_bottom" },
+		"half=upper,metadata=#metadata": { "model": "notenoughblocks:double_plant_top" }
+	}
+}

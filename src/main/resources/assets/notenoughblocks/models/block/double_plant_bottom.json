@@ -1,0 +1,6 @@
+{
+	"parent": "notenoughblocks:block/cross",
+	"textures": {
+		"cross": "#bottom"
+	}
+}

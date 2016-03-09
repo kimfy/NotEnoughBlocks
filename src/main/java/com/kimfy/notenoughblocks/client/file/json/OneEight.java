@@ -70,18 +70,19 @@ public class OneEight
 
                     switch (shape)
                     {
-                        case "carpet":   // Fall through to "cube" as they share the same item variant identifier
-                        case "glass":    // ^
-                        case "ice":      // ^
-                        case "cube":     writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "metadata=#metadata"); break;
-                        case "stair":    writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "facing=west,half=bottom,shape=straight"); break;
-                        case "slab":     writeBlockStateForSlab(blockName, blockJsons, null, outputFile); break;
-                        case "fence":    writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "east=false,metadata=#metadata,north=true,south=true,west=false"); break;
-                        case "rotating": writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "axis=y,metadata=#metadata"); break;
-                        case "wall":     writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "east=false,metadata=#metadata,north=true,south=true,up=true,west=false"); break;
-                        case "grass":    writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "metadata=#metadata,snowy=false"); break;
-                        case "door":     writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "facing=north,half=lower,hinge=right,open=false"); break;
-                        case "layer":    writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "layers=1"); break;
+                        case "carpet":       // Fall through to "cube" as they share the same item variant identifier
+                        case "glass":        // ^
+                        case "ice":          // ^ - IMPORTANT: Never called as BlockJson#getShape has been modified to return "cube" when it's shape equals ice
+                        case "cube":         writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "metadata=#metadata"); break;
+                        case "stair":        writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "facing=west,half=bottom,shape=straight"); break;
+                        case "slab":         writeBlockStateForSlab(blockName, blockJsons, null, outputFile); break;
+                        case "fence":        writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "east=false,metadata=#metadata,north=true,south=true,west=false"); break;
+                        case "rotating":     writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "axis=y,metadata=#metadata"); break;
+                        case "wall":         writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "east=false,metadata=#metadata,north=true,south=true,up=true,west=false"); break;
+                        case "grass":        writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "metadata=#metadata,snowy=false"); break;
+                        case "door":         writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "facing=north,half=lower,hinge=right,open=false"); break;
+                        case "layer":        writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "layers=1"); break;
+                        case "double_plant": writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "half=upper,metadata=#metadata"); break;
                         default:
                         {
                             logger.info("[NEB]: INFORMATION: Shape: " + shape + " is not yet supported!");
@@ -308,6 +309,7 @@ public class OneEight
 
         for (int metadata = 0; metadata < blockJsons.size(); metadata++)
         {
+            BlockJson modelBlock = blockJsons.get(metadata);
             Map<String, Object> inventoryRender = new LinkedHashMap<>();
             inventoryRender.put("metadata", metadata);
             //inventoryRender.put("variant", "east=false,metadata="+ String.valueOf(metadata) +",north=true,south=true,up=true,west=false");
@@ -333,6 +335,21 @@ public class OneEight
                     else // "metadata=#metadata": {}
                     {
                         Map<String, Object> val = (Map<String, Object>) variant.getValue();
+
+                        /*
+                            The reason we're removing the model kv-pair from the map is
+                            so that we can put the sunflower model in there as it differs
+                            from the basic 'double_plant' top
+                         */
+                        if (modelBlock.isSunflower())
+                        {
+                            // Check if variant is half=upper
+                            if (variant.getKey().contains("half=upper"))
+                            {
+                                val.remove("model");
+                                val.put("model", Constants.MOD_ID + ":double_plant_sunflower_top");
+                            }
+                        }
                         val.put("textures", prefixTextureMap(blockJsons.get(metadata).getTextureMap()));
                     }
                 }

@@ -33,7 +33,7 @@ public enum Shape
     DEADBUSH(16, null, null), // {@link BlockDeadBush}. Dead Bush: This is the one that spawns in deserts
     DIRECTIONAL(5, null, null),
     DOOR(1, NEBBlockDoor.class, NEBItemBlockDoor.class),
-    DOUBLE_PLANT(8, null, null),
+    DOUBLE_PLANT(8, NEBBlockDoublePlant.class, NEBItemBlock.class),
     DRAGON_EGG(16, null, null),
     ENCHANTING_TABLE(16, null, null),
     FALLING(16, null, null),
@@ -63,7 +63,7 @@ public enum Shape
     LAYER(1, NEBBlockLayer.class, NEBItemBlockLayer.class),
     TALLGRASS(16, null, null), // {@link BlockTallGrass}. Shrub(unused), Tallgrass, Fern
     TORCH(1, null, null),
-    TRAPDOOR(4, null, null),
+    TRAPDOOR(1, null, null),
     TRIPWIRE(16, null, null),
     TRIPWIRE_HOOK(16, null, null),
     VINE(4, null, null),

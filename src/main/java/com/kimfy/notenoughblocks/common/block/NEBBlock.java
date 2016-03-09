@@ -150,8 +150,8 @@ public class NEBBlock extends Block implements IBlockProperties
     @SideOnly(Side.CLIENT)
     public boolean shouldSideBeRendered(IBlockAccess worldIn, BlockPos pos, EnumFacing side)
     {
-        IBlockState iblockstate = worldIn.getBlockState(pos);
-        Block block = iblockstate.getBlock();
+        IBlockState blockState = worldIn.getBlockState(pos);
+        Block block = blockState.getBlock();
 
         if (getBlockShape() == Shape.ICE)
         {

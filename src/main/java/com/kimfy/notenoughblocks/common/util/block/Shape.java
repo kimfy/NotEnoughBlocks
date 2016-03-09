@@ -37,7 +37,7 @@ public enum Shape
     DRAGON_EGG(16, null, null),
     ENCHANTING_TABLE(16, null, null),
     FALLING(16, null, null),
-    FENCE_GATE(1, null, null),
+    FENCE_GATE(1, NEBBlockFenceGate.class, NEBItemBlock.class),
     FARMLAND(16, null, null),
     FLOWER(16, null, null),
     FLOWER_POT(16, null, null),

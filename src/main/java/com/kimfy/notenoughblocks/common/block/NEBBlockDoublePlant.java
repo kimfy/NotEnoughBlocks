@@ -36,6 +36,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * TODO: Improve this class
+ * Needs adding:
+ * 1. Sunflowers are fucked - the top part isn't connected to the bottom
+ * 2. Drops
+ * 3. Maybe extend BlockDoublePlant and just override what needs overriding
+ *    would remove some duplicated code obviously.
+ * 4. ???
+ */
 public class NEBBlockDoublePlant extends Block implements IBlockProperties, IGrowable, IShearable, IPlantable
 {
     private final BlockState BLOCKSTATE_REAL;

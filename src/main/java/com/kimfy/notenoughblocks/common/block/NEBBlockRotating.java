@@ -27,7 +27,7 @@ public class NEBBlockRotating extends BlockLog implements IBlockProperties
     {
         super();
         this.material = material;
-        this.agent = new BlockAgent<>(this);
+        this.agent = new BlockAgent<>(this, data);
 
         int blockCount = data.size();
         this.VARIANT = ModPropertyInteger.create("metadata", blockCount);

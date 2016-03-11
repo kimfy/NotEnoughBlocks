@@ -33,7 +33,7 @@ public class NEBBlockGrass extends Block implements IGrowable, IBlockProperties
     {
         super(material);
         this.setTickRandomly(true);
-        this.agent = new BlockAgent<>(this);
+        this.agent = new BlockAgent<>(this, data);
 
         int blockCount = data.size();
         this.VARIANT = ModPropertyInteger.create("metadata", blockCount);

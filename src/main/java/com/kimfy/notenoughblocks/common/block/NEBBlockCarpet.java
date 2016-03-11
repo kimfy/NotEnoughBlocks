@@ -29,7 +29,7 @@ public class NEBBlockCarpet extends Block implements IBlockProperties
     public NEBBlockCarpet(Material material, List<BlockJson> data)
     {
         super(material);
-        this.agent = new BlockAgent<>(this);
+        this.agent = new BlockAgent<>(this, data);
         this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0625F, 1.0F);
         this.setTickRandomly(true);
         this.setBlockBoundsFromMeta(0);

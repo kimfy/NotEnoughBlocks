@@ -1,7 +1,10 @@
 package com.kimfy.notenoughblocks.common.file.json;
 
 import com.kimfy.notenoughblocks.NotEnoughBlocks;
-import com.kimfy.notenoughblocks.common.block.*;
+import com.kimfy.notenoughblocks.common.block.IBlockProperties;
+import com.kimfy.notenoughblocks.common.block.NEBBlockDoor;
+import com.kimfy.notenoughblocks.common.block.NEBBlockSlabDouble;
+import com.kimfy.notenoughblocks.common.block.NEBBlockSlabHalf;
 import com.kimfy.notenoughblocks.common.item.NEBItemBlockSlab;
 import com.kimfy.notenoughblocks.common.util.Constants;
 import com.kimfy.notenoughblocks.common.util.Utilities;
@@ -160,8 +163,8 @@ public class JsonProcessor
             {
                 if (shape == Shape.SLAB) // TODO: Generify this
                 {
-                    BlockSlab slabHalf = new NEBBlockSlabHalf(material, blocks);
-                    BlockSlab slabDouble = new NEBBlockSlabDouble(material, blocks);
+                    BlockSlab slabHalf = new NEBBlockSlabHalf(material, Utilities.deepCloneList(blocks));
+                    BlockSlab slabDouble = new NEBBlockSlabDouble(material, Utilities.deepCloneList(blocks));
 
                     setBlockProperties((Block & IBlockProperties) slabHalf, blocks, unlocalizedName);
                     String slabDoubleUnlocalizedName = json.getName() + "_" + model.getShape() + "_double_" + index;
@@ -173,7 +176,7 @@ public class JsonProcessor
                 else
                 {
                     Constructor<?> con = cls.getConstructor(Material.class, List.class);
-                    block = (Block & IBlockProperties) con.newInstance(material, blocks);
+                    block = (Block & IBlockProperties) con.newInstance(material, Utilities.deepCloneList(blocks));
 
                     setBlockProperties((Block & IBlockProperties) block, blocks, unlocalizedName);
                     GameRegistry.registerBlock(block, shape.getItemClass(), unlocalizedName);
@@ -200,7 +203,7 @@ public class JsonProcessor
         block.setLightLevel(model.getLightLevel());
 
         /* IBlockProperties.class methods */
-        block.setData(Utilities.deepCloneList(blocks));
+        //block.setData(Utilities.deepCloneList(blocks)); // Moved to constructor
         block.setBeaconBaseable(model.isBeaconBase());
         block.setBlockLightOpacity(model.getLightOpacity());
         //block.setBlockOpaqueness(model.isOpaque()); // Removed because inconvenient for everyone

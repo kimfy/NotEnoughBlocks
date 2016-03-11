@@ -2,32 +2,39 @@ package com.kimfy.notenoughblocks.common.block;
 
 import com.kimfy.notenoughblocks.common.block.properties.ModPropertyInteger;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
+import com.kimfy.notenoughblocks.common.util.block.Shape;
 import lombok.experimental.Delegate;
-import net.minecraft.block.BlockWall;
+import net.minecraft.block.BlockPane;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
-import net.minecraft.util.BlockPos;
-import net.minecraft.world.IBlockAccess;
+import net.minecraft.util.EnumWorldBlockLayer;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class NEBBlockWall extends BlockWall implements IBlockProperties
+// TODO: Lighting is a bit off / the block is very dark
+public class NEBBlockPane extends BlockPane implements IBlockProperties
 {
-    private final Material blockMaterial;
+    private final boolean canDrop;
     private final ModPropertyInteger VARIANT;
     private final BlockState BLOCKSTATE_REAL;
 
     @Delegate
-    private final BlockAgent<NEBBlockWall> agent;
+    private final BlockAgent<NEBBlockPane> agent;
 
-    public NEBBlockWall(Material material, List<BlockJson> data)
+    public NEBBlockPane(Material materialIn, List<BlockJson> data)
     {
-        super(Blocks.stone);
-        this.blockMaterial = material;
+        super(materialIn, true);
+        this.canDrop = true; // What is this even
         this.agent = new BlockAgent<>(this, data);
+        if (getModelBlock().getRealShape() == Shape.PANE)
+        {
+            this.isStainedCached = getModelBlock().isStained();
+        }
 
         int blockCount = data.size();
         this.VARIANT = ModPropertyInteger.create("metadata", blockCount);
@@ -35,21 +42,14 @@ public class NEBBlockWall extends BlockWall implements IBlockProperties
         this.setupStates();
     }
 
-    @Override
-    public Material getMaterial()
-    {
-        return this.blockMaterial;
-    }
-
     private void setupStates()
     {
         IBlockState blockState = getBlockState().getBaseState()
-                .withProperty(UP, false)
+                .withProperty(VARIANT, 0)
                 .withProperty(NORTH, false)
                 .withProperty(EAST, false)
                 .withProperty(SOUTH, false)
-                .withProperty(WEST, false)
-                .withProperty(VARIANT, 0);
+                .withProperty(WEST, false);
         this.setDefaultState(blockState);
     }
 
@@ -61,13 +61,13 @@ public class NEBBlockWall extends BlockWall implements IBlockProperties
 
     private BlockState createRealBlockState()
     {
-        return new BlockState(this, new IProperty[]{ UP, NORTH, EAST, SOUTH, WEST, VARIANT});
+        return new BlockState(this, new IProperty[]{ VARIANT, NORTH, EAST, WEST, SOUTH });
     }
 
     @Override
     protected BlockState createBlockState()
     {
-        return Blocks.cobblestone_wall.getBlockState();
+        return Blocks.glass_pane.getBlockState();
     }
 
     @Override
@@ -89,11 +89,19 @@ public class NEBBlockWall extends BlockWall implements IBlockProperties
     }
 
     /**
-     * Get the actual Block state of this Block at the given position. This applies properties not visible in the
-     * metadata, such as fence connections.
+     * I have "cached" this value by setting it in the constructor instead of accessing
+     * <code>
+     *     this.getModelBlock().isStained()
+     * </code>
+     * every time NEBBlockPane#getBlockLayer is called. I honestly don't know if it's
+     * faster or worth it to do this. If anyone with some knowledge could answer this
+     * that'd be great.
      */
-    public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos)
+    private boolean isStainedCached;
+
+    @SideOnly(Side.CLIENT)
+    public EnumWorldBlockLayer getBlockLayer()
     {
-        return state.withProperty(UP, !worldIn.isAirBlock(pos.up())).withProperty(NORTH, this.canConnectTo(worldIn, pos.north())).withProperty(EAST, this.canConnectTo(worldIn, pos.east())).withProperty(SOUTH, this.canConnectTo(worldIn, pos.south())).withProperty(WEST, this.canConnectTo(worldIn, pos.west())).withProperty(VARIANT, state.getValue(VARIANT));
+        return isStainedCached ? EnumWorldBlockLayer.TRANSLUCENT : EnumWorldBlockLayer.CUTOUT_MIPPED;
     }
 }

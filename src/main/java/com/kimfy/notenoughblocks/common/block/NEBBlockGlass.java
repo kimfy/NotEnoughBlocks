@@ -41,7 +41,7 @@ public class NEBBlockGlass extends BlockGlass implements IBlockProperties
     public NEBBlockGlass(Material material, List<BlockJson> data)
     {
         super(material, false);
-        this.agent = new BlockAgent<>(this);
+        this.agent = new BlockAgent<>(this, data);
 
         int blockCount = data.size();
         this.VARIANT = ModPropertyInteger.create("metadata", blockCount);

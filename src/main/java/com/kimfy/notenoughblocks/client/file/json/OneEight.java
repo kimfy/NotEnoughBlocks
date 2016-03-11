@@ -84,6 +84,8 @@ public class OneEight
                         case "layer":        writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "layers=1"); break;
                         case "double_plant": writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "half=upper,metadata=#metadata"); break;
                         case "fence_gate":   writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "facing=north,in_wall=false,open=false"); break;
+                        case "bars":
+                        case "pane":         writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "east=false,metadata=#metadata,north=true,south=true,west=false"); break;
                         default:
                         {
                             logger.info("[NEB]: INFORMATION: Shape: " + shape + " is not yet supported!");

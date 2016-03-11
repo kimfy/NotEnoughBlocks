@@ -58,7 +58,7 @@ public class NEBBlockDoublePlant extends Block implements IBlockProperties, IGro
     public NEBBlockDoublePlant(Material material, List<BlockJson> data)
     {
         super(material);
-        this.agent = new BlockAgent<>(this);
+        this.agent = new BlockAgent<>(this, data);
         float f = 0.2F;
         this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 3.0F, 0.5F + f);
 

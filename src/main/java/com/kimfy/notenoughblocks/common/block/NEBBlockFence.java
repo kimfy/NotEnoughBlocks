@@ -23,7 +23,7 @@ public class NEBBlockFence extends BlockFence implements IBlockProperties
     public NEBBlockFence(Material material, List<BlockJson> data)
     {
         super(material);
-        this.agent = new BlockAgent<>(this);
+        this.agent = new BlockAgent<>(this, data);
 
         int blockCount = data.size();
         this.VARIANT = ModPropertyInteger.create("metadata", blockCount);

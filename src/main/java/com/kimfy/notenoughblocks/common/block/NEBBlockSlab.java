@@ -29,7 +29,7 @@ public abstract class NEBBlockSlab extends BlockSlab implements IBlockProperties
     public NEBBlockSlab(Material materialIn, List<BlockJson> data)
     {
         super(materialIn);
-        this.agent = new BlockAgent<>(this);
+        this.agent = new BlockAgent<>(this, data);
 
         int count = data.size();
         this.VARIANT = ModPropertyInteger.create("metadata", count);

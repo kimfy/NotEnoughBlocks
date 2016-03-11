@@ -34,7 +34,7 @@ public class NEBBlockLayer extends Block implements IBlockProperties
     public NEBBlockLayer(Material material, List<BlockJson> data)
     {
         super(material);
-        this.agent = new BlockAgent<>(this);
+        this.agent = new BlockAgent<>(this, data);
 
         this.setBlockBoundsForItemRender();
         this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);

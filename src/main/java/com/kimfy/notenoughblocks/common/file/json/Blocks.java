@@ -3,6 +3,12 @@ package com.kimfy.notenoughblocks.common.file.json;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Since I am supposed to be completely data driven, there is actually no need for all the blocks
+ * to be specified/hardcoded like this.
+ *
+ * TODO: Export the blocklist to a JSON file, put it in assets/json/blocks
+ */
 public class Blocks
 {
     public static List<BlockJson> blockList = new ArrayList<>();
@@ -189,7 +195,7 @@ public class Blocks
         blockList.add(new BlockJson().displayName("Chiseled Stone Bricks").parent(tmp).textures("all: stonebrick_carved"));
         //blockList.add(tmp = new BlockJson().displayName("Brown Mushroom Block").shape("mushroom_block").material("wood").hardness(0.2F).stepSound("wood").textures({"mushroom_block_skin_stem", "mushroom_block_skin_brown", "mushroom_block_inside"})); // TODO: Implement
         //blockList.add(new BlockJson().displayName("Red Mushroom Block").parent(tmp).textures({"mushroom_block_skin_stem", "mushroom_block_skin_red", "mushroom_block_inside"})); // TODO: Implement
-        blockList.add(new BlockJson().displayName("Iron Bars").shape("pane").material("iron").hardness(5.0F).resistance(10.0F).stepSound("metal").textures("edge: iron_bars, pane: iron_bars"));
+        blockList.add(new BlockJson().displayName("Iron Bars").shape("bars").material("iron").hardness(5.0F).resistance(10.0F).stepSound("metal").textures("edge: iron_bars, bars: iron_bars"));
         blockList.add(new BlockJson().displayName("Glass Pane").shape("pane").material("glass").hardness(0.3F).stepSound("glass").textures("edge: glass_pane_top, pane: glass"));
         blockList.add(tmp = new BlockJson().displayName("White Stained Glass Pane").shape("pane").stained(true).material("glass").hardness(0.3F).stepSound("glass").textures("edge: glass_pane_top_white, pane: glass_white"));
         blockList.add(new BlockJson().displayName("Orange Stained Glass Pane").parent(tmp).textures("edge: glass_pane_top_orange, pane: glass_orange"));

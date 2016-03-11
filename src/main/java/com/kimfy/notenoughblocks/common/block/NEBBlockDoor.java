@@ -25,7 +25,7 @@ public class NEBBlockDoor extends BlockDoor implements IBlockProperties
     public NEBBlockDoor(Material materialIn, List<BlockJson> data)
     {
         super(materialIn);
-        this.agent = new BlockAgent<>(this);
+        this.agent = new BlockAgent<>(this, data);
         // Tells our blockstate model that we do not have to specify the POWERED property
         ModelLoader.setCustomStateMapper(this, new StateMap.Builder().ignore(new IProperty[]{POWERED}).build());
     }

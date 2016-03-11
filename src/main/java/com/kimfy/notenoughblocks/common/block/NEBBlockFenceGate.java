@@ -22,7 +22,7 @@ public class NEBBlockFenceGate extends BlockFenceGate implements IBlockPropertie
     {
         super(BlockPlanks.EnumType.OAK);
         this.blockMaterial = material;
-        this.agent = new BlockAgent<>(this);
+        this.agent = new BlockAgent<>(this, data);
 
         ModelLoader.setCustomStateMapper(this, new StateMap.Builder().ignore(new IProperty[]{ POWERED }).build());
     }

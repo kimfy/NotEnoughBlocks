@@ -1,6 +1,7 @@
 package com.kimfy.notenoughblocks.common.block;
 
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
+import com.kimfy.notenoughblocks.common.util.block.Shape;
 import lombok.Getter;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -21,11 +22,7 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
     T block;
     List<BlockJson> data;
     int blockCount;
-
-    public BlockAgent(T block)
-    {
-        this.block = block;
-    }
+    private final Shape blockShape;
 
     /**
      * If data is needed when constructing a block, this constructor should be used
@@ -35,7 +32,9 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
     public BlockAgent(T block, List<BlockJson> data)
     {
         this.block = block;
+        this.blockCount = data.size();
         this.data = data;
+        this.blockShape = getModelBlock().getRealShape();
     }
 
     /**

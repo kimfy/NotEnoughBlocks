@@ -19,7 +19,7 @@ public class NEBBlockStair extends BlockStairs implements IBlockProperties
     public NEBBlockStair(Material material, List<BlockJson> data)
     {
         super(NEBBlock.buildModBlock(material, data).getDefaultState());
-        this.agent = new BlockAgent<>(this);
+        this.agent = new BlockAgent<>(this, data);
     }
 
     @Override

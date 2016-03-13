@@ -80,7 +80,7 @@ public class OneEight
                         case "rotating":     writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "axis=y,metadata=#metadata"); break;
                         case "wall":         writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "east=false,metadata=#metadata,north=true,south=true,up=true,west=false"); break;
                         case "grass":        writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "metadata=#metadata,snowy=false"); break;
-                        case "door":         writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "facing=north,half=lower,hinge=right,open=false"); break;
+                        case "door":         writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "item"/*"facing=north,half=lower,hinge=right,open=false"*/); break;
                         case "layer":        writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "layers=1"); break;
                         case "double_plant": writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "half=upper,metadata=#metadata"); break;
                         case "fence_gate":   writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "facing=north,in_wall=false,open=false"); break;

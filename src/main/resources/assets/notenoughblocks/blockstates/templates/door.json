@@ -32,6 +32,6 @@
         "facing=south,half=upper,hinge=right,open=true": { "model": "notenoughblocks:door_top", "parent": "notenoughblocks:block/door_top" },
         "facing=west,half=upper,hinge=right,open=true":  { "model": "notenoughblocks:door_top", "parent": "notenoughblocks:block/door_top", "y": 90 },
         "facing=north,half=upper,hinge=right,open=true": { "model": "notenoughblocks:door_top", "parent": "notenoughblocks:block/door_top", "y": 180 },
-        "item": { "model": "notenoughblocks:door_inventory" }
+        "item": { "model": "notenoughblocks:inventory/door_inventory" }
     }
 }

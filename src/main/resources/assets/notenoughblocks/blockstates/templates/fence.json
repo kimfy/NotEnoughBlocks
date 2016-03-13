@@ -15,6 +15,7 @@
         "east=true,metadata=#metadata,north=false,south=true,west=true": { "model": "notenoughblocks:fence_nse", "parent": "notenoughblocks:blocks/fence_nse", "y": 90, "uvlock": true },
         "east=false,metadata=#metadata,north=true,south=true,west=true": { "model": "notenoughblocks:fence_nse", "parent": "notenoughblocks:blocks/fence_nse", "y": 180, "uvlock": true },
         "east=true,metadata=#metadata,north=true,south=false,west=true": { "model": "notenoughblocks:fence_nse", "parent": "notenoughblocks:blocks/fence_nse", "y": 270, "uvlock": true },
-        "east=true,metadata=#metadata,north=true,south=true,west=true": { "model": "notenoughblocks:fence_nsew", "parent": "notenoughblocks:blocks/fence_nsew", "uvlock": true }
+        "east=true,metadata=#metadata,north=true,south=true,west=true": { "model": "notenoughblocks:fence_nsew", "parent": "notenoughblocks:blocks/fence_nsew", "uvlock": true },
+        "item,metadata=#metadata": { "model": "notenoughblocks:inventory/fence_inventory" }
     }
 }

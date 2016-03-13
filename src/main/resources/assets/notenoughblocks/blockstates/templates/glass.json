@@ -4,6 +4,7 @@
         {
             "model": "cube",
             "parent": "block/cube"
-        }
+        },
+        "item,metadata=#metadata": { "model": "notenoughblocks:inventory/cube_inventory" }
     }
 }

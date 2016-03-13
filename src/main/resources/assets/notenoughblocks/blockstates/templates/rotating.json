@@ -4,6 +4,7 @@
         "axis=y,metadata=#metadata":    { "model": "notenoughblocks:cube_column", "parent": "notenoughblocks:block/cube_column" },
         "axis=z,metadata=#metadata":    { "model": "notenoughblocks:column_side", "parent": "notenoughblocks:block/column_side" },
         "axis=x,metadata=#metadata":    { "model": "notenoughblocks:column_side", "parent": "notenoughblocks:block/column_side", "y": 90 },
-        "axis=none,metadata=#metadata": { "model": "bedrock" }
+        "axis=none,metadata=#metadata": { "model": "bedrock" },
+        "item,metadata=#metadata":      { "model": "notenoughblocks:inventory/rotating_inventory"}
     }
 }

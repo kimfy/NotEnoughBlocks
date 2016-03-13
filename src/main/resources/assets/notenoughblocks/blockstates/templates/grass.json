@@ -7,6 +7,7 @@
             { "model": "notenoughblocks:grass_normal", "parent": "notenoughblocks:block/grass_normal", "y": 180 },
             { "model": "notenoughblocks:grass_normal", "parent": "notenoughblocks:block/grass_normal", "y": 270 }
         ],
-        "metadata=#metadata,snowy=true":  { "model": "notenoughblocks:grass_snowed", "parent": "notenoughblocks:block/grass_snowed" }
+        "metadata=#metadata,snowy=true":  { "model": "notenoughblocks:grass_snowed", "parent": "notenoughblocks:block/grass_snowed" },
+        "item,metadata=#metadata": { "model": "notenoughblocks:inventory/grass_block_inventory" }
     }
 }

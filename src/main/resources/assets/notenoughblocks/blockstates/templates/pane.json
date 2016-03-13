@@ -15,6 +15,7 @@
         "east=true,metadata=#metadata,north=false,south=true,west=true":    { "model": "notenoughblocks:pane_sew" },
         "east=false,metadata=#metadata,north=true,south=true,west=true":    { "model": "notenoughblocks:pane_nsw" },
         "east=true,metadata=#metadata,north=true,south=false,west=true":    { "model": "notenoughblocks:pane_new" },
-        "east=true,metadata=#metadata,north=true,south=true,west=true":     { "model": "notenoughblocks:pane_nsew" }
+        "east=true,metadata=#metadata,north=true,south=true,west=true":     { "model": "notenoughblocks:pane_nsew" },
+        "item,metadata=#metadata": { "model": "notenoughblocks:inventory/pane_inventory" }
     }
 }

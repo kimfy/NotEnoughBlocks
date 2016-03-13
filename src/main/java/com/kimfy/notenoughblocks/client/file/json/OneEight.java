@@ -70,22 +70,22 @@ public class OneEight
 
                     switch (shape)
                     {
-                        case "carpet":       // Fall through to "cube" as they share the same item variant identifier
-                        case "glass":        // ^
-                        case "ice":          // ^ - IMPORTANT: Never called as BlockJson#getShape has been modified to return "cube" when it's shape equals ice
-                        case "cube":         writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "metadata=#metadata"); break;
-                        case "stair":        writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "facing=west,half=bottom,shape=straight"); break;
                         case "slab":         writeBlockStateForSlab(blockName, blockJsons, null, outputFile); break;
-                        case "fence":        writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "east=false,metadata=#metadata,north=true,south=true,west=false"); break;
-                        case "rotating":     writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "axis=y,metadata=#metadata"); break;
+                        case "carpet":
+                        case "glass":
+                        case "ice":
+                        case "fence":
+                        case "rotating":
+                        case "bars":
+                        case "pane":
+                        case "grass":
+                        case "cube":         writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "item,metadata=#metadata"); break;
+                        case "stair":        writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "item"); break;
                         case "wall":         writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "east=false,metadata=#metadata,north=true,south=true,up=true,west=false"); break;
-                        case "grass":        writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "metadata=#metadata,snowy=false"); break;
                         case "door":         writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "item"/*"facing=north,half=lower,hinge=right,open=false"*/); break;
                         case "layer":        writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "layers=1"); break;
                         case "double_plant": writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "half=upper,metadata=#metadata"); break;
                         case "fence_gate":   writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "facing=north,in_wall=false,open=false"); break;
-                        case "bars":
-                        case "pane":         writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "east=false,metadata=#metadata,north=true,south=true,west=false"); break;
                         default:
                         {
                             logger.info("[NEB]: INFORMATION: Shape: " + shape + " is not yet supported!");
@@ -249,6 +249,7 @@ public class OneEight
 
             String variantBottom = "half=bottom,metadata=";
             String variantUpper  = "half=top,metadata=";
+            String variantItem   = "item,metadata=";
 
             for (int metadata = 0; metadata < blockJsons.size(); metadata++)
             {
@@ -256,6 +257,7 @@ public class OneEight
 
                 Map<String, Object> variantBottomMap = new LinkedHashMap<>(3); // Keys: model, parent, textures
                 Map<String, Object> variantUpperMap  = new LinkedHashMap<>(3); // Keys: -----||-----
+                Map<String, Object> variantItemMap   = new LinkedHashMap<>(1); // Keys: model
 
                 variantBottomMap.put("model", Constants.MOD_ID + ":half_slab");
                 variantBottomMap.put("parent", Constants.MOD_ID + ":block/half_slab");
@@ -266,12 +268,16 @@ public class OneEight
                 variantBottomMap.put("textures", textureMap);
                 variantUpperMap.put("textures", textureMap);
 
+                variantItemMap.put("model", Constants.MOD_ID + ":inventory/slab_inventory");
+                variantItemMap.put("textures", textureMap);
+
                 variants.put(variantBottom + metadata, variantBottomMap);
                 variants.put(variantUpper + metadata, variantUpperMap);
+                variants.put(variantItem + metadata, variantItemMap);
 
                 Map<String, Object> itemRender = new LinkedHashMap<>(2);
                 itemRender.put("metadata", (int) metadata);
-                itemRender.put("variant", variantBottom + metadata);
+                itemRender.put("variant", variantItem + metadata);
                 itemRenders.add(metadata, itemRender);
             }
 
@@ -292,7 +298,7 @@ public class OneEight
         else // Double Slab
         {
             File out = new File(blockstateFolder.getAbsolutePath() + "/" + blockName + ".json");
-            writeBlockState(blockName, blockJsons, FileUtilities.getFileFromAssets(new ResourceLocation(Constants.MOD_ID, "blockstates/templates/cube.json")), out, "metadata=#metadata");
+            writeBlockState(blockName, blockJsons, FileUtilities.getFileFromAssets(new ResourceLocation(Constants.MOD_ID, "blockstates/templates/cube.json")), out, "item,metadata=#metadata");
         }
     }
 

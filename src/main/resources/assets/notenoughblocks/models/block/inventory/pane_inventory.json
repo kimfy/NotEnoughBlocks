@@ -1,0 +1,29 @@
+{
+    "ambientocclusion": false,
+    "display": {
+        "thirdperson": {
+            "rotation": [ -90, 0, 0 ],
+            "translation": [ 0, 1, -3 ],
+            "scale": [ 0.55, 0.55, 0.55 ]
+        },
+        "firstperson": {
+            "rotation": [ 0, -135, 25 ],
+            "translation": [ 0, 4, 2 ],
+            "scale": [ 1.7, 1.7, 1.7 ]
+        }
+    },
+    "elements": [
+        {   "from": [ 7, 0, 0 ],
+            "to": [ 9, 16, 16 ],
+            "shade": false,
+            "faces": {
+                "down":  { "uv": [  7, 0,  9, 16 ], "texture": "#edge", "cull": false },
+                "up":    { "uv": [  7, 0,  9, 16 ], "texture": "#edge", "cull": false },
+                "north": { "uv": [  7, 0,  9, 16 ], "texture": "#edge" },
+                "south": { "uv": [  7, 0,  9, 16 ], "texture": "#edge" },
+                "west":  { "uv": [ 16, 0,  0, 16 ], "texture": "#pane", "cull": false },
+                "east":  { "uv": [  0, 0, 16, 16 ], "texture": "#pane", "cull": false }
+            }
+        }
+    ]
+}

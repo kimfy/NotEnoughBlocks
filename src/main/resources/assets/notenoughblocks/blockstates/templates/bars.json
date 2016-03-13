@@ -15,6 +15,7 @@
         "east=true,metadata=#metadata,north=false,south=true,west=true":    { "model": "notenoughblocks:bars_nse", "y": 90 },
         "east=false,metadata=#metadata,north=true,south=true,west=true":    { "model": "notenoughblocks:bars_nse", "y": 180 },
         "east=true,metadata=#metadata,north=true,south=false,west=true":    { "model": "notenoughblocks:bars_nse", "y": 270 },
-        "east=true,metadata=#metadata,north=true,south=true,west=true":     { "model": "notenoughblocks:bars_nsew" }
+        "east=true,metadata=#metadata,north=true,south=true,west=true":     { "model": "notenoughblocks:bars_nsew" },
+        "item,metadata=#metadata": { "model": "notenoughblocks:inventory/bars_inventory" }
     }
 }

@@ -6,9 +6,12 @@ import com.kimfy.notenoughblocks.common.util.Constants;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FileManager
 {
+    public static List<String> textures = new ArrayList<>();
     public static Logger logger = NotEnoughBlocks.logger;
     public static File configFolder = new File(Constants.PATH_MOD_CONFIG_BASE);
     public static File configResourcePacksFolder = new File(Constants.PATH_MOD_CONFIG_RESOURCE_PACKS);

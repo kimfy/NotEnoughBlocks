@@ -4,11 +4,14 @@ import com.google.common.io.Files;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.kimfy.notenoughblocks.NotEnoughBlocks;
+import com.kimfy.notenoughblocks.common.file.FileManager;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
 import com.kimfy.notenoughblocks.common.file.json.Blocks;
 import com.kimfy.notenoughblocks.common.util.Constants;
 import com.kimfy.notenoughblocks.common.util.FileUtilities;
 import com.kimfy.notenoughblocks.common.util.Utilities;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.FolderResourcePack;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.Logger;
 
@@ -22,13 +25,31 @@ import java.util.Map;
 
 public class ResourcePack
 {
-    public final File file;
-    public final String name;
+    public File file;
+    public String name;
 
     public ResourcePack(File file, String name)
     {
         this.file = file;
         this.name = name;
+    }
+
+    private FolderResourcePack resourcePack;
+
+    private static final String PACK_MC_META = "{\n\t\"pack\": {\n\t\t\"pack_format\": 1,\n\t\t\"description\": \"Resources for " + Constants.MOD_NAME + "\"\n\t}\n}";
+
+    public ResourcePack(String folder, String name)
+    {
+        this.resourcePack = new FolderResourcePack(new File(folder));
+        this.name = name;
+        injectPackMcMeta();
+        Minecraft.getMinecraft().defaultResourcePacks.add(resourcePack);
+        Minecraft.getMinecraft().refreshResources();
+    }
+
+    private void injectPackMcMeta()
+    {
+        FileUtilities.write(new File("resourcepacks/" + name + "/pack.mcmeta"), PACK_MC_META);
     }
 
     private List<BlockJson> blocks = new ArrayList<>();
@@ -61,7 +82,8 @@ public class ResourcePack
             }
             else
             {
-                logger.info("Block " + block.getDisplayName() + " does not exist with textures " + block.getTextureMap());
+                //logger.info("Block " + block.getDisplayName() + " does not exist with textures " + block.getTextureMap());
+                logger.info("Block: " + block.getDisplayName() + " cannot be created from resource pack as not all the required textures for it was found. Textures needed for block to be created: " + block.getTextureMap());
             }
         }
         this.blocks.addAll(tempBlockList);
@@ -86,14 +108,15 @@ public class ResourcePack
                 {
                     try
                     {
-                        File destinationFile = new File(destination + name + "_" + file.getName());
+                        String textureName = name + "_" + file.getName();
+                        FileManager.textures.add(textureName.replace(".png", ""));
+                        File destinationFile = new File(destination + textureName/*name + "_" + file.getName()*/);
                         Files.move(file, destinationFile);
                     }
                     catch (IOException e)
                     {
                         e.printStackTrace();
                     }
-
                 }
             }
 
@@ -157,7 +180,7 @@ public class ResourcePack
                     }
                     catch (IOException e)
                     {
-                        logger.error("Something went wrong when writing to json file for $name");
+                        logger.error("Something went wrong when writing to json file for " + name);
                         e.printStackTrace();
                     }
                 }

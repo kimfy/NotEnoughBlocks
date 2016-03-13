@@ -1,7 +1,7 @@
 package com.kimfy.notenoughblocks.common.file.json;
 
+import com.kimfy.notenoughblocks.common.file.FileManager;
 import com.kimfy.notenoughblocks.common.integration.Chisel;
-import com.kimfy.notenoughblocks.common.util.Constants;
 import com.kimfy.notenoughblocks.common.util.block.EnumCreativeTab;
 import com.kimfy.notenoughblocks.common.util.block.EnumMaterial;
 import com.kimfy.notenoughblocks.common.util.block.EnumSoundType;
@@ -12,7 +12,6 @@ import net.minecraft.block.BlockPressurePlate;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 
-import java.io.File;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
@@ -80,13 +79,17 @@ public class BlockJson implements Serializable
 
         for (String texture : block.getTextureMap().values())
         {
-            String filePath = Constants.PATH_MOD_TEXTURES_BLOCKS + texture + ".png";
-            File file = new File(filePath);
-
-            if (file.exists())
+            if (FileManager.textures.contains(texture))
             {
                 trues++;
             }
+            //String filePath = Constants.PATH_MOD_TEXTURES_BLOCKS + texture + ".png";
+            //File file = new File(filePath);
+
+            //if (file.exists())
+            //{
+            //    trues++;
+            //}
         }
 
         return trues == block.getTextureMap().size();

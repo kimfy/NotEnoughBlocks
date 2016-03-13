@@ -40,7 +40,7 @@ public class OneEight
     private static Logger logger = NotEnoughBlocks.logger;
     public static List<Block> blocks = new ArrayList<>();
     // The folder my blockstate files are written to
-    private static File blockstateFolder    = new File("resources/" + Constants.MOD_ID + "/blockstates/");
+    private static File blockstateFolder    = new File("resourcepacks/" + Constants.MOD_NAME + "/assets/" + Constants.MOD_ID + "/blockstates/");
 
     static
     {
@@ -296,6 +296,7 @@ public class OneEight
         }
     }
 
+    @SuppressWarnings("unchecked")
     private static void writeBlockState(String blockName, List<BlockJson> blockJsons, String blockStateTemplate, File blockStateFile, String inventoryRenderVariant)
     {
         /**
@@ -370,6 +371,37 @@ public class OneEight
 
             variants.putAll(templateVariants);
         }
+
+        /********************************************************************************/
+        // Copy 'defaults>transform' from template file and insert it into new blockstate
+        /********************************************************************************/
+        Map<String, Object> templateMap = gson.fromJson(blockStateTemplate, Map.class);
+        if (templateMap.containsKey("defaults")) // If template file contains defaults section
+        {
+            Map<String, Object> templateDefaults = (Map<String, Object>) templateMap.get("defaults");
+            // Copy defaults->transform map from template json to blockstateFileMap
+
+            if (templateDefaults.containsKey("transform"))
+            {
+                Map<String, Object> templateTransforms = (Map<String, Object>) templateDefaults.get("transform");
+                // There is a transform block in the template map, copy it over to blockstatefilemap
+
+                if (blockStateFileMap.containsKey("defaults"))
+                {
+                    Map<String, Object> blockstateDefaults = (Map<String, Object>) blockStateFileMap.get("defaults");
+
+                    blockstateDefaults.put("transform", templateTransforms);
+                }
+                else
+                {
+                    // The blockstatefilemap does not have a defaults block, create it and put the transform section in there
+                    Map<String, Object> defaultsMap = new LinkedHashMap<>(1);
+                    defaultsMap.put("transform", templateTransforms);
+                    blockStateFileMap.put("defaults", defaultsMap);
+                }
+            }
+        }
+
         blockStateFileMap.put("variants", variants);
         blockStateFileMap.put("inventory_renders", inventoryRenders);
 

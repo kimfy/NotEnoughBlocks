@@ -1,4 +1,13 @@
 {
+	"defaults": {
+		"transform": {
+		  "thirdperson": {
+		    "rotation": [{"x": 10}, {"y": -45}, {"z": 170}],
+		    "translation": [ 0, 0.125, -0.125 ],
+		    "scale": [ 0.375, 0.375, 0.375 ]
+		  }
+		}
+	},
     "variants": {
         "metadata=#metadata":
         {

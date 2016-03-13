@@ -87,9 +87,11 @@ public class FileUtilities
     }
 
     /**
-     * DOES NOT WORK FOR FILES PUT IN RESOURCE LOADER FOLDER
-     * Expected input: getFileAsString(new ResourceLocation("modid", "path/to/file.extension"));
+     * DOES NOT WORK FOR FILES PUT IN RESOURCE LOADER FOLDER - ONLY FOR RESOURCE PACKS AND SRC/MAIN/RESOURCES
      *
+     * Expected input: getFileAsString(new ResourceLocation("modid", "path/to/file.extension"));
+     * Base directory would be assets/modid/ - if your file is located in assets/modid/json/file.json
+     * you'd call getFileFromAssets(RL(modid, "json/file.json"));
      */
     public static String getFileFromAssets(ResourceLocation resourceLocation)
     {
@@ -141,6 +143,12 @@ public class FileUtilities
 
     public static void write(File file, String content)
     {
+        if (file.exists())
+        {
+            NotEnoughBlocks.logger.info("File: " + file.getName() + " already exists in: " + file.getPath());
+            return;
+        }
+
         try
         {
             FileWriter fileWriter = new FileWriter(file);

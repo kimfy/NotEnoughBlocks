@@ -12,6 +12,8 @@ import com.kimfy.notenoughblocks.common.util.FileUtilities;
 import com.kimfy.notenoughblocks.common.util.Utilities;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.FolderResourcePack;
+import net.minecraft.client.resources.IResourcePack;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.Logger;
 
@@ -43,13 +45,30 @@ public class ResourcePack
         this.resourcePack = new FolderResourcePack(new File(folder));
         this.name = name;
         injectPackMcMeta();
-        Minecraft.getMinecraft().defaultResourcePacks.add(resourcePack);
-        Minecraft.getMinecraft().refreshResources();
+        injectResourcePack();
     }
 
     private void injectPackMcMeta()
     {
         FileUtilities.write(new File("resourcepacks/" + name + "/pack.mcmeta"), PACK_MC_META);
+    }
+
+    @SuppressWarnings("unchecked")
+    private void injectResourcePack()
+    {
+        final String DEOBFUSCATED_NAME = "defaultResourcePacks";
+        final String OBFUSCATED_NAME   = "field_110449_ao";
+
+        try
+        {
+            ((List<IResourcePack>)ReflectionHelper.getPrivateValue(Minecraft.class, Minecraft.getMinecraft(), DEOBFUSCATED_NAME, OBFUSCATED_NAME)).add(resourcePack);
+        }
+        catch (ReflectionHelper.UnableToAccessFieldException e)
+        {
+            NotEnoughBlocks.logger.error("[NotEnoughBlocks] Error when injecting resource pack. Did the deobfuscated name {} or the obfuscated name {} change?", DEOBFUSCATED_NAME, OBFUSCATED_NAME,  e);
+        }
+
+        Minecraft.getMinecraft().refreshResources();
     }
 
     private List<BlockJson> blocks = new ArrayList<>();

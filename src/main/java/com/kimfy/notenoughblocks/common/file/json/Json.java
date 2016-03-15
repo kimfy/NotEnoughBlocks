@@ -50,11 +50,11 @@ public class Json
             temp = gson.fromJson(fileReader, type);
             blocks = temp.get("blocks");
 
-            if (name.equals("Developer"))
-            {
-                Gson builder = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-                NotEnoughBlocks.logger.info("\nDeveloper.json: \n" + builder.toJson(temp, type));
-            }
+            //if (name.equals("Developer"))
+            //{
+            //    Gson builder = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+            //    NotEnoughBlocks.logger.info("\nDeveloper.json: \n" + builder.toJson(temp, type));
+            //}
         }
         catch (FileNotFoundException e)
         {

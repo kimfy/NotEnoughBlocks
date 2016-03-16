@@ -92,6 +92,7 @@ public class OneEight
                         case "door":
                         case "fence_gate":
                         case "layer":
+                        case "pressure_plate":
                         case "stair": writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "item"); break;
 
                         /**************************************************************************************************/

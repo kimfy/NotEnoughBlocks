@@ -1,0 +1,7 @@
+{
+	"variants": {
+		"powered=false": { "model": "notenoughblocks:pressure_plate_up" },
+		"powered=true":  { "model": "notenoughblocks:pressure_plate_down" },
+		"item": { "model": "notenoughblocks:inventory/pressure_plate_inventory" }
+	}
+}

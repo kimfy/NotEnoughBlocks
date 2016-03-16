@@ -1,0 +1,22 @@
+{
+    "display": {
+        "thirdperson": {
+            "rotation": [ 10, -45, 170 ],
+            "translation": [ 0, 1.5, -2.75 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    },
+    "elements": [
+        {   "from": [ 1, 6, 1 ],
+            "to": [ 15, 10, 15 ],
+            "faces": {
+                "down":  { "uv": [ 1, 1, 15, 15 ], "texture": "#down" },
+                "up":    { "uv": [ 1, 1, 15, 15 ], "texture": "#up" },
+                "north": { "uv": [ 1, 6, 15, 10 ], "texture": "#north" },
+                "south": { "uv": [ 1, 6, 15, 10 ], "texture": "#south" },
+                "west":  { "uv": [ 1, 6, 15, 10 ], "texture": "#west" },
+                "east":  { "uv": [ 1, 6, 15, 10 ], "texture": "#east" }
+            }
+        }
+    ]
+}

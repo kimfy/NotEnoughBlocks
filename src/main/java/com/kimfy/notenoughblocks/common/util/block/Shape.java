@@ -16,13 +16,13 @@ public enum Shape
     //STAINED_GLASS(16, null, null), - Removed in favor of the 'glass' shape. use 'stained' to set stainability in json
     WALL(16, NEBBlockWall.class, NEBItemBlock.class),
     FENCE(16, NEBBlockFence.class, NEBItemBlock.class),
-    ANVIL(16, NEBBlockAnvil.class, NEBItemBlockAnvil.class),
+    ANVIL(1, NEBBlockAnvil.class, NEBItemBlockAnvil.class),
     BREWING_STAND(16, NEBBlockBrewingStand.class, NEBItemBlock.class),
     PRESSURE_PLATE(1, NEBBlockPressurePlate.class, NEBItemBlock.class),
     BEACON(16, NEBBlockBeacon.class, NEBItemBlock.class),
     BED(1, NEBBlockBed.class, NEBItemBlockBed.class),
     BUSH(16, null, null),
-    BUTTON(16, NEBBlockButton.class, NEBItemBlock.class),
+    BUTTON(1, NEBBlockButton.class, NEBItemBlock.class),
     CACTUS(16, null, null),
     CAKE(16, null, null),
     CARPET(16, NEBBlockCarpet.class, NEBItemBlock.class),
@@ -98,5 +98,10 @@ public enum Shape
             }
         }
         throw new IllegalArgumentException("Shape: " + shape + " does not exist. Refer to the wiki for valid shapes!");
+    }
+
+    public boolean isMetadataBlock()
+    {
+        return this.maxSubBlocks > 1;
     }
 }

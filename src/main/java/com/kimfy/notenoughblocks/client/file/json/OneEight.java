@@ -8,6 +8,7 @@ import com.kimfy.notenoughblocks.common.block.IBlockProperties;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
 import com.kimfy.notenoughblocks.common.util.Constants;
 import com.kimfy.notenoughblocks.common.util.FileUtilities;
+import com.kimfy.notenoughblocks.common.util.block.Shape;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelResourceLocation;
@@ -69,42 +70,14 @@ public class OneEight
 
                     switch (shape)
                     {
-                        /***************************************************************************************************/
-                        /************************************* ITEMS THAT USE METADATA *************************************/
-                        /***************************************************************************************************/
-                        case "bars":
-                        case "beacon":
-                        case "brewing_stand":
-                        case "carpet":
-                        case "cube":
-                        case "double_plant":
-                        case "fence":
-                        case "glass":
-                        case "grass":
-                        case "ice":
-                        case "pane":
-                        case "rotating":
-                        case "wall": writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "item,metadata=#metadata"); break;
-
-                        /**************************************************************************************************/
-                        /********************************* ITEMS THAT DO NOT USE METADATA *********************************/
-                        /**************************************************************************************************/
-                        case "anvil":
-                        case "bed":
-                        case "button":
-                        case "door":
-                        case "fence_gate":
-                        case "layer":
-                        case "pressure_plate":
-                        case "stair": writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "item"); break;
-
-                        /**************************************************************************************************/
-                        /***************************************** SPECIAL CASES ******************************************/
-                        /**************************************************************************************************/
-                        case "slab":         writeBlockStateForSlab(blockName, blockJsons, null, outputFile); break;
+                        case "slab":
+                        {
+                            writeBlockStateForSlab(blockName, blockJsons, null, outputFile);
+                            break;
+                        }
                         default:
                         {
-                            logger.info("[NEB]: INFORMATION: Shape: " + shape + " is not yet supported!");
+                            writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, Shape.get(shape).isMetadataBlock() ? "item,metadata=#metadata" : "item");
                             break;
                         }
                     }

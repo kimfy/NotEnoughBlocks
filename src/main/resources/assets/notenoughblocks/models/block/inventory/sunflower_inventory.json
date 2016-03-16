@@ -1,6 +1,8 @@
 {
-    "parent": "notenoughblocks:block/pane_ns",
-    "ambientocclusion": false,
+	"parent": "builtin/generated",
+	"textures": {
+		"layer0": "#front"
+	},
     "display": {
         "thirdperson": {
             "rotation": [ -90, 0, 0 ],

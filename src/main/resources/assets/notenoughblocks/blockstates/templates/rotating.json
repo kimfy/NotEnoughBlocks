@@ -1,5 +1,4 @@
 {
-	"forge_marker": 1,
     "variants": {
         "axis=y,metadata=#metadata":    { "model": "notenoughblocks:cube_column", "parent": "notenoughblocks:block/cube_column" },
         "axis=z,metadata=#metadata":    { "model": "notenoughblocks:column_side", "parent": "notenoughblocks:block/column_side" },

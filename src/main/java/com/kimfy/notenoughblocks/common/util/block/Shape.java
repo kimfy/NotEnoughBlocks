@@ -16,7 +16,7 @@ public enum Shape
     //STAINED_GLASS(16, null, null), - Removed in favor of the 'glass' shape. use 'stained' to set stainability in json
     WALL(16, NEBBlockWall.class, NEBItemBlock.class),
     FENCE(16, NEBBlockFence.class, NEBItemBlock.class),
-    ANVIL(16, null, null),
+    ANVIL(16, NEBBlockAnvil.class, NEBItemBlockAnvil.class),
     BREWING_STAND(16, null, null),
     PRESSURE_PLATE(1, null, null),
     BEACON(16, null, null),

@@ -1,5 +1,5 @@
 {
-    "parent": "block/cube",
+    "parent": "notenoughblocks:block/wall_ns_above",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],

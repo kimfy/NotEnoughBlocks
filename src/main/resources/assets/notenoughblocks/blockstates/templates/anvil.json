@@ -1,0 +1,17 @@
+{
+    "variants": {
+        "damage=0,facing=south": { "model": "notenoughblocks:anvil_undamaged" },
+        "damage=0,facing=west":  { "model": "notenoughblocks:anvil_undamaged", "y": 90 },
+        "damage=0,facing=north": { "model": "notenoughblocks:anvil_undamaged", "y": 180 },
+        "damage=0,facing=east":  { "model": "notenoughblocks:anvil_undamaged", "y": 270 },
+        "damage=1,facing=south": { "model": "notenoughblocks:anvil_slightly_damaged" },
+        "damage=1,facing=west":  { "model": "notenoughblocks:anvil_slightly_damaged", "y": 90 },
+        "damage=1,facing=north": { "model": "notenoughblocks:anvil_slightly_damaged", "y": 180 },
+        "damage=1,facing=east":  { "model": "notenoughblocks:anvil_slightly_damaged", "y": 270 },
+        "damage=2,facing=south": { "model": "notenoughblocks:anvil_very_damaged" },
+        "damage=2,facing=west":  { "model": "notenoughblocks:anvil_very_damaged", "y": 90 },
+        "damage=2,facing=north": { "model": "notenoughblocks:anvil_very_damaged", "y": 180 },
+        "damage=2,facing=east":  { "model": "notenoughblocks:anvil_very_damaged", "y": 270 },
+        "item":                  { "model": "notenoughblocks:inventory/anvil_inventory" }
+    }
+}

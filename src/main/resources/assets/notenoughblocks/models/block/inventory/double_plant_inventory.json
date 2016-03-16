@@ -1,0 +1,61 @@
+{
+    "display": {
+        "thirdperson": {
+            "rotation": [ 0, 90, -90 ],
+            "translation": [ 0, 0, -4 ],
+            "scale": [ 0.5, 0.5, 0.5 ]
+        },
+        "firstperson": {
+            "rotation": [ 0, 225, 0 ]
+        },
+        "gui": {
+            "rotation": [ 0, 23.5, 0 ],
+            "translation": [ 0, -3, 0 ],
+            "scale": [ 0.66, 0.66, 0.66 ]
+        }
+    },
+    "elements": [
+        {
+        	"__comment": "Top Cross",
+        	"from": [ 0.8, 16, 8 ],
+            "to": [ 15.2, 32, 8 ],
+            "rotation": { "origin": [ 8, 8, 8 ], "axis": "y", "angle": 45, "rescale": true },
+            "shade": false,
+            "faces": {
+                "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#top" },
+                "south": { "uv": [ 0, 0, 16, 16 ], "texture": "#top" }
+            }
+        },
+        {
+        	"from": [ 8, 16, 0.8 ],
+            "to": [ 8, 32, 15.2 ],
+            "rotation": { "origin": [ 8, 8, 8 ], "axis": "y", "angle": 45, "rescale": true },
+            "shade": false,
+            "faces": {
+                "west": { "uv": [ 0, 0, 16, 16 ], "texture": "#top" },
+                "east": { "uv": [ 0, 0, 16, 16 ], "texture": "#top" }
+            }
+        },
+        {
+        	"__comment": "Bottom Cross",
+        	"from": [ 0.8, 0, 8 ],
+            "to": [ 15.2, 16, 8 ],
+            "rotation": { "origin": [ 8, 8, 8 ], "axis": "y", "angle": 45, "rescale": true },
+            "shade": false,
+            "faces": {
+                "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#bottom" },
+                "south": { "uv": [ 0, 0, 16, 16 ], "texture": "#bottom" }
+            }
+        },
+        {
+        	"from": [ 8, 0, 0.8 ],
+            "to": [ 8, 16, 15.2 ],
+            "rotation": { "origin": [ 8, 8, 8 ], "axis": "y", "angle": 45, "rescale": true },
+            "shade": false,
+            "faces": {
+                "west": { "uv": [ 0, 0, 16, 16 ], "texture": "#bottom" },
+                "east": { "uv": [ 0, 0, 16, 16 ], "texture": "#bottom" }
+            }
+        }
+    ]
+}

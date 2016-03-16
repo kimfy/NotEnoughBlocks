@@ -29,9 +29,7 @@ import java.util.Map;
 
 /**
  * # === UNSTABLE === # === UNSTABLE === # === UNSTABLE === # === UNSTABLE === # === UNSTABLE === # === UNSTABLE === #
- * The purpose of this class is to handle everything that has
- * to do with BlockState, item and block models. E.g writing
- * these json files.
+ * The purpose of this Class is to handle writing blockstate files for all blocks under this mod
  * # === UNSTABLE === # === UNSTABLE === # === UNSTABLE === # === UNSTABLE === # === UNSTABLE === # === UNSTABLE === #
  */
 @SideOnly(Side.CLIENT)
@@ -40,7 +38,7 @@ public class OneEight
     private static Logger logger = NotEnoughBlocks.logger;
     public static List<Block> blocks = new ArrayList<>();
     // The folder my blockstate files are written to
-    private static File blockstateFolder    = new File("resourcepacks/" + Constants.MOD_NAME + "/assets/" + Constants.MOD_ID + "/blockstates/");
+    private static File blockstateFolder = new File("resourcepacks/" + Constants.MOD_NAME + "/assets/" + Constants.MOD_ID + "/blockstates/");
 
     static
     {
@@ -56,6 +54,7 @@ public class OneEight
             {
                 List<BlockJson> blockJsons = ((IBlockProperties) block).getData();
                 String shape = blockJsons.get(0).getShape();
+                String registryName = block.getRegistryName();
                 String blockName = block.getRegistryName().substring(block.getRegistryName().indexOf(':') + 1);
                 String fileName = blockName + ".json";
                 File outputFile = new File(blockstateFolder.getAbsolutePath() + "/" + fileName);
@@ -70,22 +69,34 @@ public class OneEight
 
                     switch (shape)
                     {
-                        case "slab":         writeBlockStateForSlab(blockName, blockJsons, null, outputFile); break;
-                        case "carpet":
-                        case "glass":
-                        case "ice":
-                        case "fence":
-                        case "rotating":
+                        /***************************************************************************************************/
+                        /************************************* ITEMS THAT USE METADATA *************************************/
+                        /***************************************************************************************************/
                         case "bars":
-                        case "pane":
+                        case "carpet":
+                        case "cube":
+                        case "double_plant":
+                        case "fence":
+                        case "glass":
                         case "grass":
-                        case "cube":         writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "item,metadata=#metadata"); break;
-                        case "stair":        writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "item"); break;
-                        case "wall":         writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "east=false,metadata=#metadata,north=true,south=true,up=true,west=false"); break;
-                        case "door":         writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "item"/*"facing=north,half=lower,hinge=right,open=false"*/); break;
-                        case "layer":        writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "layers=1"); break;
-                        case "double_plant": writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "half=upper,metadata=#metadata"); break;
-                        case "fence_gate":   writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "facing=north,in_wall=false,open=false"); break;
+                        case "ice":
+                        case "pane":
+                        case "rotating":
+                        case "wall": writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "item,metadata=#metadata"); break;
+
+                        /**************************************************************************************************/
+                        /********************************* ITEMS THAT DO NOT USE METADATA *********************************/
+                        /**************************************************************************************************/
+                        case "anvil":
+                        case "door":
+                        case "fence_gate":
+                        case "layer":
+                        case "stair": writeBlockState(blockName, blockJsons, blockStateTemplate, outputFile, "item"); break;
+
+                        /**************************************************************************************************/
+                        /***************************************** SPECIAL CASES ******************************************/
+                        /**************************************************************************************************/
+                        case "slab":         writeBlockStateForSlab(blockName, blockJsons, null, outputFile); break;
                         default:
                         {
                             logger.info("[NEB]: INFORMATION: Shape: " + shape + " is not yet supported!");
@@ -323,7 +334,7 @@ public class OneEight
             Map<String, Object> inventoryRender = new LinkedHashMap<>();
             inventoryRender.put("metadata", metadata);
             //inventoryRender.put("variant", "east=false,metadata="+ String.valueOf(metadata) +",north=true,south=true,up=true,west=false");
-            inventoryRender.put("variant", inventoryRenderVariant.replace("#metadata", String.valueOf(metadata)));
+            inventoryRender.put("variant",inventoryRenderVariant.replace("#metadata", String.valueOf(metadata)));
             inventoryRenders.add(inventoryRender);
             Map<String, Object> templateVariants = null;
 
@@ -437,7 +448,7 @@ public class OneEight
         {
             String key = entry.getKey();
             Object val = entry.getValue();
-            logger.info("Copying: " + key);
+            //logger.info("Copying: " + key);
             ret.put(key.replace("#metadata", String.valueOf(metadata)), val);
         }
         return ret;

@@ -31,6 +31,7 @@
         "east=true,metadata=#metadata,north=false,south=true,up=true,west=true":     { "model": "notenoughblocks:wall_nse", "parent": "notenoughblocks:block/wall_nse", "y": 90, "uvlock": true },
         "east=false,metadata=#metadata,north=true,south=true,up=true,west=true":     { "model": "notenoughblocks:wall_nse", "parent": "notenoughblocks:block/wall_nse", "y": 180, "uvlock": true },
         "east=true,metadata=#metadata,north=true,south=false,up=true,west=true":     { "model": "notenoughblocks:wall_nse", "parent": "notenoughblocks:block/wall_nse", "y": 270, "uvlock": true },
-        "east=true,metadata=#metadata,north=true,south=true,up=true,west=true":      { "model": "notenoughblocks:wall_nsew", "parent": "notenoughblocks:block/wall_nsew" }
+        "east=true,metadata=#metadata,north=true,south=true,up=true,west=true":      { "model": "notenoughblocks:wall_nsew", "parent": "notenoughblocks:block/wall_nsew" },
+        "item,metadata=#metadata": { "model": "notenoughblocks:inventory/wall_inventory" }
     }
 }

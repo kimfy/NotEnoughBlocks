@@ -1,5 +1,5 @@
 {
-	"parent": "notenoughblocks:block/carpet",
+	"parent": "notenoughblocks:block/snow_height2",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],

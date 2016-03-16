@@ -62,7 +62,7 @@ public enum Shape
     LAYER(1, NEBBlockLayer.class, NEBItemBlockLayer.class),
     TALLGRASS(8, null, null), // Double grass, double fern
     TORCH(1, null, null),
-    TRAPDOOR(1, null, null),
+    TRAPDOOR(1, NEBBlockTrapDoor.class, NEBItemBlock.class),
     TRIPWIRE(16, null, null),
     TRIPWIRE_HOOK(16, null, null),
     VINE(4, null, null),

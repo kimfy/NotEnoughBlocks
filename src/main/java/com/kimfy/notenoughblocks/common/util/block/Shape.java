@@ -17,7 +17,7 @@ public enum Shape
     WALL(16, NEBBlockWall.class, NEBItemBlock.class),
     FENCE(16, NEBBlockFence.class, NEBItemBlock.class),
     ANVIL(16, NEBBlockAnvil.class, NEBItemBlockAnvil.class),
-    BREWING_STAND(16, null, null),
+    BREWING_STAND(16, NEBBlockBrewingStand.class, NEBItemBlock.class),
     PRESSURE_PLATE(1, null, null),
     BEACON(16, null, null),
     BED(1, null, null),

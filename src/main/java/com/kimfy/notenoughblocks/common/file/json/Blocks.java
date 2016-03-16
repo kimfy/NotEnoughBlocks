@@ -229,7 +229,7 @@ public class Blocks
         // Nether Wart
         blockList.add(new BlockJson().displayName("Enchanting Table").shape("enchanting_table").hardness(5.0F).resistance(2000.0F).textures("down: enchanting_table_bottom, up: enchanting_table_top, allSides: enchanting_table_side")); // TODO: Implement
         blockList.add(new BlockJson().displayName("Brewing Stand").shape("brewing_stand").material("iron").hardness(0.5F).lightLevel(0.125F).textures("base: brewing_stand_base, side: brewing_stand")); // TODO: Implement
-        blockList.add(new BlockJson().displayName("Cauldron").shape("cauldron").material("iron").hardness(2.0F).textures("bottom: cauldron_bottom, top: cauldron_top, inner: cauldron_inner, allSides: cauldron_side")); // TODO: Implement
+        blockList.add(new BlockJson().displayName("Cauldron").shape("cauldron").material("iron").hardness(2.0F).textures("bottom: cauldron_bottom, top: cauldron_top, inside: cauldron_inner, allSides: cauldron_side, water: water_still")); // TODO: Implement
         // End Portal
         // End Portal Frame
         blockList.add(new BlockJson().displayName("End Stone").hardness(3.0F).resistance(15.0F).stepSound("piston").textures("all: end_stone"));

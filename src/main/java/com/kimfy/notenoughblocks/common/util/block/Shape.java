@@ -25,7 +25,7 @@ public enum Shape
     CACTUS(16, null, null),
     CAKE(16, null, null),
     CARPET(16, NEBBlockCarpet.class, NEBItemBlock.class),
-    CAULDRON(16, null, null),
+    CAULDRON(1, NEBBlockCauldron.class, NEBItemBlock.class),
     COCOA(16, null, null),
     CROP(4, null, null),
     DAYLIGHT_DETECTOR(1, null, null),

@@ -74,9 +74,9 @@ public class Blocks
         // Detector Rail
         // Sticky Piston
         blockList.add(new BlockJson().displayName("Cobweb").shape("web").lightOpacity(1).hardness(4.0F).textures("all: web"));
-        blockList.add(tmp = new BlockJson().displayName("Dead Bush").stepSound("grass").shape("tallgrass").hardness(0.0F).isDeadBush(true).textures("all: deadbush"));
-        blockList.add(new BlockJson().displayName("Grass").parent(tmp).textures("all: tallgrass"));
-        blockList.add(new BlockJson().displayName("Fern").parent(tmp).textures("all: fern"));
+        blockList.add(tmp = new BlockJson().displayName("Dead Bush").stepSound("grass").shape("bush").hardness(0.0F).isDeadBush(true).textures("cross: deadbush"));
+        blockList.add(new BlockJson().displayName("Grass").parent(tmp).needsColoring(true).textures("cross: tallgrass"));
+        blockList.add(new BlockJson().displayName("Fern").parent(tmp).needsColoring(true).textures("cross: fern"));
         // Dead Shrub
         // Piston
         blockList.add(tmp = new BlockJson().displayName("Wool").material("cloth").stepSound("cloth").hardness(0.8F).textures("all: wool_colored_white"));
@@ -306,8 +306,8 @@ public class Blocks
         blockList.add(new BlockJson().displayName("Packed Ice").material("packed_ice").hardness(0.5F).slipperiness(0.98F).stepSound("glass").textures("all: ice_packed"));
         blockList.add(tmp = new BlockJson().displayName("Sunflower").shape("double_plant").sunflower(true).material("plants").hardness(0.0F).stepSound("grass").textures("bottom: double_plant_sunflower_bottom, top: double_plant_sunflower_top, front: double_plant_sunflower_front, back: double_plant_sunflower_back"));
         blockList.add(new BlockJson().displayName("Lilac").parent(tmp).textures("bottom: double_plant_syringa_bottom, top: double_plant_syringa_top"));
-        blockList.add(new BlockJson().displayName("Double Tallgrass").parent(tmp).textures("bottom: double_plant_grass_bottom, top: double_plant_grass_top"));
-        blockList.add(new BlockJson().displayName("Large Fern").parent(tmp).textures("bottom: double_plant_fern_bottom, top: double_plant_fern_top"));
+        blockList.add(new BlockJson().displayName("Double Tallgrass").parent(tmp).needsColoring(true).textures("bottom: double_plant_grass_bottom, top: double_plant_grass_top"));
+        blockList.add(new BlockJson().displayName("Large Fern").parent(tmp).needsColoring(true).textures("bottom: double_plant_fern_bottom, top: double_plant_fern_top"));
         blockList.add(new BlockJson().displayName("Rose Bush").parent(tmp).textures("bottom: double_plant_rose_bottom, top: double_plant_rose_top"));
         blockList.add(new BlockJson().displayName("Peony").parent(tmp).textures("bottom: double_plant_paeonia_bottom, top: double_plant_paeonia_top"));
 

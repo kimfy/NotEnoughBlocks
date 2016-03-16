@@ -1,5 +1,7 @@
 package com.kimfy.notenoughblocks.common.item;
 
+import com.kimfy.notenoughblocks.common.block.NEBBlockBush;
+import com.kimfy.notenoughblocks.common.block.NEBBlockDoublePlant;
 import com.kimfy.notenoughblocks.common.block.NEBBlockGrass;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
@@ -16,7 +18,7 @@ public class NEBItemBlock extends ItemBlock
         super(block);
         this.setHasSubtypes(true);
         this.setMaxDamage(0);
-        this.isColoredBlock = block instanceof NEBBlockGrass;
+        this.isColoredBlock = block instanceof NEBBlockGrass || block instanceof NEBBlockBush || block instanceof NEBBlockDoublePlant;
     }
 
     @Override
@@ -33,7 +35,7 @@ public class NEBItemBlock extends ItemBlock
     }
 
     /*
-        Colored item (Grass Block)
+        Colored item (Grass Block, Bush, Double Plant)
      */
 
     @SideOnly(Side.CLIENT)

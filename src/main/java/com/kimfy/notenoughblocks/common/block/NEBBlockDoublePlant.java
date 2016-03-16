@@ -24,6 +24,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumWorldBlockLayer;
+import net.minecraft.world.ColorizerGrass;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
@@ -483,5 +484,13 @@ public class NEBBlockDoublePlant extends Block implements IBlockProperties, IGro
         IBlockState state = world.getBlockState(pos);
         if (state.getBlock() != this) return getDefaultState();
         return state;
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int getRenderColor(IBlockState state)
+    {
+        BlockJson modelBlock = getData().get(state.getValue(VARIANT));
+        return modelBlock.needsColoring() ? ColorizerGrass.getGrassColor(0.5D, 1.0D) : 16777215;
     }
 }

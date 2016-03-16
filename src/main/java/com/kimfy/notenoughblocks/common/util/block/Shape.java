@@ -21,7 +21,7 @@ public enum Shape
     PRESSURE_PLATE(1, NEBBlockPressurePlate.class, NEBItemBlock.class),
     BEACON(16, NEBBlockBeacon.class, NEBItemBlock.class),
     BED(1, NEBBlockBed.class, NEBItemBlockBed.class),
-    BUSH(16, null, null),
+    BUSH(16, NEBBlockBush.class, NEBItemBlock.class), // Small grass, fern, dead bush
     BUTTON(1, NEBBlockButton.class, NEBItemBlock.class),
     CACTUS(16, null, null),
     CAKE(16, null, null),
@@ -30,7 +30,6 @@ public enum Shape
     COCOA(16, null, null),
     CROP(4, null, null),
     DAYLIGHT_DETECTOR(1, null, null),
-    DEADBUSH(16, null, null), // {@link BlockDeadBush}. Dead Bush: This is the one that spawns in deserts
     DIRECTIONAL(5, null, null),
     DOOR(1, NEBBlockDoor.class, NEBItemBlockDoor.class),
     DOUBLE_PLANT(8, NEBBlockDoublePlant.class, NEBItemBlock.class),
@@ -62,7 +61,7 @@ public enum Shape
     SKULL(16, null, null),
     SLIME_BLOCK(16, null, null),
     LAYER(1, NEBBlockLayer.class, NEBItemBlockLayer.class),
-    TALLGRASS(16, null, null), // {@link BlockTallGrass}. Shrub(unused), Tallgrass, Fern
+    TALLGRASS(8, null, null), // Double grass, double fern
     TORCH(1, null, null),
     TRAPDOOR(1, null, null),
     TRIPWIRE(16, null, null),

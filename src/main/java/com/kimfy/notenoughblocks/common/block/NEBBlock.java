@@ -41,7 +41,7 @@ public class NEBBlock extends Block implements IBlockProperties
 
         int blockCount = data.size();
         this.VARIANT = ModPropertyInteger.create("metadata", blockCount);
-        this.BLOCKSTATE_REAL = createRealBlockState(VARIANT);
+        this.BLOCKSTATE_REAL = createRealBlockState();
         this.setupStates();
     }
 
@@ -58,9 +58,9 @@ public class NEBBlock extends Block implements IBlockProperties
         return this.BLOCKSTATE_REAL;
     }
 
-    private BlockState createRealBlockState(ModPropertyInteger property)
+    private BlockState createRealBlockState()
     {
-        return new BlockState(this, new IProperty[]{ property });
+        return new BlockState(this, new IProperty[]{ VARIANT });
     }
 
     @Override

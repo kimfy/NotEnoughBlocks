@@ -60,9 +60,10 @@ public class BlockJson implements Serializable
     public String buttonType          = null; // Valid types are 'wooden' and 'stone'
 
     /* Visual */
-    public int renderColor     = -1;
-    public boolean isSunflower = false;
-    public boolean isDeadBush  = false;
+    public int renderColor       = -1;
+    public boolean isSunflower   = false;
+    public boolean isDeadBush    = false;
+    public boolean needsColoring = false; // Used by Double Plants to determine their item color
 
     /** Parent block, used to inherit properties */
     private transient BlockJson parent;
@@ -540,6 +541,12 @@ public class BlockJson implements Serializable
         return this;
     }
 
+    public BlockJson needsColoring(boolean needsColoring)
+    {
+        this.needsColoring = needsColoring;
+        return this;
+    }
+
     /* ========== Getters ========== */
 
     public String getShape()
@@ -560,6 +567,11 @@ public class BlockJson implements Serializable
     public boolean isButtonWooden()
     {
         return this.getButtonType().toUpperCase().equals("WOODEN");
+    }
+
+    public boolean needsColoring()
+    {
+        return needsColoring;
     }
 }
 

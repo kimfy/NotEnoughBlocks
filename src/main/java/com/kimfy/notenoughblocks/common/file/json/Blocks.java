@@ -73,7 +73,7 @@ public class Blocks
         // Powered Rail
         // Detector Rail
         // Sticky Piston
-        blockList.add(new BlockJson().displayName("Cobweb").shape("web").lightOpacity(1).hardness(4.0F).textures("all: web"));
+        blockList.add(new BlockJson().displayName("Cobweb").shape("web").lightOpacity(1).hardness(4.0F).textures("cross: web"));
         blockList.add(tmp = new BlockJson().displayName("Dead Bush").stepSound("grass").shape("bush").hardness(0.0F).isDeadBush(true).textures("cross: deadbush"));
         blockList.add(new BlockJson().displayName("Grass").parent(tmp).needsColoring(true).textures("cross: tallgrass"));
         blockList.add(new BlockJson().displayName("Fern").parent(tmp).needsColoring(true).textures("cross: fern"));

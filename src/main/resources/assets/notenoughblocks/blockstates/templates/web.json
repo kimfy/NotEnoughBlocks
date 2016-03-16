@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "metadata=#metadata": { "model": "notenoughblocks:cross" },
+        "item,metadata=#metadata": { "model": "notenoughblocks:inventory/bush_inventory" }
+    }
+}

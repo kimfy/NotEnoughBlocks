@@ -60,13 +60,12 @@ public enum Shape
     SKULL(16, null, null),
     SLIME_BLOCK(16, null, null),
     LAYER(1, NEBBlockLayer.class, NEBItemBlockLayer.class),
-    TALLGRASS(8, null, null), // Double grass, double fern
     TORCH(1, null, null),
     TRAPDOOR(1, NEBBlockTrapDoor.class, NEBItemBlock.class),
     TRIPWIRE(16, null, null),
     TRIPWIRE_HOOK(16, null, null),
     VINE(4, null, null),
-    WEB(16, null, null),
+    WEB(16, NEBBlockWeb.class, NEBItemBlock.class),
     WEIGHTED_PRESSURE_PLATE(16, null, null),
 
     /* 1.9 */

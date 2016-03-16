@@ -73,6 +73,7 @@ public class OneEight
                         /************************************* ITEMS THAT USE METADATA *************************************/
                         /***************************************************************************************************/
                         case "bars":
+                        case "beacon":
                         case "brewing_stand":
                         case "carpet":
                         case "cube":

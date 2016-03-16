@@ -1,0 +1,9 @@
+{
+    "variants": {
+        "metadata=#metadata":
+        {
+            "model": "notenoughblocks:beacon"
+        },
+        "item,metadata=#metadata": { "model": "notenoughblocks:inventory/beacon_inventory" }
+    }
+}

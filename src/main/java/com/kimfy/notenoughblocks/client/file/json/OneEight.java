@@ -181,7 +181,14 @@ public class OneEight
 
     private static void registerItem(Block block, int metadata, String blockName, String variant)
     {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), metadata, MRL(blockName, variant));
+        try
+        {
+            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), metadata, MRL(blockName, variant));
+        }
+        catch (Exception e)
+        {
+            NotEnoughBlocks.logger.error("Exception when registering item in OneEight#registerItem. Block {}, metadata {}, blockName {}", block, metadata, blockName, e);
+        }
     }
 
     private static ModelResourceLocation MRL(String name, String variant)

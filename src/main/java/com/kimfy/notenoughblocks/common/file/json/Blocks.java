@@ -158,7 +158,7 @@ public class Blocks
         blockList.add(new BlockJson().displayName("Sugar Cane").shape("sugar_cane").material("plants").hardness(0.0F).stepSound("grass").enableStats(false).renderColor(16777215).textures("all: reeds"));
         blockList.add(new BlockJson().displayName("Jukebox").material("wood").hardness(2.0F).resistance(10.0F).stepSound("piston").textures("down: jukebox_top, up: jukebox_top, allSides: jukebox_side")); // TODO: Implement
         blockList.add(woodFence = new BlockJson().displayName("Wooden Fence").shape("fence").material("wood").hardness(2.0F).resistance(5.0F).stepSound("wood").textures("all: planks_oak"));
-        blockList.add(new BlockJson().displayName("Pumpkin").shape("directional").material("gourd").hardness(1.0F).stepSound("wood").textures("top: pumpkin_top, faceOff: pumpkin_face_off, faceOn: pumpkin_face_on, side: pumpkin_side")); // TODO: Implement
+        blockList.add(new BlockJson().displayName("Pumpkin").shape("directional").material("gourd").hardness(1.0F).stepSound("wood").textures("top: pumpkin_top, faceOff: pumpkin_face_off, face: pumpkin_face_on, side: pumpkin_side")); // TODO: Implement
         blockList.add(new BlockJson().displayName("Netherrack").hardness(0.4F).stepSound("piston").textures("all: netherrack"));
         blockList.add(new BlockJson().displayName("Soul Sand").material("sand").hardness(0.5F).stepSound("sand").textures("all: soul_sand"));
         // Portal Block

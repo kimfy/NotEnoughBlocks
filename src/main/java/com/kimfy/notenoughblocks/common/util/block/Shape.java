@@ -13,7 +13,6 @@ public enum Shape
     STAIR(1, NEBBlockStair.class, NEBItemBlockStair.class),
     SLAB(8, NEBBlockSlab.class, NEBItemBlockSlab.class),
     GLASS(16, NEBBlockGlass.class, NEBItemBlock.class),
-    //STAINED_GLASS(16, null, null), - Removed in favor of the 'glass' shape. use 'stained' to set stainability in json
     WALL(16, NEBBlockWall.class, NEBItemBlock.class),
     FENCE(16, NEBBlockFence.class, NEBItemBlock.class),
     ANVIL(1, NEBBlockAnvil.class, NEBItemBlockAnvil.class),
@@ -30,7 +29,7 @@ public enum Shape
     COCOA(16, null, null),
     CROP(4, null, null),
     DAYLIGHT_DETECTOR(1, null, null),
-    DIRECTIONAL(5, null, null),
+    DIRECTIONAL(1, NEBBlockDirectional.class, NEBItemBlock.class),
     DOOR(1, NEBBlockDoor.class, NEBItemBlockDoor.class),
     DOUBLE_PLANT(8, NEBBlockDoublePlant.class, NEBItemBlock.class),
     DRAGON_EGG(16, null, null),

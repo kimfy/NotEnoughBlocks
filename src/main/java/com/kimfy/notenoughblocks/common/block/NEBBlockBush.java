@@ -22,7 +22,7 @@ import java.util.List;
 
 public class NEBBlockBush extends BlockBush implements IBlockProperties
 {
-    private final ModPropertyInteger VARIANT;
+    protected final ModPropertyInteger VARIANT;
     private final BlockState BLOCKSTATE_REAL;
 
     @Delegate

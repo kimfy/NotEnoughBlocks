@@ -37,7 +37,7 @@ public enum Shape
     FALLING(16, NEBBlockFalling.class, NEBItemBlock.class),
     FENCE_GATE(1, NEBBlockFenceGate.class, NEBItemBlock.class),
     FARMLAND(16, null, null),
-    FLOWER(16, null, null),
+    FLOWER(16, NEBBlockFlower.class, NEBItemBlock.class),
     FLOWER_POT(16, null, null),
     GRASS(16, NEBBlockGrass.class, NEBItemBlock.class),
     ICE(16, CUBE.getBlockClass(), CUBE.getItemClass()),

@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "metadata=#metadata": { "model": "notenoughblocks:bush" },
+        "item,metadata=#metadata": { "model": "notenoughblocks:inventory/bush_inventory" }
+    }
+}

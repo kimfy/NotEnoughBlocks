@@ -1,0 +1,11 @@
+{
+    "variants": {
+        "metadata=#metadata": [
+            { "model": "cube" },
+            { "model": "cube", "y": 90 },
+            { "model": "cube", "y": 180},
+            { "model": "cube", "y": 270 }
+        ],
+        "item,metadata=#metadata": { "model": "notenoughblocks:inventory/cube_inventory" }
+    }
+}

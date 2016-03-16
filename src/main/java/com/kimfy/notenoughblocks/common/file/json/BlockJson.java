@@ -57,6 +57,7 @@ public class BlockJson implements Serializable
     public boolean neighborBrightness = false;
     public float lightLevel           = 0.0F;
     public int lightOpacity           = 255;
+    public String buttonType          = null; // Valid types are 'wooden' and 'stone'
 
     /* Visual */
     public int renderColor     = -1;
@@ -271,6 +272,7 @@ public class BlockJson implements Serializable
                 ", neighborBrightness=" + neighborBrightness +
                 ", lightLevel=" + lightLevel +
                 ", lightOpacity=" + lightOpacity +
+                ", buttonType=" + buttonType +
                 '}';
     }
 
@@ -532,6 +534,12 @@ public class BlockJson implements Serializable
         return this;
     }
 
+    public BlockJson buttonType(String buttonType)
+    {
+        this.buttonType = buttonType;
+        return this;
+    }
+
     /* ========== Getters ========== */
 
     public String getShape()
@@ -542,6 +550,16 @@ public class BlockJson implements Serializable
         }
 
         return shape;
+    }
+
+    public String getButtonType()
+    {
+        return buttonType == null ? "wooden" : buttonType;
+    }
+
+    public boolean isButtonWooden()
+    {
+        return this.getButtonType().toUpperCase().equals("WOODEN");
     }
 }
 

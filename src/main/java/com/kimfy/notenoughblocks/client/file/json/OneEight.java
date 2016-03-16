@@ -91,6 +91,7 @@ public class OneEight
                         /**************************************************************************************************/
                         case "anvil":
                         case "bed":
+                        case "button":
                         case "door":
                         case "fence_gate":
                         case "layer":

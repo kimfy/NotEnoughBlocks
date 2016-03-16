@@ -22,7 +22,7 @@ public enum Shape
     BEACON(16, NEBBlockBeacon.class, NEBItemBlock.class),
     BED(1, NEBBlockBed.class, NEBItemBlockBed.class),
     BUSH(16, null, null),
-    BUTTON(16, null, null),
+    BUTTON(16, NEBBlockButton.class, NEBItemBlock.class),
     CACTUS(16, null, null),
     CAKE(16, null, null),
     CARPET(16, NEBBlockCarpet.class, NEBItemBlock.class),

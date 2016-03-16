@@ -20,7 +20,7 @@ public enum Shape
     BREWING_STAND(16, NEBBlockBrewingStand.class, NEBItemBlock.class),
     PRESSURE_PLATE(1, NEBBlockPressurePlate.class, NEBItemBlock.class),
     BEACON(16, NEBBlockBeacon.class, NEBItemBlock.class),
-    BED(1, null, null),
+    BED(1, NEBBlockBed.class, NEBItemBlockBed.class),
     BUSH(16, null, null),
     BUTTON(16, null, null),
     CACTUS(16, null, null),

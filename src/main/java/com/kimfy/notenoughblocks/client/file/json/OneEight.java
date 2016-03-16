@@ -90,6 +90,7 @@ public class OneEight
                         /********************************* ITEMS THAT DO NOT USE METADATA *********************************/
                         /**************************************************************************************************/
                         case "anvil":
+                        case "bed":
                         case "door":
                         case "fence_gate":
                         case "layer":

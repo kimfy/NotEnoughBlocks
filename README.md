@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/kimfy/NotEnoughBlocks/master/resources/artwork/buttons/logo-button-blue-512px.png" width="4%"></img> NotEnoughBlocks
+<img src="https://raw.githubusercontent.com/kimfy/NotEnoughBlocks/MC-1.7.10/resources/artwork/buttons/logo-button-blue-512px.png" width="4%"></img> NotEnoughBlocks
 ===
 [![Build Status](https://drone.io/github.com/kimfy/NotEnoughBlocks/status.png)](https://drone.io/github.com/kimfy/NotEnoughBlocks/latest)
 

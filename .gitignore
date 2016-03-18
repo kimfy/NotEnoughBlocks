@@ -1,0 +1,30 @@
+## gradle
+/.gradle
+/build
+## /gradle
+## /gradlew
+## /gradlew.bat
+/resourcepacks
+
+## ForgeGradle
+/run
+/out
+
+## IDE
+/eclipse
+/.settings
+/.metadata
+/.classpath
+/.project
+/bin
+*.iml
+*.ipr
+*.iws
+
+/libs
+/src/main/resources/assets/notenoughblocks/textures/blocks
+
+## libs
+/libs/*sources
+/libs/*src
+/libs/*javadoc

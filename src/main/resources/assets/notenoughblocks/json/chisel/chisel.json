@@ -1,0 +1,2747 @@
+[
+  {
+    "displayName": "tile.air",
+    "unlocalizedName": "air",
+    "metadata": 0,
+    "chiselGroups": [
+      "http://i.imgur.com/aaTYDFu.png"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Stone",
+    "unlocalizedName": "stone",
+    "metadata": 0,
+    "chiselGroups": [
+      "stonebricksmooth"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Grass Block",
+    "unlocalizedName": "grass",
+    "metadata": 0,
+    "chiselGroups": [
+      "grass"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Dirt",
+    "unlocalizedName": "dirt",
+    "metadata": 0,
+    "chiselGroups": [
+      "dirt"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Coarse Dirt",
+    "unlocalizedName": "dirt",
+    "metadata": 1,
+    "chiselGroups": [
+      "coarse_dirt"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Podzol",
+    "unlocalizedName": "dirt",
+    "metadata": 2,
+    "chiselGroups": [
+      "podzol"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Cobblestone",
+    "unlocalizedName": "cobblestone",
+    "metadata": 0,
+    "chiselGroups": [
+      "cobblestone"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Dark Oak Wood Planks",
+    "unlocalizedName": "planks",
+    "metadata": 5,
+    "chiselGroups": [
+      "dark_oak_planks"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Birch Wood Planks",
+    "unlocalizedName": "planks",
+    "metadata": 2,
+    "chiselGroups": [
+      "birch_planks"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Spruce Wood Planks",
+    "unlocalizedName": "planks",
+    "metadata": 1,
+    "chiselGroups": [
+      "spruce_planks"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Jungle Wood Planks",
+    "unlocalizedName": "planks",
+    "metadata": 3,
+    "chiselGroups": [
+      "jungle_planks"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Oak Wood Planks",
+    "unlocalizedName": "planks",
+    "metadata": 0,
+    "chiselGroups": [
+      "oak_planks"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Acacia Wood Planks",
+    "unlocalizedName": "planks",
+    "metadata": 4,
+    "chiselGroups": [
+      "acacia_planks"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Acacia Sapling",
+    "unlocalizedName": "sapling",
+    "metadata": 4,
+    "chiselGroups": [
+      "blockAcaciaSapling"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Birch Sapling",
+    "unlocalizedName": "sapling",
+    "metadata": 2,
+    "chiselGroups": [
+      "blockBirchSapling"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Jungle Sapling",
+    "unlocalizedName": "sapling",
+    "metadata": 3,
+    "chiselGroups": [
+      "blockJungleSapling"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Spruce Sapling",
+    "unlocalizedName": "sapling",
+    "metadata": 1,
+    "chiselGroups": [
+      "blockSpruceSapling"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Dark Oak Sapling",
+    "unlocalizedName": "sapling",
+    "metadata": 5,
+    "chiselGroups": [
+      "blockDarkOakSapling"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Oak Sapling",
+    "unlocalizedName": "sapling",
+    "metadata": 0,
+    "chiselGroups": [
+      "blockOakSapling"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Bedrock",
+    "unlocalizedName": "bedrock",
+    "metadata": 0,
+    "chiselGroups": [
+      "bedrock"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Water",
+    "unlocalizedName": "flowing_water",
+    "metadata": 0,
+    "chiselGroups": [
+      "flowing_water"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Water",
+    "unlocalizedName": "water",
+    "metadata": 0,
+    "chiselGroups": [
+      "water"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Lava",
+    "unlocalizedName": "flowing_lava",
+    "metadata": 0,
+    "chiselGroups": [
+      "flowing_lava"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Lava",
+    "unlocalizedName": "lava",
+    "metadata": 0,
+    "chiselGroups": [
+      "lava"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Sand",
+    "unlocalizedName": "sand",
+    "metadata": 0,
+    "chiselGroups": [
+      "sand"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Red Sand",
+    "unlocalizedName": "sand",
+    "metadata": 1,
+    "chiselGroups": [
+      "sand_red"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Gravel",
+    "unlocalizedName": "gravel",
+    "metadata": 0,
+    "chiselGroups": [
+      "gravel"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Gold Ore",
+    "unlocalizedName": "gold_ore",
+    "metadata": 0,
+    "chiselGroups": [
+      "gold_ore"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Iron Ore",
+    "unlocalizedName": "iron_ore",
+    "metadata": 0,
+    "chiselGroups": [
+      "iron_ore"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Coal Ore",
+    "unlocalizedName": "coal_ore",
+    "metadata": 0,
+    "chiselGroups": [
+      "coal_ore"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Spruce Wood",
+    "unlocalizedName": "log",
+    "metadata": 1,
+    "chiselGroups": [
+      "spruce_log"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Jungle Wood",
+    "unlocalizedName": "log",
+    "metadata": 3,
+    "chiselGroups": [
+      "jungle_log"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Oak Wood",
+    "unlocalizedName": "log",
+    "metadata": 0,
+    "chiselGroups": [
+      "oak_log"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Birch Wood",
+    "unlocalizedName": "log",
+    "metadata": 2,
+    "chiselGroups": [
+      "birch_log"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Jungle Leaves",
+    "unlocalizedName": "leaves",
+    "metadata": 3,
+    "chiselGroups": [
+      "leaves_jungle"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Spruce Leaves",
+    "unlocalizedName": "leaves",
+    "metadata": 1,
+    "chiselGroups": [
+      "leaves_spruce"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Birch Leaves",
+    "unlocalizedName": "leaves",
+    "metadata": 2,
+    "chiselGroups": [
+      "leaves_birch"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Oak Leaves",
+    "unlocalizedName": "leaves",
+    "metadata": 0,
+    "chiselGroups": [
+      "leaves_oak"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Sponge",
+    "unlocalizedName": "sponge",
+    "metadata": 0,
+    "chiselGroups": [
+      "sponge"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Glass",
+    "unlocalizedName": "glass",
+    "metadata": 0,
+    "chiselGroups": [
+      "glass"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Lapis Lazuli Ore",
+    "unlocalizedName": "lapis_ore",
+    "metadata": 0,
+    "chiselGroups": [
+      "lapis_ore"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Lapis Lazuli Block",
+    "unlocalizedName": "lapis_block",
+    "metadata": 0,
+    "chiselGroups": [
+      "lapis_block"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Dispenser",
+    "unlocalizedName": "dispenser",
+    "metadata": 0,
+    "chiselGroups": [
+      "dispenser"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Chiseled Sandstone",
+    "unlocalizedName": "sandstone",
+    "metadata": 1,
+    "chiselGroups": [
+      "sandstone_chiseled"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Smooth Sandstone",
+    "unlocalizedName": "sandstone",
+    "metadata": 2,
+    "chiselGroups": [
+      "sandstone_smooth"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Sandstone",
+    "unlocalizedName": "sandstone",
+    "metadata": 0,
+    "chiselGroups": [
+      "sandstone"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Note Block",
+    "unlocalizedName": "noteblock",
+    "metadata": 0,
+    "chiselGroups": [
+      "noteblock"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "tile.bed",
+    "unlocalizedName": "bed",
+    "metadata": 0,
+    "chiselGroups": [
+      "blockTile.bed"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Powered Rail",
+    "unlocalizedName": "golden_rail",
+    "metadata": 0,
+    "chiselGroups": [
+      "golden_rail"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Detector Rail",
+    "unlocalizedName": "detector_rail",
+    "metadata": 0,
+    "chiselGroups": [
+      "detector_rail"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Sticky Piston",
+    "unlocalizedName": "sticky_piston",
+    "metadata": 0,
+    "chiselGroups": [
+      "sticky_piston"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Cobweb",
+    "unlocalizedName": "web",
+    "metadata": 0,
+    "chiselGroups": [
+      "web"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Shrub",
+    "unlocalizedName": "tallgrass",
+    "metadata": 0,
+    "chiselGroups": [
+      "tallgrass_shrub"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Grass",
+    "unlocalizedName": "tallgrass",
+    "metadata": 1,
+    "chiselGroups": [
+      "tallgrass_grass"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Dead Bush",
+    "unlocalizedName": "deadbush",
+    "metadata": 0,
+    "chiselGroups": [
+      "deadbush"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Piston",
+    "unlocalizedName": "piston",
+    "metadata": 0,
+    "chiselGroups": [
+      "piston"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "tile.null",
+    "unlocalizedName": "piston_head",
+    "metadata": 0,
+    "chiselGroups": [
+      "blockTile.null"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Red Wool",
+    "unlocalizedName": "wool",
+    "metadata": 14,
+    "chiselGroups": [
+      "wool_red"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Magenta Wool",
+    "unlocalizedName": "wool",
+    "metadata": 2,
+    "chiselGroups": [
+      "wool_magenta"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Cyan Wool",
+    "unlocalizedName": "wool",
+    "metadata": 9,
+    "chiselGroups": [
+      "wool_cyan"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Yellow Wool",
+    "unlocalizedName": "wool",
+    "metadata": 4,
+    "chiselGroups": [
+      "wool_yellow"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Brown Wool",
+    "unlocalizedName": "wool",
+    "metadata": 12,
+    "chiselGroups": [
+      "wool_brown"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Pink Wool",
+    "unlocalizedName": "wool",
+    "metadata": 6,
+    "chiselGroups": [
+      "wool_pink"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Gray Wool",
+    "unlocalizedName": "wool",
+    "metadata": 7,
+    "chiselGroups": [
+      "wool_gray"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Purple Wool",
+    "unlocalizedName": "wool",
+    "metadata": 10,
+    "chiselGroups": [
+      "wool_purple"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Green Wool",
+    "unlocalizedName": "wool",
+    "metadata": 13,
+    "chiselGroups": [
+      "wool_green"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Light Gray Wool",
+    "unlocalizedName": "wool",
+    "metadata": 8,
+    "chiselGroups": [
+      "wool_lightgray"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Orange Wool",
+    "unlocalizedName": "wool",
+    "metadata": 1,
+    "chiselGroups": [
+      "wool_orange"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Lime Wool",
+    "unlocalizedName": "wool",
+    "metadata": 5,
+    "chiselGroups": [
+      "wool_lime"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Blue Wool",
+    "unlocalizedName": "wool",
+    "metadata": 11,
+    "chiselGroups": [
+      "wool_blue"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Wool",
+    "unlocalizedName": "wool",
+    "metadata": 0,
+    "chiselGroups": [
+      "wool_white"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Black Wool",
+    "unlocalizedName": "wool",
+    "metadata": 15,
+    "chiselGroups": [
+      "wool_black"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Light Blue Wool",
+    "unlocalizedName": "wool",
+    "metadata": 3,
+    "chiselGroups": [
+      "wool_lightblue"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "tile.null",
+    "unlocalizedName": "piston_extension",
+    "metadata": 0,
+    "chiselGroups": [
+      "blockTile.null"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Dandelion",
+    "unlocalizedName": "yellow_flower",
+    "metadata": 0,
+    "chiselGroups": [
+      "yellow_flower"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Red Tulip",
+    "unlocalizedName": "red_flower",
+    "metadata": 4,
+    "chiselGroups": [
+      "flower_tulip"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Oxeye Daisy",
+    "unlocalizedName": "red_flower",
+    "metadata": 8,
+    "chiselGroups": [
+      "flower_oxeye_daisy"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Poppy",
+    "unlocalizedName": "red_flower",
+    "metadata": 0,
+    "chiselGroups": [
+      "flower_poppy"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Blue Orchid",
+    "unlocalizedName": "red_flower",
+    "metadata": 1,
+    "chiselGroups": [
+      "flower_blue_orchid"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "White Tulip",
+    "unlocalizedName": "red_flower",
+    "metadata": 6,
+    "chiselGroups": [
+      "flower_white"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Orange Tulip",
+    "unlocalizedName": "red_flower",
+    "metadata": 5,
+    "chiselGroups": [
+      "flower_orange"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Azure Bluet",
+    "unlocalizedName": "red_flower",
+    "metadata": 3,
+    "chiselGroups": [
+      "flower_azure"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Pink Tulip",
+    "unlocalizedName": "red_flower",
+    "metadata": 7,
+    "chiselGroups": [
+      "flower_pink"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Allium",
+    "unlocalizedName": "red_flower",
+    "metadata": 2,
+    "chiselGroups": [
+      "flower_allium"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Mushroom",
+    "unlocalizedName": "brown_mushroom",
+    "metadata": 0,
+    "chiselGroups": [
+      "brown_mushroom"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Mushroom",
+    "unlocalizedName": "red_mushroom",
+    "metadata": 0,
+    "chiselGroups": [
+      "red_mushroom"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Block of Gold",
+    "unlocalizedName": "gold_block",
+    "metadata": 0,
+    "chiselGroups": [
+      "gold_block"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Block of Iron",
+    "unlocalizedName": "iron_block",
+    "metadata": 0,
+    "chiselGroups": [
+      "iron_block"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Stone Slab",
+    "unlocalizedName": "stone_slab",
+    "metadata": 0,
+    "chiselGroups": [
+      "stone_slab"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Wooden Slab",
+    "unlocalizedName": "stone_slab",
+    "metadata": 2,
+    "chiselGroups": [
+      "oak_slab"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Nether Brick Slab",
+    "unlocalizedName": "stone_slab",
+    "metadata": 6,
+    "chiselGroups": [
+      "nether_brick_slab"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Sandstone Slab",
+    "unlocalizedName": "stone_slab",
+    "metadata": 1,
+    "chiselGroups": [
+      "sandstone_slab"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Cobblestone Slab",
+    "unlocalizedName": "stone_slab",
+    "metadata": 3,
+    "chiselGroups": [
+      "cobblestone_slab"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Stone Bricks Slab",
+    "unlocalizedName": "stone_slab",
+    "metadata": 5,
+    "chiselGroups": [
+      "stonebrick_slab"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Bricks Slab",
+    "unlocalizedName": "stone_slab",
+    "metadata": 4,
+    "chiselGroups": [
+      "brick_slab"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Bricks",
+    "unlocalizedName": "brick_block",
+    "metadata": 0,
+    "chiselGroups": [
+      "brickCustom"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "TNT",
+    "unlocalizedName": "tnt",
+    "metadata": 0,
+    "chiselGroups": [
+      "tnt"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Bookshelf",
+    "unlocalizedName": "bookshelf",
+    "metadata": 0,
+    "chiselGroups": [
+      "bookshelf"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Moss Stone",
+    "unlocalizedName": "mossy_cobblestone",
+    "metadata": 0,
+    "chiselGroups": [
+      "mossy_cobblestone"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Obsidian",
+    "unlocalizedName": "obsidian",
+    "metadata": 0,
+    "chiselGroups": [
+      "obsidian"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Torch",
+    "unlocalizedName": "torch",
+    "metadata": 0,
+    "chiselGroups": [
+      "torch"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Fire",
+    "unlocalizedName": "fire",
+    "metadata": 0,
+    "chiselGroups": [
+      "fire"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Monster Spawner",
+    "unlocalizedName": "mob_spawner",
+    "metadata": 0,
+    "chiselGroups": [
+      "mob_spawner"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Oak Wood Stairs",
+    "unlocalizedName": "oak_stairs",
+    "metadata": 0,
+    "chiselGroups": [
+      "oak_stairs"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Chest",
+    "unlocalizedName": "chest",
+    "metadata": 0,
+    "chiselGroups": [
+      "chest"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "tile.redstoneDust",
+    "unlocalizedName": "redstone_wire",
+    "metadata": 0,
+    "chiselGroups": [
+      "blockTile.redstoneDust"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Diamond Ore",
+    "unlocalizedName": "diamond_ore",
+    "metadata": 0,
+    "chiselGroups": [
+      "diamond_ore"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Block of Diamond",
+    "unlocalizedName": "diamond_block",
+    "metadata": 0,
+    "chiselGroups": [
+      "diamond_block"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Crafting Table",
+    "unlocalizedName": "crafting_table",
+    "metadata": 0,
+    "chiselGroups": [
+      "crafting_table"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "tile.crops",
+    "unlocalizedName": "wheat",
+    "metadata": 0,
+    "chiselGroups": [
+      "wheat_crop"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Farmland",
+    "unlocalizedName": "farmland",
+    "metadata": 0,
+    "chiselGroups": [
+      "farmland"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Furnace",
+    "unlocalizedName": "furnace",
+    "metadata": 0,
+    "chiselGroups": [
+      "blockFurnace"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Furnace",
+    "unlocalizedName": "lit_furnace",
+    "metadata": 0,
+    "chiselGroups": [
+      "blockFurnace"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "tile.sign",
+    "unlocalizedName": "standing_sign",
+    "metadata": 0,
+    "chiselGroups": [
+      "standing_sign"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "tile.doorWood",
+    "unlocalizedName": "wooden_door",
+    "metadata": 0,
+    "chiselGroups": [
+      "oak_door"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Ladder",
+    "unlocalizedName": "ladder",
+    "metadata": 0,
+    "chiselGroups": [
+      "ladder"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Rail",
+    "unlocalizedName": "rail",
+    "metadata": 0,
+    "chiselGroups": [
+      "rail"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Stone Stairs",
+    "unlocalizedName": "stone_stairs",
+    "metadata": 0,
+    "chiselGroups": [
+      "stonebrick_stairs"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "tile.sign",
+    "unlocalizedName": "wall_sign",
+    "metadata": 0,
+    "chiselGroups": [
+      "wall_sign"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Lever",
+    "unlocalizedName": "lever",
+    "metadata": 0,
+    "chiselGroups": [
+      "lever"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Pressure Plate",
+    "unlocalizedName": "stone_pressure_plate",
+    "metadata": 0,
+    "chiselGroups": [
+      "stone_pressure_plate"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "tile.doorIron",
+    "unlocalizedName": "iron_door",
+    "metadata": 0,
+    "chiselGroups": [
+      "iron_door"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Pressure Plate",
+    "unlocalizedName": "wooden_pressure_plate",
+    "metadata": 0,
+    "chiselGroups": [
+      "wooden_pressure_plate"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Redstone Ore",
+    "unlocalizedName": "redstone_ore",
+    "metadata": 0,
+    "chiselGroups": [
+      "redstone_ore"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "tile.oreRedstone",
+    "unlocalizedName": "lit_redstone_ore",
+    "metadata": 0,
+    "chiselGroups": [
+      "lit_redstone_ore"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "tile.notGate",
+    "unlocalizedName": "unlit_redstone_torch",
+    "metadata": 0,
+    "chiselGroups": [
+      "unlit_redstone_torch"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Redstone Torch",
+    "unlocalizedName": "redstone_torch",
+    "metadata": 0,
+    "chiselGroups": [
+      "redstone_torch"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Button",
+    "unlocalizedName": "stone_button",
+    "metadata": 0,
+    "chiselGroups": [
+      "stone_button"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Snow",
+    "unlocalizedName": "snow_layer",
+    "metadata": 0,
+    "chiselGroups": [
+      "snow_layer"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Ice",
+    "unlocalizedName": "ice",
+    "metadata": 0,
+    "chiselGroups": [
+      "ice"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Snow",
+    "unlocalizedName": "snow",
+    "metadata": 0,
+    "chiselGroups": [
+      "snow"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Cactus",
+    "unlocalizedName": "cactus",
+    "metadata": 0,
+    "chiselGroups": [
+      "cactus"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Clay",
+    "unlocalizedName": "clay",
+    "metadata": 0,
+    "chiselGroups": [
+      "clay"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "tile.reeds",
+    "unlocalizedName": "reeds",
+    "metadata": 0,
+    "chiselGroups": [
+      "reeds"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Jukebox",
+    "unlocalizedName": "jukebox",
+    "metadata": 0,
+    "chiselGroups": [
+      "jukebox"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Fence",
+    "unlocalizedName": "fence",
+    "metadata": 0,
+    "chiselGroups": [
+      "oak_fence"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Pumpkin",
+    "unlocalizedName": "pumpkin",
+    "metadata": 0,
+    "chiselGroups": [
+      "pumpkin"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Netherrack",
+    "unlocalizedName": "netherrack",
+    "metadata": 0,
+    "chiselGroups": [
+      "netherrack"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Soul Sand",
+    "unlocalizedName": "soul_sand",
+    "metadata": 0,
+    "chiselGroups": [
+      "soul_sand"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Glowstone",
+    "unlocalizedName": "glowstone",
+    "metadata": 0,
+    "chiselGroups": [
+      "glowstone"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Portal",
+    "unlocalizedName": "portal",
+    "metadata": 0,
+    "chiselGroups": [
+      "portal"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Jack o\u0027Lantern",
+    "unlocalizedName": "lit_pumpkin",
+    "metadata": 0,
+    "chiselGroups": [
+      "lit_pumpkin"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "tile.cake",
+    "unlocalizedName": "cake",
+    "metadata": 0,
+    "chiselGroups": [
+      "cake"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "tile.diode",
+    "unlocalizedName": "unpowered_repeater",
+    "metadata": 0,
+    "chiselGroups": [
+      "unpowered_repeater"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "tile.diode",
+    "unlocalizedName": "powered_repeater",
+    "metadata": 0,
+    "chiselGroups": [
+      "powered_repeater"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Cyan Stained Glass",
+    "unlocalizedName": "stained_glass",
+    "metadata": 9,
+    "chiselGroups": [
+      "stained_glass_cyan"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Light Blue Stained Glass",
+    "unlocalizedName": "stained_glass",
+    "metadata": 3,
+    "chiselGroups": [
+      "stained_glass_lightblue"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Blue Stained Glass",
+    "unlocalizedName": "stained_glass",
+    "metadata": 11,
+    "chiselGroups": [
+      "stained_glass_blue"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Brown Stained Glass",
+    "unlocalizedName": "stained_glass",
+    "metadata": 12,
+    "chiselGroups": [
+      "stained_glass_brown"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Green Stained Glass",
+    "unlocalizedName": "stained_glass",
+    "metadata": 13,
+    "chiselGroups": [
+      "stained_glass_green"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Black Stained Glass",
+    "unlocalizedName": "stained_glass",
+    "metadata": 15,
+    "chiselGroups": [
+      "stained_glass_black"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Purple Stained Glass",
+    "unlocalizedName": "stained_glass",
+    "metadata": 10,
+    "chiselGroups": [
+      "stained_glass_purple"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Magenta Stained Glass",
+    "unlocalizedName": "stained_glass",
+    "metadata": 2,
+    "chiselGroups": [
+      "stained_glass_magenta"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Lime Stained Glass",
+    "unlocalizedName": "stained_glass",
+    "metadata": 5,
+    "chiselGroups": [
+      "stained_glass_lime"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Gray Stained Glass",
+    "unlocalizedName": "stained_glass",
+    "metadata": 7,
+    "chiselGroups": [
+      "stained_glass_gray"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Pink Stained Glass",
+    "unlocalizedName": "stained_glass",
+    "metadata": 6,
+    "chiselGroups": [
+      "stained_glass_pink"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "White Stained Glass",
+    "unlocalizedName": "stained_glass",
+    "metadata": 0,
+    "chiselGroups": [
+      "stained_glass_white"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Yellow Stained Glass",
+    "unlocalizedName": "stained_glass",
+    "metadata": 4,
+    "chiselGroups": [
+      "stained_glass_yellow"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Red Stained Glass",
+    "unlocalizedName": "stained_glass",
+    "metadata": 14,
+    "chiselGroups": [
+      "stained_glass_red"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Light Gray Stained Glass",
+    "unlocalizedName": "stained_glass",
+    "metadata": 8,
+    "chiselGroups": [
+      "stained_glass_lightgray"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Orange Stained Glass",
+    "unlocalizedName": "stained_glass",
+    "metadata": 1,
+    "chiselGroups": [
+      "stained_glass_orange"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Trapdoor",
+    "unlocalizedName": "trapdoor",
+    "metadata": 0,
+    "chiselGroups": [
+      "trapdoor"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Stone Monster Egg",
+    "unlocalizedName": "monster_egg",
+    "metadata": 0,
+    "chiselGroups": [
+      "monster_egg"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Mossy Stone Brick Monster Egg",
+    "unlocalizedName": "monster_egg",
+    "metadata": 3,
+    "chiselGroups": [
+      "mossy_stonebrick_monster_egg"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Chiseled Stone Brick Monster Egg",
+    "unlocalizedName": "monster_egg",
+    "metadata": 5,
+    "chiselGroups": [
+      "chiseled_stonebrick_monster_egg"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Cobblestone Monster Egg",
+    "unlocalizedName": "monster_egg",
+    "metadata": 1,
+    "chiselGroups": [
+      "cobblestone_monster_egg"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Cracked Stone Brick Monster Egg",
+    "unlocalizedName": "monster_egg",
+    "metadata": 4,
+    "chiselGroups": [
+      "cracked_stonebrick_monster_egg"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Stone Brick Monster Egg",
+    "unlocalizedName": "monster_egg",
+    "metadata": 2,
+    "chiselGroups": [
+      "stonebrick_monster_egg"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Stone Bricks",
+    "unlocalizedName": "stonebrick",
+    "metadata": 0,
+    "chiselGroups": [
+      "stonebricksmooth"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Mossy Stone Bricks",
+    "unlocalizedName": "stonebrick",
+    "metadata": 1,
+    "chiselGroups": [
+      "stonebricksmooth"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Cracked Stone Bricks",
+    "unlocalizedName": "stonebrick",
+    "metadata": 2,
+    "chiselGroups": [
+      "stonebricksmooth"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Chiseled Stone Bricks",
+    "unlocalizedName": "stonebrick",
+    "metadata": 3,
+    "chiselGroups": [
+      "stonebricksmooth"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Mushroom",
+    "unlocalizedName": "brown_mushroom_block",
+    "metadata": 0,
+    "chiselGroups": [
+      "brown_mushroom_block"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Mushroom",
+    "unlocalizedName": "red_mushroom_block",
+    "metadata": 0,
+    "chiselGroups": [
+      "red_mushroom_block"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Iron Bars",
+    "unlocalizedName": "iron_bars",
+    "metadata": 0,
+    "chiselGroups": [
+      "iron_bars"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Glass Pane",
+    "unlocalizedName": "glass_pane",
+    "metadata": 0,
+    "chiselGroups": [
+      "glass_pane"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Melon",
+    "unlocalizedName": "melon_block",
+    "metadata": 0,
+    "chiselGroups": [
+      "melon_block"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "tile.pumpkinStem",
+    "unlocalizedName": "pumpkin_stem",
+    "metadata": 0,
+    "chiselGroups": [
+      "pumpkin_stem"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "tile.pumpkinStem",
+    "unlocalizedName": "melon_stem",
+    "metadata": 0,
+    "chiselGroups": [
+      "melon_stem"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Vines",
+    "unlocalizedName": "vine",
+    "metadata": 0,
+    "chiselGroups": [
+      "vine"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Fence Gate",
+    "unlocalizedName": "fence_gate",
+    "metadata": 0,
+    "chiselGroups": [
+      "oak_fence_gate"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Brick Stairs",
+    "unlocalizedName": "brick_stairs",
+    "metadata": 0,
+    "chiselGroups": [
+      "brick_stairs"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Stone Brick Stairs",
+    "unlocalizedName": "stone_brick_stairs",
+    "metadata": 0,
+    "chiselGroups": [
+      "stone_brick_stairs"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Mycelium",
+    "unlocalizedName": "mycelium",
+    "metadata": 0,
+    "chiselGroups": [
+      "mycelium"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Lily Pad",
+    "unlocalizedName": "waterlily",
+    "metadata": 0,
+    "chiselGroups": [
+      "waterlily"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Nether Brick",
+    "unlocalizedName": "nether_brick",
+    "metadata": 0,
+    "chiselGroups": [
+      "nether_brick"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Nether Brick Fence",
+    "unlocalizedName": "nether_brick_fence",
+    "metadata": 0,
+    "chiselGroups": [
+      "nether_brick_fence"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Nether Brick Stairs",
+    "unlocalizedName": "nether_brick_stairs",
+    "metadata": 0,
+    "chiselGroups": [
+      "nether_brick_stairs"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "tile.netherStalk",
+    "unlocalizedName": "nether_wart",
+    "metadata": 0,
+    "chiselGroups": [
+      "nether_wart"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Enchantment Table",
+    "unlocalizedName": "enchanting_table",
+    "metadata": 0,
+    "chiselGroups": [
+      "enchanting_table"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "tile.brewingStand",
+    "unlocalizedName": "brewing_stand",
+    "metadata": 0,
+    "chiselGroups": [
+      "brewing_stand"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "tile.cauldron",
+    "unlocalizedName": "cauldron",
+    "metadata": 0,
+    "chiselGroups": [
+      "cauldron"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "tile.null.name",
+    "unlocalizedName": "end_portal",
+    "metadata": 0,
+    "chiselGroups": [
+      "end_portal"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "End Portal",
+    "unlocalizedName": "end_portal_frame",
+    "metadata": 0,
+    "chiselGroups": [
+      "end_portal_frame"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "End Stone",
+    "unlocalizedName": "end_stone",
+    "metadata": 0,
+    "chiselGroups": [
+      "end_stone"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Dragon Egg",
+    "unlocalizedName": "dragon_egg",
+    "metadata": 0,
+    "chiselGroups": [
+      "dragon_egg"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Redstone Lamp",
+    "unlocalizedName": "redstone_lamp",
+    "metadata": 0,
+    "chiselGroups": [
+      "redstone_lamp"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "tile.redstoneLight",
+    "unlocalizedName": "lit_redstone_lamp",
+    "metadata": 0,
+    "chiselGroups": [
+      "lit_redstone_lamp"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Dark Oak Wood Slab",
+    "unlocalizedName": "wooden_slab",
+    "metadata": 5,
+    "chiselGroups": [
+      "dark_oak_slab"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Acacia Wood Slab",
+    "unlocalizedName": "wooden_slab",
+    "metadata": 4,
+    "chiselGroups": [
+      "acacia_slab"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Oak Wood Slab",
+    "unlocalizedName": "wooden_slab",
+    "metadata": 0,
+    "chiselGroups": [
+      "oak_slab"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Jungle Wood Slab",
+    "unlocalizedName": "wooden_slab",
+    "metadata": 3,
+    "chiselGroups": [
+      "jungle_slab"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Spruce Wood Slab",
+    "unlocalizedName": "wooden_slab",
+    "metadata": 1,
+    "chiselGroups": [
+      "spruce_slab"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Birch Wood Slab",
+    "unlocalizedName": "wooden_slab",
+    "metadata": 2,
+    "chiselGroups": [
+      "birch_slab"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Cocoa",
+    "unlocalizedName": "cocoa",
+    "metadata": 0,
+    "chiselGroups": [
+      "cocoa"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Sandstone Stairs",
+    "unlocalizedName": "sandstone_stairs",
+    "metadata": 0,
+    "chiselGroups": [
+      "sandstone_stairs"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Emerald Ore",
+    "unlocalizedName": "emerald_ore",
+    "metadata": 0,
+    "chiselGroups": [
+      "emerald_ore"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Ender Chest",
+    "unlocalizedName": "ender_chest",
+    "metadata": 0,
+    "chiselGroups": [
+      "ender_chest"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Tripwire Hook",
+    "unlocalizedName": "tripwire_hook",
+    "metadata": 0,
+    "chiselGroups": [
+      "tripwire_hook"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "tile.tripWire",
+    "unlocalizedName": "tripwire",
+    "metadata": 0,
+    "chiselGroups": [
+      "tripwire"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Block of Emerald",
+    "unlocalizedName": "emerald_block",
+    "metadata": 0,
+    "chiselGroups": [
+      "emerald_block"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Spruce Wood Stairs",
+    "unlocalizedName": "spruce_stairs",
+    "metadata": 0,
+    "chiselGroups": [
+      "spruce_stairs"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Birch Wood Stairs",
+    "unlocalizedName": "birch_stairs",
+    "metadata": 0,
+    "chiselGroups": [
+      "birch_stairs"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Jungle Wood Stairs",
+    "unlocalizedName": "jungle_stairs",
+    "metadata": 0,
+    "chiselGroups": [
+      "jungle_stairs"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Command Block",
+    "unlocalizedName": "command_block",
+    "metadata": 0,
+    "chiselGroups": [
+      "command_block"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Beacon",
+    "unlocalizedName": "beacon",
+    "metadata": 0,
+    "chiselGroups": [
+      "beacon"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Mossy Cobblestone Wall",
+    "unlocalizedName": "cobblestone_wall",
+    "metadata": 1,
+    "chiselGroups": [
+      "mossy_cobblestone_wall"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Cobblestone Wall",
+    "unlocalizedName": "cobblestone_wall",
+    "metadata": 0,
+    "chiselGroups": [
+      "cobblestone_wall"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "tile.flowerPot",
+    "unlocalizedName": "flower_pot",
+    "metadata": 0,
+    "chiselGroups": [
+      "flower_pot"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Carrots",
+    "unlocalizedName": "carrots",
+    "metadata": 0,
+    "chiselGroups": [
+      "carrots_crop"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Potatoes",
+    "unlocalizedName": "potatoes",
+    "metadata": 0,
+    "chiselGroups": [
+      "potatoes_crop"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Button",
+    "unlocalizedName": "wooden_button",
+    "metadata": 0,
+    "chiselGroups": [
+      "oak_button"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "tile.skull",
+    "unlocalizedName": "skull",
+    "metadata": 0,
+    "chiselGroups": [
+      "skull"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Slightly Damaged Anvil",
+    "unlocalizedName": "anvil",
+    "metadata": 1,
+    "chiselGroups": [
+      "anvil"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Anvil",
+    "unlocalizedName": "anvil",
+    "metadata": 0,
+    "chiselGroups": [
+      "anvil"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Very Damaged Anvil",
+    "unlocalizedName": "anvil",
+    "metadata": 2,
+    "chiselGroups": [
+      "anvil"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Trapped Chest",
+    "unlocalizedName": "trapped_chest",
+    "metadata": 0,
+    "chiselGroups": [
+      "trapped_chest"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Weighted Pressure Plate (Light)",
+    "unlocalizedName": "light_weighted_pressure_plate",
+    "metadata": 0,
+    "chiselGroups": [
+      "light_weighted_pressure_plate"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Weighted Pressure Plate (Heavy)",
+    "unlocalizedName": "heavy_weighted_pressure_plate",
+    "metadata": 0,
+    "chiselGroups": [
+      "heavy_weighted_pressure_plate"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "tile.comparator",
+    "unlocalizedName": "unpowered_comparator",
+    "metadata": 0,
+    "chiselGroups": [
+      "unpowered_comparator"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "tile.comparator",
+    "unlocalizedName": "powered_comparator",
+    "metadata": 0,
+    "chiselGroups": [
+      "powered_comparator"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "Daylight Sensor",
+    "unlocalizedName": "daylight_detector",
+    "metadata": 0,
+    "chiselGroups": [
+      "daylight_detector"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Block of Redstone",
+    "unlocalizedName": "redstone_block",
+    "metadata": 0,
+    "chiselGroups": [
+      "redstone_block"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Nether Quartz Ore",
+    "unlocalizedName": "quartz_ore",
+    "metadata": 0,
+    "chiselGroups": [
+      "quartz_ore"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Hopper",
+    "unlocalizedName": "hopper",
+    "metadata": 0,
+    "chiselGroups": [
+      "hopper"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Pillar Quartz Block",
+    "unlocalizedName": "quartz_block",
+    "metadata": 2,
+    "chiselGroups": [
+      "quartz_pillar"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Block of Quartz",
+    "unlocalizedName": "quartz_block",
+    "metadata": 0,
+    "chiselGroups": [
+      "quartz"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Chiseled Quartz Block",
+    "unlocalizedName": "quartz_block",
+    "metadata": 1,
+    "chiselGroups": [
+      "quartz_chiseled"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Quartz Stairs",
+    "unlocalizedName": "quartz_stairs",
+    "metadata": 0,
+    "chiselGroups": [
+      "quartz_stairs"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Activator Rail",
+    "unlocalizedName": "activator_rail",
+    "metadata": 0,
+    "chiselGroups": [
+      "activator_rail"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Dropper",
+    "unlocalizedName": "dropper",
+    "metadata": 0,
+    "chiselGroups": [
+      "dropper"
+    ],
+    "register": false
+  },
+  {
+    "displayName": "White Stained Clay",
+    "unlocalizedName": "stained_hardened_clay",
+    "metadata": 0,
+    "chiselGroups": [
+      "stained_hardened_clay_white"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Magenta Stained Clay",
+    "unlocalizedName": "stained_hardened_clay",
+    "metadata": 2,
+    "chiselGroups": [
+      "stained_hardened_clay_magenta"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Lime Stained Clay",
+    "unlocalizedName": "stained_hardened_clay",
+    "metadata": 5,
+    "chiselGroups": [
+      "stained_hardened_clay_lime"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Light Gray Stained Clay",
+    "unlocalizedName": "stained_hardened_clay",
+    "metadata": 8,
+    "chiselGroups": [
+      "stained_hardened_clay_lightgray"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Pink Stained Clay",
+    "unlocalizedName": "stained_hardened_clay",
+    "metadata": 6,
+    "chiselGroups": [
+      "stained_hardened_clay_pink"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Red Stained Clay",
+    "unlocalizedName": "stained_hardened_clay",
+    "metadata": 14,
+    "chiselGroups": [
+      "stained_hardened_clay_red"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Black Stained Clay",
+    "unlocalizedName": "stained_hardened_clay",
+    "metadata": 15,
+    "chiselGroups": [
+      "stained_hardened_clay_black"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Cyan Stained Clay",
+    "unlocalizedName": "stained_hardened_clay",
+    "metadata": 9,
+    "chiselGroups": [
+      "stained_hardened_clay_cyan"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Brown Stained Clay",
+    "unlocalizedName": "stained_hardened_clay",
+    "metadata": 12,
+    "chiselGroups": [
+      "stained_hardened_clay_brown"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Light Blue Stained Clay",
+    "unlocalizedName": "stained_hardened_clay",
+    "metadata": 3,
+    "chiselGroups": [
+      "stained_hardened_clay_lightblue"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Purple Stained Clay",
+    "unlocalizedName": "stained_hardened_clay",
+    "metadata": 10,
+    "chiselGroups": [
+      "stained_hardened_clay_purple"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Orange Stained Clay",
+    "unlocalizedName": "stained_hardened_clay",
+    "metadata": 1,
+    "chiselGroups": [
+      "stained_hardened_clay_orange"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Blue Stained Clay",
+    "unlocalizedName": "stained_hardened_clay",
+    "metadata": 11,
+    "chiselGroups": [
+      "stained_hardened_clay_blue"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Green Stained Clay",
+    "unlocalizedName": "stained_hardened_clay",
+    "metadata": 13,
+    "chiselGroups": [
+      "stained_hardened_clay_green"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Gray Stained Clay",
+    "unlocalizedName": "stained_hardened_clay",
+    "metadata": 7,
+    "chiselGroups": [
+      "stained_hardened_clay_gray"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Yellow Stained Clay",
+    "unlocalizedName": "stained_hardened_clay",
+    "metadata": 4,
+    "chiselGroups": [
+      "stained_hardened_clay_yellow"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Red Stained Glass Pane",
+    "unlocalizedName": "stained_glass_pane",
+    "metadata": 14,
+    "chiselGroups": [
+      "stained_glass_pane_red"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Yellow Stained Glass Pane",
+    "unlocalizedName": "stained_glass_pane",
+    "metadata": 4,
+    "chiselGroups": [
+      "stained_glass_pane_yellow"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Blue Stained Glass Pane",
+    "unlocalizedName": "stained_glass_pane",
+    "metadata": 11,
+    "chiselGroups": [
+      "stained_glass_pane_blue"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Lime Stained Glass Pane",
+    "unlocalizedName": "stained_glass_pane",
+    "metadata": 5,
+    "chiselGroups": [
+      "stained_glass_pane_lime"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Light Blue Stained Glass Pane",
+    "unlocalizedName": "stained_glass_pane",
+    "metadata": 3,
+    "chiselGroups": [
+      "stained_glass_pane_lightblue"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Black Stained Glass Pane",
+    "unlocalizedName": "stained_glass_pane",
+    "metadata": 15,
+    "chiselGroups": [
+      "stained_glass_pane_black"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Orange Stained Glass Pane",
+    "unlocalizedName": "stained_glass_pane",
+    "metadata": 1,
+    "chiselGroups": [
+      "stained_glass_pane_orange"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Gray Stained Glass Pane",
+    "unlocalizedName": "stained_glass_pane",
+    "metadata": 7,
+    "chiselGroups": [
+      "stained_glass_pane_gray"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Pink Stained Glass Pane",
+    "unlocalizedName": "stained_glass_pane",
+    "metadata": 6,
+    "chiselGroups": [
+      "stained_glass_pane_pink"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Light Gray Stained Glass Pane",
+    "unlocalizedName": "stained_glass_pane",
+    "metadata": 8,
+    "chiselGroups": [
+      "stained_glass_pane_lightgray"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Cyan Stained Glass Pane",
+    "unlocalizedName": "stained_glass_pane",
+    "metadata": 9,
+    "chiselGroups": [
+      "stained_glass_pane_cyan"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Magenta Stained Glass Pane",
+    "unlocalizedName": "stained_glass_pane",
+    "metadata": 2,
+    "chiselGroups": [
+      "stained_glass_pane_magenta"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Purple Stained Glass Pane",
+    "unlocalizedName": "stained_glass_pane",
+    "metadata": 10,
+    "chiselGroups": [
+      "stained_glass_pane_purple"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "White Stained Glass Pane",
+    "unlocalizedName": "stained_glass_pane",
+    "metadata": 0,
+    "chiselGroups": [
+      "stained_glass_pane_white"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Brown Stained Glass Pane",
+    "unlocalizedName": "stained_glass_pane",
+    "metadata": 12,
+    "chiselGroups": [
+      "stained_glass_pane_brown"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Green Stained Glass Pane",
+    "unlocalizedName": "stained_glass_pane",
+    "metadata": 13,
+    "chiselGroups": [
+      "stained_glass_pane_green"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Dark Oak Leaves",
+    "unlocalizedName": "leaves2",
+    "metadata": 1,
+    "chiselGroups": [
+      "leaves_dark_oak"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Acacia Leaves",
+    "unlocalizedName": "leaves2",
+    "metadata": 0,
+    "chiselGroups": [
+      "leaves_acacia"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Acacia Wood",
+    "unlocalizedName": "log2",
+    "metadata": 0,
+    "chiselGroups": [
+      "acacia_log"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Dark Oak Wood",
+    "unlocalizedName": "log2",
+    "metadata": 1,
+    "chiselGroups": [
+      "dark_oak_log"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Acacia Wood Stairs",
+    "unlocalizedName": "acacia_stairs",
+    "metadata": 0,
+    "chiselGroups": [
+      "acacia_stairs"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Dark Oak Wood Stairs",
+    "unlocalizedName": "dark_oak_stairs",
+    "metadata": 0,
+    "chiselGroups": [
+      "dark_oak_stairs"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Hay Bale",
+    "unlocalizedName": "hay_block",
+    "metadata": 0,
+    "chiselGroups": [
+      "hay_block"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Brown Carpet",
+    "unlocalizedName": "carpet",
+    "metadata": 12,
+    "chiselGroups": [
+      "carpet_brown"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Cyan Carpet",
+    "unlocalizedName": "carpet",
+    "metadata": 9,
+    "chiselGroups": [
+      "carpet_cyan"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Light Gray Carpet",
+    "unlocalizedName": "carpet",
+    "metadata": 8,
+    "chiselGroups": [
+      "carpet_lightgray"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Blue Carpet",
+    "unlocalizedName": "carpet",
+    "metadata": 11,
+    "chiselGroups": [
+      "carpet_blue"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Light Blue Carpet",
+    "unlocalizedName": "carpet",
+    "metadata": 3,
+    "chiselGroups": [
+      "carpet_lightblue"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Carpet",
+    "unlocalizedName": "carpet",
+    "metadata": 0,
+    "chiselGroups": [
+      "carpet_white"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Yellow Carpet",
+    "unlocalizedName": "carpet",
+    "metadata": 4,
+    "chiselGroups": [
+      "carpet_yellow"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Gray Carpet",
+    "unlocalizedName": "carpet",
+    "metadata": 7,
+    "chiselGroups": [
+      "carpet_gray"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Lime Carpet",
+    "unlocalizedName": "carpet",
+    "metadata": 5,
+    "chiselGroups": [
+      "carpet_lime"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Pink Carpet",
+    "unlocalizedName": "carpet",
+    "metadata": 6,
+    "chiselGroups": [
+      "carpet_pink"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Orange Carpet",
+    "unlocalizedName": "carpet",
+    "metadata": 1,
+    "chiselGroups": [
+      "carpet_orange"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Black Carpet",
+    "unlocalizedName": "carpet",
+    "metadata": 15,
+    "chiselGroups": [
+      "carpet_black"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Purple Carpet",
+    "unlocalizedName": "carpet",
+    "metadata": 10,
+    "chiselGroups": [
+      "carpet_purple"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Green Carpet",
+    "unlocalizedName": "carpet",
+    "metadata": 13,
+    "chiselGroups": [
+      "carpet_green"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Magenta Carpet",
+    "unlocalizedName": "carpet",
+    "metadata": 2,
+    "chiselGroups": [
+      "carpet_magenta"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Red Carpet",
+    "unlocalizedName": "carpet",
+    "metadata": 14,
+    "chiselGroups": [
+      "carpet_red"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Hardened Clay",
+    "unlocalizedName": "hardened_clay",
+    "metadata": 0,
+    "chiselGroups": [
+      "hardened_clay"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Block of Coal",
+    "unlocalizedName": "coal_block",
+    "metadata": 0,
+    "chiselGroups": [
+      "coal_block"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Packed Ice",
+    "unlocalizedName": "packed_ice",
+    "metadata": 0,
+    "chiselGroups": [
+      "packedice"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Lilac",
+    "unlocalizedName": "double_plant",
+    "metadata": 1,
+    "chiselGroups": [
+      "double_plant_lilac"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Large Fern",
+    "unlocalizedName": "double_plant",
+    "metadata": 3,
+    "chiselGroups": [
+      "double_plant_largefern"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Peony",
+    "unlocalizedName": "double_plant",
+    "metadata": 5,
+    "chiselGroups": [
+      "double_plant_peony"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Sunflower",
+    "unlocalizedName": "double_plant",
+    "metadata": 0,
+    "chiselGroups": [
+      "double_plant_sunflower"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Double Tallgrass",
+    "unlocalizedName": "double_plant",
+    "metadata": 2,
+    "chiselGroups": [
+      "double_plant_tallgrass"
+    ],
+    "register": true
+  },
+  {
+    "displayName": "Rose Bush",
+    "unlocalizedName": "double_plant",
+    "metadata": 4,
+    "chiselGroups": [
+      "double_plant_rosebush"
+    ],
+    "register": true
+  }
+]

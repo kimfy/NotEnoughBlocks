@@ -1,0 +1,128 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+        maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+    }
+}
+
+apply plugin: 'forge'
+
+version = "${minecraft_version}-${mod_version}"
+group= "${mod_group}" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "${mod_name}"
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+minecraft {
+    version = "${minecraft_version}-${forge_version}"
+    runDir = "eclipse"
+}
+
+configurations {
+    shade
+    compile.extendsFrom shade
+    compile.extendsFrom exportedCompile
+}
+
+repositories {
+    maven {
+        name "ChickenBones"
+        url "http://chickenbones.net/maven/"
+    }
+
+    maven {
+    	name "Mobius"
+    	url "http://mobiusstrip.eu/maven/"
+    }
+
+    maven {
+        name "tterrag"
+        url "http://maven.tterrag.com/"
+    }
+}
+
+dependencies {
+	compile "org.projectlombok:lombok:1.16.6"
+	compile "codechicken:CodeChickenLib:${ccl_version}:dev"
+	compile "codechicken:CodeChickenCore:${ccc_version}:dev"
+	compile "codechicken:NotEnoughItems:${nei_version}:dev"
+	compile "mcp.mobius.waila:Waila:${waila_version}:dev"
+    compile "team.chisel:Chisel:${chisel_version}:deobf"
+    shade ("team.chisel.ctmlib:CTMLib:${ctmlib_version}:deobf") {
+        transitive = false
+    }
+}
+
+processResources
+{
+    // this will ensure that this task is redone when the versions change.
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+
+        // replace version and mcversion
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+
+    // copy everything else, thats not the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
+
+/*
+ * Downloads files that have been added to the dev_jars property
+ * in the gradle.properties file.
+ * Used for files that aren't on Maven
+ */
+task('getLibs') <<
+{
+    println "Downloading developer jars..."
+    def libsDir = "libs"
+    if (!(new File(libsDir)).exists()) { (new File(libsDir)).mkdirs(); println "Successfully created folder $libsDir" }
+
+    def jars = []
+    jars.addAll("${dev_jars}".split(';'))
+
+    if (jars.size > 0)
+    {
+        jars.each {
+
+            def url = it
+            def fileName = url.substring(url.lastIndexOf('/') + 1, url.length())
+            def file = new File(libsDir + "/" + fileName)
+
+            if (!file.exists())
+            {
+                println "Downloading: " + it
+                new File(libsDir + "/" + fileName).withOutputStream { out ->
+                    out << new URL(url).openStream()
+                }
+            }
+            else
+            {
+                println fileName + " has already been downloaded!"
+            }
+        }
+    }
+    else
+    {
+        println "There is nothing to download..."
+    }
+}
+
+idea { module { inheritOutputDirs = true } }

@@ -125,6 +125,11 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
         return this.data;
     }
 
+    public BlockAgent getBlockAgent()
+    {
+        return this;
+    }
+
     private BlockJson modelBlock;
 
     public BlockJson getModelBlock()

@@ -12,5 +12,5 @@ public class Constants
     public static final String PATH_MOD_CONFIG_BASE = "config/" + MOD_ID + "/";
     public static final String PATH_MOD_CONFIG_RESOURCE_PACKS = PATH_MOD_CONFIG_BASE + "resourcepacks/";
     public static final String PATH_MOD_CONFIG_JSON = PATH_MOD_CONFIG_BASE + "json/";
-    public static final String PATH_MOD_TEXTURES_BLOCKS = "resourcepacks/" + MOD_NAME + "/assets/" + MOD_ID + "/textures/blocks/"; /*"resources/" + MOD_ID + "/textures/blocks/";*/
+    public static final String PATH_MOD_TEXTURES_BLOCKS = "resourcepacks/" + MOD_NAME + "/assets/" + MOD_ID + "/textures/blocks/";
 }

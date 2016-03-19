@@ -182,11 +182,9 @@ public class JsonProcessor
                 }
             }
         }
-        catch (Exception e/*NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e*/)
+        catch (Exception e)
         {
             NotEnoughBlocks.logger.error("Failed to create Block for List<BlockJson> {} ", blocks, e);
-            //e.printStackTrace();
-            //throw new RuntimeException(e.getCause());
         }
     }
 
@@ -202,8 +200,7 @@ public class JsonProcessor
         block.setResistance(model.getResistance());
         block.setLightLevel(model.getLightLevel());
 
-        /* IBlockProperties.class methods */
-        //block.setData(Utilities.deepCloneList(blocks)); // Moved to constructor
+        /* IBlockProperties setters */
         block.setBeaconBaseable(model.isBeaconBase());
         block.setBlockLightOpacity(model.getLightOpacity());
         //block.setBlockOpaqueness(model.isOpaque()); // Removed because inconvenient for everyone
@@ -213,10 +210,10 @@ public class JsonProcessor
         /* Metadata specific operations */
         for (int metadata = 0; metadata < blocks.size(); metadata++)
         {
-            BlockJson entry = blocks.get(metadata);
+            BlockJson modelBlock = blocks.get(metadata);
 
-            block.isSilkTouchable(entry.isSilkTouch(), metadata);
-            setDisplayName(block, unlocalizedName, metadata, entry.getDisplayName());
+            block.isSilkTouchable(modelBlock.isSilkTouch(), metadata);
+            setDisplayName(block, unlocalizedName, metadata, modelBlock.getDisplayName());
         }
     }
 
@@ -232,8 +229,8 @@ public class JsonProcessor
      */
     private static void setDisplayName(Block block, String unlocalizedName, int metadata, String displayName)
     {
-        //LanguageRegistry.instance().addStringLocalization("tile." + Constants.MOD_ID + ":" + unlocalizedName + "_" + metadata + ".name", displayName);
         String key;
+
         if (block instanceof NEBBlockDoor)
         {
             key = "tile." + Constants.MOD_ID + ":" + unlocalizedName + "_#metadata.name";
@@ -253,7 +250,7 @@ public class JsonProcessor
     {
         if (lang != null && !lang.isEmpty())
         {
-            LanguageRegistry.instance().injectLanguage("en_US", (HashMap<String, String>) lang);
+            LanguageRegistry.instance().injectLanguage(Constants.LANG_DEFAULT, (HashMap<String, String>) lang);
         }
     }
 }

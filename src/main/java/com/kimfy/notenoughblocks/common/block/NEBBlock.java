@@ -48,6 +48,7 @@ public class NEBBlock extends Block implements IBlockProperties
     private void setupStates()
     {
         IBlockState blockState = getBlockState().getBaseState().withProperty(VARIANT, 0);
+        blockState = blockState.withProperty(VARIANT, 0);
         this.setDefaultState(blockState);
     }
 

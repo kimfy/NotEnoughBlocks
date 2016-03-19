@@ -23,4 +23,6 @@ public interface IBlockProperties
     void setData(List<BlockJson> data);
 
     List<BlockJson> getData();
+
+    BlockAgent getBlockAgent();
 }

@@ -1,11 +1,8 @@
 package com.kimfy.notenoughblocks.common.block;
 
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
-import net.minecraft.block.Block;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 public interface IBlockProperties

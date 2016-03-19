@@ -1,10 +1,6 @@
 {
     "variants": {
-        "metadata=#metadata":
-        {
-            "model": "cube",
-            "parent": "block/cube"
-        },
+        "metadata=#metadata":      { "model": "cube" },
         "item,metadata=#metadata": { "model": "notenoughblocks:inventory/cube_inventory" }
     }
 }

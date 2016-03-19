@@ -12,7 +12,6 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -27,7 +26,6 @@ import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.world.ColorizerGrass;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.IShearable;
 import net.minecraftforge.fml.relauncher.Side;
@@ -67,7 +65,6 @@ public class NEBBlockDoublePlant extends Block implements IBlockProperties, IGro
         this.VARIANT = ModPropertyInteger.create("metadata", blockCount);
         this.BLOCKSTATE_REAL = createRealBlockState();
         this.setupStates();
-        ModelLoader.setCustomStateMapper(this, new StateMap.Builder().ignore(new IProperty[]{ field_181084_N }).build());
     }
 
     private void setupStates()

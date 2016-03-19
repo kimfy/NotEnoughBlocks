@@ -16,6 +16,6 @@
         "east=false,metadata=#metadata,north=true,south=true,west=true":    { "model": "notenoughblocks:pane_nsw" },
         "east=true,metadata=#metadata,north=true,south=false,west=true":    { "model": "notenoughblocks:pane_new" },
         "east=true,metadata=#metadata,north=true,south=true,west=true":     { "model": "notenoughblocks:pane_nsew" },
-        "item,metadata=#metadata": { "model": "notenoughblocks:inventory/pane_inventory" }
+        "item,metadata=#metadata":                                          { "model": "notenoughblocks:inventory/pane_inventory" }
     }
 }

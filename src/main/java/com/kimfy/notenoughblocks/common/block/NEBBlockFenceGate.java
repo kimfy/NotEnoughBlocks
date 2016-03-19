@@ -5,9 +5,6 @@ import lombok.experimental.Delegate;
 import net.minecraft.block.BlockFenceGate;
 import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
-import net.minecraft.client.renderer.block.statemap.StateMap;
-import net.minecraftforge.client.model.ModelLoader;
 
 import java.util.List;
 
@@ -23,8 +20,6 @@ public class NEBBlockFenceGate extends BlockFenceGate implements IBlockPropertie
         super(BlockPlanks.EnumType.OAK);
         this.blockMaterial = material;
         this.agent = new BlockAgent<>(this, data);
-
-        ModelLoader.setCustomStateMapper(this, new StateMap.Builder().ignore(new IProperty[]{ POWERED }).build());
     }
 
     @Override

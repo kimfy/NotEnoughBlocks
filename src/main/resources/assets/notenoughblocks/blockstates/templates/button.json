@@ -12,6 +12,6 @@
         "facing=west,powered=true":   { "model": "notenoughblocks:button_pressed", "x": 90, "y": 270 },
         "facing=south,powered=true":  { "model": "notenoughblocks:button_pressed", "x": 90, "y": 180 },
         "facing=north,powered=true":  { "model": "notenoughblocks:button_pressed", "x": 90 },
-        "item": { "model": "notenoughblocks:inventory/button_inventory" }
+        "item":                       { "model": "notenoughblocks:inventory/button_inventory" }
     }
 }

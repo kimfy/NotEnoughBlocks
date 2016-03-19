@@ -18,7 +18,6 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 public class JsonProcessor
@@ -183,10 +182,11 @@ public class JsonProcessor
                 }
             }
         }
-        catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e)
+        catch (Exception e/*NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e*/)
         {
-            e.printStackTrace();
-            throw new RuntimeException(e.getCause());
+            NotEnoughBlocks.logger.error("Failed to create Block for List<BlockJson> {} ", blocks, e);
+            //e.printStackTrace();
+            //throw new RuntimeException(e.getCause());
         }
     }
 

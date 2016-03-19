@@ -1,21 +1,21 @@
 {
     "variants": {
-        "east=false,metadata=#metadata,north=false,south=false,west=false": { "model": "notenoughblocks:fence_post", "parent": "notenoughblocks:blocks/fence_post" },
-        "east=false,metadata=#metadata,north=true,south=false,west=false": { "model": "notenoughblocks:fence_n", "parent": "notenoughblocks:blocks/fence_n", "uvlock": true },
-        "east=true,metadata=#metadata,north=false,south=false,west=false": { "model": "notenoughblocks:fence_n", "parent": "notenoughblocks:blocks/fence_n", "y": 90, "uvlock": true },
-        "east=false,metadata=#metadata,north=false,south=true,west=false": { "model": "notenoughblocks:fence_n", "parent": "notenoughblocks:blocks/fence_n", "y": 180, "uvlock": true },
-        "east=false,metadata=#metadata,north=false,south=false,west=true": { "model": "notenoughblocks:fence_n", "parent": "notenoughblocks:blocks/fence_n", "y": 270, "uvlock": true },
-        "east=true,metadata=#metadata,north=true,south=false,west=false": { "model": "notenoughblocks:fence_ne", "parent": "notenoughblocks:blocks/fence_ne", "uvlock": true },
-        "east=true,metadata=#metadata,north=false,south=true,west=false": { "model": "notenoughblocks:fence_ne", "parent": "notenoughblocks:blocks/fence_ne", "y": 90, "uvlock": true },
-        "east=false,metadata=#metadata,north=false,south=true,west=true": { "model": "notenoughblocks:fence_ne", "parent": "notenoughblocks:blocks/fence_ne", "y": 180, "uvlock": true },
-        "east=false,metadata=#metadata,north=true,south=false,west=true": { "model": "notenoughblocks:fence_ne", "parent": "notenoughblocks:blocks/fence_ne", "y": 270, "uvlock": true },
-        "east=false,metadata=#metadata,north=true,south=true,west=false": { "model": "notenoughblocks:fence_ns", "parent": "notenoughblocks:blocks/fence_ns", "uvlock": true },
-        "east=true,metadata=#metadata,north=false,south=false,west=true": { "model": "notenoughblocks:fence_ns", "parent": "notenoughblocks:blocks/fence_ns", "y": 90, "uvlock": true },
-        "east=true,metadata=#metadata,north=true,south=true,west=false": { "model": "notenoughblocks:fence_nse", "parent": "notenoughblocks:blocks/fence_nse", "uvlock": true },
-        "east=true,metadata=#metadata,north=false,south=true,west=true": { "model": "notenoughblocks:fence_nse", "parent": "notenoughblocks:blocks/fence_nse", "y": 90, "uvlock": true },
-        "east=false,metadata=#metadata,north=true,south=true,west=true": { "model": "notenoughblocks:fence_nse", "parent": "notenoughblocks:blocks/fence_nse", "y": 180, "uvlock": true },
-        "east=true,metadata=#metadata,north=true,south=false,west=true": { "model": "notenoughblocks:fence_nse", "parent": "notenoughblocks:blocks/fence_nse", "y": 270, "uvlock": true },
-        "east=true,metadata=#metadata,north=true,south=true,west=true": { "model": "notenoughblocks:fence_nsew", "parent": "notenoughblocks:blocks/fence_nsew", "uvlock": true },
-        "item,metadata=#metadata": { "model": "notenoughblocks:inventory/fence_inventory" }
+        "east=false,metadata=#metadata,north=false,south=false,west=false": { "model": "notenoughblocks:fence_post" },
+        "east=false,metadata=#metadata,north=true,south=false,west=false":  { "model": "notenoughblocks:fence_n", "uvlock": true },
+        "east=true,metadata=#metadata,north=false,south=false,west=false":  { "model": "notenoughblocks:fence_n", "y": 90, "uvlock": true },
+        "east=false,metadata=#metadata,north=false,south=true,west=false":  { "model": "notenoughblocks:fence_n", "y": 180, "uvlock": true },
+        "east=false,metadata=#metadata,north=false,south=false,west=true":  { "model": "notenoughblocks:fence_n", "y": 270, "uvlock": true },
+        "east=true,metadata=#metadata,north=true,south=false,west=false":   { "model": "notenoughblocks:fence_ne", "uvlock": true },
+        "east=true,metadata=#metadata,north=false,south=true,west=false":   { "model": "notenoughblocks:fence_ne", "y": 90, "uvlock": true },
+        "east=false,metadata=#metadata,north=false,south=true,west=true":   { "model": "notenoughblocks:fence_ne", "y": 180, "uvlock": true },
+        "east=false,metadata=#metadata,north=true,south=false,west=true":   { "model": "notenoughblocks:fence_ne", "y": 270, "uvlock": true },
+        "east=false,metadata=#metadata,north=true,south=true,west=false":   { "model": "notenoughblocks:fence_ns", "uvlock": true },
+        "east=true,metadata=#metadata,north=false,south=false,west=true":   { "model": "notenoughblocks:fence_ns", "y": 90, "uvlock": true },
+        "east=true,metadata=#metadata,north=true,south=true,west=false":    { "model": "notenoughblocks:fence_nse", "uvlock": true },
+        "east=true,metadata=#metadata,north=false,south=true,west=true":    { "model": "notenoughblocks:fence_nse", "y": 90, "uvlock": true },
+        "east=false,metadata=#metadata,north=true,south=true,west=true":    { "model": "notenoughblocks:fence_nse", "y": 180, "uvlock": true },
+        "east=true,metadata=#metadata,north=true,south=false,west=true":    { "model": "notenoughblocks:fence_nse", "y": 270, "uvlock": true },
+        "east=true,metadata=#metadata,north=true,south=true,west=true":     { "model": "notenoughblocks:fence_nsew", "uvlock": true },
+        "item,metadata=#metadata":                                          { "model": "notenoughblocks:inventory/fence_inventory" }
     }
 }

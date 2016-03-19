@@ -224,7 +224,7 @@ public class Blocks
         blockList.add(new BlockJson().displayName("Lily Pad").shape("lilypad").material("plants").hardness(0.0F).stepSound("grass").renderColor(4764952 /*TODO: Default this to use Blocks.lilypad.getRenderColor(...)*/).textures("all: waterlily"));
         blockList.add(tmp = new BlockJson().displayName("Nether Brick").hardness(2.0F).resistance(10.0F).stepSound("piston").textures("all: nether_brick"));
         blockList.add(new BlockJson().displayName("Nether Brick Fence").parent(tmp).shape("fence").textures("all: nether_brick"));
-        blockList.add(new BlockJson().displayName("Nether Brick Slab").parent(tmp).shape("slab").textures("all: nether_brick"));
+        //blockList.add(new BlockJson().displayName("Nether Brick Slab").parent(tmp).shape("slab").textures("all: nether_brick"));
         blockList.add(new BlockJson().displayName("Nether Brick Stairs").parent(tmp).shape("stair").opaque(false).textures("all: nether_brick"));
         // Nether Wart
         blockList.add(new BlockJson().displayName("Enchanting Table").shape("enchanting_table").hardness(5.0F).resistance(2000.0F).textures("down: enchanting_table_bottom, up: enchanting_table_top, allSides: enchanting_table_side")); // TODO: Implement

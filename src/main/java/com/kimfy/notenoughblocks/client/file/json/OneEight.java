@@ -330,7 +330,7 @@ public class OneEight
             {
                 for (Map.Entry<String, Object> variant : templateVariants.entrySet())
                 {
-                    if (variant.getValue() instanceof List) // "metadata=#metadata": [{}]
+                    if (variant.getValue() instanceof List) // If it's a List it means the variant has some randomization to the model. E.g sand, gravel
                     {
                         List<Map<String, Object>> variantList = (List<Map<String, Object>>) variant.getValue();
                         for (Map<String, Object> map : variantList)

@@ -1,9 +1,6 @@
 {
     "variants": {
-        "metadata=#metadata":
-        {
-            "model": "notenoughblocks:brewing_stand_empty"
-        },
+        "metadata=#metadata":      { "model": "notenoughblocks:brewing_stand_empty" },
         "item,metadata=#metadata": { "model": "notenoughblocks:inventory/brewing_stand_inventory" }
     }
 }

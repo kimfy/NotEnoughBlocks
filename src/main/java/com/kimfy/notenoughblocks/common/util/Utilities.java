@@ -1,15 +1,10 @@
 package com.kimfy.notenoughblocks.common.util;
 
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
-import lombok.Getter;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockPressurePlate;
-import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import org.apache.commons.lang3.SerializationUtils;
 

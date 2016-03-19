@@ -4,13 +4,10 @@ import com.kimfy.notenoughblocks.common.file.json.BlockJson;
 import lombok.experimental.Delegate;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.item.Item;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -26,8 +23,6 @@ public class NEBBlockDoor extends BlockDoor implements IBlockProperties
     {
         super(materialIn);
         this.agent = new BlockAgent<>(this, data);
-        // Tells our blockstate model that we do not have to specify the POWERED property
-        ModelLoader.setCustomStateMapper(this, new StateMap.Builder().ignore(new IProperty[]{POWERED}).build());
     }
 
     @Override

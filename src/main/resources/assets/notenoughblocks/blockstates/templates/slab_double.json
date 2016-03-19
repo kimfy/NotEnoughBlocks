@@ -1,11 +1,5 @@
 {
 	"variants": {
-		"metadata=#metadata": {
-        	"model": "cube",
-		    "parent": "block/cube",
-		    "textures": {
-		    	
-		    }
-		}
+		"metadata=#metadata": { "model": "cube" }
 	}
 }

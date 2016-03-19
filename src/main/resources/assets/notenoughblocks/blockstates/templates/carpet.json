@@ -1,6 +1,6 @@
 {
 	"variants": {
-		"metadata=#metadata": { "model": "notenoughblocks:carpet", "parent": "notenoughblocks:block/carpet" },
+		"metadata=#metadata":      { "model": "notenoughblocks:carpet" },
 		"item,metadata=#metadata": { "model": "notenoughblocks:inventory/carpet_inventory" }
 	}
 }

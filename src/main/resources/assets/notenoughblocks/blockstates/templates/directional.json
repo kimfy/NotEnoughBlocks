@@ -4,6 +4,6 @@
         "facing=south": { "model": "notenoughblocks:directional", "y": 180 },
         "facing=west":  { "model": "notenoughblocks:directional", "y": 270 },
         "facing=east":  { "model": "notenoughblocks:directional", "y": 90 },
-        "item": { "model": "notenoughblocks:inventory/directional_inventory" }
+        "item":         { "model": "notenoughblocks:inventory/directional_inventory" }
     }
 }

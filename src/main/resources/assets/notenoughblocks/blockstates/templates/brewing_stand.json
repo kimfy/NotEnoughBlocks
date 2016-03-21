@@ -1,6 +1,9 @@
 {
     "variants": {
-        "metadata=#metadata":      { "model": "notenoughblocks:brewing_stand_empty" },
-        "item,metadata=#metadata": { "model": "notenoughblocks:inventory/brewing_stand_inventory" }
+        "bottles=0,metadata=#metadata": { "model": "notenoughblocks:brewing_stand_empty" },
+        "bottles=1,metadata=#metadata": { "model": "notenoughblocks:brewing_stand_bottles_1" },
+        "bottles=2,metadata=#metadata": { "model": "notenoughblocks:brewing_stand_bottles_12" },
+        "bottles=3,metadata=#metadata": { "model": "notenoughblocks:brewing_stand_bottles_123" },
+        "item,metadata=#metadata":      { "model": "notenoughblocks:inventory/brewing_stand_inventory" }
     }
 }

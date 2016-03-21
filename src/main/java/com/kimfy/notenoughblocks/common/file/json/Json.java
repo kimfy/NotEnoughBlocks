@@ -1,29 +1,22 @@
 package com.kimfy.notenoughblocks.common.file.json;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.kimfy.notenoughblocks.common.util.Constants;
+import com.google.gson.GsonBuilder;
+import com.kimfy.notenoughblocks.NotEnoughBlocks;
 import lombok.Getter;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+@Getter
 public class Json
 {
     private File file;
-    @Getter
     private List<BlockJson> blocks = new ArrayList<>();
-    private Gson gson = new Gson();
-    @Getter
 	private String name;
-    public Logger logger = LogManager.getLogger(Constants.MOD_NAME);
     
     public Json(File file, String name)
     {
@@ -37,25 +30,23 @@ public class Json
      * serializer I'd put in more error handling but that'll have to
      * come at a later stage.
      */
+    @SuppressWarnings("ALL")
     public void read()
     {
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(Map.class, new ModJsonDeserializer());
+        Gson gson = gsonBuilder.create();
+
         try
         {
             FileReader fileReader = new FileReader(file);
-            Map<String, List<BlockJson>> temp;
-            Type type = new TypeToken<Map<String, List<BlockJson>>>(){}.getType();
-            temp = gson.fromJson(fileReader, type);
-            blocks = temp.get("blocks");
-
-            //if (name.equals("Developer"))
-            //{
-            //    Gson builder = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-            //    NotEnoughBlocks.logger.info("\nDeveloper.json: \n" + builder.toJson(temp, type));
-            //}
+            Map json = gson.<Map>fromJson(fileReader, Map.class);
+            blocks = (List<BlockJson>) json.get("blocks");
         }
-        catch (FileNotFoundException e)
+        catch (Exception e)
         {
-            e.printStackTrace();
+            NotEnoughBlocks.logger.error("Something went really wrong when parsing {}!", file.getName(), e);
         }
+        return;
     }
 }

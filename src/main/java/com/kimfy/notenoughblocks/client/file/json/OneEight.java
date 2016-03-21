@@ -88,6 +88,11 @@ public class OneEight
 
     public static void registerItemModels()
     {
+        if (blocks == null || blocks.isEmpty())
+        {
+            NotEnoughBlocks.logger.error("Cannot register item models. No blocks from NotEnoughBlocks present!");
+            return;
+        }
         //logger.info("[NEB]: registerItemModels()");
         if (blockstateFolder.listFiles().length >= 1)
         {
@@ -157,17 +162,6 @@ public class OneEight
         }
     }
 
-    /*
-     * Input may be: registerItem(item, 0, MRL("conquest1.8-32_cube_1", "metadata=0"));
-     * Input may be: registerItem(item, 1, MRL("conquest1.8-32_cube_1", "metadata=1"));
-     * Input may be: registerItem(item, 2, MRL("conquest1.8-32_cube_1", "metadata=2"));
-     *
-     * First one will register item with metadata 0 with the MRL of the blockstate
-      * and variant metadata=0. I don't think I can generify it more than that. idk
-      *
-      * This registers the Item render to the game so that we have textures for
-      * items.
-     */
     private static void registerItem(Item item, int metadata, ModelResourceLocation mrl)
     {
         ModelLoader.setCustomModelResourceLocation(item, metadata, mrl);
@@ -419,12 +413,6 @@ public class OneEight
         }
     }
 
-    /*
-        Returns: "variants": { k: v, k: v, k: v} etc
-
-        Input: Map.get("variants")
-        Returns Map where the metadata has been replaced with the real metadata
-     */
     private static Map<String, Object> getTemplateVariants(Map<String, Object> variants, int metadata)
     {
         Map<String, Object> ret = new LinkedHashMap<>(32);
@@ -433,7 +421,6 @@ public class OneEight
         {
             String key = entry.getKey();
             Object val = entry.getValue();
-            //logger.info("Copying: " + key);
             ret.put(key.replace("#metadata", String.valueOf(metadata)), val);
         }
         return ret;

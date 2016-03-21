@@ -7,6 +7,7 @@ import com.kimfy.notenoughblocks.NotEnoughBlocks;
 import com.kimfy.notenoughblocks.common.file.FileManager;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
 import com.kimfy.notenoughblocks.common.file.json.Blocks;
+import com.kimfy.notenoughblocks.common.file.json.ModJsonSerializer;
 import com.kimfy.notenoughblocks.common.util.Constants;
 import com.kimfy.notenoughblocks.common.util.FileUtilities;
 import com.kimfy.notenoughblocks.common.util.Utilities;
@@ -184,24 +185,40 @@ public class ResourcePack
             {
                 if (temp.createNewFile())
                 {
-                    /* Write to it */
-                    Map<String, List<BlockJson>> blockMap = new LinkedHashMap<>();
-                    blockMap.put("blocks", blocks);
-                    Gson gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();
-
-                    try
+                    boolean developer = true;
+                    if (developer)
                     {
+                        GsonBuilder gsonBuilder = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting();
+                        gsonBuilder.registerTypeAdapter(BlockJson.class, new ModJsonSerializer());
+                        Gson gson = gsonBuilder.create();
+
+                        Map<String, List<BlockJson>> resourcePackMap = new LinkedHashMap<>(1);
+                        resourcePackMap.put("blocks", blocks);
+
                         FileWriter fileWriter = new FileWriter(temp);
-                        String toWrite = gson.toJson(blockMap);
-                        fileWriter.write(toWrite);
+                        fileWriter.write(gson.toJson(resourcePackMap));
                         fileWriter.flush();
                         fileWriter.close();
                     }
-                    catch (IOException e)
-                    {
-                        logger.error("Something went wrong when writing to json file for " + name);
-                        e.printStackTrace();
-                    }
+
+                    /* Write to it */
+                    //Map<String, List<BlockJson>> blockMap = new LinkedHashMap<>();
+                    //blockMap.put("blocks", blocks);
+                    //Gson gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();
+
+                    //try
+                    //{
+                    //    FileWriter fileWriter = new FileWriter(temp);
+                    //    String toWrite = gson.toJson(blockMap);
+                    //    fileWriter.write(toWrite);
+                    //    fileWriter.flush();
+                    //    fileWriter.close();
+                    //}
+                    //catch (IOException e)
+                    //{
+                    //    logger.error("Something went wrong when writing to json file for " + name);
+                    //    e.printStackTrace();
+                    //}
                 }
                 else
                 {

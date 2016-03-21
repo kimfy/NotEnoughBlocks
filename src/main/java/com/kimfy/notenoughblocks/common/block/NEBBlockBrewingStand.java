@@ -5,7 +5,7 @@ import com.kimfy.notenoughblocks.common.file.json.BlockJson;
 import lombok.experimental.Delegate;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -22,6 +22,7 @@ import java.util.Random;
 
 public class NEBBlockBrewingStand extends Block implements IBlockProperties
 {
+    public static final PropertyInteger BOTTLE_LEVEL = PropertyInteger.create("bottles", 0, 3);
     private final ModPropertyInteger VARIANT;
     private final BlockState BLOCKSTATE_REAL;
 
@@ -35,13 +36,13 @@ public class NEBBlockBrewingStand extends Block implements IBlockProperties
 
         int blockCount = data.size();
         this.VARIANT = ModPropertyInteger.create("metadata", blockCount);
-        this.BLOCKSTATE_REAL = createRealBlockState(VARIANT);
+        this.BLOCKSTATE_REAL = createRealBlockState();
         this.setupStates();
     }
 
     private void setupStates()
     {
-        IBlockState blockState = getBlockState().getBaseState().withProperty(VARIANT, 0);
+        IBlockState blockState = getBlockState().getBaseState().withProperty(VARIANT, 0).withProperty(BOTTLE_LEVEL, 0);
         this.setDefaultState(blockState);
     }
 
@@ -51,9 +52,9 @@ public class NEBBlockBrewingStand extends Block implements IBlockProperties
         return this.BLOCKSTATE_REAL;
     }
 
-    private BlockState createRealBlockState(ModPropertyInteger property)
+    private BlockState createRealBlockState()
     {
-        return new BlockState(this, new IProperty[]{ property });
+        return new BlockState(this, VARIANT, BOTTLE_LEVEL);
     }
 
     @Override

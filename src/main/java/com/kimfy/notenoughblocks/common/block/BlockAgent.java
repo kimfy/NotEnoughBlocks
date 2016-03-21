@@ -10,6 +10,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -24,11 +25,6 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
     int blockCount;
     private final Shape blockShape;
 
-    /**
-     * If data is needed when constructing a block, this constructor should be used
-     * @param block
-     * @param data
-     */
     public BlockAgent(T block, List<BlockJson> data)
     {
         this.block = block;
@@ -52,9 +48,9 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
     /**
      * Return true from this function if the player with silk touch can harvest this block directly, and not it's normal drops.
      *
-     * @param world The world
-     * @param pos Block position in world
-     * @param state current block state
+     * @param world  The world
+     * @param pos    Block position in world
+     * @param state  current block state
      * @param player The player doing the harvesting
      * @return True if the block can be directly harvested using silk touch
      */
@@ -62,6 +58,19 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
     {
         int metadata = world.getBlockState(pos).getBlock().getDamageValue(world, pos);
         return getData().get(metadata).isSilkTouch(); // This should be safe, as long as all damageDropped methods are valid and legal
+    }
+
+    /**
+     * Determines if this block can be used as the base of a beacon.
+     *
+     * @param worldObj The current world
+     * @param pos      Block position in world
+     * @param beacon   Beacon position in world
+     * @return True, to support the beacon, and make it active with this block.
+     */
+    public boolean isBeaconBase(IBlockAccess worldObj, BlockPos pos, BlockPos beacon)
+    {
+        return getModelBlock().isBeaconBase();
     }
 
     @Getter

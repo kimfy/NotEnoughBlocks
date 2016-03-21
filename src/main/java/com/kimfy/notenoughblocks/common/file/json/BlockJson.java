@@ -11,6 +11,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockPressurePlate;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemStack;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -25,13 +26,10 @@ public class BlockJson implements Serializable
     public String displayName               = "displayName";
     public transient String unlocalizedName = null;
 
-    public Map<String, String> textures = new LinkedHashMap<>();
-    public String drop                  = null;
-    public List<String> drops           = null;
-    public String lore                  = null;
-    public List<String> lores           = null;
-    public String oreDict               = null;
-    public List<String> oreDicts        = null;
+    public Map<String, String> textures   = new LinkedHashMap<>();
+    public transient List<ItemStack> drop = null;
+    public List<String> lore              = null;
+    public List<String> oreDict           = null;
 
     /* Block Specific Properties  */
     public int maxStackSize           = 64;
@@ -206,6 +204,12 @@ public class BlockJson implements Serializable
         return this;
     }
 
+    public BlockJson textures(Map<String, String> textures)
+    {
+        this.textures = textures;
+        return this;
+    }
+
     /**
      * Turns a String of a key-value look into a map. Allows for
      * nested variables referencing keys. However, you cannot reference
@@ -312,54 +316,6 @@ public class BlockJson implements Serializable
     public BlockJson isDeadBush(boolean deadBush)
     {
         isDeadBush = deadBush;
-        return this;
-    }
-
-    public BlockJson drop(String drop)
-    {
-        this.drop = drop;
-        return this;
-    }
-
-    public BlockJson drops(List<String> drops)
-    {
-        this.drops = drops;
-        return this;
-    }
-
-    public BlockJson lore(String lore)
-    {
-        this.lore = lore;
-        return this;
-    }
-
-    public BlockJson lores(List<String> lores)
-    {
-        this.lores = lores;
-        return this;
-    }
-
-    public BlockJson oreDict(String oreDict)
-    {
-        this.oreDict = oreDict;
-        return this;
-    }
-
-    public BlockJson oreDicts(List<String> oreDicts)
-    {
-        this.oreDicts = oreDicts;
-        return this;
-    }
-
-    public BlockJson maxStackSize(int maxStackSize)
-    {
-        this.maxStackSize = maxStackSize;
-        return this;
-    }
-
-    public BlockJson creativeTab(String creativeTab)
-    {
-        this.creativeTab = creativeTab;
         return this;
     }
 
@@ -547,6 +503,12 @@ public class BlockJson implements Serializable
         return this;
     }
 
+    public BlockJson drop(List<ItemStack> drop)
+    {
+        this.drop = drop;
+        return this;
+    }
+
     /* ========== Getters ========== */
 
     public String getShape()
@@ -572,6 +534,11 @@ public class BlockJson implements Serializable
     public boolean needsColoring()
     {
         return needsColoring;
+    }
+
+    public List<ItemStack> getDrop()
+    {
+        return this.drop;
     }
 }
 

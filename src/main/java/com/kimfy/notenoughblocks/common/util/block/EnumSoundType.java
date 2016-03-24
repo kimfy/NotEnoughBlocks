@@ -1,27 +1,28 @@
 package com.kimfy.notenoughblocks.common.util.block;
 
 import lombok.Getter;
-import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 
 @Getter
 public enum EnumSoundType
 {
-    STONE(Block.soundTypeStone),
-    WOOD(Block.soundTypeWood),
-    GRAVEL(Block.soundTypeGravel),
-    GRASS(Block.soundTypeGrass),
-    PISTON(Block.soundTypePiston),
-    METAL(Block.soundTypeMetal),
-    GLASS(Block.soundTypeGlass),
-    CLOTH(Block.soundTypeCloth),
-    SAND(Block.soundTypeSand),
-    SNOW(Block.soundTypeSnow),
-    LADDER(Block.soundTypeLadder),
-    ANVIL(Block.soundTypeAnvil);
+    STONE(SoundType.STONE),
+    WOOD(SoundType.WOOD),
+    GRAVEL(SoundType.GROUND), // was soundTypeGravel
+    GRASS(SoundType.GROUND), // was soundTypeGrass
+    PLANT(SoundType.PLANT),
+    PISTON(SoundType.STONE),
+    METAL(SoundType.METAL),
+    GLASS(SoundType.GLASS),
+    CLOTH(SoundType.CLOTH),
+    SAND(SoundType.SAND),
+    SNOW(SoundType.SNOW),
+    LADDER(SoundType.LADDER),
+    ANVIL(SoundType.ANVIL);
 
-    private Block.SoundType soundType;
+    private SoundType soundType;
 
-    EnumSoundType(Block.SoundType soundType)
+    EnumSoundType(SoundType soundType)
     {
         this.soundType = soundType;
     }

@@ -9,21 +9,12 @@ import java.util.List;
 
 public class NEBBlockDirectional extends BlockPumpkin implements IBlockProperties
 {
-    private final Material blockMaterial;
-
     @Delegate
     private final BlockAgent<NEBBlockDirectional> agent;
 
     public NEBBlockDirectional(Material material, List<BlockJson> data)
     {
         super();
-        this.blockMaterial = material;
         this.agent = new BlockAgent<>(this, data);
-    }
-
-    @Override
-    public Material getMaterial()
-    {
-        return this.blockMaterial;
     }
 }

@@ -6,15 +6,15 @@ import lombok.experimental.Delegate;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
 import java.util.List;
@@ -66,11 +66,11 @@ public abstract class NEBBlockSlab extends BlockSlab implements IBlockProperties
         return VARIANT;
     }
 
-    @Override
-    public Object getVariant(ItemStack stack)
-    {
-        return stack.getMetadata() & 7;
-    }
+    //@Override
+    //public Object getVariant(ItemStack stack)
+    //{
+    //    return stack.getMetadata() & 7;
+    //}
 
     @Override
     public IBlockState getStateFromMeta(int meta)
@@ -100,22 +100,22 @@ public abstract class NEBBlockSlab extends BlockSlab implements IBlockProperties
     }
 
     @Override
-    protected BlockState createBlockState()
+    protected BlockStateContainer createBlockState()
     {
         //return this.isDouble() ? new BlockState(this, new IProperty[] {BlockStoneSlab.SEAMLESS, VARIANT}) : new BlockState(this, new IProperty[] {HALF, VARIANT});
         return Blocks.air.getBlockState();
     }
 
-    private BlockState createRealBlockState()
+    private BlockStateContainer createRealBlockState()
     {
         //return this.isDouble() ? new BlockState(this, new IProperty[] {BlockStoneSlab.SEAMLESS, VARIANT}) : new BlockState(this, new IProperty[] {HALF, VARIANT});
-        return this.isDouble() ? new BlockState(this, new IProperty[] {VARIANT}): new BlockState(this, new IProperty[] {HALF, VARIANT});
+        return this.isDouble() ? new BlockStateContainer(this, VARIANT): new BlockStateContainer(this, HALF, VARIANT);
     }
 
-    private BlockState blockStateReal;
+    private BlockStateContainer blockStateReal;
 
     @Override
-    public BlockState getBlockState()
+    public BlockStateContainer getBlockState()
     {
         return blockStateReal;
     }
@@ -143,8 +143,14 @@ public abstract class NEBBlockSlab extends BlockSlab implements IBlockProperties
     }
 
     @Override
-    public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos, EntityPlayer player)
+    public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
     {
         return new ItemStack(this, 1, getMetaFromState(world.getBlockState(pos)));
+    }
+
+    @Override
+    public Comparable<?> getTypeForItem(ItemStack stack)
+    {
+        return stack.getMetadata() & 7;
     }
 }

@@ -5,12 +5,8 @@ import lombok.experimental.Delegate;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.world.IBlockAccess;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
@@ -23,9 +19,9 @@ public class NEBBlockCarpet extends NEBBlock implements IBlockProperties
     {
         super(material, data);
         this.agent = new BlockAgent<>(this, data);
-        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0625F, 1.0F);
+        //this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0625F, 1.0F);
         this.setTickRandomly(true);
-        this.setBlockBoundsFromMeta(0);
+        //this.setBlockBoundsFromMeta(0);
     }
 
     /**
@@ -43,22 +39,22 @@ public class NEBBlockCarpet extends NEBBlock implements IBlockProperties
     /**
      * Sets the block's bounds for rendering it as an item
      */
-    public void setBlockBoundsForItemRender()
-    {
-        this.setBlockBoundsFromMeta(0);
-    }
+    //public void setBlockBoundsForItemRender()
+    //{
+    //    this.setBlockBoundsFromMeta(0);
+    //}
 
-    public void setBlockBoundsBasedOnState(IBlockAccess worldIn, BlockPos pos)
-    {
-        this.setBlockBoundsFromMeta(0);
-    }
+    //public void setBlockBoundsBasedOnState(IBlockAccess worldIn, BlockPos pos)
+    //{
+    //    this.setBlockBoundsFromMeta(0);
+    //}
 
-    protected void setBlockBoundsFromMeta(int meta)
-    {
-        int i = 0;
-        float f = (float)(1 * (1 + i)) / 16.0F;
-        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, f, 1.0F);
-    }
+    //protected void setBlockBoundsFromMeta(int meta)
+    //{
+    //    int i = 0;
+    //    float f = (float)(1 * (1 + i)) / 16.0F;
+    //    this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, f, 1.0F);
+    //}
 
     public boolean canPlaceBlockAt(World worldIn, BlockPos pos)
     {
@@ -91,11 +87,11 @@ public class NEBBlockCarpet extends NEBBlock implements IBlockProperties
         return !worldIn.isAirBlock(pos.down());
     }
 
-    @SideOnly(Side.CLIENT)
-    public boolean shouldSideBeRendered(IBlockAccess worldIn, BlockPos pos, EnumFacing side)
-    {
-        return side == EnumFacing.UP || super.shouldSideBeRendered(worldIn, pos, side);
-    }
+    //@SideOnly(Side.CLIENT)
+    //public boolean shouldSideBeRendered(IBlockAccess worldIn, BlockPos pos, EnumFacing side)
+    //{
+    //    return side == EnumFacing.UP || super.shouldSideBeRendered(worldIn, pos, side);
+    //}
 
     /**
      * Gets the metadata of the item this Block can drop. This method is called when the block gets destroyed. It

@@ -6,13 +6,13 @@ import lombok.experimental.Delegate;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
 import java.util.List;
@@ -20,7 +20,7 @@ import java.util.List;
 public class NEBBlockFalling extends BlockFalling implements IBlockProperties
 {
     private final ModPropertyInteger VARIANT;
-    private final BlockState BLOCKSTATE_REAL;
+    private final BlockStateContainer BLOCKSTATE_REAL;
 
     @Delegate
     private final BlockAgent<NEBBlockFalling> agent;
@@ -44,18 +44,18 @@ public class NEBBlockFalling extends BlockFalling implements IBlockProperties
     }
 
     @Override
-    public BlockState getBlockState()
+    public BlockStateContainer getBlockState()
     {
         return this.BLOCKSTATE_REAL;
     }
 
-    private BlockState createRealBlockState()
+    private BlockStateContainer createRealBlockState()
     {
-        return new BlockState(this, new IProperty[]{ VARIANT });
+        return new BlockStateContainer(this, new IProperty[]{ VARIANT });
     }
 
     @Override
-    protected BlockState createBlockState()
+    protected BlockStateContainer createBlockState()
     {
         return Blocks.air.getBlockState();
     }
@@ -79,7 +79,7 @@ public class NEBBlockFalling extends BlockFalling implements IBlockProperties
     }
 
     @Override
-    public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos, EntityPlayer player)
+    public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
     {
         return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)));
     }

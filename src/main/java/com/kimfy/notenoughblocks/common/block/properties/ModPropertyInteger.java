@@ -1,8 +1,11 @@
 package com.kimfy.notenoughblocks.common.block.properties;
 
+import com.google.common.base.Optional;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
 import net.minecraft.block.properties.PropertyHelper;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Collection;
 import java.util.Set;
@@ -82,5 +85,20 @@ public class ModPropertyInteger extends PropertyHelper<Integer>
     public static ModPropertyInteger create(String name, int subBlocks)
     {
         return new ModPropertyInteger(name, subBlocks);
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public Optional<Integer> parseValue(String value)
+    {
+        try
+        {
+            Integer integer = Integer.valueOf(value);
+            return this.allowedValues.contains(integer) ? Optional.of(integer) : Optional.<Integer>absent();
+        }
+        catch (NumberFormatException nfe)
+        {
+            return Optional.<Integer>absent();
+        }
     }
 }

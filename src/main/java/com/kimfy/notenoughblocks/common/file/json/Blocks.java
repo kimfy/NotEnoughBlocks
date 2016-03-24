@@ -20,7 +20,7 @@ public class Blocks
         blockList.add(rock = new BlockJson().displayName("Stone").hardness(1.5F).resistance(10.0F).textures("all: stone"));
         blockList.add(new BlockJson().displayName("Cobblestone").parent(rock).textures("all: cobblestone"));
         blockList.add(new BlockJson().displayName("Mossy Cobblestone").parent(rock).textures("all: cobblestone_mossy"));
-        blockList.add(new BlockJson().displayName("Grass Block").shape("grass").material("grass").stepSound("grass").canBlockGrass(true).textures("particle: dirt, down: dirt, up: grass_top, allSides: grass_side, overlay: grass_side_overlay, snowed: grass_side_snowed"));
+        blockList.add(new BlockJson().displayName("Grass Block").shape("grass").material("grass").stepSound("plant").canBlockGrass(true).textures("particle: dirt, down: dirt, up: grass_top, allSides: grass_side, overlay: grass_side_overlay, snowed: grass_side_snowed"));
         blockList.add(dirt = new BlockJson().displayName("Dirt").material("ground").stepSound("gravel").textures("all: dirt"));
         blockList.add(new BlockJson().displayName("Podzol").parent(dirt).textures("particle: dirt, down: dirt, up: dirt_podzol_top, allSides: dirt_podzol_side"));
         blockList.add(tmp = new BlockJson().displayName("Oak Wood Planks").material("wood").stepSound("wood").textures("all: planks_oak"));
@@ -95,7 +95,7 @@ public class Blocks
         blockList.add(new BlockJson().displayName("Green Wool").parent(tmp).textures("all: wool_colored_green"));
         blockList.add(new BlockJson().displayName("Red Wool").parent(tmp).textures("all: wool_colored_red"));
         blockList.add(new BlockJson().displayName("Black Wool").parent(tmp).textures("all: wool_colored_black"));
-        blockList.add(tmp = new BlockJson().displayName("Dandelion").shape("flower").hardness(0.0F).stepSound("grass").textures("cross: flower_dandelion"));
+        blockList.add(tmp = new BlockJson().displayName("Dandelion").shape("flower").hardness(0.0F).stepSound("plant").textures("cross: flower_dandelion"));
         blockList.add(new BlockJson().displayName("Poppy").parent(tmp).textures("cross: flower_rose"));
         blockList.add(new BlockJson().displayName("Blue Orchid").parent(tmp).textures("cross: flower_blue_orchid"));
         blockList.add(new BlockJson().displayName("Allium").parent(tmp).textures("cross: flower_allium"));
@@ -304,7 +304,7 @@ public class Blocks
         blockList.add(new BlockJson().displayName("Black Carpet").parent(tmp).textures("all: wool_colored_black"));
         blockList.add(new BlockJson().displayName("Hardened Clay").textures("all: hardened_clay"));
         blockList.add(new BlockJson().displayName("Packed Ice").material("packed_ice").hardness(0.5F).slipperiness(0.98F).stepSound("glass").textures("all: ice_packed"));
-        blockList.add(tmp = new BlockJson().displayName("Sunflower").shape("double_plant").sunflower(true).material("plants").hardness(0.0F).stepSound("grass").textures("bottom: double_plant_sunflower_bottom, top: double_plant_sunflower_top, front: double_plant_sunflower_front, back: double_plant_sunflower_back"));
+        blockList.add(tmp = new BlockJson().displayName("Sunflower").shape("double_plant").sunflower(true).material("plants").hardness(0.0F).stepSound("plant").textures("bottom: double_plant_sunflower_bottom, top: double_plant_sunflower_top, front: double_plant_sunflower_front, back: double_plant_sunflower_back"));
         blockList.add(new BlockJson().displayName("Lilac").parent(tmp).textures("bottom: double_plant_syringa_bottom, top: double_plant_syringa_top"));
         blockList.add(new BlockJson().displayName("Double Tallgrass").parent(tmp).needsColoring(true).textures("bottom: double_plant_grass_bottom, top: double_plant_grass_top"));
         blockList.add(new BlockJson().displayName("Large Fern").parent(tmp).needsColoring(true).textures("bottom: double_plant_fern_bottom, top: double_plant_fern_top"));

@@ -1,5 +1,6 @@
 package com.kimfy.notenoughblocks.common.file.json;
 
+import com.kimfy.notenoughblocks.common.block.IBlockProperties;
 import com.kimfy.notenoughblocks.common.file.FileManager;
 import com.kimfy.notenoughblocks.common.integration.Chisel;
 import com.kimfy.notenoughblocks.common.util.block.EnumCreativeTab;
@@ -7,18 +8,16 @@ import com.kimfy.notenoughblocks.common.util.block.EnumMaterial;
 import com.kimfy.notenoughblocks.common.util.block.EnumSoundType;
 import com.kimfy.notenoughblocks.common.util.block.Shape;
 import lombok.Getter;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockPressurePlate;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 
 import java.io.Serializable;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Getter
 public class BlockJson implements Serializable
@@ -117,9 +116,9 @@ public class BlockJson implements Serializable
         return realMaterial;
     }
 
-    private transient Block.SoundType realSoundType;
+    private transient SoundType realSoundType;
 
-    public Block.SoundType getRealSoundType()
+    public SoundType getRealSoundType()
     {
         if (this.realSoundType == null)
         {
@@ -539,6 +538,18 @@ public class BlockJson implements Serializable
     public List<ItemStack> getDrop()
     {
         return this.drop;
+    }
+
+    /* ========== HELPER METHODS ========== */
+
+    public static List<String> getDisplayNamesFromBlocks(List<BlockJson> blocks)
+    {
+        return blocks.stream().map(BlockJson::getDisplayName).collect(Collectors.toCollection(ArrayList<String>::new));
+    }
+
+    public static List<String> getDisplayNamesFromBlock(IBlockProperties block)
+    {
+        return getDisplayNamesFromBlocks(block.getData());
     }
 }
 

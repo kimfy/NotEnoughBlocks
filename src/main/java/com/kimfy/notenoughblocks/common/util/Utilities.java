@@ -31,22 +31,6 @@ public class Utilities
     }
 
     /**
-     * Checks if the player is holding the given Item and that it's got the same metadata
-     * @param player The player
-     * @param item The item to check for
-     * @param metadata The metadata value of the item to check agians
-     * @return True if player is holding it and false if not
-     */
-    public static boolean playerIsHoldingItemWithMetadata(EntityPlayer player, Item item, int metadata)
-    {
-        if (item != null && metadata >= 0)
-        {
-            return player.getHeldItem().getItem() == item && player.getHeldItem().getItemDamage() == metadata;
-        }
-        return false;
-    }
-
-    /**
      * Checks what mod this item belongs to
      * @param item The item to perform this action on
      * @return the modId or 'minecraft' if the item given was not registered properly

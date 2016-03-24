@@ -1,5 +1,6 @@
 package com.kimfy.notenoughblocks.common.file.json;
 
+import com.google.common.collect.Lists;
 import com.kimfy.notenoughblocks.NotEnoughBlocks;
 import com.kimfy.notenoughblocks.common.block.IBlockProperties;
 import com.kimfy.notenoughblocks.common.block.NEBBlockDoor;
@@ -12,13 +13,19 @@ import com.kimfy.notenoughblocks.common.util.block.Shape;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
+import net.minecraftforge.fml.common.network.handshake.ChannelRegistrationHandler;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.LanguageRegistry;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class JsonProcessor
 {
@@ -184,7 +191,7 @@ public class JsonProcessor
         }
         catch (Exception e)
         {
-            NotEnoughBlocks.logger.error("Failed to create Block for List<BlockJson> {} ", blocks, e);
+            NotEnoughBlocks.logger.error("Failed to create Block for Blocks {} ", BlockJson.getDisplayNamesFromBlocks(blocks), e);
         }
     }
 
@@ -195,7 +202,8 @@ public class JsonProcessor
 
         block.setUnlocalizedName(Constants.MOD_ID + ":" + unlocalizedName);
         block.setCreativeTab(model.getRealCreativeTab());
-        block.setStepSound(model.getRealSoundType());
+        block.setBlockSoundType(model.getRealSoundType());
+        block.setBlockMaterial(model.getRealMaterial());
         block.setHardness(model.getHardness());
         block.setResistance(model.getResistance());
         block.setLightLevel(model.getLightLevel());

@@ -5,8 +5,7 @@ import com.kimfy.notenoughblocks.common.file.json.BlockJson;
 import lombok.experimental.Delegate;
 import net.minecraft.block.BlockLog;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -17,7 +16,7 @@ import java.util.List;
 public class NEBBlockRotating extends BlockLog implements IBlockProperties
 {
     private final ModPropertyInteger VARIANT;
-    private final BlockState BLOCKSTATE_REAL;
+    private final BlockStateContainer BLOCKSTATE_REAL;
     private final Material material;
 
     @Delegate
@@ -35,11 +34,11 @@ public class NEBBlockRotating extends BlockLog implements IBlockProperties
         this.setupStates();
     }
 
-    @Override
-    public Material getMaterial()
-    {
-        return material;
-    }
+    //@Override
+    //public Material getMaterial()
+    //{
+    //    return material;
+    //}
 
     private void setupStates()
     {
@@ -48,18 +47,18 @@ public class NEBBlockRotating extends BlockLog implements IBlockProperties
     }
 
     @Override
-    public BlockState getBlockState()
+    public BlockStateContainer getBlockState()
     {
         return this.BLOCKSTATE_REAL;
     }
 
-    private BlockState createRealBlockState()
+    private BlockStateContainer createRealBlockState()
     {
-        return new BlockState(this, new IProperty[]{ LOG_AXIS, VARIANT });
+        return new BlockStateContainer(this, LOG_AXIS, VARIANT);
     }
 
     @Override
-    protected BlockState createBlockState()
+    protected BlockStateContainer createBlockState()
     {
         return Blocks.air.getBlockState();
     }

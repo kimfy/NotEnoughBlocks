@@ -4,9 +4,10 @@ import com.kimfy.notenoughblocks.common.block.properties.ModPropertyInteger;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
 import lombok.experimental.Delegate;
 import net.minecraft.block.BlockFence;
+import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 
@@ -15,14 +16,14 @@ import java.util.List;
 public class NEBBlockFence extends BlockFence implements IBlockProperties
 {
     private final ModPropertyInteger VARIANT;
-    private final BlockState BLOCKSTATE_REAL;
+    private final BlockStateContainer BLOCKSTATE_REAL;
 
     @Delegate
     private final BlockAgent<NEBBlockFence> agent;
 
     public NEBBlockFence(Material material, List<BlockJson> data)
     {
-        super(material);
+        super(material, MapColor.adobeColor); // TODO: 1.9
         this.agent = new BlockAgent<>(this, data);
 
         int blockCount = data.size();
@@ -43,18 +44,18 @@ public class NEBBlockFence extends BlockFence implements IBlockProperties
     }
 
     @Override
-    public BlockState getBlockState()
+    public BlockStateContainer getBlockState()
     {
         return this.BLOCKSTATE_REAL;
     }
 
-    private BlockState createRealBlockState()
+    private BlockStateContainer createRealBlockState()
     {
-        return new BlockState(this, new IProperty[]{ NORTH, EAST, SOUTH, WEST, VARIANT });
+        return new BlockStateContainer(this, new IProperty[]{ NORTH, EAST, SOUTH, WEST, VARIANT });
     }
 
     @Override
-    protected BlockState createBlockState()
+    protected BlockStateContainer createBlockState()
     {
         return Blocks.oak_fence.getBlockState();
     }

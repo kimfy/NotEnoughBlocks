@@ -22,9 +22,9 @@ public class NEBBlockFenceGate extends BlockFenceGate implements IBlockPropertie
         this.agent = new BlockAgent<>(this, data);
     }
 
-    @Override
-    public Material getMaterial()
-    {
-        return this.blockMaterial;
-    }
+    //@Override
+    //public Material getMaterial()
+    //{
+    //    return this.blockMaterial;
+    //}
 }

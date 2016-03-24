@@ -7,16 +7,13 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockGrass;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumWorldBlockLayer;
-import net.minecraft.world.ColorizerGrass;
+import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.BiomeColorHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -26,7 +23,7 @@ import java.util.Random;
 public class NEBBlockGrass extends Block implements IGrowable, IBlockProperties
 {
     private final ModPropertyInteger VARIANT;
-    private final BlockState BLOCKSTATE_REAL;
+    private final BlockStateContainer BLOCKSTATE_REAL;
 
     @Delegate
     private final BlockAgent<NEBBlockGrass> agent;
@@ -50,18 +47,18 @@ public class NEBBlockGrass extends Block implements IGrowable, IBlockProperties
     }
 
     @Override
-    public BlockState getBlockState()
+    public BlockStateContainer getBlockState()
     {
         return this.BLOCKSTATE_REAL;
     }
 
-    private BlockState createRealBlockState()
+    private BlockStateContainer createRealBlockState()
     {
-        return new BlockState(this, new IProperty[]{ BlockGrass.SNOWY, VARIANT });
+        return new BlockStateContainer(this, BlockGrass.SNOWY, VARIANT);
     }
 
     @Override
-    protected BlockState createBlockState()
+    protected BlockStateContainer createBlockState()
     {
         return Blocks.air.getBlockState();
     }
@@ -95,26 +92,26 @@ public class NEBBlockGrass extends Block implements IGrowable, IBlockProperties
         return state.withProperty(BlockGrass.SNOWY, block == Blocks.snow || block == Blocks.snow_layer);
     }
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public int getBlockColor()
-    {
-        return ColorizerGrass.getGrassColor(0.5D, 1.0D);
-    }
+    //@Override
+    //@SideOnly(Side.CLIENT)
+    //public int getBlockColor()
+    //{
+    //    return ColorizerGrass.getGrassColor(0.5D, 1.0D);
+    //}
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public int getRenderColor(IBlockState state)
-    {
-        return this.getBlockColor();
-    }
+    //@Override
+    //@SideOnly(Side.CLIENT)
+    //public int getRenderColor(IBlockState state)
+    //{
+    //    return this.getBlockColor();
+    //}
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public int colorMultiplier(IBlockAccess worldIn, BlockPos pos, int renderPass)
-    {
-        return BiomeColorHelper.getGrassColorAtPos(worldIn, pos);
-    }
+    //@Override
+    //@SideOnly(Side.CLIENT)
+    //public int colorMultiplier(IBlockAccess worldIn, BlockPos pos, int renderPass)
+    //{
+    //    return BiomeColorHelper.getGrassColorAtPos(worldIn, pos);
+    //}
 
     public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
     {
@@ -122,9 +119,9 @@ public class NEBBlockGrass extends Block implements IGrowable, IBlockProperties
     }
 
     @SideOnly(Side.CLIENT)
-    public EnumWorldBlockLayer getBlockLayer()
+    public BlockRenderLayer getBlockLayer()
     {
-        return EnumWorldBlockLayer.CUTOUT_MIPPED;
+        return BlockRenderLayer.CUTOUT_MIPPED;
     }
 
     // Implements IGrowable

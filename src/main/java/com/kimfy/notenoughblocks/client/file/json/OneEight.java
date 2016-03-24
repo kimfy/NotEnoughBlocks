@@ -11,7 +11,7 @@ import com.kimfy.notenoughblocks.common.util.FileUtilities;
 import com.kimfy.notenoughblocks.common.util.block.Shape;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
@@ -196,9 +196,19 @@ public class OneEight
 
         for (Block block : GameData.getBlockRegistry())
         {
-            if (block != null && block.getRegistryName().startsWith(modId))
+            if (block != null)
             {
-                temp.add(block);
+                try
+                {
+                    if (block.getRegistryName().startsWith(modId))
+                    {
+                        temp.add(block);
+                    }
+                }
+                catch (NullPointerException e)
+                {
+                    NotEnoughBlocks.logger.error("ERROR: NPE when invoking getRegistryName() on Block {}", block, e);
+                }
             }
         }
         return temp;

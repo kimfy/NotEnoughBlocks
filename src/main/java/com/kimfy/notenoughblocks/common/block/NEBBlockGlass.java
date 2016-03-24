@@ -6,14 +6,14 @@ import lombok.experimental.Delegate;
 import net.minecraft.block.BlockGlass;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumWorldBlockLayer;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -33,7 +33,7 @@ import java.util.Random;
 public class NEBBlockGlass extends BlockGlass implements IBlockProperties
 {
     private final ModPropertyInteger VARIANT;
-    private final BlockState BLOCKSTATE_REAL;
+    private final BlockStateContainer BLOCKSTATE_REAL;
 
     @Delegate(excludes = Excludes.class)
     private final BlockAgent<NEBBlockGlass> agent;
@@ -45,7 +45,7 @@ public class NEBBlockGlass extends BlockGlass implements IBlockProperties
 
         int blockCount = data.size();
         this.VARIANT = ModPropertyInteger.create("metadata", blockCount);
-        this.BLOCKSTATE_REAL = createRealBlockState(VARIANT);
+        this.BLOCKSTATE_REAL = createRealBlockState();
         this.setupStates();
     }
 
@@ -58,18 +58,18 @@ public class NEBBlockGlass extends BlockGlass implements IBlockProperties
     }
 
     @Override
-    public BlockState getBlockState()
+    public BlockStateContainer getBlockState()
     {
         return this.BLOCKSTATE_REAL;
     }
 
-    private BlockState createRealBlockState(ModPropertyInteger property)
+    private BlockStateContainer createRealBlockState()
     {
-        return new BlockState(this, new IProperty[]{ property });
+        return new BlockStateContainer(this, VARIANT);
     }
 
     @Override
-    protected BlockState createBlockState()
+    protected BlockStateContainer createBlockState()
     {
         return Blocks.air.getBlockState();
     }
@@ -93,7 +93,7 @@ public class NEBBlockGlass extends BlockGlass implements IBlockProperties
     }
 
     @Override
-    public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos, EntityPlayer player)
+    public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
     {
         return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)));
     }
@@ -105,13 +105,13 @@ public class NEBBlockGlass extends BlockGlass implements IBlockProperties
     private interface Excludes
     {
         int damageDropped(IBlockState blockState);
-        ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos, EntityPlayer player);
+        ItemStack getPickBlock(RayTraceResult target, World world, BlockPos pos, EntityPlayer player);
     }
 
     @SideOnly(Side.CLIENT)
-    public EnumWorldBlockLayer getBlockLayer()
+    public BlockRenderLayer getBlockLayer()
     {
-        return this.isStained() ? EnumWorldBlockLayer.TRANSLUCENT : EnumWorldBlockLayer.CUTOUT;
+        return this.isStained() ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.CUTOUT;
     }
 
     /**

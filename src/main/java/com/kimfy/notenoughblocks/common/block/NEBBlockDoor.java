@@ -5,11 +5,12 @@ import lombok.experimental.Delegate;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.util.BlockPos;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 import java.util.Random;
@@ -26,10 +27,9 @@ public class NEBBlockDoor extends BlockDoor implements IBlockProperties
     }
 
     @Override
-    @SideOnly(Side.CLIENT)
-    public Item getItem(World worldIn, BlockPos pos)
+    public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
     {
-        return Item.getItemFromBlock(this);
+        return new ItemStack(this, 1, 0);
     }
 
     @Override

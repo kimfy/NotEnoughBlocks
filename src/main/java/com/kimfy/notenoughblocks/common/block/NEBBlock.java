@@ -8,15 +8,15 @@ import lombok.experimental.Delegate;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumWorldBlockLayer;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -27,7 +27,7 @@ import java.util.List;
 public class NEBBlock extends Block implements IBlockProperties
 {
     private final ModPropertyInteger VARIANT;
-    private final BlockState BLOCKSTATE_REAL;
+    private final BlockStateContainer BLOCKSTATE_REAL;
     private final Shape blockShape;
 
     @Delegate(excludes = Excludes.class)
@@ -53,18 +53,18 @@ public class NEBBlock extends Block implements IBlockProperties
     }
 
     @Override
-    public BlockState getBlockState()
+    public BlockStateContainer getBlockState()
     {
         return this.BLOCKSTATE_REAL;
     }
 
-    private BlockState createRealBlockState()
+    private BlockStateContainer createRealBlockState()
     {
-        return new BlockState(this, new IProperty[]{ VARIANT });
+        return new BlockStateContainer(this, new IProperty[]{ VARIANT });
     }
 
     @Override
-    protected BlockState createBlockState()
+    protected BlockStateContainer createBlockState()
     {
         return Blocks.air.getBlockState();
     }
@@ -88,7 +88,7 @@ public class NEBBlock extends Block implements IBlockProperties
     }
 
     @Override
-    public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos, EntityPlayer player)
+    public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
     {
         return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)));
     }
@@ -100,8 +100,8 @@ public class NEBBlock extends Block implements IBlockProperties
     private interface Excludes
     {
         int damageDropped(IBlockState blockState);
-        ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos, EntityPlayer player);
-        EnumWorldBlockLayer getBlockLayer();
+        ItemStack getPickBlock(RayTraceResult target, World world, BlockPos pos, EntityPlayer player);
+        BlockRenderLayer getBlockLayer();
         boolean isOpaqueCube();
         boolean shouldSideBeRendered(IBlockAccess worldIn, BlockPos pos, EnumFacing side);
     }
@@ -115,7 +115,7 @@ public class NEBBlock extends Block implements IBlockProperties
         BlockJson modelBlock = data.get(0);
         block.setHardness(modelBlock.hardness);
         block.setResistance(modelBlock.resistance);
-        block.setStepSound(EnumSoundType.get(modelBlock.stepSound).getSoundType());
+        block.setSoundType(EnumSoundType.get(modelBlock.stepSound).getSoundType());
 
         return block;
     }
@@ -128,30 +128,29 @@ public class NEBBlock extends Block implements IBlockProperties
     /* ========== Layer / Render / Client ========== */
 
     @Override
-    public EnumWorldBlockLayer getBlockLayer()
+    public BlockRenderLayer getBlockLayer()
     {
         if (getBlockShape() == Shape.ICE)
         {
-            return EnumWorldBlockLayer.TRANSLUCENT;
+            return BlockRenderLayer.TRANSLUCENT;
         }
         return super.getBlockLayer();
     }
 
     @Override
-    public boolean isOpaqueCube()
+    public boolean isFullyOpaque(IBlockState state)
     {
         if (getBlockShape() == Shape.ICE)
         {
             return false;
         }
-        return super.isOpaqueCube();
+        return super.isFullyOpaque(state);
     }
 
     @SideOnly(Side.CLIENT)
-    public boolean shouldSideBeRendered(IBlockAccess worldIn, BlockPos pos, EnumFacing side)
+    public boolean shouldSideBeRendered(IBlockState state, IBlockAccess worldIn, BlockPos pos, EnumFacing side)
     {
-        IBlockState blockState = worldIn.getBlockState(pos);
-        Block block = blockState.getBlock();
+        Block block = state.getBlock();
 
         if (getBlockShape() == Shape.ICE)
         {
@@ -160,6 +159,6 @@ public class NEBBlock extends Block implements IBlockProperties
                 return false;
             }
         }
-        return super.shouldSideBeRendered(worldIn, pos, side);
+        return super.shouldSideBeRendered(state, worldIn, pos, side);
     }
 }

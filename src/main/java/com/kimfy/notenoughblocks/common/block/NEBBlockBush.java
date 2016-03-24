@@ -5,13 +5,13 @@ import com.kimfy.notenoughblocks.common.file.json.BlockJson;
 import lombok.experimental.Delegate;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.ColorizerGrass;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -23,7 +23,7 @@ import java.util.List;
 public class NEBBlockBush extends BlockBush implements IBlockProperties
 {
     protected final ModPropertyInteger VARIANT;
-    private final BlockState BLOCKSTATE_REAL;
+    private final BlockStateContainer BLOCKSTATE_REAL;
 
     @Delegate
     private final BlockAgent<NEBBlockBush> agent;
@@ -32,7 +32,7 @@ public class NEBBlockBush extends BlockBush implements IBlockProperties
     {
         super(materialIn);
         float f = 0.4F;
-        this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.8F, 0.5F + f);
+        //this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.8F, 0.5F + f);
         this.agent = new BlockAgent<>(this, data);
 
         int blockCount = data.size();
@@ -48,18 +48,18 @@ public class NEBBlockBush extends BlockBush implements IBlockProperties
     }
 
     @Override
-    public BlockState getBlockState()
+    public BlockStateContainer getBlockState()
     {
         return this.BLOCKSTATE_REAL;
     }
 
-    private BlockState createRealBlockState()
+    private BlockStateContainer createRealBlockState()
     {
-        return new BlockState(this, VARIANT);
+        return new BlockStateContainer(this, VARIANT);
     }
 
     @Override
-    protected BlockState createBlockState()
+    protected BlockStateContainer createBlockState()
     {
         return Blocks.tallgrass.getBlockState();
     }
@@ -83,35 +83,35 @@ public class NEBBlockBush extends BlockBush implements IBlockProperties
     }
 
     @Override
-    public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos, EntityPlayer player)
+    public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
     {
         return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)));
     }
 
     /* BlockTallGrass */
 
-    @SideOnly(Side.CLIENT)
-    public int getBlockColor()
-    {
-        return ColorizerGrass.getGrassColor(0.5D, 1.0D);
-    }
-
-    @SideOnly(Side.CLIENT)
-    public int getRenderColor(IBlockState state)
-    {
-        if (state.getBlock() != this)
-        {
-            return super.getRenderColor(state);
-        }
-        else
-        {
-            return getData().get(state.getValue(VARIANT)).needsColoring() ? ColorizerGrass.getGrassColor(0.5D, 1.0D) : 16777215;
-        }
-    }
-
-    @SideOnly(Side.CLIENT)
-    public int colorMultiplier(IBlockAccess worldIn, BlockPos pos, int renderPass)
-    {
-        return worldIn.getBiomeGenForCoords(pos).getGrassColorAtPos(pos);
-    }
+    //@SideOnly(Side.CLIENT)
+    //public int getBlockColor()
+    //{
+    //    return ColorizerGrass.getGrassColor(0.5D, 1.0D);
+    //}
+//
+    //@SideOnly(Side.CLIENT)
+    //public int getRenderColor(IBlockState state)
+    //{
+    //    if (state.getBlock() != this)
+    //    {
+    //        return super.getRenderColor(state);
+    //    }
+    //    else
+    //    {
+    //        return getData().get(state.getValue(VARIANT)).needsColoring() ? ColorizerGrass.getGrassColor(0.5D, 1.0D) : 16777215;
+    //    }
+    //}
+//
+    //@SideOnly(Side.CLIENT)
+    //public int colorMultiplier(IBlockAccess worldIn, BlockPos pos, int renderPass)
+    //{
+    //    return worldIn.getBiomeGenForCoords(pos).getGrassColorAtPos(pos);
+    //}
 }

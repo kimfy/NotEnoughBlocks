@@ -3,7 +3,7 @@ package com.kimfy.notenoughblocks.common.block;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
 import lombok.experimental.Delegate;
 import net.minecraft.block.material.Material;
-import net.minecraft.util.EnumWorldBlockLayer;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -34,8 +34,8 @@ public class NEBBlockBeacon extends NEBBlock implements IBlockProperties
     }
 
     @SideOnly(Side.CLIENT)
-    public EnumWorldBlockLayer getBlockLayer()
+    public BlockRenderLayer getBlockLayer()
     {
-        return EnumWorldBlockLayer.CUTOUT;
+        return BlockRenderLayer.CUTOUT;
     }
 }

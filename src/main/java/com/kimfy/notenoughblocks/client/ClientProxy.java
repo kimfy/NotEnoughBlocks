@@ -61,7 +61,7 @@ public class ClientProxy extends ServerProxy
         {
             if (block instanceof NEBBlockBed)         ignoreStateOnBlock(block, BlockBed.OCCUPIED);
             if (block instanceof NEBBlockDoor)        ignoreStateOnBlock(block, BlockDoor.POWERED);
-            if (block instanceof NEBBlockDoublePlant) ignoreStateOnBlock(block, NEBBlockDoublePlant.field_181084_N);
+            if (block instanceof NEBBlockDoublePlant) ignoreStateOnBlock(block, NEBBlockDoublePlant.FACING);
             if (block instanceof NEBBlockFenceGate)   ignoreStateOnBlock(block, BlockFenceGate.POWERED);
         }
     }

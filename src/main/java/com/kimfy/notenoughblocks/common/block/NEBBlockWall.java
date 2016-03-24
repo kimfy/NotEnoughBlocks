@@ -6,11 +6,9 @@ import lombok.experimental.Delegate;
 import net.minecraft.block.BlockWall;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
-import net.minecraft.util.BlockPos;
-import net.minecraft.world.IBlockAccess;
 
 import java.util.List;
 
@@ -18,7 +16,7 @@ public class NEBBlockWall extends BlockWall implements IBlockProperties
 {
     private final Material blockMaterial;
     private final ModPropertyInteger VARIANT;
-    private final BlockState BLOCKSTATE_REAL;
+    private final BlockStateContainer BLOCKSTATE_REAL;
 
     @Delegate
     private final BlockAgent<NEBBlockWall> agent;
@@ -35,11 +33,11 @@ public class NEBBlockWall extends BlockWall implements IBlockProperties
         this.setupStates();
     }
 
-    @Override
-    public Material getMaterial()
-    {
-        return this.blockMaterial;
-    }
+    //@Override
+    //public Material getMaterial()
+    //{
+    //    return this.blockMaterial;
+    //}
 
     private void setupStates()
     {
@@ -54,18 +52,18 @@ public class NEBBlockWall extends BlockWall implements IBlockProperties
     }
 
     @Override
-    public BlockState getBlockState()
+    public BlockStateContainer getBlockState()
     {
         return this.BLOCKSTATE_REAL;
     }
 
-    private BlockState createRealBlockState()
+    private BlockStateContainer createRealBlockState()
     {
-        return new BlockState(this, new IProperty[]{ UP, NORTH, EAST, SOUTH, WEST, VARIANT});
+        return new BlockStateContainer(this, new IProperty[]{ UP, NORTH, EAST, SOUTH, WEST, VARIANT});
     }
 
     @Override
-    protected BlockState createBlockState()
+    protected BlockStateContainer createBlockState()
     {
         return Blocks.cobblestone_wall.getBlockState();
     }
@@ -88,12 +86,12 @@ public class NEBBlockWall extends BlockWall implements IBlockProperties
         return getMetaFromState(blockState);
     }
 
-    /**
-     * Get the actual Block state of this Block at the given position. This applies properties not visible in the
-     * metadata, such as fence connections.
-     */
-    public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos)
-    {
-        return state.withProperty(UP, !worldIn.isAirBlock(pos.up())).withProperty(NORTH, this.canConnectTo(worldIn, pos.north())).withProperty(EAST, this.canConnectTo(worldIn, pos.east())).withProperty(SOUTH, this.canConnectTo(worldIn, pos.south())).withProperty(WEST, this.canConnectTo(worldIn, pos.west())).withProperty(VARIANT, state.getValue(VARIANT));
-    }
+    ///**
+    // * Get the actual Block state of this Block at the given position. This applies properties not visible in the
+    // * metadata, such as fence connections.
+    // */
+    //public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos)
+    //{
+    //    return state.withProperty(UP, !worldIn.isAirBlock(pos.up())).withProperty(NORTH, this.canConnectTo(worldIn, pos.north())).withProperty(EAST, this.canConnectTo(worldIn, pos.east())).withProperty(SOUTH, this.canConnectTo(worldIn, pos.south())).withProperty(WEST, this.canConnectTo(worldIn, pos.west())).withProperty(VARIANT, state.getValue(VARIANT));
+    //}
 }

@@ -6,8 +6,6 @@ import com.kimfy.notenoughblocks.common.block.NEBBlockGrass;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class NEBItemBlock extends ItemBlock
 {
@@ -38,10 +36,10 @@ public class NEBItemBlock extends ItemBlock
         Colored item (Grass Block, Bush, Double Plant)
      */
 
-    @SideOnly(Side.CLIENT)
-    public int getColorFromItemStack(ItemStack stack, int renderPass)
-    {
-        return isColoredBlock ? block.getRenderColor(block.getStateFromMeta(stack.getMetadata())) : super.getColorFromItemStack(stack, renderPass);
-        //return this.coloredBlock.getRenderColor(this.coloredBlock.getStateFromMeta(stack.getMetadata()));
-    }
+    //@SideOnly(Side.CLIENT)
+    //public int getColorFromItemStack(ItemStack stack, int renderPass)
+    //{
+    //    return isColoredBlock ? block.getMapColor(block.getStateFromMeta(stack.getMetadata())) : super.get(stack, renderPass);
+    //    //return this.coloredBlock.getRenderColor(this.coloredBlock.getStateFromMeta(stack.getMetadata()));
+    //}
 }

@@ -1,6 +1,8 @@
 package com.kimfy.notenoughblocks.common.block;
 
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
 
 import java.util.List;
 
@@ -25,4 +27,8 @@ public interface IBlockProperties
     List<BlockJson> getData();
 
     BlockAgent getBlockAgent();
+
+    void setBlockMaterial(Material material);
+
+    void setBlockSoundType(SoundType soundType);
 }

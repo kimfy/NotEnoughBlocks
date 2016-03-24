@@ -20,10 +20,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class BlockAgent<T extends Block & IBlockProperties> implements IBlockProperties
 {

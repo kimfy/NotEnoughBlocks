@@ -2,7 +2,6 @@ package com.kimfy.notenoughblocks.common.block;
 
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
 import net.minecraft.block.material.Material;
-import net.minecraft.item.ItemStack;
 
 import java.util.List;
 

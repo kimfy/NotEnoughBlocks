@@ -1,6 +1,5 @@
 package com.kimfy.notenoughblocks.common.file.json;
 
-import com.google.common.collect.Lists;
 import com.kimfy.notenoughblocks.NotEnoughBlocks;
 import com.kimfy.notenoughblocks.common.block.IBlockProperties;
 import com.kimfy.notenoughblocks.common.block.NEBBlockDoor;
@@ -13,19 +12,13 @@ import com.kimfy.notenoughblocks.common.util.block.Shape;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
-import net.minecraftforge.fml.common.network.handshake.ChannelRegistrationHandler;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.LanguageRegistry;
-import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class JsonProcessor
 {

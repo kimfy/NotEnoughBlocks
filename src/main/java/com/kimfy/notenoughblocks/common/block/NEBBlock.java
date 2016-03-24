@@ -7,7 +7,6 @@ import com.kimfy.notenoughblocks.common.util.block.Shape;
 import lombok.experimental.Delegate;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;

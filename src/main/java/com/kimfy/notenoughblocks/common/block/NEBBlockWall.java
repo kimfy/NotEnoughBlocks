@@ -9,12 +9,13 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 
 import java.util.List;
 
 public class NEBBlockWall extends BlockWall implements IBlockProperties
 {
-    private final Material blockMaterial;
     private final ModPropertyInteger VARIANT;
     private final BlockStateContainer BLOCKSTATE_REAL;
 
@@ -24,7 +25,6 @@ public class NEBBlockWall extends BlockWall implements IBlockProperties
     public NEBBlockWall(Material material, List<BlockJson> data)
     {
         super(Blocks.stone);
-        this.blockMaterial = material;
         this.agent = new BlockAgent<>(this, data);
 
         int blockCount = data.size();
@@ -32,12 +32,6 @@ public class NEBBlockWall extends BlockWall implements IBlockProperties
         this.BLOCKSTATE_REAL = createRealBlockState();
         this.setupStates();
     }
-
-    //@Override
-    //public Material getMaterial()
-    //{
-    //    return this.blockMaterial;
-    //}
 
     private void setupStates()
     {
@@ -85,13 +79,4 @@ public class NEBBlockWall extends BlockWall implements IBlockProperties
     {
         return getMetaFromState(blockState);
     }
-
-    ///**
-    // * Get the actual Block state of this Block at the given position. This applies properties not visible in the
-    // * metadata, such as fence connections.
-    // */
-    //public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos)
-    //{
-    //    return state.withProperty(UP, !worldIn.isAirBlock(pos.up())).withProperty(NORTH, this.canConnectTo(worldIn, pos.north())).withProperty(EAST, this.canConnectTo(worldIn, pos.east())).withProperty(SOUTH, this.canConnectTo(worldIn, pos.south())).withProperty(WEST, this.canConnectTo(worldIn, pos.west())).withProperty(VARIANT, state.getValue(VARIANT));
-    //}
 }

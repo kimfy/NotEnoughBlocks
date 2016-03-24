@@ -60,7 +60,7 @@ public class NEBBlock extends Block implements IBlockProperties
 
     private BlockStateContainer createRealBlockState()
     {
-        return new BlockStateContainer(this, new IProperty[]{ VARIANT });
+        return new BlockStateContainer(this, VARIANT);
     }
 
     @Override

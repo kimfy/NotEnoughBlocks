@@ -1,97 +1,84 @@
 package com.kimfy.notenoughblocks.common.block;
 
+import com.kimfy.notenoughblocks.common.block.properties.ModPropertyInteger;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
 import lombok.experimental.Delegate;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockCarpet;
+import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.EnumDyeColor;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
 import java.util.List;
 
-public class NEBBlockCarpet extends NEBBlock implements IBlockProperties
+public class NEBBlockCarpet extends BlockCarpet implements IBlockProperties
 {
+    private final ModPropertyInteger VARIANT;
+    private final BlockStateContainer BLOCKSTATE_REAL;
+
     @Delegate
     private final BlockAgent<NEBBlockCarpet> agent;
 
     public NEBBlockCarpet(Material material, List<BlockJson> data)
     {
-        super(material, data);
+        super();
         this.agent = new BlockAgent<>(this, data);
-        //this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0625F, 1.0F);
-        this.setTickRandomly(true);
-        //this.setBlockBoundsFromMeta(0);
+
+        int blockCount = data.size();
+        this.VARIANT = ModPropertyInteger.create("metadata", blockCount);
+        this.BLOCKSTATE_REAL = createRealBlockState();
+        this.setupStates();
     }
 
-    /**
-     * Used to determine ambient occlusion and culling when rebuilding chunks for render
-     */
-    public boolean isOpaqueCube()
+    private void setupStates()
     {
-        return false;
+        IBlockState blockState = getBlockState().getBaseState().withProperty(VARIANT, 0);
+        blockState = blockState.withProperty(VARIANT, 0);
+        this.setDefaultState(blockState);
     }
 
-    public boolean isFullCube()
+    @Override
+    public BlockStateContainer getBlockState()
     {
-        return false;
+        return this.BLOCKSTATE_REAL;
     }
-    /**
-     * Sets the block's bounds for rendering it as an item
-     */
-    //public void setBlockBoundsForItemRender()
-    //{
-    //    this.setBlockBoundsFromMeta(0);
-    //}
 
-    //public void setBlockBoundsBasedOnState(IBlockAccess worldIn, BlockPos pos)
-    //{
-    //    this.setBlockBoundsFromMeta(0);
-    //}
-
-    //protected void setBlockBoundsFromMeta(int meta)
-    //{
-    //    int i = 0;
-    //    float f = (float)(1 * (1 + i)) / 16.0F;
-    //    this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, f, 1.0F);
-    //}
-
-    public boolean canPlaceBlockAt(World worldIn, BlockPos pos)
+    private BlockStateContainer createRealBlockState()
     {
-        return super.canPlaceBlockAt(worldIn, pos) && this.canBlockStay(worldIn, pos);
-    }
-    /**
-     * Called when a neighboring block changes.
-     */
-    public void onNeighborBlockChange(World worldIn, BlockPos pos, IBlockState state, Block neighborBlock)
-    {
-        this.checkForDrop(worldIn, pos, state);
+        return new BlockStateContainer(this, VARIANT);
     }
 
-    private boolean checkForDrop(World worldIn, BlockPos pos, IBlockState state)
+    @Override
+    protected BlockStateContainer createBlockState()
     {
-        if (!this.canBlockStay(worldIn, pos))
-        {
-            this.dropBlockAsItem(worldIn, pos, state, 0);
-            worldIn.setBlockToAir(pos);
-            return false;
-        }
-        else
-        {
-            return true;
-        }
+        return Blocks.carpet.getBlockState();
     }
 
-    private boolean canBlockStay(World worldIn, BlockPos pos)
+    @Override
+    public IBlockState getStateFromMeta(int metadata)
     {
-        return !worldIn.isAirBlock(pos.down());
+        return getDefaultState().withProperty(VARIANT, metadata);
     }
 
-    //@SideOnly(Side.CLIENT)
-    //public boolean shouldSideBeRendered(IBlockAccess worldIn, BlockPos pos, EnumFacing side)
-    //{
-    //    return side == EnumFacing.UP || super.shouldSideBeRendered(worldIn, pos, side);
-    //}
+    @Override
+    public int getMetaFromState(IBlockState blockState)
+    {
+        return blockState.getValue(VARIANT);
+    }
+
+    @Override
+    public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
+    {
+        return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)));
+    }
 
     /**
      * Gets the metadata of the item this Block can drop. This method is called when the block gets destroyed. It
@@ -100,5 +87,14 @@ public class NEBBlockCarpet extends NEBBlock implements IBlockProperties
     public int damageDropped(IBlockState state)
     {
         return getMetaFromState(state);
+    }
+
+
+    /**
+     * Get the MapColor for this Block and the given BlockState
+     */
+    public MapColor getMapColor(IBlockState state)
+    {
+        return MapColor.adobeColor;
     }
 }

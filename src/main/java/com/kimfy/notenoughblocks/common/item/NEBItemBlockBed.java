@@ -52,13 +52,14 @@ public class NEBItemBlockBed extends NEBItemBlock
 
             if (playerIn.canPlayerEdit(pos, facing, stack) && playerIn.canPlayerEdit(blockpos, facing, stack))
             {
-                boolean flag1 = worldIn.getBlockState(blockpos).getBlock().isReplaceable(worldIn, blockpos);
+                boolean isReplaceable = worldIn.getBlockState(blockpos).getBlock().isReplaceable(worldIn, blockpos);
                 boolean flag2 = flag || worldIn.isAirBlock(pos);
-                boolean flag3 = flag1 || worldIn.isAirBlock(blockpos);
+                boolean flag3 = isReplaceable || worldIn.isAirBlock(blockpos);
 
                 if (flag2 && flag3 && worldIn.getBlockState(pos.down()).isFullyOpaque() && worldIn.getBlockState(blockpos.down()).isFullyOpaque())
                 {
-                    IBlockState iblockstate1 = Blocks.bed.getDefaultState().withProperty(BlockBed.OCCUPIED, false).withProperty(BlockBed.FACING, enumfacing).withProperty(BlockBed.PART, BlockBed.EnumPartType.FOOT);
+                    //IBlockState iblockstate1 = Blocks.bed.getDefaultState().withProperty(BlockBed.OCCUPIED, false).withProperty(BlockBed.FACING, enumfacing).withProperty(BlockBed.PART, BlockBed.EnumPartType.FOOT);
+                    IBlockState iblockstate1 = this.block.getDefaultState().withProperty(BlockBed.FACING, enumfacing).withProperty(BlockBed.PART, BlockBed.EnumPartType.FOOT);
 
                     if (worldIn.setBlockState(pos, iblockstate1, 11))
                     {

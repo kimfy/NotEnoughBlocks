@@ -8,9 +8,7 @@ import net.minecraft.block.state.IBlockState;
 
 import java.util.List;
 
-/*
-    TODO: Fix lightning
- */
+// TODO: Fix block light
 public class NEBBlockStair extends BlockStairs implements IBlockProperties
 {
     @Delegate

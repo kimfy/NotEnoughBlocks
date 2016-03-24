@@ -12,23 +12,14 @@ import java.util.List;
 
 public class NEBBlockButton extends BlockButton implements IBlockProperties
 {
-    private final Material blockMaterial;
-
     @Delegate
     private final BlockAgent<NEBBlockButton> agent;
 
     public NEBBlockButton(Material material, List<BlockJson> data)
     {
         super(data.get(0).isButtonWooden());
-        this.blockMaterial = material;
         this.agent = new BlockAgent<>(this, data);
     }
-
-    //@Override
-    //public Material getMaterial()
-    //{
-    //    return this.blockMaterial;
-    //}
 
 
     @Override

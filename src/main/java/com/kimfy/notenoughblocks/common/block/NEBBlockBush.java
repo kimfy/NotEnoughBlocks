@@ -12,11 +12,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.ColorizerGrass;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
@@ -87,31 +83,4 @@ public class NEBBlockBush extends BlockBush implements IBlockProperties
     {
         return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)));
     }
-
-    /* BlockTallGrass */
-
-    //@SideOnly(Side.CLIENT)
-    //public int getBlockColor()
-    //{
-    //    return ColorizerGrass.getGrassColor(0.5D, 1.0D);
-    //}
-//
-    //@SideOnly(Side.CLIENT)
-    //public int getRenderColor(IBlockState state)
-    //{
-    //    if (state.getBlock() != this)
-    //    {
-    //        return super.getRenderColor(state);
-    //    }
-    //    else
-    //    {
-    //        return getData().get(state.getValue(VARIANT)).needsColoring() ? ColorizerGrass.getGrassColor(0.5D, 1.0D) : 16777215;
-    //    }
-    //}
-//
-    //@SideOnly(Side.CLIENT)
-    //public int colorMultiplier(IBlockAccess worldIn, BlockPos pos, int renderPass)
-    //{
-    //    return worldIn.getBiomeGenForCoords(pos).getGrassColorAtPos(pos);
-    //}
 }

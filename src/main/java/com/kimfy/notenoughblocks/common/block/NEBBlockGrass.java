@@ -92,27 +92,6 @@ public class NEBBlockGrass extends Block implements IGrowable, IBlockProperties
         return state.withProperty(BlockGrass.SNOWY, block == Blocks.snow || block == Blocks.snow_layer);
     }
 
-    //@Override
-    //@SideOnly(Side.CLIENT)
-    //public int getBlockColor()
-    //{
-    //    return ColorizerGrass.getGrassColor(0.5D, 1.0D);
-    //}
-
-    //@Override
-    //@SideOnly(Side.CLIENT)
-    //public int getRenderColor(IBlockState state)
-    //{
-    //    return this.getBlockColor();
-    //}
-
-    //@Override
-    //@SideOnly(Side.CLIENT)
-    //public int colorMultiplier(IBlockAccess worldIn, BlockPos pos, int renderPass)
-    //{
-    //    return BiomeColorHelper.getGrassColorAtPos(worldIn, pos);
-    //}
-
     public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
     {
         Blocks.grass.updateTick(worldIn, pos, state, rand);

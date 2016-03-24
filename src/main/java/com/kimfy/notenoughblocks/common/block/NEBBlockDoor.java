@@ -33,6 +33,12 @@ public class NEBBlockDoor extends BlockDoor implements IBlockProperties
     }
 
     @Override
+    public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state)
+    {
+        return new ItemStack(Item.getItemFromBlock(this), 1, 0);
+    }
+
+    @Override
     public int damageDropped(IBlockState state)
     {
         return 0;

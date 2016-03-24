@@ -30,8 +30,8 @@ public class NEBBlockBrewingStand extends Block implements IBlockProperties
     private final ModPropertyInteger VARIANT;
     private final BlockStateContainer BLOCKSTATE_REAL;
 
-    protected static final AxisAlignedBB field_185555_b = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.125D, 1.0D);
-    protected static final AxisAlignedBB field_185556_c = new AxisAlignedBB(0.4375D, 0.0D, 0.4375D, 0.5625D, 0.875D, 0.5625D);
+    protected static final AxisAlignedBB STAND_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.125D, 1.0D);
+    protected static final AxisAlignedBB BASE_AABB = new AxisAlignedBB(0.4375D, 0.0D, 0.4375D, 0.5625D, 0.875D, 0.5625D);
 
     @Delegate
     private final BlockAgent<NEBBlockBrewingStand> agent;
@@ -97,12 +97,12 @@ public class NEBBlockBrewingStand extends Block implements IBlockProperties
     /**
      * Used to determine ambient occlusion and culling when rebuilding chunks for render
      */
-    public boolean isOpaqueCube()
+    public boolean isOpaqueCube(IBlockState state)
     {
         return false;
     }
 
-    public boolean isFullCube()
+    public boolean isFullCube(IBlockState state)
     {
         return false;
     }
@@ -110,27 +110,20 @@ public class NEBBlockBrewingStand extends Block implements IBlockProperties
     /**
      * Add all collision boxes of this Block to the list that intersect with the given mask.
      */
-    public void addCollisionBoxesToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, Entity entityIn)
+    @Override
+    public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, Entity entityIn)
     {
-        addCollisionBoxToList(pos, entityBox, collidingBoxes, field_185556_c);
-        addCollisionBoxToList(pos, entityBox, collidingBoxes, field_185555_b);
+        addCollisionBoxToList(pos, entityBox, collidingBoxes, BASE_AABB);
+        addCollisionBoxToList(pos, entityBox, collidingBoxes, STAND_AABB);
     }
 
-    ///**
-    // * Sets the block's bounds for rendering it as an item
-    // */
-    //public void setBlockBoundsForItemRender()
-    //{
-    //    //this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);
-    //}
-
     @SideOnly(Side.CLIENT)
-    public void randomDisplayTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
+    public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand)
     {
         double d0 = (double)((float)pos.getX() + 0.4F + rand.nextFloat() * 0.2F);
         double d1 = (double)((float)pos.getY() + 0.7F + rand.nextFloat() * 0.3F);
         double d2 = (double)((float)pos.getZ() + 0.4F + rand.nextFloat() * 0.2F);
-        worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0, d1, d2, 0.0D, 0.0D, 0.0D, new int[0]);
+        worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0, d1, d2, 0.0D, 0.0D, 0.0D);
     }
 
     @SideOnly(Side.CLIENT)

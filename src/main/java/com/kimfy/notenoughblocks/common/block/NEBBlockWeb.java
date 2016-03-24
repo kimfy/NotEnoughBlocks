@@ -31,6 +31,7 @@ public class NEBBlockWeb extends NEBBlock implements IBlockProperties
     /**
      * Called When an Entity Collided with the Block
      */
+    @Override
     public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn)
     {
         entityIn.setInWeb();
@@ -39,29 +40,34 @@ public class NEBBlockWeb extends NEBBlock implements IBlockProperties
     /**
      * Used to determine ambient occlusion and culling when rebuilding chunks for render
      */
-    public boolean isOpaqueCube()
+    @Override
+    public boolean isOpaqueCube(IBlockState state)
     {
         return false;
     }
 
-    public AxisAlignedBB getCollisionBoundingBox(World worldIn, BlockPos pos, IBlockState state)
+    @Override
+    public boolean isFullCube(IBlockState state)
+    {
+        return false;
+    }
+
+    @Override
+    public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, World worldIn, BlockPos pos)
     {
         return null;
-    }
-
-    public boolean isFullCube()
-    {
-        return false;
     }
 
     /**
      * Get the Item that this Block should drop when harvested.
      */
+    @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
         return Items.string;
     }
 
+    @Override
     @SideOnly(Side.CLIENT)
     public BlockRenderLayer getBlockLayer()
     {

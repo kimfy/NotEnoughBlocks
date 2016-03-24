@@ -20,23 +20,14 @@ import java.util.Random;
 
 public class NEBBlockBed extends BlockBed implements IBlockProperties
 {
-    private final Material blockMaterial;
-
     @Delegate
     private final BlockAgent<NEBBlockBed> agent;
 
     public NEBBlockBed(Material material, List<BlockJson> data)
     {
         super();
-        this.blockMaterial = material;
         this.agent = new BlockAgent<>(this, data);
     }
-
-    //@Override
-    //public Material getMaterial()
-    //{
-    //    return this.blockMaterial;
-    //}
 
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ)
@@ -51,11 +42,5 @@ public class NEBBlockBed extends BlockBed implements IBlockProperties
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
         return state.getValue(PART) == BlockBed.EnumPartType.HEAD ? null : Item.getItemFromBlock(this);
-    }
-
-    @SideOnly(Side.CLIENT)
-    public Item getItem(World worldIn, BlockPos pos)
-    {
-        return Item.getItemFromBlock(this);
     }
 }

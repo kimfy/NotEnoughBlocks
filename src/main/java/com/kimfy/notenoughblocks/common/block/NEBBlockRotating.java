@@ -17,7 +17,6 @@ public class NEBBlockRotating extends BlockLog implements IBlockProperties
 {
     private final ModPropertyInteger VARIANT;
     private final BlockStateContainer BLOCKSTATE_REAL;
-    private final Material material;
 
     @Delegate
     private final BlockAgent<NEBBlockRotating> agent;
@@ -25,7 +24,6 @@ public class NEBBlockRotating extends BlockLog implements IBlockProperties
     public NEBBlockRotating(Material material, List<BlockJson> data)
     {
         super();
-        this.material = material;
         this.agent = new BlockAgent<>(this, data);
 
         int blockCount = data.size();
@@ -33,12 +31,6 @@ public class NEBBlockRotating extends BlockLog implements IBlockProperties
         this.BLOCKSTATE_REAL = createRealBlockState();
         this.setupStates();
     }
-
-    //@Override
-    //public Material getMaterial()
-    //{
-    //    return material;
-    //}
 
     private void setupStates()
     {

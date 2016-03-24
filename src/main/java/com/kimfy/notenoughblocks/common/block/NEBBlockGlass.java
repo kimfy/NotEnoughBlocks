@@ -71,7 +71,7 @@ public class NEBBlockGlass extends BlockGlass implements IBlockProperties
     @Override
     protected BlockStateContainer createBlockState()
     {
-        return Blocks.air.getBlockState();
+        return Blocks.glass.getBlockState();
     }
 
     @Override
@@ -108,6 +108,7 @@ public class NEBBlockGlass extends BlockGlass implements IBlockProperties
         ItemStack getPickBlock(RayTraceResult target, World world, BlockPos pos, EntityPlayer player);
     }
 
+    @Override
     @SideOnly(Side.CLIENT)
     public BlockRenderLayer getBlockLayer()
     {
@@ -117,6 +118,7 @@ public class NEBBlockGlass extends BlockGlass implements IBlockProperties
     /**
      * Returns the quantity of items to drop on block destruction.
      */
+    @Override
     public int quantityDropped(Random random)
     {
         return 1;

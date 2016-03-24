@@ -20,30 +20,29 @@ import java.util.Random;
 
 public class NEBBlockCauldron extends BlockCauldron implements IBlockProperties
 {
-    private final Material blockMaterial;
-
     @Delegate
     private final BlockAgent<NEBBlockCauldron> agent;
 
     public NEBBlockCauldron(Material material, List<BlockJson> data)
     {
         super();
-        this.blockMaterial = material;
         this.agent = new BlockAgent<>(this, data);
     }
 
     /**
      * Get the Item that this Block should drop when harvested.
      */
+    @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
         return Item.getItemFromBlock(this);
     }
 
+    @Override
     @SideOnly(Side.CLIENT)
-    public Item getItem(World worldIn, BlockPos pos)
+    public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state)
     {
-        return Item.getItemFromBlock(this);
+        return new ItemStack(Item.getItemFromBlock(this), 1, 0);
     }
 
     @Override

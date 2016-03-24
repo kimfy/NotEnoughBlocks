@@ -66,12 +66,6 @@ public abstract class NEBBlockSlab extends BlockSlab implements IBlockProperties
         return VARIANT;
     }
 
-    //@Override
-    //public Object getVariant(ItemStack stack)
-    //{
-    //    return stack.getMetadata() & 7;
-    //}
-
     @Override
     public IBlockState getStateFromMeta(int meta)
     {

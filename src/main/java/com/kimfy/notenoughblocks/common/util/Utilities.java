@@ -4,7 +4,6 @@ import com.kimfy.notenoughblocks.common.file.json.BlockJson;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import org.apache.commons.lang3.SerializationUtils;
 
 import java.util.ArrayList;
@@ -38,12 +37,14 @@ public class Utilities
     {
         try
         {
-            return (GameRegistry.findUniqueIdentifierFor(item)).modId;
+            //return (GameRegistry.findUniqueIdentifierFor(item)).modId;
+            //FIXME: Port to 1.9
         }
         catch (NullPointerException e)
         {
             return "minecraft";
         }
+        return "";
     }
 
     /**
@@ -55,12 +56,14 @@ public class Utilities
     {
         try
         {
-            return (GameRegistry.findUniqueIdentifierFor(block)).modId;
+            //return (GameRegistry.findUniqueIdentifierFor(block)).modId;
+            //FIXME: Port to 1.9
         }
         catch (NullPointerException e)
         {
             return "minecraft";
         }
+        return "";
     }
 
     public static boolean isBlockFromMod(Object o, String modId)

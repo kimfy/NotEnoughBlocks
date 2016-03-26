@@ -17,6 +17,7 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -30,8 +31,8 @@ public class NEBBlockBrewingStand extends Block implements IBlockProperties
     private final ModPropertyInteger VARIANT;
     private final BlockStateContainer BLOCKSTATE_REAL;
 
-    protected static final AxisAlignedBB STAND_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.125D, 1.0D);
-    protected static final AxisAlignedBB BASE_AABB = new AxisAlignedBB(0.4375D, 0.0D, 0.4375D, 0.5625D, 0.875D, 0.5625D);
+    protected static final AxisAlignedBB BASE_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.125D, 1.0D);
+    protected static final AxisAlignedBB STAND_AABB = new AxisAlignedBB(0.4375D, 0.0D, 0.4375D, 0.5625D, 0.875D, 0.5625D);
 
     @Delegate
     private final BlockAgent<NEBBlockBrewingStand> agent;
@@ -113,8 +114,8 @@ public class NEBBlockBrewingStand extends Block implements IBlockProperties
     @Override
     public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, Entity entityIn)
     {
-        addCollisionBoxToList(pos, entityBox, collidingBoxes, BASE_AABB);
         addCollisionBoxToList(pos, entityBox, collidingBoxes, STAND_AABB);
+        addCollisionBoxToList(pos, entityBox, collidingBoxes, BASE_AABB);
     }
 
     @SideOnly(Side.CLIENT)
@@ -130,5 +131,11 @@ public class NEBBlockBrewingStand extends Block implements IBlockProperties
     public BlockRenderLayer getBlockLayer()
     {
         return BlockRenderLayer.CUTOUT;
+    }
+
+    @Override
+    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
+    {
+        return BASE_AABB;
     }
 }

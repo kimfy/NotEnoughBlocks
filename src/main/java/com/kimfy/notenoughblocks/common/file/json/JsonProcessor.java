@@ -1,5 +1,6 @@
 package com.kimfy.notenoughblocks.common.file.json;
 
+import com.google.common.base.Joiner;
 import com.kimfy.notenoughblocks.NotEnoughBlocks;
 import com.kimfy.notenoughblocks.common.block.*;
 import com.kimfy.notenoughblocks.common.item.NEBItemBlockSlab;
@@ -9,12 +10,15 @@ import com.kimfy.notenoughblocks.common.util.block.Shape;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.resources.LanguageManager;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.common.registry.LanguageRegistry;
+import org.apache.commons.codec.Charsets;
+import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.Logger;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Constructor;
 import java.util.*;
 
@@ -233,7 +237,7 @@ public class JsonProcessor
 
         if (block instanceof NEBBlockDoor || block instanceof NEBBlockStair)
         {
-            lang.put("tile." + Constants.MOD_ID + ":" + unlocalizedName, displayName + ".name");
+            lang.put("tile." + Constants.MOD_ID + ":" + unlocalizedName + ".name", displayName);
         }
         else
         {
@@ -246,7 +250,63 @@ public class JsonProcessor
     {
         if (lang != null && !lang.isEmpty())
         {
-            LanguageRegistry.instance().injectLanguage(Constants.LANG_DEFAULT, lang);
+            String converted = Joiner.on('\n').withKeyValueSeparator("=").join(lang);
+            InputStream stream = new ByteArrayInputStream(converted.getBytes(Charsets.UTF_8));
+
+            // Compare String bytes with stream.getBytes?
+            String path = "resourcepacks/" + Constants.MOD_ID + "/assets/" + Constants.MOD_ID + "/lang/";
+            File langDir = new File(path);
+            File langFile = new File(path + "en_US.lang");
+            try
+            {
+                if (!langDir.exists())
+                {
+                    langDir.mkdirs();
+                }
+                if (!langFile.exists())
+                {
+                    langFile.createNewFile();
+                }
+                int langMapSize = converted.getBytes().length;
+                int langFileSize = Long.valueOf(langFile.length()).intValue();
+
+                if (langMapSize != langFileSize)
+                {
+                    NotEnoughBlocks.logger.info("[" + Constants.MOD_NAME + "] " + "Writing lang file...");
+                    // Delete file if it exists and write to a new one
+                    langFile.delete();
+                    FileUtils.writeByteArrayToFile(langFile, converted.getBytes());
+                }
+                else
+                {
+                    // Language file is equal to the code generated one. Do nothing!
+                    NotEnoughBlocks.logger.info("[" + Constants.MOD_NAME + "] " + "Language file already exists, ignoring!");
+                }
+            }
+            catch (IOException e)
+            {
+                NotEnoughBlocks.logger.error("ERROR: Failed to write lang file! Report this!");
+            }
+
+            /*LanguageManager languageManager = Minecraft.getMinecraft().getLanguageManager();
+
+            try
+            {
+                Field currentLocaleField = ReflectionHelper.findField(LanguageManager.class, "currentLocale", "field_135049_a");
+                net.minecraft.client.resources.Locale locale = (net.minecraft.client.resources.Locale) currentLocaleField.get(languageManager);
+
+                Field propertiesField = ReflectionHelper.findField(net.minecraft.client.resources.Locale.class, "properties", "field_135032_a");
+                Map<String, String> propertiesMap = (Map<String, String>) propertiesField.get(locale);
+
+                propertiesMap.putAll(lang);
+                String conv = Joiner.on('\n').withKeyValueSeparator("=").join(propertiesMap);
+                System.out.println(conv);
+            }
+            catch (IllegalAccessException e)
+            {
+                e.printStackTrace();
+            }
+            */
         }
     }
 }

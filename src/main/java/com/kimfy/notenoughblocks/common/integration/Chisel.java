@@ -12,7 +12,6 @@ import com.kimfy.notenoughblocks.common.util.Utilities;
 import net.minecraft.block.Block;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -140,7 +139,9 @@ public class Chisel implements Serializable
     private static boolean isBlockMine(Object o)
     {
         // return o instanceof IBlockProperties;
-        return GameRegistry.findUniqueIdentifierFor((Block)o).modId.equals(Constants.MOD_ID);
+        //return GameRegistry.findUniqueIdentifierFor((Block)o).modId.equals(Constants.MOD_ID);
+        //FIXME: Port to 1.9
+        return false;
     }
 
     /**

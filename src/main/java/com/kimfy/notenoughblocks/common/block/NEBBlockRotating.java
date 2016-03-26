@@ -61,9 +61,12 @@ public class NEBBlockRotating extends BlockLog implements IBlockProperties
      */
     public IBlockState getStateFromMeta(int meta)
     {
-        IBlockState iblockstate = this.getDefaultState().withProperty(VARIANT, meta & 3/*(meta & 3) + 4*//*BlockPlanks.EnumType.byMetadata((meta & 3) + 4)*/);
+        int MAX_VARIANTS  = 3;
+        int MAX_ROTATIONS = 12;
 
-        switch (meta & 12)
+        IBlockState iblockstate = this.getDefaultState().withProperty(VARIANT, meta & MAX_VARIANTS);
+
+        switch (meta & MAX_ROTATIONS)
         {
             case 0:
                 iblockstate = iblockstate.withProperty(LOG_AXIS, BlockLog.EnumAxis.Y);
@@ -89,7 +92,7 @@ public class NEBBlockRotating extends BlockLog implements IBlockProperties
         int i = 0;
         i = i | state.getValue(VARIANT);
 
-        switch ((BlockLog.EnumAxis)state.getValue(LOG_AXIS))
+        switch (state.getValue(LOG_AXIS))
         {
             case X:
                 i |= 4;
@@ -103,6 +106,7 @@ public class NEBBlockRotating extends BlockLog implements IBlockProperties
 
         return i;
     }
+
     protected ItemStack createStackedBlock(IBlockState state)
     {
         return new ItemStack(Item.getItemFromBlock(this), 1, (state.getValue(VARIANT)));

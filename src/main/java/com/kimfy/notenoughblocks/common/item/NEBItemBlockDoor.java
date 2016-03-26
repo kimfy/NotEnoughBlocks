@@ -102,7 +102,6 @@ public class NEBItemBlockDoor extends ItemBlock
     @Override
     public String getUnlocalizedName(ItemStack stack)
     {
-        int metadata = stack.getMetadata();
-        return this.getUnlocalizedName() + "_" + String.valueOf(metadata);
+        return this.getUnlocalizedName();
     }
 }

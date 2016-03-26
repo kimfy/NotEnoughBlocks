@@ -2,6 +2,7 @@ package com.kimfy.notenoughblocks.common.block;
 
 import com.kimfy.notenoughblocks.common.block.properties.ModPropertyInteger;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
+import com.kimfy.notenoughblocks.common.util.block.EnumMaterial;
 import com.kimfy.notenoughblocks.common.util.block.EnumSoundType;
 import com.kimfy.notenoughblocks.common.util.block.Shape;
 import lombok.experimental.Delegate;
@@ -14,8 +15,10 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -25,11 +28,11 @@ import java.util.List;
 
 public class NEBBlock extends Block implements IBlockProperties
 {
-    private final ModPropertyInteger VARIANT;
+    public final ModPropertyInteger VARIANT;
     private final BlockStateContainer BLOCKSTATE_REAL;
     private final Shape blockShape;
 
-    @Delegate(excludes = Excludes.class)
+    @Delegate
     private final BlockAgent<NEBBlock> agent;
 
     public NEBBlock(Material material, List<BlockJson> data)
@@ -42,6 +45,16 @@ public class NEBBlock extends Block implements IBlockProperties
         this.VARIANT = ModPropertyInteger.create("metadata", blockCount);
         this.BLOCKSTATE_REAL = createRealBlockState();
         this.setupStates();
+    }
+
+    @Override
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ)
+    {
+        if (!worldIn.isRemote)
+        {
+            playerIn.addChatComponentMessage(new TextComponentString("Material: " + EnumMaterial.toString(state.getMaterial()) ));
+        }
+        return false;
     }
 
     private void setupStates()
@@ -83,26 +96,13 @@ public class NEBBlock extends Block implements IBlockProperties
     @Override
     public int damageDropped(IBlockState blockState)
     {
-        return getMetaFromState(blockState);
+        return blockState.getValue(VARIANT);
     }
 
     @Override
     public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
     {
         return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)));
-    }
-
-    /**
-     * Methods that should not be forwarded
-     * to the delegate/agent when called
-     */
-    private interface Excludes
-    {
-        int damageDropped(IBlockState blockState);
-        ItemStack getPickBlock(RayTraceResult target, World world, BlockPos pos, EntityPlayer player);
-        BlockRenderLayer getBlockLayer();
-        boolean isOpaqueCube();
-        boolean shouldSideBeRendered(IBlockAccess worldIn, BlockPos pos, EnumFacing side);
     }
 
     /**
@@ -114,7 +114,7 @@ public class NEBBlock extends Block implements IBlockProperties
         BlockJson modelBlock = data.get(0);
         block.setHardness(modelBlock.hardness);
         block.setResistance(modelBlock.resistance);
-        block.setSoundType(EnumSoundType.get(modelBlock.stepSound).getSoundType());
+        block.setBlockSoundType(EnumSoundType.get(modelBlock.stepSound).getSoundType());
 
         return block;
     }

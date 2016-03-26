@@ -140,7 +140,7 @@ public class Blocks
         blockList.add(new BlockJson().displayName("Farmland").shape("farmland").hardness(0.6F).stepSound("gravel").textures("down: dirt, allSides: dirt, dryUp: farmland_dry, wetUp: farmland_wet")); // TODO: Implement
         // Furnace
         blockList.add(new BlockJson().displayName("Sign").shape("sign").hardness(1.0F).stepSound("wood").textures("all: planks_oak")); // TODO: Implement
-        blockList.add(woodDoor = new BlockJson().displayName("Wooden Door").shape("door").material("wood").hardness(3.0F).stepSound("wood").enableStats(false).textures("bottom: door_wood_lower, top: door_wood_upper")); // TODO: Implement
+        blockList.add(woodDoor = new BlockJson().displayName("Wooden Door").shape("door").material("wood").hardness(3.0F).stepSound("wood").enableStats(false).textures("bottom: door_wood_lower, top: door_wood_upper"));
         blockList.add(new BlockJson().displayName("Ladder").shape("ladder").hardness(0.4F).stepSound("ladder").textures("all: ladder")); // TODO: Implement
         blockList.add(new BlockJson().displayName("Rail").shape("rail").hardness(0.7F).stepSound("metal").textures("rail: rail_normal, turned: rail_normal_turned")); // TODO: Implement
         blockList.add(new BlockJson().displayName("Cobblestone Stairs").shape("stair").hardness(2.0F).resistance(10.0F).stepSound("piston").opaque(false).textures("all: cobblestone"));

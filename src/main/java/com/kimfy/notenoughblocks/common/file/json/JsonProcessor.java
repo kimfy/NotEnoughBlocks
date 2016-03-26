@@ -1,10 +1,7 @@
 package com.kimfy.notenoughblocks.common.file.json;
 
 import com.kimfy.notenoughblocks.NotEnoughBlocks;
-import com.kimfy.notenoughblocks.common.block.IBlockProperties;
-import com.kimfy.notenoughblocks.common.block.NEBBlockDoor;
-import com.kimfy.notenoughblocks.common.block.NEBBlockSlabDouble;
-import com.kimfy.notenoughblocks.common.block.NEBBlockSlabHalf;
+import com.kimfy.notenoughblocks.common.block.*;
 import com.kimfy.notenoughblocks.common.item.NEBItemBlockSlab;
 import com.kimfy.notenoughblocks.common.util.Constants;
 import com.kimfy.notenoughblocks.common.util.Utilities;
@@ -12,6 +9,7 @@ import com.kimfy.notenoughblocks.common.util.block.Shape;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.resources.LanguageManager;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.LanguageRegistry;
 import org.apache.logging.log4j.Logger;
@@ -195,8 +193,6 @@ public class JsonProcessor
 
         block.setUnlocalizedName(Constants.MOD_ID + ":" + unlocalizedName);
         block.setCreativeTab(model.getRealCreativeTab());
-        block.setBlockSoundType(model.getRealSoundType());
-        block.setBlockMaterial(model.getRealMaterial());
         block.setHardness(model.getHardness());
         block.setResistance(model.getResistance());
         block.setLightLevel(model.getLightLevel());
@@ -207,6 +203,9 @@ public class JsonProcessor
         //block.setBlockOpaqueness(model.isOpaque()); // Removed because inconvenient for everyone
         block.setBlockStainable(model.isStained());
         block.setSlipperiness(model.getSlipperiness());
+
+        block.setBlockSoundType(model.getRealSoundType());
+        block.setBlockMaterial(model.getRealMaterial());
 
         /* Metadata specific operations */
         for (int metadata = 0; metadata < blocks.size(); metadata++)
@@ -232,13 +231,9 @@ public class JsonProcessor
     {
         String key;
 
-        if (block instanceof NEBBlockDoor)
+        if (block instanceof NEBBlockDoor || block instanceof NEBBlockStair)
         {
-            key = "tile." + Constants.MOD_ID + ":" + unlocalizedName + "_#metadata.name";
-            for (int i = 0; i < 10; i++)
-            {
-                lang.put(key.replace("#metadata", String.valueOf(i)), displayName);
-            }
+            lang.put("tile." + Constants.MOD_ID + ":" + unlocalizedName, displayName + ".name");
         }
         else
         {
@@ -251,7 +246,7 @@ public class JsonProcessor
     {
         if (lang != null && !lang.isEmpty())
         {
-            LanguageRegistry.instance().injectLanguage(Constants.LANG_DEFAULT, (HashMap<String, String>) lang);
+            LanguageRegistry.instance().injectLanguage(Constants.LANG_DEFAULT, lang);
         }
     }
 }

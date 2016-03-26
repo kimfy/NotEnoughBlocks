@@ -3,6 +3,10 @@ package com.kimfy.notenoughblocks.common.util.block;
 import lombok.Getter;
 import net.minecraft.block.material.Material;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 @Getter
 public enum EnumMaterial
 {
@@ -58,5 +62,23 @@ public enum EnumMaterial
             }
         }
         throw new IllegalArgumentException("Material: " + material + " does not exist. Refer to the wiki for valid materials!");
+    }
+
+    private transient static List<EnumMaterial> materials = Arrays.asList(EnumMaterial.values());
+
+    public static String toString(Material material)
+    {
+        for (EnumMaterial e : EnumMaterial.values())
+        {
+            if (e.getMaterial() == material)
+                return e.toString();
+        }
+        return ROCK.toString();
+    }
+
+    @Override
+    public String toString()
+    {
+        return this.name();
     }
 }

@@ -48,16 +48,6 @@ public class NEBBlock extends Block implements IBlockProperties
         this.setupStates();
     }
 
-    @Override
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ)
-    {
-        if (!worldIn.isRemote)
-        {
-            playerIn.addChatComponentMessage(new TextComponentString("Material: " + EnumMaterial.toString(state.getMaterial()) ));
-        }
-        return false;
-    }
-
     private void setupStates()
     {
         IBlockState blockState = getBlockState().getBaseState().withProperty(VARIANT, 0);

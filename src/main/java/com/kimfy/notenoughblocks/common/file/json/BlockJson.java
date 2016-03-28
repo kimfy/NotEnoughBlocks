@@ -3,6 +3,7 @@ package com.kimfy.notenoughblocks.common.file.json;
 import com.kimfy.notenoughblocks.common.block.IBlockProperties;
 import com.kimfy.notenoughblocks.common.file.FileManager;
 import com.kimfy.notenoughblocks.common.integration.Chisel;
+import com.kimfy.notenoughblocks.common.util.Drop;
 import com.kimfy.notenoughblocks.common.util.block.EnumCreativeTab;
 import com.kimfy.notenoughblocks.common.util.block.EnumMaterial;
 import com.kimfy.notenoughblocks.common.util.block.EnumSoundType;
@@ -26,7 +27,7 @@ public class BlockJson implements Serializable
     public transient String unlocalizedName = null;
 
     public Map<String, String> textures   = new LinkedHashMap<>();
-    public transient List<ItemStack> drop = null;
+    public transient List<Drop> drop = null;
     public List<String> lore              = null;
     public List<String> oreDict           = null;
 
@@ -502,7 +503,7 @@ public class BlockJson implements Serializable
         return this;
     }
 
-    public BlockJson drop(List<ItemStack> drop)
+    public BlockJson drop(List<Drop> drop)
     {
         this.drop = drop;
         return this;
@@ -535,7 +536,7 @@ public class BlockJson implements Serializable
         return needsColoring;
     }
 
-    public List<ItemStack> getDrop()
+    public List<Drop> getDrop()
     {
         return this.drop;
     }

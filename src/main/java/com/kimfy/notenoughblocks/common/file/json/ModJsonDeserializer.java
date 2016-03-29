@@ -4,15 +4,15 @@ import com.google.gson.*;
 import com.kimfy.notenoughblocks.NotEnoughBlocks;
 import com.kimfy.notenoughblocks.common.util.Drop;
 import com.kimfy.notenoughblocks.common.util.Version;
-import net.minecraft.client.Minecraft;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.JsonUtils;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.lang.reflect.Type;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+// TODO: Rename to make it clear what it does
 public class ModJsonDeserializer implements JsonDeserializer
 {
     @Override
@@ -30,7 +30,9 @@ public class ModJsonDeserializer implements JsonDeserializer
     private List<BlockJson> getBlockList(JsonObject node, Version version)
     {
         List<BlockJson> ret = new ArrayList<>();
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(BlockJson.class, new BlockJson.Deserializer())
+                .create();
 
         if (JsonUtils.hasField(node, "blocks"))
         {
@@ -49,11 +51,11 @@ public class ModJsonDeserializer implements JsonDeserializer
                  */
                 switch (version)
                 {
-                    case DEVELOPER: // TODO: Implement List of Object, Primitive and Object/Primitive around
+                    case DEVELOPER:
                     {
                         if (JsonUtils.hasField(model, "drop") || JsonUtils.hasField(model, "drops"))
                         {
-                            block.drop(Drop.Deserializer.deserialize(model.get("drop")));
+                            block.drop(Drop.Deserializer.deserializeList(model.get("drop")));
                             NotEnoughBlocks.logger.info("Block {} has List<Drop> field {}", block.getDisplayName(), block.getDrop());
                             NotEnoughBlocks.logger.info("Block {} has \"drop\" section: {}", block.getDisplayName(), model.get("drop"));
                         }

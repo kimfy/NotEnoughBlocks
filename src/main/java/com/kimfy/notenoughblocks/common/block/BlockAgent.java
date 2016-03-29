@@ -1,6 +1,8 @@
 package com.kimfy.notenoughblocks.common.block;
 
+import com.kimfy.notenoughblocks.NotEnoughBlocks;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
+import com.kimfy.notenoughblocks.common.util.Drop;
 import com.kimfy.notenoughblocks.common.util.block.Shape;
 import lombok.Getter;
 import net.minecraft.block.Block;
@@ -19,6 +21,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class BlockAgent<T extends Block & IBlockProperties> implements IBlockProperties
@@ -170,5 +173,22 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
     {
         int metadata = getBlockVariant(world, pos);
         return this.get(metadata).isBeaconBase();
+    }
+
+    public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
+    {
+        List<ItemStack> ret = new ArrayList<>();
+        int metadata = state.getBlock().damageDropped(state);
+        BlockJson blockJson = get(metadata);
+        NotEnoughBlocks.logger.info("BlockJson {} ", blockJson.getDisplayName());
+        NotEnoughBlocks.logger.info("Calling getDrops, on Block {} with Metadata {} and List<Drop> {}", state.getBlock(), metadata, get(metadata).getDrop());
+
+        if (get(metadata).getDrop() != null)
+        {
+            BlockJson model = get(metadata);
+            ret.addAll(model.getDrop().stream().map(Drop::getItemStack).collect(Collectors.toCollection(ArrayList<ItemStack>::new)));
+            NotEnoughBlocks.logger.info("List<Drop> {} in Block {}", model.getDrop(), state.getBlock());
+        }
+        return ret;
     }
 }

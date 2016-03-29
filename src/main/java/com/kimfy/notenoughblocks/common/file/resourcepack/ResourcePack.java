@@ -7,7 +7,6 @@ import com.kimfy.notenoughblocks.NotEnoughBlocks;
 import com.kimfy.notenoughblocks.common.file.FileManager;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
 import com.kimfy.notenoughblocks.common.file.json.Blocks;
-import com.kimfy.notenoughblocks.common.file.json.ModJsonSerializer;
 import com.kimfy.notenoughblocks.common.util.Constants;
 import com.kimfy.notenoughblocks.common.util.FileUtilities;
 import com.kimfy.notenoughblocks.common.util.Utilities;
@@ -189,7 +188,7 @@ public class ResourcePack
                     if (developer)
                     {
                         GsonBuilder gsonBuilder = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting();
-                        gsonBuilder.registerTypeAdapter(BlockJson.class, new ModJsonSerializer());
+                        gsonBuilder.registerTypeAdapter(BlockJson.class, new BlockJson.Serializer());
                         Gson gson = gsonBuilder.create();
 
                         Map<String, List<BlockJson>> resourcePackMap = new LinkedHashMap<>(1);

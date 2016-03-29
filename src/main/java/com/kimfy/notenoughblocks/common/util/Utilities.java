@@ -1,10 +1,11 @@
 package com.kimfy.notenoughblocks.common.util;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import org.apache.commons.lang3.SerializationUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,11 +22,25 @@ public class Utilities
      */
     public static List<BlockJson> deepCloneList(List<BlockJson> list) {
         List<BlockJson> cloned = new ArrayList<BlockJson>(list.size());
-        
-        for (BlockJson block : list) {
-            cloned.add( (BlockJson) SerializationUtils.clone(block));
-        }
+
+        list.forEach(b -> cloned.add(deepClone(b)));
+
+        // for (BlockJson block : list) {
+        //     cloned.add( (BlockJson) SerializationUtils.clone(block));
+        // }
         return cloned;
+    }
+
+    public static GsonBuilder gsonBuilder = new GsonBuilder()
+            .registerTypeAdapter(BlockJson.class, new BlockJson.Deserializer())
+            .registerTypeAdapter(BlockJson.class, new BlockJson.Serializer());
+
+    public static Gson gson = gsonBuilder.create();
+
+    public static BlockJson deepClone(BlockJson block)
+    {
+        String clone = gson.toJson(block, BlockJson.class);
+        return gson.fromJson(clone, BlockJson.class);
     }
 
     /**

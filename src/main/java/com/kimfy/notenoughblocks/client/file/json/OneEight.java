@@ -105,7 +105,7 @@ public class OneEight
 
                 if (f.isFile() && f.getName().endsWith(".json"))
                 {
-                    logger.info("[NEB]: " + f.getName() + " is a json. Moving on");
+                    // logger.info("[NEB]: " + f.getName() + " is a json. Moving on");
                     try
                     {
                         Type type = new TypeToken<Map<String, Object>>() {}.getType();

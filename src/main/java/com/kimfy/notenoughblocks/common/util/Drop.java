@@ -1,8 +1,12 @@
 package com.kimfy.notenoughblocks.common.util;
 
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSyntaxException;
+import com.kimfy.notenoughblocks.NotEnoughBlocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.JsonUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,6 +14,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
+ * TODO: Make it a wrapper for {@link Item}, not {@link ItemStack}, derp!
  * <h1>Drop</h1>
  * <p>
  * A Drop is a wrapper for ItemStack that
@@ -19,7 +24,7 @@ import java.util.Random;
  * which is set to 1.
  * </p>
  *
- * <h3>BlockJsonSerializer</h3>
+ * <h3>BlockJson.Serializer</h3>
  * -------------------------------------------<br>
  * +parseDrop(JsonElement e); List<Drop>
  *
@@ -48,34 +53,32 @@ import java.util.Random;
  */
 public class Drop
 {
-    private Random random = new Random();
+    private transient Random random = new Random();
     private int min;
     private int max;
     private int amount = 1;
-    private final ItemStack itemStack;
+    private int metadata = 0;
+    private final Item item;
 
-    public Drop(ItemStack itemStack)
+    public Drop(Item item, int metadata, int amount, int min, int max)
     {
-        this.itemStack = itemStack;
-    }
-
-    public Drop(ItemStack itemStack, int min, int max)
-    {
-        this.itemStack = itemStack;
+        this.item = item;
+        this.metadata = metadata;
+        this.amount = amount;
         this.min = min;
         this.max = max;
     }
 
-    public Drop(ItemStack itemStack, int amount)
+    public Drop(ItemStack itemStack)
     {
-        this.itemStack = itemStack;
-        this.amount = amount;
+        this.item = itemStack.getItem();
+        this.metadata = itemStack.getItemDamage();
+        this.amount = 1;
     }
 
     public ItemStack getItemStack()
     {
-        itemStack.stackSize = getStackSize();
-        return itemStack;
+        return new ItemStack(item, getStackSize(), metadata);
     }
 
     public int getStackSize()
@@ -85,7 +88,7 @@ public class Drop
 
     private String getItemStackName()
     {
-        return this.itemStack.getDisplayName();
+        return this.getItemStack().getDisplayName();
     }
 
     @Override
@@ -93,22 +96,82 @@ public class Drop
     {
         return "Drop{" +
                 "itemName=" + getItemStackName() +
-                ", metadata=" + itemStack.getItemDamage() +
+                ", metadata=" + metadata +
                 '}';
     }
 
     public static class Deserializer
     {
-        public static List<Drop> deserialize(JsonElement element)
+        public static Drop deserialize(JsonElement json)
+        {
+            if (json.isJsonPrimitive() && json.getAsJsonPrimitive().isString())
+            {
+                return toDrop(json.getAsString());
+            }
+            else if (json.isJsonObject())
+            {
+                return toDrop(json.getAsJsonObject());
+            }
+            else if (json.isJsonArray()) //FIXME: I am not working
+            {
+                for (JsonElement e : json.getAsJsonArray())
+                {
+                    deserialize(e);
+                }
+            }
+            else
+            {
+                NotEnoughBlocks.logger.error("Unsupported type: " + json.getClass());
+            }
+            return null;
+        }
+
+        public static List<Drop> deserializeList(JsonElement element)
         {
             List<Drop> drops = new ArrayList<>();
-
-            if (element.isJsonPrimitive() && element.getAsJsonPrimitive().isString())
-            {
-                drops.add(toDrop(element.getAsString()));
-            }
+            drops.add(deserialize(element));
+            // if (element.isJsonPrimitive() && element.getAsJsonPrimitive().isString())
+            // {
+            //     drops.add(toDrop(element.getAsString()));
+            // }
+            // else if (element.isJsonObject())
+            // {
+            //     JsonObject model = element.getAsJsonObject();
+            //     drops.add(toDrop(model));
+            // }
+            // else if (element.isJsonArray())
+            // {
+            //     for (JsonElement e : element.getAsJsonArray())
+            //     {
+            //         drops.addAll(deserializeList(e));
+            //     }
+            // }
 
             return drops;
+        }
+
+        public static Drop toDrop(JsonObject model)
+        {
+            if (!model.has("name"))
+            {
+                NotEnoughBlocks.logger.error("Error: drop {} is missing the name key", model.toString(), new JsonSyntaxException("Missing required members! Do not report this!"));
+            }
+
+            String modid, itemName;
+            int metadata, min, max, amount;
+            modid = JsonUtils.getString(model, "modid", "minecraft");
+            itemName = JsonUtils.getString(model, "name");
+            metadata = JsonUtils.getInt(model, "metadata", 0);
+            amount = JsonUtils.getInt(model, "amount", 1);
+            min = JsonUtils.getInt(model, "min", -1);
+            max = JsonUtils.getInt(model, "max", -1);
+
+            Item item = MinecraftUtilities.getItem(modid, itemName);
+            if (min == -1 && max == -1)
+            {
+                return new Drop(item, metadata, amount, 0, 0);
+            }
+            return new Drop(item, metadata, 1, min, max);
         }
 
         public static Drop toDrop(String str)
@@ -123,7 +186,7 @@ public class Drop
                 int meta = Integer.valueOf(split[2]);
                 Item item = MinecraftUtilities.getItem(split[0], split[1]);
 
-                return new Drop(new ItemStack(item, 1, meta), amounts[0], amounts[1]);
+                return new Drop(item, meta, 1, amounts[0], amounts[1]);
             }
             else if (str.matches(MinecraftUtilities.MODID_NAME_META_AMOUNT))
             {
@@ -131,7 +194,7 @@ public class Drop
                 int meta = Integer.valueOf(split[2]);
                 Item item = MinecraftUtilities.getItem(split[0], split[1]);
 
-                return new Drop(new ItemStack(item, 1, meta), amount);
+                return new Drop(item, meta, amount, 0, 0);
             }
 
             else if (str.matches(MinecraftUtilities.MODID_NAME_MIN_MAX))
@@ -139,27 +202,29 @@ public class Drop
                 int[] amounts = getAmountFromMinimumMaximum(str);
                 Item item = MinecraftUtilities.getItem(split[0], split[1]);
 
-                return new Drop(new ItemStack(item), amounts[0], amounts[1]);
+                return new Drop(item, 0, 1, amounts[0], amounts[1]);
             }
             else if (str.matches(MinecraftUtilities.MODID_NAME_AMOUNT))
             {
                 int amount = Integer.valueOf(split[2]);
                 Item item = MinecraftUtilities.getItem(split[0], split[1]);
 
-                return new Drop(new ItemStack(item), amount);
+                return new Drop(item, 0, amount, 0, 0);
             }
 
             else if (str.matches(MinecraftUtilities.NAME_META_MIN_MAX))
             {
                 int[] amounts = getAmountFromMinimumMaximum(str);
+                int meta = Integer.valueOf(split[1]);
                 Item item = MinecraftUtilities.getItem(split[0]);
 
-                return new Drop(new ItemStack(item, 1, Integer.valueOf(split[1])), amounts[0], amounts[1]);
+                return new Drop(item, meta, 1, amounts[0], amounts[1]);
             }
             else if (str.matches(MinecraftUtilities.NAME_META_AMOUNT))
             {
                 Item item = MinecraftUtilities.getItem(split[0]);
-                return new Drop(new ItemStack(item, 1, Integer.valueOf(split[1])), Integer.valueOf(split[2]));
+                int meta = Integer.valueOf(split[1]);
+                return new Drop(item, meta, Integer.valueOf(split[2]), 0, 0);
             }
 
             else if (str.matches(MinecraftUtilities.NAME_MIN_MAX))
@@ -167,16 +232,17 @@ public class Drop
                 int[] amounts = getAmountFromMinimumMaximum(str);
                 Item item = MinecraftUtilities.getItem(split[0]);
 
-                return new Drop(new ItemStack(item), amounts[0], amounts[1]);
+                return new Drop(item, 0, 1, amounts[0], amounts[1]);
             }
             else if (str.matches(MinecraftUtilities.NAME_AMOUNT))
             {
                 Item item = MinecraftUtilities.getItem(split[0]);
-                return new Drop(new ItemStack(item), Integer.valueOf(split[1]));
+                return new Drop(item, 0, Integer.valueOf(split[1]), 0, 0);
             }
             else
             {
-                return new Drop(MinecraftUtilities.toItemStack(str));
+                ItemStack ret = MinecraftUtilities.toItemStack(str);
+                return new Drop(ret);
             }
         }
 

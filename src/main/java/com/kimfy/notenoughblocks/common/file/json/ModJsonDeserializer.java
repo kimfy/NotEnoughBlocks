@@ -2,7 +2,7 @@ package com.kimfy.notenoughblocks.common.file.json;
 
 import com.google.gson.*;
 import com.kimfy.notenoughblocks.NotEnoughBlocks;
-import com.kimfy.notenoughblocks.common.util.Drop;
+import com.kimfy.notenoughblocks.common.util.block.Drop;
 import com.kimfy.notenoughblocks.common.util.Version;
 import net.minecraft.util.JsonUtils;
 

@@ -1,9 +1,10 @@
-package com.kimfy.notenoughblocks.common.util;
+package com.kimfy.notenoughblocks.common.util.block;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 import com.kimfy.notenoughblocks.NotEnoughBlocks;
+import com.kimfy.notenoughblocks.common.util.MinecraftUtilities;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.JsonUtils;

@@ -1,8 +1,7 @@
 package com.kimfy.notenoughblocks.common.block;
 
-import com.kimfy.notenoughblocks.NotEnoughBlocks;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
-import com.kimfy.notenoughblocks.common.util.Drop;
+import com.kimfy.notenoughblocks.common.util.block.Drop;
 import com.kimfy.notenoughblocks.common.util.block.Shape;
 import lombok.Getter;
 import net.minecraft.block.Block;
@@ -11,7 +10,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;

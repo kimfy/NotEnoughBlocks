@@ -1,6 +1,5 @@
 package com.kimfy.notenoughblocks.common.util;
 
-import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -51,21 +50,6 @@ public class MinecraftUtilities
         {
             throw new IllegalArgumentException("Input String \"" + String.valueOf(str) + "\" is not valid. Refer to the wiki for valid formats. If you believe this is a bug, please report it to the mod author!");
         }
-    }
-
-    public static Block getBlock(String modid, String name)
-    {
-        if (modid != null && name != null)
-        {
-            ResourceLocation rl = new ResourceLocation(modid, name);
-            return blockExists(rl) ? Block.blockRegistry.getObject(rl) : null;
-        }
-        return null;
-    }
-
-    public static boolean blockExists(ResourceLocation rl)
-    {
-        return GameData.getBlockRegistry().containsKey(rl);
     }
 
     public static Item getItem(String modid, String name)

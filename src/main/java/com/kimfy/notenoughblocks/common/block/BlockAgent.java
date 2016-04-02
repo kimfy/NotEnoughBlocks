@@ -11,6 +11,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
@@ -21,6 +22,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -147,6 +149,8 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
 
     /* ========== Block.java ========== */
 
+    protected static java.util.Random RANDOM = new java.util.Random();
+
     public Material getMaterial(IBlockState state)
     {
         int metadata = block.damageDropped(state);
@@ -179,15 +183,25 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
     {
         List<ItemStack> ret = new ArrayList<>();
         int metadata = state.getBlock().damageDropped(state);
-        BlockJson blockJson = get(metadata);
-        NotEnoughBlocks.logger.info("BlockJson {} ", blockJson.getDisplayName());
-        NotEnoughBlocks.logger.info("Calling getDrops, on Block {} with Metadata {} and List<Drop> {}", state.getBlock(), metadata, get(metadata).getDrop());
 
         if (get(metadata).getDrop() != null)
         {
             BlockJson model = get(metadata);
             ret.addAll(model.getDrop().stream().map(Drop::getItemStack).collect(Collectors.toCollection(ArrayList<ItemStack>::new)));
-            NotEnoughBlocks.logger.info("List<Drop> {} in Block {}", model.getDrop(), state.getBlock());
+        }
+        else // Fallback to Block#getDrops()
+        {
+            Random rand = world instanceof World ? ((World)world).rand : RANDOM;
+
+            int count = block.quantityDropped(state, fortune, rand);
+
+            IntStream.range(0, count).forEach(i -> {
+                Item item = block.getItemDropped(state, rand, fortune);
+                if (item != null)
+                {
+                    ret.add(new ItemStack(item, 1, block.damageDropped(state)));
+                }
+            });
         }
         return ret;
     }

@@ -26,6 +26,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
+import java.util.Random;
 
 public class NEBBlock extends Block implements IBlockProperties
 {

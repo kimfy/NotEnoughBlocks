@@ -9,15 +9,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.JsonUtils;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 /**
- * TODO: Make it a wrapper for {@link Item}, not {@link ItemStack}, derp!
  * <h1>Drop</h1>
  * <p>
- * A Drop is a wrapper for ItemStack that
+ * A Drop is a wrapper for Item that
  * will return an ItemStack with a random
  * size between Drop#min and Drop#max. If
  * these aren't set, it'll default to Drop#amount
@@ -83,7 +81,7 @@ public class Drop
 
     public int getStackSize()
     {
-        return (max != 0) && (amount > 0) ? amount : (max > min) ? random.nextInt((max - min) + 1) + min : amount;
+        return (max == 0) ? amount : (max > min) ? random.nextInt((max - min) + 1) + min : amount;
     }
 
     private String getItemStackName()
@@ -102,7 +100,7 @@ public class Drop
 
     public static class Deserializer
     {
-        public static Drop deserialize(JsonElement json)
+        public static Object deserialize(JsonElement json)
         {
             if (json.isJsonPrimitive() && json.getAsJsonPrimitive().isString())
             {
@@ -112,12 +110,14 @@ public class Drop
             {
                 return toDrop(json.getAsJsonObject());
             }
-            else if (json.isJsonArray()) //FIXME: I am not working
+            else if (json.isJsonArray())
             {
+                List<Drop> ret = new ArrayList<>();
                 for (JsonElement e : json.getAsJsonArray())
                 {
-                    deserialize(e);
+                    ret.add((Drop) deserialize(e));
                 }
+                return ret;
             }
             else
             {
@@ -129,24 +129,15 @@ public class Drop
         public static List<Drop> deserializeList(JsonElement element)
         {
             List<Drop> drops = new ArrayList<>();
-            drops.add(deserialize(element));
-            // if (element.isJsonPrimitive() && element.getAsJsonPrimitive().isString())
-            // {
-            //     drops.add(toDrop(element.getAsString()));
-            // }
-            // else if (element.isJsonObject())
-            // {
-            //     JsonObject model = element.getAsJsonObject();
-            //     drops.add(toDrop(model));
-            // }
-            // else if (element.isJsonArray())
-            // {
-            //     for (JsonElement e : element.getAsJsonArray())
-            //     {
-            //         drops.addAll(deserializeList(e));
-            //     }
-            // }
-
+            Object drop = deserialize(element);
+            if (drop instanceof Drop)
+            {
+                drops.add((Drop) drop);
+            }
+            else if (drop instanceof List)
+            {
+                drops.<Drop>addAll((List<Drop>) drop);
+            }
             return drops;
         }
 
@@ -177,7 +168,6 @@ public class Drop
         public static Drop toDrop(String str)
         {
             String[] split = str.split("[:#]");
-            System.out.println(Arrays.asList(split));
             int min, max;
 
             if (str.matches(MinecraftUtilities.MODID_NAME_META_MIN_MAX))

@@ -140,13 +140,6 @@ public class JsonProcessor
 
     private void registerBlocks(List<BlockJson> blocks, Json json, int index)
     {
-        //logger.info("Registering " + blocks.size() + " block(s) in category " + blocks.get(0).getShape());
-        //for (int i = 0; i < blocks.size(); i++)
-        //{
-        //    BlockJson temp = blocks.get(i);
-        //    logger.info(i + ": " + temp.getDisplayName());
-        //}
-
         BlockJson model = blocks.get(0);
         Shape shape = model.getRealShape();
 

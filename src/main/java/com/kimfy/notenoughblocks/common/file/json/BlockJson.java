@@ -21,23 +21,21 @@ import java.util.stream.Collectors;
 @Getter
 public class BlockJson implements Serializable
 {
-    public BlockJson() {} // Constructor for Gson, beacuse I'm nice <3
+    public BlockJson() {}
 
-    public String displayName               = "displayName";
+    public String displayName     = "displayName";
     public String unlocalizedName = null;
 
-    public Map<String, String> textures   = new LinkedHashMap<>();
-    public List<Drop> drop                = null;
-    public List<String> lore              = null;
-    public List<String> oreDict           = null;
+    public Map<String, String> textures = new LinkedHashMap<>();
+    public List<Drop> drop              = null;
+    public List<String> lore            = null;
+    public List<String> oreDict         = null;
 
     /* Block Specific Properties  */
     public int maxStackSize           = 64;
     public String creativeTab         = "buildingblocks";
     public String shape               = "cube";
-    public float  hardness            = 1.5F;
     public float  resistance          = 10.0F;
-    public String material            = "rock";
     public String stepSound           = "stone";
     public boolean opaque             = true;
     public boolean stained            = false;
@@ -50,12 +48,20 @@ public class BlockJson implements Serializable
     public String sensitivity         = "everything";
     public boolean canBlockGrass      = false;
     public float particleGravity      = 1.0F;
-    public int mobility               = 0;
     public boolean enableStats        = true;
-    public boolean neighborBrightness = false;
-    public float lightLevel           = 0.0F;
-    public int lightOpacity           = 255;
     public String buttonType          = null; // Valid types are 'wooden' and 'stone'
+
+    /* 1.9 made these metadata specific... */
+    public String material            = "rock";
+    public float  hardness            = 1.5F;
+    public int lightOpacity           = 255;
+    public float lightLevel           = 0.0F;
+    public boolean neighborBrightness = false;
+    public boolean fullBlock          = true;
+    public boolean fullCube           = true;
+    public boolean transluscent       = false;
+    public boolean canProvidePower    = false;
+    public int mobility               = 0;
 
     /* Visual */
     public int renderColor       = -1;
@@ -252,7 +258,6 @@ public class BlockJson implements Serializable
         return temp;
     }
 
-
     @Override
     public String toString()
     {
@@ -260,9 +265,7 @@ public class BlockJson implements Serializable
                 "maxStackSize=" + maxStackSize +
                 ", creativeTab='" + creativeTab + '\'' +
                 ", shape='" + shape + '\'' +
-                ", hardness=" + hardness +
                 ", resistance=" + resistance +
-                ", material='" + material + '\'' +
                 ", stepSound='" + stepSound + '\'' +
                 ", opaque=" + opaque +
                 ", stained=" + stained +
@@ -275,12 +278,8 @@ public class BlockJson implements Serializable
                 ", sensitivity='" + sensitivity + '\'' +
                 ", canBlockGrass=" + canBlockGrass +
                 ", particleGravity=" + particleGravity +
-                ", mobility=" + mobility +
                 ", enableStats=" + enableStats +
-                ", neighborBrightness=" + neighborBrightness +
-                ", lightLevel=" + lightLevel +
-                ", lightOpacity=" + lightOpacity +
-                ", buttonType=" + buttonType +
+                ", buttonType='" + buttonType + '\'' +
                 '}';
     }
 
@@ -567,7 +566,7 @@ public class BlockJson implements Serializable
             BlockJson model = new BlockJson();
 
             model.displayName        = JsonUtils.getString(json, "displayName", "Default Block Name");
-            model.textures           = this.<String, String>objectToMap(json, "textures", null);
+            model.textures           = objectToMap(json, "textures", null);
             model.maxStackSize       = JsonUtils.getInt(json, "maxStackSize", 64);
             model.creativeTab        = JsonUtils.getString(json, "creativeTab", "buildingblocks");
             model.shape              = JsonUtils.getString(json, "shape", "cube");
@@ -597,25 +596,31 @@ public class BlockJson implements Serializable
             model.isSunflower        = JsonUtils.getBoolean(json, "isSunflower", false);
             model.isDeadBush         = JsonUtils.getBoolean(json, "isDeadBush", false);
             model.needsColoring      = JsonUtils.getBoolean(json, "needsColoring", false);
+            /* 1.9 */
+            model.fullBlock          = JsonUtils.getBoolean(json, "fullBlock", true);
+            model.fullCube           = JsonUtils.getBoolean(json, "fullCube", true);
+            model.transluscent       = JsonUtils.getBoolean(json, "transluscent", false);
+            model.canProvidePower    = JsonUtils.getBoolean(json, "canProvidePower", false);
+
 
             // Special cases
             // model.drop - Deserialized in ModJsonDeserializer
             model.srcDrop = json.has("drop") ? json.get("drop") : null; // JsonUtils.getJsonObject(json, "drop", null);
-            model.drop = json.has("drop") ? Drop.Deserializer.deserializeList(json.get("drop")) : null;
+            model.drop    = json.has("drop") ? Drop.Deserializer.deserializeList(json.get("drop")) : null;
             // model.lore
             // model.oreDict
 
             return model;
         }
 
-        private <K, V> Map<K, V> objectToMap(JsonObject json, String memberName, Map<K, V> fallback)
+        private Map<String, String> objectToMap(JsonObject json, String memberName, Map fallback)
         {
             Set<Map.Entry<String, JsonElement>> jsonSet = json.get(memberName).getAsJsonObject().entrySet();
-            Map<K, V> ret = new LinkedHashMap<>();
+            Map<String, String> ret = new LinkedHashMap<>();
 
             for (Map.Entry<String, JsonElement> entry : jsonSet)
             {
-                ret.put((K) entry.getKey(), (V) entry.getValue());
+                ret.put(entry.getKey(), entry.getValue().getAsString());
             }
 
             return ret;
@@ -663,8 +668,14 @@ public class BlockJson implements Serializable
             addProperty(json, "isDeadBush", block.isDeadBush(), false);
             addProperty(json, "needsColoring", block.needsColoring(), false);
 
+            /* 1.9 */
+            addProperty(json, "fullBlock", block.isFullBlock(), true);
+            addProperty(json, "fullCube", block.isFullCube(), true);
+            addProperty(json, "transluscent", block.isTransluscent(), false);
+            addProperty(json, "canProvidePower", block.isCanProvidePower(), false);
+
             // FIXME: These are not special enough to be special cases!
-            // TODO: Make a serializer and deserializer for ItemStack
+            // TODO: Make a serializer and deserializer for ItemStack and Item
             if (block.srcDrop != null)
             {
                 json.add("drop", block.srcDrop);

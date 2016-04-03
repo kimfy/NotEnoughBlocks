@@ -52,16 +52,16 @@ public class BlockJson implements Serializable
     public String buttonType          = null; // Valid types are 'wooden' and 'stone'
 
     /* 1.9 made these metadata specific... */
-    public String material            = "rock";
-    public float  hardness            = 1.5F;
-    public int lightOpacity           = 255;
-    public float lightLevel           = 0.0F;
-    public boolean neighborBrightness = false;
-    public boolean fullBlock          = true;
-    public boolean fullCube           = true;
-    public boolean transluscent       = false;
-    public boolean canProvidePower    = false;
-    public int mobility               = 0;
+    public String material            = "rock"; // TODO: Add delegate methods in BlockAgent for these values
+    public float  hardness            = 1.5F;   //
+    public int lightOpacity           = 255;    //
+    public float lightLevel           = 0.0F;   //
+    public boolean neighborBrightness = false;  //
+    public boolean fullBlock          = true;   //
+    public boolean fullCube           = true;   //
+    public boolean transluscent       = false;  //
+    public boolean canProvidePower    = false;  //
+    public int mobility               = 0;      //
 
     /* Visual */
     public int renderColor       = -1;

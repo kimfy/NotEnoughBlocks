@@ -4,6 +4,7 @@ import com.google.gson.*;
 import com.kimfy.notenoughblocks.common.block.IBlockProperties;
 import com.kimfy.notenoughblocks.common.file.FileManager;
 import com.kimfy.notenoughblocks.common.integration.Chisel;
+import com.kimfy.notenoughblocks.common.util.Utilities;
 import com.kimfy.notenoughblocks.common.util.block.*;
 import lombok.Getter;
 import net.minecraft.block.BlockPressurePlate;
@@ -722,8 +723,6 @@ public class BlockJson implements Serializable
             }
         }
 
-        private static Gson gson = new Gson();
-
         /**
          * This method converts {@link BlockJson#textures} into a {@link JsonElement}, I am unsure
          * whether or not this is a good approach. I am imagining it eats up a lot of memory and slows
@@ -735,7 +734,7 @@ public class BlockJson implements Serializable
          */
         private void addTextures(JsonObject json, BlockJson block)
         {
-            json.add("textures", gson.toJsonTree(block.textures));
+            json.add("textures", Utilities.gson.toJsonTree(block.textures));
         }
     }
 }

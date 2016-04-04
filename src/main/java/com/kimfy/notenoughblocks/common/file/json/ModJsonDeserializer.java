@@ -2,6 +2,7 @@ package com.kimfy.notenoughblocks.common.file.json;
 
 import com.google.gson.*;
 import com.kimfy.notenoughblocks.NotEnoughBlocks;
+import com.kimfy.notenoughblocks.common.util.Utilities;
 import com.kimfy.notenoughblocks.common.util.block.Drop;
 import com.kimfy.notenoughblocks.common.util.Version;
 import net.minecraft.util.JsonUtils;
@@ -30,9 +31,7 @@ public class ModJsonDeserializer implements JsonDeserializer
     private List<BlockJson> getBlockList(JsonObject node, Version version)
     {
         List<BlockJson> ret = new ArrayList<>();
-        Gson gson = new GsonBuilder()
-                .registerTypeAdapter(BlockJson.class, new BlockJson.Deserializer())
-                .create();
+        Gson gson = Utilities.gson;
 
         if (JsonUtils.hasField(node, "blocks"))
         {

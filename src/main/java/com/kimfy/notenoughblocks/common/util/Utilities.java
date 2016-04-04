@@ -33,6 +33,8 @@ public class Utilities
     }
 
     public static GsonBuilder gsonBuilder = new GsonBuilder()
+            .disableHtmlEscaping ()
+            .setPrettyPrinting()
             .registerTypeAdapter(BlockJson.class, new BlockJson.Deserializer())
             .registerTypeAdapter(BlockJson.class, new BlockJson.Serializer());
 

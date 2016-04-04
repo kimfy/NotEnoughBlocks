@@ -8,6 +8,7 @@ import com.kimfy.notenoughblocks.common.block.IBlockProperties;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
 import com.kimfy.notenoughblocks.common.util.Constants;
 import com.kimfy.notenoughblocks.common.util.FileUtilities;
+import com.kimfy.notenoughblocks.common.util.Utilities;
 import com.kimfy.notenoughblocks.common.util.block.Shape;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -229,8 +230,8 @@ public class OneEight
         return ret;
     }
 
-    private static Gson gson = new Gson();
-    private static Gson gsonBuilder = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+    // private static Gson gson = new Gson();
+    // private static Gson gsonBuilder = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 
     private static void writeBlockStateForSlab(String blockName, List<BlockJson> blockJsons, String blockStateTemplate, File blockStateFile)
     {
@@ -287,7 +288,7 @@ public class OneEight
             try
             {
                 FileWriter fileWriter = new FileWriter(blockStateFile);
-                fileWriter.write(gsonBuilder.toJson(blockStateFileMap));
+                fileWriter.write(Utilities.gson.toJson(blockStateFileMap));
                 fileWriter.close();
             }
             catch (IOException e)
@@ -327,7 +328,7 @@ public class OneEight
             inventoryRenders.add(inventoryRender);
             Map<String, Object> templateVariants = null;
 
-            Map<String, Object> templateVariantsMap = gson.fromJson(blockStateTemplate, Map.class);
+            Map<String, Object> templateVariantsMap = Utilities.gson.fromJson(blockStateTemplate, Map.class);
             templateVariants = getTemplateVariants((Map<String, Object>) templateVariantsMap.get("variants"), metadata);
 
             if (!populateDefaultsSection)
@@ -381,7 +382,7 @@ public class OneEight
         /********************************************************************************/
         // Copy 'defaults>transform' from template file and insert it into new blockstate
         /********************************************************************************/
-        Map<String, Object> templateMap = gson.fromJson(blockStateTemplate, Map.class);
+        Map<String, Object> templateMap = Utilities.gson.fromJson(blockStateTemplate, Map.class);
         if (templateMap.containsKey("defaults")) // If template file contains defaults section
         {
             Map<String, Object> templateDefaults = (Map<String, Object>) templateMap.get("defaults");
@@ -414,7 +415,7 @@ public class OneEight
         try
         {
             FileWriter fileWriter = new FileWriter(blockStateFile);
-            fileWriter.write(gsonBuilder.toJson(blockStateFileMap));
+            fileWriter.write(Utilities.gson.toJson(blockStateFileMap));
             fileWriter.close();
         }
         catch (IOException e)

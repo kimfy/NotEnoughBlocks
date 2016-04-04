@@ -187,9 +187,10 @@ public class ResourcePack
                     boolean developer = true;
                     if (developer)
                     {
-                        GsonBuilder gsonBuilder = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting();
-                        gsonBuilder.registerTypeAdapter(BlockJson.class, new BlockJson.Serializer());
-                        Gson gson = gsonBuilder.create();
+                        // GsonBuilder gsonBuilder = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting();
+                        // gsonBuilder.registerTypeAdapter(BlockJson.class, new BlockJson.Serializer());
+                        // Gson gson = gsonBuilder.create();
+                        Gson gson = Utilities.gson;
 
                         Map<String, List<BlockJson>> resourcePackMap = new LinkedHashMap<>(1);
                         resourcePackMap.put("blocks", blocks);

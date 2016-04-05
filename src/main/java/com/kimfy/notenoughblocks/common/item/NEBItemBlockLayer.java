@@ -69,7 +69,7 @@ public class NEBItemBlockLayer extends ItemBlock
 
                     if (axisalignedbb != Block.NULL_AABB && worldIn.checkNoEntityCollision(axisalignedbb.offset(blockpos)) && worldIn.setBlockState(blockpos, iblockstate1, 10))
                     {
-                        SoundType soundtype = this.block.getSoundType();
+                        SoundType soundtype = this.block.getStepSound();
                         worldIn.playSound(playerIn, blockpos, soundtype.getPlaceSound(), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
                         --stack.stackSize;
                         return EnumActionResult.SUCCESS;

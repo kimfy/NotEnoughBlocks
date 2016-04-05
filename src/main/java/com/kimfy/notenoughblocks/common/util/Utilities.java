@@ -6,7 +6,6 @@ import com.kimfy.notenoughblocks.common.file.json.BlockJson;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,7 +73,7 @@ public class Utilities
     {
         try
         {
-            return GameRegistry.findUniqueIdentifierFor(block).modId;
+            return block.getRegistryName().getResourceDomain();
         }
         catch (NullPointerException e)
         {

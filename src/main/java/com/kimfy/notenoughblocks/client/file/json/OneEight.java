@@ -56,8 +56,8 @@ public class OneEight
             {
                 List<BlockJson> blockJsons = ((IBlockProperties) block).getData();
                 String shape = blockJsons.get(0).getShape();
-                String registryName = block.getRegistryName();
-                String blockName = block.getRegistryName().substring(block.getRegistryName().indexOf(':') + 1);
+                String registryName = block.getRegistryName().getResourcePath();
+                String blockName = registryName;//block.getRegistryName().substring(block.getRegistryName().indexOf(':') + 1);
                 String fileName = blockName + ".json";
                 File outputFile = new File(blockstateFolder.getAbsolutePath() + "/" + fileName);
 
@@ -201,7 +201,7 @@ public class OneEight
             {
                 try
                 {
-                    if (block.getRegistryName().startsWith(modId))
+                    if (block.getRegistryName().getResourceDomain().equals(modId))
                     {
                         temp.add(block);
                     }

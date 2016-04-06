@@ -30,23 +30,28 @@ public class FileManager
 
     public void findAndProcessResourcePacks()
     {
-        logger.info("Scanning folder for resource packs...");
+        logger.info("Searching {} for resource packs", configResourcePacksFolder.getAbsolutePath());
         for (File file : configResourcePacksFolder.listFiles())
         {
             /* Only process files that end with .zip and are valid filenames.
              * If the test passes, we can be certain that the file we're
              * working with is an actual resource pack
              */
-            if (isZipFile(file) && isValidFilename(file))
+            boolean isFileNameValid = isValidFilename(file);
+            if (isZipFile(file) && isFileNameValid)
             {
                 String fileName = file.getName().replace(".zip", "");
-                logger.info("Resource Pack found: " + fileName);
+                logger.info("Found resource pack: " + fileName);
 
                 ResourcePack resourcePack = new ResourcePack(file, fileName);
                     resourcePack.extract();
                     resourcePack.move();
                     resourcePack.setBlocks();
                     resourcePack.writeJson();
+            }
+            else if (!isFileNameValid)
+            {
+                logger.error("Found resource pack \"{}\" but it's name is invalid. Use only characters/underscores/dashes/numbers.", file.getName());
             }
         }
     }

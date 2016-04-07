@@ -681,7 +681,7 @@ public class BlockJson implements Serializable
 
         private void setBlockDrops(JsonObject json, BlockJson block)
         {
-            if (block.getDrop() != null)
+            if (block.getDrop() != null && !(block.getDrop().isEmpty()))
             {
                 JsonArray array = new JsonArray();
 

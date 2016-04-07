@@ -1,10 +1,8 @@
 package com.kimfy.notenoughblocks.common.block;
 
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
-import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
 
 import java.util.List;
 

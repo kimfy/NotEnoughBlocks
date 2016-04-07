@@ -8,7 +8,7 @@ import net.minecraft.item.ItemStack;
 
 public class NEBItemBlockSlab extends ItemSlab
 {
-    public NEBItemBlockSlab(Block block, NEBBlockSlabHalf singleSlab, NEBBlockSlabDouble doubleSlab, Boolean stacked)
+    public NEBItemBlockSlab(Block block, NEBBlockSlabHalf singleSlab, NEBBlockSlabDouble doubleSlab)
     {
         super(block, singleSlab, doubleSlab);
         this.setMaxDamage(0);

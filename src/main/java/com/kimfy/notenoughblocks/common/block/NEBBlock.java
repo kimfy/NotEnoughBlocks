@@ -2,7 +2,6 @@ package com.kimfy.notenoughblocks.common.block;
 
 import com.kimfy.notenoughblocks.common.block.properties.ModPropertyInteger;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
-import com.kimfy.notenoughblocks.common.util.block.EnumMaterial;
 import com.kimfy.notenoughblocks.common.util.block.EnumSoundType;
 import com.kimfy.notenoughblocks.common.util.block.Shape;
 import lombok.experimental.Delegate;
@@ -12,21 +11,17 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
-import java.util.Random;
 
 public class NEBBlock extends Block implements IBlockProperties
 {
@@ -104,9 +99,9 @@ public class NEBBlock extends Block implements IBlockProperties
     {
         NEBBlock block = new NEBBlock(material, data);
         BlockJson modelBlock = data.get(0);
-        block.setHardness(modelBlock.hardness);
-        block.setResistance(modelBlock.resistance);
-        block.setBlockSoundType(EnumSoundType.get(modelBlock.stepSound).getSoundType());
+        block.setHardness(modelBlock.getHardness());
+        block.setResistance(modelBlock.getResistance());
+        block.setBlockSoundType(EnumSoundType.get(modelBlock.getStepSound()).getSoundType());
 
         return block;
     }

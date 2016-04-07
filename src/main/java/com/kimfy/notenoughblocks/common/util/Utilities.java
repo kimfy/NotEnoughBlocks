@@ -3,6 +3,7 @@ package com.kimfy.notenoughblocks.common.util;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
+import com.kimfy.notenoughblocks.common.util.block.Drop;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -35,7 +36,9 @@ public class Utilities
             .disableHtmlEscaping ()
             .setPrettyPrinting()
             .registerTypeAdapter(BlockJson.class, new BlockJson.Deserializer())
-            .registerTypeAdapter(BlockJson.class, new BlockJson.Serializer());
+            .registerTypeAdapter(BlockJson.class, new BlockJson.Serializer())
+            .registerTypeAdapter(Drop.class, new Drop.Deserializer())
+            .registerTypeAdapter(Drop.class, new Drop.Serializer());
 
     public static Gson gson = gsonBuilder.create();
 

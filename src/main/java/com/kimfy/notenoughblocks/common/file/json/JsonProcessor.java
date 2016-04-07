@@ -3,13 +3,13 @@ package com.kimfy.notenoughblocks.common.file.json;
 import com.google.common.base.Joiner;
 import com.kimfy.notenoughblocks.NotEnoughBlocks;
 import com.kimfy.notenoughblocks.common.block.*;
-import com.kimfy.notenoughblocks.common.item.NEBItemBlockSlab;
 import com.kimfy.notenoughblocks.common.util.Constants;
 import com.kimfy.notenoughblocks.common.util.Utilities;
 import com.kimfy.notenoughblocks.common.util.block.Shape;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.Logger;
@@ -65,13 +65,13 @@ public class JsonProcessor
         }
         else
         {
-            logger.info("There are no JSON files to process. SKIPPING");
+            logger.info("There are no JSON files to process...");
         }
     }
 
     private static Map<String, Category> categories = new LinkedHashMap<>();
 
-    void generateDynamicCategories(Json json)
+    private void generateDynamicCategories(Json json)
     {
         for (BlockJson block : json.getBlocks())
         {
@@ -89,7 +89,7 @@ public class JsonProcessor
         }
     }
 
-    int getBlockAmountInCategory(List<BlockJson> blocks, Category category)
+    private int getBlockAmountInCategory(List<BlockJson> blocks, Category category)
     {
         int tmp = 0;
 
@@ -142,35 +142,51 @@ public class JsonProcessor
 
         Material material = model.getRealMaterial();
         String unlocalizedName = json.getName() + "_" + model.getShape() + "_" + index;
-
-        Class<?> cls;
-        Block block = null;
+        ResourceLocation rl = new ResourceLocation(Constants.MOD_ID, unlocalizedName);
+        Class<?> blockClass;
+        Class<?> itemClass;
+        Block block;
+        Item item;
 
         try
         {
-            cls = shape.getBlockClass();
-
-            if (cls != null)
+            blockClass = shape.getBlockClass();
+            itemClass = shape.getItemClass();
+            if (blockClass != null)
             {
                 if (shape == Shape.SLAB) // TODO: Generify this
                 {
-                    BlockSlab slabHalf = new NEBBlockSlabHalf(material, Utilities.deepCloneList(blocks));
-                    BlockSlab slabDouble = new NEBBlockSlabDouble(material, Utilities.deepCloneList(blocks));
+                    Constructor<?> itemConstructor = itemClass.getConstructor(Block.class, NEBBlockSlabHalf.class, NEBBlockSlabDouble.class);
 
-                    setBlockProperties((Block & IBlockProperties) slabHalf, blocks, unlocalizedName);
+                    NEBBlockSlabHalf slabHalf     = new NEBBlockSlabHalf(material, Utilities.deepCloneList(blocks));
+                    NEBBlockSlabDouble slabDouble = new NEBBlockSlabDouble(material, Utilities.deepCloneList(blocks));
+
+                    Item itemSlabHalf   = (Item) itemConstructor.newInstance(slabHalf, slabHalf, slabDouble);
+                    Item itemSlabDouble = (Item) itemConstructor.newInstance(slabDouble, slabHalf, slabDouble);
+
                     String slabDoubleUnlocalizedName = json.getName() + "_" + model.getShape() + "_double_" + index;
+                    setBlockProperties((Block & IBlockProperties) slabHalf, blocks, unlocalizedName);
                     setBlockProperties((Block & IBlockProperties) slabDouble, blocks, slabDoubleUnlocalizedName);
 
-                    GameRegistry.registerBlock(slabHalf, NEBItemBlockSlab.class, unlocalizedName, slabHalf, slabDouble, false);
-                    GameRegistry.registerBlock(slabDouble, NEBItemBlockSlab.class, slabDoubleUnlocalizedName, slabHalf, slabDouble, true);
+                    ResourceLocation rlHalfSlab = new ResourceLocation(Constants.MOD_ID, unlocalizedName);
+                    GameRegistry.register(slabHalf, rlHalfSlab);
+                    GameRegistry.register(itemSlabHalf, rlHalfSlab);
+
+                    ResourceLocation rlDoubleSlab = new ResourceLocation(Constants.MOD_ID, slabDoubleUnlocalizedName);
+                    GameRegistry.register(slabDouble, rlDoubleSlab);
+                    GameRegistry.register(itemSlabDouble, rlDoubleSlab);
                 }
                 else
                 {
-                    Constructor<?> con = cls.getConstructor(Material.class, List.class);
-                    block = (Block & IBlockProperties) con.newInstance(material, Utilities.deepCloneList(blocks));
+                    Constructor<?> blockConstructor = blockClass.getConstructor(Material.class, List.class); // block
+                    Constructor<?> itemConstructor = itemClass.getConstructor(Block.class);
+
+                    block = (Block & IBlockProperties) blockConstructor.newInstance(material, Utilities.deepCloneList(blocks));
+                    item = (Item) itemConstructor.newInstance(block);
 
                     setBlockProperties((Block & IBlockProperties) block, blocks, unlocalizedName);
-                    GameRegistry.registerBlock(block, shape.getItemClass(), unlocalizedName);
+                    GameRegistry.register(block, rl);
+                    GameRegistry.register(item, rl);
                 }
             }
         }

@@ -1,55 +1,18 @@
 package com.kimfy.notenoughblocks.common.util.block;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSyntaxException;
+import com.google.gson.*;
 import com.kimfy.notenoughblocks.NotEnoughBlocks;
+import com.kimfy.notenoughblocks.common.file.json.BlockJson;
 import com.kimfy.notenoughblocks.common.util.MinecraftUtilities;
+import com.kimfy.notenoughblocks.common.util.Utilities;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.JsonUtils;
+import net.minecraft.util.ResourceLocation;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.lang.reflect.Type;
 import java.util.Random;
 
-/**
- * <h1>Drop</h1>
- * <p>
- * A Drop is a wrapper for Item that
- * will return an ItemStack with a random
- * size between Drop#min and Drop#max. If
- * these aren't set, it'll default to Drop#amount
- * which is set to 1.
- * </p>
- *
- * <h3>BlockJson.Serializer</h3>
- * -------------------------------------------<br>
- * +parseDrop(JsonElement e); List<Drop>
- *
- * <br>
- * <h3>MinecraftUtilities</h3>
- * -------------------------------------------<br>
- * +findItem(String modid, String name); Item
- * +getOwner(Item); String
- * +toItemStack(String str); ItemStack
- *
- * <br>
- * <h3>BlockJson</h3>
- * -------------------------------------------<br>
- * +setBlockDrops(List<Drop> list);
- * +drops; List<Drop>
- *
- * <br>
- * <h3>BlockAgent</h3>
- * -------------------------------------------<br>
- * +get(meta).getBlockDrops(); List<Drop>
- *
- * <br>
- * <h3>Drop</h3>
- * -------------------------------------------<br>
- * +getItemStack(); ItemStack
- */
 public class Drop
 {
     private transient Random random = new Random();
@@ -99,49 +62,59 @@ public class Drop
                 '}';
     }
 
-    public static class Deserializer
+    public Item getItem()
     {
-        public static Object deserialize(JsonElement json)
+        return this.item;
+    }
+
+    // JSON -> Drop
+    public static class Deserializer implements JsonDeserializer<Drop>
+    {
+        @Override
+        public Drop deserialize(JsonElement element, Type typeOfT, JsonDeserializationContext context) throws JsonParseException
         {
-            if (json.isJsonPrimitive() && json.getAsJsonPrimitive().isString())
+            if (element.isJsonPrimitive())
             {
-                return toDrop(json.getAsString());
+                return toDrop(element.getAsString());
             }
-            else if (json.isJsonObject())
+            else if (element.isJsonObject())
             {
-                return toDrop(json.getAsJsonObject());
-            }
-            else if (json.isJsonArray())
-            {
-                List<Drop> ret = new ArrayList<>();
-                for (JsonElement e : json.getAsJsonArray())
-                {
-                    ret.add((Drop) deserialize(e));
-                }
-                return ret;
+                return toDrop(element.getAsJsonObject());
             }
             else
             {
-                NotEnoughBlocks.logger.error("Unsupported type: " + json.getClass());
+                NotEnoughBlocks.logger.error("Type {} is not supported as drop. It has to be either a String or Object", element.getClass());
             }
             return null;
         }
 
-        public static List<Drop> deserializeList(JsonElement element)
+        /**
+         * Performs a recursive search through the give {@link JsonElement} to populate
+         * the given {@link BlockJson} with {@link Drop}s. This allows for very deeply
+         * nested arrays in the JSON object.
+         *
+         * @param block The {@link BlockJson} to populate with drops
+         * @param json The {@link JsonElement} to get values from
+         */
+        public static void walk(BlockJson block, JsonElement json)
         {
-            List<Drop> drops = new ArrayList<>();
-            Object drop = deserialize(element);
-            if (drop instanceof Drop)
+            if (json.isJsonPrimitive() || json.isJsonObject())
             {
-                drops.add((Drop) drop);
+                Drop drop = Utilities.gson.fromJson(json, Drop.class);
+                block.getDrop().add(drop);
             }
-            else if (drop instanceof List)
+            else if (json.isJsonArray())
             {
-                drops.<Drop>addAll((List<Drop>) drop);
+                for (JsonElement entry : json.getAsJsonArray())
+                {
+                    walk(block, entry);
+                }
             }
-            return drops;
         }
 
+        /**
+         * Deserializes a {@link JsonObject} to a {@link Drop}
+         */
         public static Drop toDrop(JsonObject model)
         {
             if (!model.has("name"))
@@ -155,11 +128,11 @@ public class Drop
             itemName = JsonUtils.getString(model, "name");
             metadata = JsonUtils.getInt(model, "metadata", 0);
             amount = JsonUtils.getInt(model, "amount", 1);
-            min = JsonUtils.getInt(model, "min", -1);
-            max = JsonUtils.getInt(model, "max", -1);
+            min = JsonUtils.getInt(model, "min", 0);
+            max = JsonUtils.getInt(model, "max", 0);
 
-            Item item = MinecraftUtilities.getItem(modid, itemName);
-            if (min == -1 && max == -1)
+            Item item = Item.itemRegistry.getObject(new ResourceLocation(modid, itemName));
+            if (min == 0 && max == 0)
             {
                 return new Drop(item, metadata, amount, 0, 0);
             }
@@ -245,6 +218,35 @@ public class Drop
             int max = Integer.valueOf(minMaxArr[1]);
 
             return new int[] {min, max};
+        }
+    }
+
+    // Drop -> JSON
+    public static class Serializer implements JsonSerializer<Drop>
+    {
+        @Override
+        public JsonElement serialize(Drop src, Type typeOfSrc, JsonSerializationContext context)
+        {
+            JsonObject json = new JsonObject();
+            String modid = src.getItem().getRegistryName().getResourceDomain();
+            String name = src.getItem().getRegistryName().getResourcePath();
+            int metadata = src.metadata;
+
+            json.add("modid", new JsonPrimitive(modid));
+            json.add("name", new JsonPrimitive(name));
+            json.add("metadata", new JsonPrimitive(metadata));
+
+            if (src.min == 0 && src.max == 0)
+            {
+                json.add("amount", new JsonPrimitive(src.amount));
+            }
+            else
+            {
+                json.add("min", new JsonPrimitive(src.min));
+                json.add("max", new JsonPrimitive(src.max));
+            }
+
+            return json;
         }
     }
 }

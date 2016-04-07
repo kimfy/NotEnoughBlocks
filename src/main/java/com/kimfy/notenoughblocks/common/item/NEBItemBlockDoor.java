@@ -22,7 +22,7 @@ public class NEBItemBlockDoor extends ItemBlock
     {
         super(block);
         block.setCreativeTab(null);
-        this.setCreativeTab(EnumCreativeTab.get(((IBlockProperties) block).getData().get(0).creativeTab).getCreativeTab());
+        this.setCreativeTab(EnumCreativeTab.get(((IBlockProperties) block).getData().get(0).getCreativeTab()).getCreativeTab());
     }
 
     /**

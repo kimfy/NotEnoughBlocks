@@ -91,8 +91,10 @@ public class ResourcePack
                 tempMap.put(side, this.name + "_" + texture);
             }
 
-            block.textures.clear();
-            block.textures.putAll(tempMap);
+            block.getTextures().clear();
+            block.getTextures().putAll(tempMap);
+            //block.textures.clear();
+            //block.textures.putAll(tempMap);
 
             if (BlockJson.exists(block))
             {
@@ -100,7 +102,6 @@ public class ResourcePack
             }
             else
             {
-                //logger.info("Block " + block.getDisplayName() + " does not exist with textures " + block.getTextureMap());
                 logger.info("Block: " + block.getDisplayName() + " cannot be created from resource pack as not all the required textures for it was found. Textures needed for block to be created: " + block.getTextureMap());
             }
         }

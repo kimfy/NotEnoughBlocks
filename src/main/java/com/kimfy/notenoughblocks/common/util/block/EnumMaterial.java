@@ -3,7 +3,6 @@ package com.kimfy.notenoughblocks.common.util.block;
 import lombok.Getter;
 import net.minecraft.block.material.Material;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

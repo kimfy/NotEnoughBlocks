@@ -1,7 +1,6 @@
 package com.kimfy.notenoughblocks.client.file.json;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.kimfy.notenoughblocks.NotEnoughBlocks;
 import com.kimfy.notenoughblocks.common.block.IBlockProperties;

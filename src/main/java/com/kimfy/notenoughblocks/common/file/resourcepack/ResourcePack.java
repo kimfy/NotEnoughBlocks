@@ -2,7 +2,6 @@ package com.kimfy.notenoughblocks.common.file.resourcepack;
 
 import com.google.common.io.Files;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.kimfy.notenoughblocks.NotEnoughBlocks;
 import com.kimfy.notenoughblocks.common.file.FileManager;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;

@@ -11,14 +11,11 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import org.apache.commons.codec.Charsets;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.Logger;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.lang.reflect.Constructor;
 import java.util.*;
 
@@ -216,14 +213,6 @@ public class JsonProcessor
 
     private static Map<String, String> lang = new HashMap<>();
 
-    // TODO: Add support for all shapes
-    /*
-        Shapes that need support:
-        Stairs
-        Slabs
-        Doors
-        Rotating
-     */
     private static void setDisplayName(Block block, String unlocalizedName, int metadata, String displayName)
     {
         String key;
@@ -244,12 +233,10 @@ public class JsonProcessor
         if (lang != null && !lang.isEmpty())
         {
             String converted = Joiner.on('\n').withKeyValueSeparator("=").join(lang);
-            InputStream stream = new ByteArrayInputStream(converted.getBytes(Charsets.UTF_8));
-
-            // Compare String bytes with stream.getBytes?
             String path = "resourcepacks/" + Constants.MOD_ID + "/assets/" + Constants.MOD_ID + "/lang/";
             File langDir = new File(path);
             File langFile = new File(path + "en_US.lang");
+
             try
             {
                 if (!langDir.exists())
@@ -280,26 +267,6 @@ public class JsonProcessor
             {
                 NotEnoughBlocks.logger.error("ERROR: Failed to write lang file! Report this!");
             }
-
-            /*LanguageManager languageManager = Minecraft.getMinecraft().getLanguageManager();
-
-            try
-            {
-                Field currentLocaleField = ReflectionHelper.findField(LanguageManager.class, "currentLocale", "field_135049_a");
-                net.minecraft.client.resources.Locale locale = (net.minecraft.client.resources.Locale) currentLocaleField.get(languageManager);
-
-                Field propertiesField = ReflectionHelper.findField(net.minecraft.client.resources.Locale.class, "properties", "field_135032_a");
-                Map<String, String> propertiesMap = (Map<String, String>) propertiesField.get(locale);
-
-                propertiesMap.putAll(lang);
-                String conv = Joiner.on('\n').withKeyValueSeparator("=").join(propertiesMap);
-                System.out.println(conv);
-            }
-            catch (IllegalAccessException e)
-            {
-                e.printStackTrace();
-            }
-            */
         }
     }
 }

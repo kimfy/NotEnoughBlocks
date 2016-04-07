@@ -155,7 +155,7 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
         return get(metadata).getRealMaterial();
     }
 
-    public SoundType getSoundType()
+    public SoundType getStepSound()
     {
         return this.soundType;
     }

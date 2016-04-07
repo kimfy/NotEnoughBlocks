@@ -21,8 +21,6 @@ public class ModJsonDeserializer implements JsonDeserializer
     {
         JsonObject json = jsonElement.getAsJsonObject();
         Map<String, Object> ret = new HashMap<>(1);
-        NotEnoughBlocks.logger.info("Deserializing JSON...");
-
         Version version = Version.valueOf(JsonUtils.getString(json, "version", "default").toUpperCase());
         ret.put("blocks", getBlockList(json, version));
         return ret;

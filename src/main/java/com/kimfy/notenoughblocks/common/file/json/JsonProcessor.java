@@ -5,6 +5,7 @@ import com.kimfy.notenoughblocks.NotEnoughBlocks;
 import com.kimfy.notenoughblocks.common.block.*;
 import com.kimfy.notenoughblocks.common.util.Constants;
 import com.kimfy.notenoughblocks.common.util.Utilities;
+import com.kimfy.notenoughblocks.common.util.block.Recipe;
 import com.kimfy.notenoughblocks.common.util.block.Shape;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -184,9 +185,9 @@ public class JsonProcessor
                     block = (Block & IBlockProperties) blockConstructor.newInstance(material, Utilities.deepCloneList(blocks));
                     item = (Item) itemConstructor.newInstance(block);
 
-                    setBlockProperties((Block & IBlockProperties) block, blocks, unlocalizedName);
                     GameRegistry.register(block, rl);
                     GameRegistry.register(item, rl);
+                    setBlockProperties((Block & IBlockProperties) block, blocks, unlocalizedName);
                 }
             }
         }
@@ -224,6 +225,12 @@ public class JsonProcessor
 
             block.isSilkTouchable(modelBlock.isSilkTouch(), metadata);
             setDisplayName(block, unlocalizedName, metadata, modelBlock.getDisplayName());
+            Recipe recipe = modelBlock.getRecipe();
+            if (recipe != null)
+            {
+                recipe.setOutput(block, metadata, 1);
+                recipe.registerRecipe();
+            }
         }
     }
 

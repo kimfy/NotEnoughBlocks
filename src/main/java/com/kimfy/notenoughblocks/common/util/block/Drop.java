@@ -89,7 +89,7 @@ public class Drop
         }
 
         /**
-         * Performs a recursive search through the give {@link JsonElement} to populate
+         * Performs a recursive search through the given {@link JsonElement} to populate
          * the given {@link BlockJson} with {@link Drop}s. This allows for very deeply
          * nested arrays in the JSON object.
          *
@@ -205,7 +205,7 @@ public class Drop
             }
             else
             {
-                ItemStack ret = MinecraftUtilities.toItemStack(str);
+                ItemStack ret = MinecraftUtilities.strToItemStack(str);
                 return new Drop(ret);
             }
         }

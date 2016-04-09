@@ -23,7 +23,7 @@ public class MinecraftUtilities
     public static final String NAME_MIN_MAX = "^([A-z0-9]+)#([0-9]+)-([0-9]+)$"; // name#min-max
     public static final String NAME_AMOUNT  = "^([A-z0-9]+)#([0-9]+)$";          // name#amount
 
-    public static ItemStack toItemStack(String str)
+    public static ItemStack strToItemStack(String str)
     {
         String[] split = str.split("[:]");
         if (str.matches(MODID_NAME_META))
@@ -50,6 +50,12 @@ public class MinecraftUtilities
         {
             throw new IllegalArgumentException("Input String \"" + String.valueOf(str) + "\" is not valid. Refer to the wiki for valid formats. If you believe this is a bug, please report it to the mod author!");
         }
+    }
+
+    public static String itemStackToString(ItemStack stack)
+    {
+        ResourceLocation rl = stack.getItem().getRegistryName();
+        return rl.getResourceDomain() + ":" + rl.getResourcePath() + ":" + stack.getMetadata();
     }
 
     public static Item getItem(String modid, String name)

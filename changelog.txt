@@ -1,0 +1,23 @@
+Changelog
+================================================================
+MC-1.9.dev064:
+10.04.2016 @ 00:07 CET
+================================================================
++ Recipes! See changelog how to apply
++ Block properties are now assigned _after_ block registration
++ Added changelog.txt
+
+Recipes can either be a String, or array
+Shaped recipe:
+"recipe": [
+	[ "crafting_table", "crafting_table", null ],
+	[ null, "stick", null ],
+	[ null, "stick", null ]
+]
+
+Shapeless recipe:
+"recipe": "stick"
+or
+"recipe": [
+	[ "stick", "crafting_table", "stick", "command_block" ]
+]

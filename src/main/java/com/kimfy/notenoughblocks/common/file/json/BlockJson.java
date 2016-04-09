@@ -31,6 +31,7 @@ public class BlockJson implements Serializable
     protected List<Drop> drop              = null;
     protected List<String> lore            = null;
     protected List<String> oreDict         = null;
+    protected Recipe recipe                = null;
 
     /* Block Specific Properties  */
     protected int maxStackSize           = 64;
@@ -596,6 +597,7 @@ public class BlockJson implements Serializable
             block.canProvidePower    = JsonUtils.getBoolean(json, "canProvidePower", false);
 
             this.setBlockDrops(block, json);
+            this.setBlockRecipe(block, json);
             // block.lore
             // block.oreDict
 
@@ -608,6 +610,15 @@ public class BlockJson implements Serializable
             {
                 JsonElement drop = json.get("drop");
                 Drop.Deserializer.walk(model, drop);
+            }
+        }
+
+        private void setBlockRecipe(BlockJson model, JsonObject json)
+        {
+            if (JsonUtils.hasField(json, "recipe"))
+            {
+                JsonElement recipe = json.get("recipe");
+                model.recipe = Utilities.gson.fromJson(recipe, Recipe.class);
             }
         }
 
@@ -673,6 +684,7 @@ public class BlockJson implements Serializable
             addProperty(json, "canProvidePower", block.isCanProvidePower(), false);
 
             this.setBlockDrops(json, block);
+            this.setBlockRecipe(json, block);
             // model.lore
             // model.oreDict
 
@@ -691,6 +703,15 @@ public class BlockJson implements Serializable
                     array.add(serialized);
                 }
                 json.add("drop", array);
+            }
+        }
+
+        private void setBlockRecipe(JsonObject json, BlockJson block)
+        {
+            if (block.getRecipe() != null)
+            {
+                JsonElement serialized = Utilities.gson.toJsonTree(block.getRecipe(), Recipe.class);
+                json.add("recipe", serialized);
             }
         }
 

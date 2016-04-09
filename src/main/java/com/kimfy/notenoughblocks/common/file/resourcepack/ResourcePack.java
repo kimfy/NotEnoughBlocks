@@ -190,7 +190,7 @@ public class ResourcePack
                         // GsonBuilder gsonBuilder = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting();
                         // gsonBuilder.registerTypeAdapter(BlockJson.class, new BlockJson.Serializer());
                         // Gson gson = gsonBuilder.create();
-                        Gson gson = Utilities.gson;
+                        Gson gson = Utilities.GSON;
 
                         Map<String, List<BlockJson>> resourcePackMap = new LinkedHashMap<>(1);
                         resourcePackMap.put("blocks", blocks);

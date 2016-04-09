@@ -100,7 +100,7 @@ public class Drop
         {
             if (json.isJsonPrimitive() || json.isJsonObject())
             {
-                Drop drop = Utilities.gson.fromJson(json, Drop.class);
+                Drop drop = Utilities.GSON.fromJson(json, Drop.class);
                 block.getDrop().add(drop);
             }
             else if (json.isJsonArray())

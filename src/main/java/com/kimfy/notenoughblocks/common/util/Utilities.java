@@ -33,7 +33,7 @@ public class Utilities
         return cloned;
     }
 
-    public static GsonBuilder gsonBuilder = new GsonBuilder()
+    public static final GsonBuilder GSON_BUILDER = new GsonBuilder()
             .disableHtmlEscaping ()
             .setPrettyPrinting()
             .registerTypeAdapter(BlockJson.class, new BlockJson.Deserializer())
@@ -43,12 +43,12 @@ public class Utilities
             .registerTypeAdapter(Recipe.class, new Recipe.Deserializer())
             .registerTypeAdapter(Recipe.class, new Recipe.Serializer());
 
-    public static Gson gson = gsonBuilder.create();
+    public static final Gson GSON = GSON_BUILDER.create();
 
     public static BlockJson deepClone(BlockJson block)
     {
-        String clone = gson.toJson(block, BlockJson.class);
-        return gson.fromJson(clone, BlockJson.class);
+        String clone = GSON.toJson(block, BlockJson.class);
+        return GSON.fromJson(clone, BlockJson.class);
     }
 
     /**

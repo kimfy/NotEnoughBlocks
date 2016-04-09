@@ -32,7 +32,7 @@ public class ModJsonDeserializer implements JsonDeserializer
             for (JsonElement e : JsonUtils.getJsonArray(node, "blocks"))
             {
                 JsonObject model = e.getAsJsonObject();
-                BlockJson block = Utilities.gson.fromJson(model, BlockJson.class);
+                BlockJson block = Utilities.GSON.fromJson(model, BlockJson.class);
                 ret.add(block);
             }
         }

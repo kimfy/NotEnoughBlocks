@@ -618,7 +618,7 @@ public class BlockJson implements Serializable
             if (JsonUtils.hasField(json, "recipe"))
             {
                 JsonElement recipe = json.get("recipe");
-                model.recipe = Utilities.gson.fromJson(recipe, Recipe.class);
+                model.recipe = Utilities.GSON.fromJson(recipe, Recipe.class);
             }
         }
 
@@ -699,7 +699,7 @@ public class BlockJson implements Serializable
 
                 for (Drop drop : block.getDrop())
                 {
-                    JsonElement serialized = Utilities.gson.toJsonTree(drop, Drop.class);
+                    JsonElement serialized = Utilities.GSON.toJsonTree(drop, Drop.class);
                     array.add(serialized);
                 }
                 json.add("drop", array);
@@ -710,7 +710,7 @@ public class BlockJson implements Serializable
         {
             if (block.getRecipe() != null)
             {
-                JsonElement serialized = Utilities.gson.toJsonTree(block.getRecipe(), Recipe.class);
+                JsonElement serialized = Utilities.GSON.toJsonTree(block.getRecipe(), Recipe.class);
                 json.add("recipe", serialized);
             }
         }
@@ -762,7 +762,7 @@ public class BlockJson implements Serializable
          */
         private void addTextures(JsonObject json, BlockJson block)
         {
-            json.add("textures", Utilities.gson.toJsonTree(block.textures));
+            json.add("textures", Utilities.GSON.toJsonTree(block.textures));
         }
     }
 }

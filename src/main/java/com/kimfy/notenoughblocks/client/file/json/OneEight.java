@@ -230,7 +230,7 @@ public class OneEight
         return ret;
     }
 
-    // private static Gson gson = new Gson();
+    // private static Gson GSON = new Gson();
     // private static Gson gsonBuilder = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 
     private static void writeBlockStateForSlab(String blockName, List<BlockJson> blockJsons, String blockStateTemplate, File blockStateFile)
@@ -288,7 +288,7 @@ public class OneEight
             try
             {
                 FileWriter fileWriter = new FileWriter(blockStateFile);
-                fileWriter.write(Utilities.gson.toJson(blockStateFileMap));
+                fileWriter.write(Utilities.GSON.toJson(blockStateFileMap));
                 fileWriter.close();
             }
             catch (IOException e)
@@ -328,7 +328,7 @@ public class OneEight
             inventoryRenders.add(inventoryRender);
             Map<String, Object> templateVariants = null;
 
-            Map<String, Object> templateVariantsMap = Utilities.gson.fromJson(blockStateTemplate, Map.class);
+            Map<String, Object> templateVariantsMap = Utilities.GSON.fromJson(blockStateTemplate, Map.class);
             templateVariants = getTemplateVariants((Map<String, Object>) templateVariantsMap.get("variants"), metadata);
 
             if (!populateDefaultsSection)
@@ -382,7 +382,7 @@ public class OneEight
         /********************************************************************************/
         // Copy 'defaults>transform' from template file and insert it into new blockstate
         /********************************************************************************/
-        Map<String, Object> templateMap = Utilities.gson.fromJson(blockStateTemplate, Map.class);
+        Map<String, Object> templateMap = Utilities.GSON.fromJson(blockStateTemplate, Map.class);
         if (templateMap.containsKey("defaults")) // If template file contains defaults section
         {
             Map<String, Object> templateDefaults = (Map<String, Object>) templateMap.get("defaults");
@@ -415,7 +415,7 @@ public class OneEight
         try
         {
             FileWriter fileWriter = new FileWriter(blockStateFile);
-            fileWriter.write(Utilities.gson.toJson(blockStateFileMap));
+            fileWriter.write(Utilities.GSON.toJson(blockStateFileMap));
             fileWriter.close();
         }
         catch (IOException e)

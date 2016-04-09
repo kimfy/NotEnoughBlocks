@@ -3,6 +3,7 @@ package com.kimfy.notenoughblocks.common;
 import com.kimfy.notenoughblocks.common.file.FileManager;
 import com.kimfy.notenoughblocks.common.file.json.Blocks;
 import com.kimfy.notenoughblocks.common.file.json.JsonProcessor;
+import com.kimfy.notenoughblocks.common.util.Registrar;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -30,6 +31,7 @@ public class ServerProxy
     public void init(FMLInitializationEvent event)
     {
         //Chisel.loadNotEnoughBlocksIntegration();
+        Registrar.load();
     }
 
     @Mod.EventHandler

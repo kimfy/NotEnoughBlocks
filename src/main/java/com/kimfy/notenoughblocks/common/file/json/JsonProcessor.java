@@ -225,18 +225,22 @@ public class JsonProcessor
 
             block.isSilkTouchable(modelBlock.isSilkTouch(), metadata);
             setDisplayName(block, unlocalizedName, metadata, modelBlock.getDisplayName());
-            Recipe recipe = modelBlock.getRecipe();
-            if (recipe != null)
-            {
-                recipe.setOutput(block, metadata, 1);
-                recipe.registerRecipe();
-            }
+            this.setBlockRecipe(modelBlock, block, metadata);
+        }
+    }
+
+    private void setBlockRecipe(BlockJson json, Block block, int metadata)
+    {
+        Recipe recipe = json.getRecipe();
+        if (recipe != null)
+        {
+            recipe.setOutput(block, metadata);
         }
     }
 
     private static Map<String, String> lang = new HashMap<>();
 
-    private static void setDisplayName(Block block, String unlocalizedName, int metadata, String displayName)
+    private void setDisplayName(Block block, String unlocalizedName, int metadata, String displayName)
     {
         String key;
 

@@ -1,7 +1,9 @@
 package com.kimfy.notenoughblocks.common.util.block;
 
 import com.google.gson.*;
+import com.kimfy.notenoughblocks.common.util.IRegisterable;
 import com.kimfy.notenoughblocks.common.util.MinecraftUtilities;
+import com.kimfy.notenoughblocks.common.util.Registrar;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -16,7 +18,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Recipe
+public class Recipe implements IRegisterable
 {
     private ItemStack output;
     private int outputAmount = 1;
@@ -31,6 +33,7 @@ public class Recipe
         this.height = height;
         this.ingredients = ingredients;
         this.outputAmount = outputAmount;
+        Registrar.register(this);
     }
 
     public Recipe(int width, int height, ItemStack[] ingredients)
@@ -55,6 +58,12 @@ public class Recipe
         return this;
     }
 
+    public Recipe setOutput(Block block, int metadata)
+    {
+        this.setOutput(block, metadata, 1);
+        return this;
+    }
+
     public ItemStack[] getIngredients()
     {
         return this.ingredients;
@@ -70,7 +79,7 @@ public class Recipe
         return height == 0;
     }
 
-    public void registerRecipe()
+    public void register()
     {
         IRecipe recipe = this.isShapeless() ?
                 new ShapelessRecipes(this.getResult(), Arrays.asList(this.ingredients)) :
@@ -78,17 +87,6 @@ public class Recipe
         GameRegistry.addRecipe(recipe);
     }
 
-    /**
-     * <pre>
-     *     {
-     *         "recipe": [
-     *           [ "$c", "$c", "$c" ],
-     *           [ "$c", "$c", "$c" ],
-     *           [ "$c", "$c", "$c" ]
-     *         ]
-     *     }
-     * </pre>
-     */
     // JSON -> Recipe
     public static class Deserializer implements JsonDeserializer<Recipe>
     {
@@ -103,14 +101,6 @@ public class Recipe
             {
                 ingredients = new LinkedList<>();
                 JsonArray jsonRecipe = src.getAsJsonArray();
-                /*
-                 * [
-                 *       /---/---/---------width
-                 *    [ "", "", "" ],  / - height
-                 *    [ "", "", "" ], |
-                 *    [ "", "", "" ]  |
-                 * ]
-                 */
                 width = jsonRecipe.get(0).getAsJsonArray().size(); // get the size of the first array
                 height = jsonRecipe.size();
 

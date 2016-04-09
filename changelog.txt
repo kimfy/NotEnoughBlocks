@@ -1,5 +1,13 @@
 Changelog
 ================================================================
+MC-1.9.dev065:
+10.04.2016 @ 01:10 CET
+================================================================
++ Implement IRegisterable for Objects to be registered. Make sure it has got a register() method or delegate. Eventually, all block registration will be moved to this!
+
+This let's me register recipes in a cleaner way. Down the road I'm guessing it'll be much cleaner for other objects to be registered too. Things like mod integration.
+
+================================================================
 MC-1.9.dev064:
 10.04.2016 @ 00:07 CET
 ================================================================

@@ -16,7 +16,6 @@ import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameData;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.logging.log4j.Logger;
@@ -129,7 +128,9 @@ public class OneEight
                                 //logger.info("Variant: " + variant);
                                 //logger.info("===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # =====");
 
-                                Block block = GameRegistry.findBlock(Constants.MOD_ID, blockName);
+                                ResourceLocation rl = new ResourceLocation(Constants.MOD_ID, blockName);
+                                Block block = Block.blockRegistry.getObject(rl);
+
                                 if (block != null)
                                 {
                                     //logger.info("[NEB]: block is not null, registering item model");

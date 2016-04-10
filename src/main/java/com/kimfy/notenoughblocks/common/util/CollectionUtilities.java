@@ -13,7 +13,7 @@ public class CollectionUtilities
     {
         if (blockRegistry.isEmpty())
         {
-            Block.blockRegistry.forEach(block -> blockRegistry.add(block));
+            Block.blockRegistry.forEach(blockRegistry::add);
         }
         return blockRegistry;
     }

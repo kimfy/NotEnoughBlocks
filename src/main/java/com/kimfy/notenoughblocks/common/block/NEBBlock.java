@@ -27,7 +27,7 @@ public class NEBBlock extends Block implements IBlockProperties
 {
     public final ModPropertyInteger VARIANT;
     private final BlockStateContainer BLOCKSTATE_REAL;
-    private final Shape blockShape;
+    private final Shape BLOCK_SHAPE;
 
     @Delegate
     private final BlockAgent<NEBBlock> agent;
@@ -36,7 +36,7 @@ public class NEBBlock extends Block implements IBlockProperties
     {
         super(material);
         this.agent = new BlockAgent<>(this, data);
-        this.blockShape = agent.getModelBlock().getRealShape();
+        this.BLOCK_SHAPE = agent.getModelBlock().getRealShape();
 
         int blockCount = data.size();
         this.VARIANT = ModPropertyInteger.create("metadata", blockCount);
@@ -108,7 +108,7 @@ public class NEBBlock extends Block implements IBlockProperties
 
     public Shape getBlockShape()
     {
-        return this.blockShape;
+        return this.BLOCK_SHAPE;
     }
 
     /* ========== Layer / Render / Client ========== */

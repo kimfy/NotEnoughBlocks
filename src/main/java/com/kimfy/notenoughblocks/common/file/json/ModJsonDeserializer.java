@@ -11,7 +11,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-// TODO: Rename to make it clear what it does
+/**
+ * Deserializer for JSON files
+ */
 public class ModJsonDeserializer implements JsonDeserializer
 {
     @Override

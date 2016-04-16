@@ -16,7 +16,7 @@ public class NEBBlockStair extends BlockStairs implements IBlockProperties
 
     public NEBBlockStair(Material material, List<BlockJson> data)
     {
-        super(NEBBlock.buildModBlock(material, data).getDefaultState());
+        super(new NEBBlock.Builder().setMaterial(material).setData(data).build().getDefaultState() /*NEBBlock.buildModBlock(material, data).getDefaultState()*/);
         this.agent = new BlockAgent<>(this, data);
     }
 

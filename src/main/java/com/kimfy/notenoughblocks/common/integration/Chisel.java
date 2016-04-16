@@ -138,9 +138,10 @@ public class Chisel implements Serializable
      */
     private static boolean isBlockMine(Object o)
     {
-        // return o instanceof IBlockProperties;
-        //return GameRegistry.findUniqueIdentifierFor((Block)o).modId.equals(Constants.MOD_ID);
-        //FIXME: Port to 1.9
+        if (o instanceof Block)
+        {
+            return ((Block) o).getRegistryName().getResourceDomain().equals(Constants.MOD_ID);
+        }
         return false;
     }
 

@@ -2,7 +2,6 @@ package com.kimfy.notenoughblocks.common.block;
 
 import com.kimfy.notenoughblocks.common.block.properties.ModPropertyInteger;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
-import com.kimfy.notenoughblocks.common.util.block.EnumSoundType;
 import com.kimfy.notenoughblocks.common.util.block.Shape;
 import lombok.experimental.Delegate;
 import net.minecraft.block.Block;
@@ -47,7 +46,6 @@ public class NEBBlock extends Block implements IBlockProperties
     private void setupStates()
     {
         IBlockState blockState = getBlockState().getBaseState().withProperty(VARIANT, 0);
-        blockState = blockState.withProperty(VARIANT, 0);
         this.setDefaultState(blockState);
     }
 
@@ -92,20 +90,6 @@ public class NEBBlock extends Block implements IBlockProperties
         return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)));
     }
 
-    /**
-     * Used in stairs creation
-     */
-    protected static Block buildModBlock(Material material, List<BlockJson> data)
-    {
-        NEBBlock block = new NEBBlock(material, data);
-        BlockJson modelBlock = data.get(0);
-        block.setHardness(modelBlock.getHardness());
-        block.setResistance(modelBlock.getResistance());
-        block.setBlockSoundType(EnumSoundType.get(modelBlock.getStepSound()).getSoundType());
-
-        return block;
-    }
-
     public Shape getBlockShape()
     {
         return this.BLOCK_SHAPE;
@@ -123,16 +107,6 @@ public class NEBBlock extends Block implements IBlockProperties
         return super.getBlockLayer();
     }
 
-    @Override
-    public boolean isFullyOpaque(IBlockState state)
-    {
-        if (getBlockShape() == Shape.ICE)
-        {
-            return false;
-        }
-        return super.isFullyOpaque(state);
-    }
-
     @SideOnly(Side.CLIENT)
     public boolean shouldSideBeRendered(IBlockState state, IBlockAccess worldIn, BlockPos pos, EnumFacing side)
     {
@@ -146,5 +120,37 @@ public class NEBBlock extends Block implements IBlockProperties
             }
         }
         return super.shouldSideBeRendered(state, worldIn, pos, side);
+    }
+
+    protected static class Builder
+    {
+        private Material material;
+        private List<BlockJson> data;
+
+        protected Builder()
+        {
+        }
+
+        protected Block build()
+        {
+            NEBBlock block = new NEBBlock(this.material, this.data);
+            BlockJson model = this.data.get(0);
+            block.setHardness(model.getHardness());
+            block.setResistance(model.getResistance());
+            block.setBlockSoundType(model.getRealSoundType());
+            return block;
+        }
+
+        protected Builder setMaterial(Material material)
+        {
+            this.material = material;
+            return this;
+        }
+
+        protected Builder setData(List<BlockJson> data)
+        {
+            this.data = data;
+            return this;
+        }
     }
 }

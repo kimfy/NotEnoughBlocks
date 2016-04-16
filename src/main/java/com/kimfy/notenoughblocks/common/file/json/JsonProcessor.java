@@ -199,7 +199,7 @@ public class JsonProcessor
 
     private <T extends Block & IBlockProperties> void setBlockProperties(T block, List<BlockJson> blocks, String unlocalizedName)
     {
-        blocks.forEach( v -> v.unlocalizedName(unlocalizedName));
+        blocks.forEach( v -> v.setUnlocalizedName(unlocalizedName));
         BlockJson model = blocks.get(0);
 
         block.setUnlocalizedName(Constants.MOD_ID + ":" + unlocalizedName);

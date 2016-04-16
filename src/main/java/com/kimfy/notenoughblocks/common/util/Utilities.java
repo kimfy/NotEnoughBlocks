@@ -60,14 +60,12 @@ public class Utilities
     {
         try
         {
-            //return (GameRegistry.findUniqueIdentifierFor(item)).modId;
-            //FIXME: Port to 1.9
+            return item.getRegistryName().getResourceDomain();
         }
         catch (NullPointerException e)
         {
             return "minecraft";
         }
-        return "";
     }
 
     /**

@@ -23,7 +23,7 @@ public class NEBBlockFence extends BlockFence implements IBlockProperties
 
     public NEBBlockFence(Material material, List<BlockJson> data)
     {
-        super(material, MapColor.adobeColor); // TODO: 1.9
+        super(material, MapColor.adobeColor);
         this.agent = new BlockAgent<>(this, data);
 
         int blockCount = data.size();

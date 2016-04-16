@@ -145,7 +145,7 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
         return block.damageDropped(state);
     }
 
-    /* ========== Block.java ========== */
+    /* ========== Delegated from Block ========== */
 
     protected static java.util.Random RANDOM = new java.util.Random();
 
@@ -202,5 +202,11 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
             });
         }
         return ret;
+    }
+
+    @SideOnly(Side.CLIENT)
+    public boolean isTranslucent(IBlockState state)
+    {
+        return get(block.damageDropped(state)).isTranslucent();
     }
 }

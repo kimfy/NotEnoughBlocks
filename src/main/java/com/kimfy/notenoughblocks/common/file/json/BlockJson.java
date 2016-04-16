@@ -13,14 +13,13 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.JsonUtils;
 
-import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Getter
-public class BlockJson implements Serializable
+public class BlockJson
 {
     public BlockJson() {}
 
@@ -53,7 +52,7 @@ public class BlockJson implements Serializable
     protected boolean enableStats        = true;
     protected String buttonType          = null; // Valid types are 'wooden' and 'stone'
 
-    /* 1.9 made these metadata specific... */
+    /* 1.9 made these metadata specific */
     protected String material            = "rock"; // TODO: Add delegate methods in BlockAgent for these values
     protected float  hardness            = 1.5F;   //
     protected int lightOpacity           = 255;    //
@@ -61,42 +60,34 @@ public class BlockJson implements Serializable
     protected boolean neighborBrightness = false;  //
     protected boolean fullBlock          = true;   //
     protected boolean fullCube           = true;   //
-    protected boolean transluscent       = false;  //
+    protected boolean translucent        = false;  //
     protected boolean canProvidePower    = false;  //
     protected int mobility               = 0;      //
 
     /* Visual */
-   protected int renderColor       = -1;
-   protected boolean isSunflower   = false;
-   protected boolean isDeadBush    = false;
-   protected boolean needsColoring = false; // Used by Double Plants to determine their item color
+    protected int renderColor       = -1;
+    protected boolean isSunflower   = false;
+    protected boolean isDeadBush    = false;
+    protected boolean needsColoring = false; // Used by Double Plants to determine their item color
 
-    /** Parent block, used to inherit properties */
-    protected BlockJson parent;
+    protected Category category;
+    protected Shape realShape;
+    protected Material realMaterial;
+    protected SoundType realSoundType;
+    protected CreativeTabs realCreativeTab;
 
+    /* Mod Integration */
     protected Chisel chisel;
 
-    public static boolean exists(BlockJson block)
+    /* ========== Setters ========== */
+
+    public BlockJson setUnlocalizedName(String unlocalizedName)
     {
-        if (block == null)
-        {
-            throw new IllegalArgumentException("BlockJson cannot be null");
-        }
-
-        int trues = 0;
-
-        for (String texture : block.getTextureMap().values())
-        {
-            if (FileManager.textures.contains(texture))
-            {
-                trues++;
-            }
-        }
-
-        return trues == block.getTextureMap().size();
+        this.unlocalizedName = unlocalizedName;
+        return this;
     }
 
-    protected Shape realShape;
+    /* ========== Getters ========== */
 
     public Shape getRealShape()
     {
@@ -107,7 +98,6 @@ public class BlockJson implements Serializable
         return this.realShape;
     }
 
-    protected Material realMaterial;
 
     public Material getRealMaterial()
     {
@@ -118,7 +108,6 @@ public class BlockJson implements Serializable
         return realMaterial;
     }
 
-    protected SoundType realSoundType;
 
     public SoundType getRealSoundType()
     {
@@ -129,7 +118,6 @@ public class BlockJson implements Serializable
         return this.realSoundType;
     }
 
-    protected CreativeTabs realCreativeTab;
 
     public CreativeTabs getRealCreativeTab()
     {
@@ -146,7 +134,14 @@ public class BlockJson implements Serializable
         return BlockPressurePlate.Sensitivity.valueOf(tmp);
     }
 
-    protected static final List<String> sides = Arrays.asList("down", "up", "north", "south", "west", "east", "particle");
+    public Category getCategory()
+    {
+        if (category == null)
+        {
+            this.category = new Category(this);
+        }
+        return category;
+    }
 
     public Map<String, String> getTextureMap()
     {
@@ -181,7 +176,7 @@ public class BlockJson implements Serializable
                     .filter(notUpNotDown::apply)
                     .forEach(side -> {
                         if (!textures.containsKey(side))
-                             textures.put(side, texture);
+                            textures.put(side, texture);
                     });
         }
 
@@ -199,318 +194,8 @@ public class BlockJson implements Serializable
         return textures;
     }
 
-    public BlockJson textures(String textures)
-    {
-        this.textures = format(textures);
-        return this;
-    }
-
-    public BlockJson textures(Map<String, String> textures)
-    {
-        this.textures = textures;
-        return this;
-    }
-
-    /**
-     * Turns a String of a key-value look into a map. Allows for
-     * nested variables referencing keys. However, you cannot reference
-     * a variable before it would appear in a map.
-     * Examples:
-     * <pre>
-     *     // Returns: {particle=stone, down=planks_oak, up=planks_oak, side=planks_oak, allSides=planks_oak, random=planks_oak}
-     *     format("particle: stone, down: planks_oak, up: #down, side: #up, allSides: #side, random: #allSides");
-     *
-     *     // Returns: {particle=#allSides, down=planks_oak, up=planks_oak, side=planks_oak, allSides=planks_oak, random=planks_oak}
-     *     format("particle: #random, down: planks_oak, up: #down, side: #up, allSides: #side, random: #allSides");
-     * </pre>
-     *
-     * @param in A string whose formatted in a way that is acceptable, refer to the javadocs
-     * @return A map which is constructed as a Key = key and Value = value, refer to the javadocs
-     */
-    private static Map<String, String> format(String in)
-    {
-        String formattedIn = in.replace(" ", "");
-        Map<String, String> temp = new LinkedHashMap<>();
-
-        String[] split = formattedIn.split(",");
-        for (String i : split)
-        {
-            temp.put(i.split(":")[0], i.split(":")[1]);
-        }
-
-        for (Map.Entry<String, String> entry : temp.entrySet())
-        {
-            String key = entry.getKey();
-            String value = entry.getValue();
-
-            temp.put(key, value);
-        }
-        return temp;
-    }
-
-    @Override
-    public String toString()
-    {
-        return "BlockJson{" +
-                "maxStackSize=" + maxStackSize +
-                ", creativeTab='" + creativeTab + '\'' +
-                ", shape='" + shape + '\'' +
-                ", resistance=" + resistance +
-                ", stepSound='" + stepSound + '\'' +
-                ", opaque=" + opaque +
-                ", stained=" + stained +
-                ", toolType='" + toolType + '\'' +
-                ", harvestLevel=" + harvestLevel +
-                ", beaconBase=" + beaconBase +
-                ", silkTouch=" + silkTouch +
-                ", enchAmplifier=" + enchAmplifier +
-                ", slipperiness=" + slipperiness +
-                ", sensitivity='" + sensitivity + '\'' +
-                ", canBlockGrass=" + canBlockGrass +
-                ", particleGravity=" + particleGravity +
-                ", enableStats=" + enableStats +
-                ", buttonType='" + buttonType + '\'' +
-                '}';
-    }
-
-    public Chisel getChisel()
-    {
-        return chisel;
-    }
-
-    protected Category category;
-
-    public Category getCategory()
-    {
-        if (category == null)
-        {
-            this.category = new Category(this);
-        }
-        return category;
-    }
-
-    /* ========== Builder methods ========== */
-    /*
-     * Builder methods have been made because
-     * using Lombok's @Data annotation didn't
-     * allow me to use default values for fields.
-     * When reading JSON files generated from
-     * resource packs, it would simply set the
-     * empty/missing key/value pairs to null.
-     */
-
-    public BlockJson displayName(String displayName)
-    {
-        this.displayName = displayName;
-        return this;
-    }
-
-    public BlockJson isDeadBush(boolean deadBush)
-    {
-        isDeadBush = deadBush;
-        return this;
-    }
-
-    public BlockJson shape(String shape)
-    {
-        this.shape = shape;
-        return this;
-    }
-
-    public BlockJson hardness(float hardness)
-    {
-        this.hardness = hardness;
-        return this;
-    }
-
-    public BlockJson resistance(float resistance)
-    {
-        this.resistance = resistance;
-        return this;
-    }
-
-    public BlockJson material(String material)
-    {
-        this.material = material;
-        return this;
-    }
-
-    public BlockJson stepSound(String stepSound)
-    {
-        this.stepSound = stepSound;
-        return this;
-    }
-
-    public BlockJson opaque(boolean opaque)
-    {
-        this.opaque = opaque;
-        return this;
-    }
-
-    public BlockJson stained(boolean stained)
-    {
-        this.stained = stained;
-        return this;
-    }
-
-    public BlockJson toolType(String toolType)
-    {
-        this.toolType = toolType;
-        return this;
-    }
-
-    public BlockJson harvestLevel(int harvestLevel)
-    {
-        this.harvestLevel = harvestLevel;
-        return this;
-    }
-
-    public BlockJson beaconBase(boolean beaconBase)
-    {
-        this.beaconBase = beaconBase;
-        return this;
-    }
-
-    public BlockJson silkTouch(boolean silkTouch)
-    {
-        this.silkTouch = silkTouch;
-        return this;
-    }
-
-    public BlockJson enchAmplifier(boolean enchAmplifier)
-    {
-        this.enchAmplifier = enchAmplifier;
-        return this;
-    }
-
-    public BlockJson slipperiness(float slipperiness)
-    {
-        this.slipperiness = slipperiness;
-        return this;
-    }
-
-    public BlockJson sensitivity(String sensitivity)
-    {
-        this.sensitivity = sensitivity;
-        return this;
-    }
-
-    public BlockJson canBlockGrass(boolean canBlockGrass)
-    {
-        this.canBlockGrass = canBlockGrass;
-        return this;
-    }
-
-    public BlockJson particleGravity(float particleGravity)
-    {
-        this.particleGravity = particleGravity;
-        return this;
-    }
-
-    public BlockJson mobility(int mobility)
-    {
-        this.mobility = mobility;
-        return this;
-    }
-
-    public BlockJson enableStats(boolean enableStats)
-    {
-        this.enableStats = enableStats;
-        return this;
-    }
-
-    public BlockJson neighborBrightness(boolean neighborBrightness)
-    {
-        this.neighborBrightness = neighborBrightness;
-        return this;
-    }
-
-    public BlockJson lightLevel(float lightLevel)
-    {
-        this.lightLevel = lightLevel;
-        return this;
-    }
-
-    public BlockJson lightOpacity(int lightOpacity)
-    {
-        this.lightOpacity = lightOpacity;
-        return this;
-    }
-
-    public BlockJson renderColor(int renderColor)
-    {
-        this.renderColor = renderColor;
-        return this;
-    }
-
-    public BlockJson sunflower(boolean sunflower)
-    {
-        isSunflower = sunflower;
-        return this;
-    }
-
-    public BlockJson parent(BlockJson parent)
-    {
-        this.parent = parent;
-        shape = parent.getShape();
-        hardness = parent.getHardness();
-        resistance = parent.getResistance();
-        stepSound = parent.getStepSound();
-        material = parent.getMaterial();
-        creativeTab = parent.getCreativeTab();
-        opaque = parent.isOpaque();
-        stained = parent.isStained();
-        toolType = parent.getToolType();
-        harvestLevel = parent.getHarvestLevel();
-        beaconBase = parent.isBeaconBase();
-        silkTouch = parent.isSilkTouch();
-        enchAmplifier = parent.isEnchAmplifier();
-        maxStackSize = parent.getMaxStackSize();
-        slipperiness = parent.getSlipperiness();
-        lightLevel = parent.getLightLevel();
-        lightOpacity = parent.getLightOpacity();
-        canBlockGrass = parent.isCanBlockGrass();
-        particleGravity = parent.getParticleGravity();
-        mobility = parent.getMobility();
-        enableStats = parent.isEnableStats();
-        neighborBrightness = parent.isNeighborBrightness();
-        return this;
-    }
-
-    public BlockJson unlocalizedName(String unlocalizedName)
-    {
-        this.unlocalizedName = unlocalizedName;
-        return this;
-    }
-
-    public BlockJson buttonType(String buttonType)
-    {
-        this.buttonType = buttonType;
-        return this;
-    }
-
-    public BlockJson needsColoring(boolean needsColoring)
-    {
-        this.needsColoring = needsColoring;
-        return this;
-    }
-
-    public BlockJson drop(List<Drop> drop)
-    {
-        this.drop = new ArrayList<>(drop.size());
-        this.drop.addAll(drop);
-        return this;
-    }
-
-    /* ========== Getters ========== */
-
     public String getShape()
     {
-        if (shape.equalsIgnoreCase("ice"))
-        {
-            return "cube";
-        }
-
         return shape;
     }
 
@@ -538,13 +223,74 @@ public class BlockJson implements Serializable
         return this.drop;
     }
 
-    /* ========== HELPER METHODS ========== */
+    /* ========== Helpers ========== */
 
+    @Override
+    public String toString()
+    {
+        return "BlockJson{" +
+                "maxStackSize=" + maxStackSize +
+                ", creativeTab='" + creativeTab + '\'' +
+                ", shape='" + shape + '\'' +
+                ", resistance=" + resistance +
+                ", stepSound='" + stepSound + '\'' +
+                ", opaque=" + opaque +
+                ", stained=" + stained +
+                ", toolType='" + toolType + '\'' +
+                ", harvestLevel=" + harvestLevel +
+                ", beaconBase=" + beaconBase +
+                ", silkTouch=" + silkTouch +
+                ", enchAmplifier=" + enchAmplifier +
+                ", slipperiness=" + slipperiness +
+                ", sensitivity='" + sensitivity + '\'' +
+                ", canBlockGrass=" + canBlockGrass +
+                ", particleGravity=" + particleGravity +
+                ", enableStats=" + enableStats +
+                ", buttonType='" + buttonType + '\'' +
+                '}';
+    }
+
+    protected static final List<String> sides = Arrays.asList("down", "up", "north", "south", "west", "east", "particle");
+
+    /**
+     * Used if this {@code BlockJson} is coming from a resource pack.
+     * Performs a check on all textures found in it's texture map against
+     * {@link FileManager#textures}. If all of the textures are found in
+     * that list, we return true.
+     *
+     * @param block The block to perform this check on
+     * @return True if all textures in this block's texture map were found
+     */
+    public static boolean exists(BlockJson block)
+    {
+        int trues = 0;
+
+        for (String texture : block.getTextureMap().values())
+        {
+            if (FileManager.textures.contains(texture))
+            {
+                trues++;
+            }
+        }
+
+        return trues == block.getTextureMap().size();
+    }
+
+    /**
+     * Returns a {@link List<String>} of the display names of each block
+     * given in the parameter.
+     *
+     * @param blocks The {@link List<BlockJson>} to get display names for
+     * @return A list of display names
+     */
     public static List<String> getDisplayNamesFromBlocks(List<BlockJson> blocks)
     {
         return blocks.stream().map(BlockJson::getDisplayName).collect(Collectors.toCollection(ArrayList<String>::new));
     }
 
+    /**
+     * @see BlockJson#getDisplayNamesFromBlocks(List)
+     */
     public static List<String> getDisplayNamesFromBlock(IBlockProperties block)
     {
         return getDisplayNamesFromBlocks(block.getData());
@@ -593,7 +339,7 @@ public class BlockJson implements Serializable
             /* 1.9 */
             block.fullBlock          = JsonUtils.getBoolean(json, "fullBlock", true);
             block.fullCube           = JsonUtils.getBoolean(json, "fullCube", true);
-            block.transluscent       = JsonUtils.getBoolean(json, "transluscent", false);
+            block.translucent        = JsonUtils.getBoolean(json, "translucent", false);
             block.canProvidePower    = JsonUtils.getBoolean(json, "canProvidePower", false);
 
             this.setBlockDrops(block, json);
@@ -680,7 +426,7 @@ public class BlockJson implements Serializable
             /* 1.9 */
             addProperty(json, "fullBlock", block.isFullBlock(), true);
             addProperty(json, "fullCube", block.isFullCube(), true);
-            addProperty(json, "transluscent", block.isTransluscent(), false);
+            addProperty(json, "translucent", block.isTranslucent(), false);
             addProperty(json, "canProvidePower", block.isCanProvidePower(), false);
 
             this.setBlockDrops(json, block);

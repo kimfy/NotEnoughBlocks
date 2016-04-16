@@ -1,0 +1,2864 @@
+{
+  "blocks": [
+    {
+      "displayName": "Stone",
+      "textures": {
+        "all": "stone"
+      }
+    },
+    {
+      "displayName": "Cobblestone",
+      "textures": {
+        "all": "cobblestone"
+      }
+    },
+    {
+      "displayName": "Mossy Cobblestone",
+      "textures": {
+        "all": "cobblestone_mossy"
+      }
+    },
+    {
+      "displayName": "Grass Block",
+      "textures": {
+        "particle": "dirt",
+        "down": "dirt",
+        "up": "grass_top",
+        "allSides": "grass_side",
+        "overlay": "grass_side_overlay",
+        "snowed": "grass_side_snowed"
+      },
+      "shape": "grass",
+      "material": "grass",
+      "stepSound": "plant",
+      "canBlockGrass": true
+    },
+    {
+      "displayName": "Dirt",
+      "textures": {
+        "all": "dirt"
+      },
+      "material": "ground",
+      "stepSound": "gravel"
+    },
+    {
+      "displayName": "Podzol",
+      "textures": {
+        "particle": "dirt",
+        "down": "dirt",
+        "up": "dirt_podzol_top",
+        "allSides": "dirt_podzol_side"
+      },
+      "material": "ground",
+      "stepSound": "gravel"
+    },
+    {
+      "displayName": "Oak Wood Planks",
+      "textures": {
+        "all": "planks_oak"
+      },
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Spruce Wood Planks",
+      "textures": {
+        "all": "planks_spruce"
+      },
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Birch Wood Planks",
+      "textures": {
+        "all": "planks_birch"
+      },
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Jungle Wood Planks",
+      "textures": {
+        "all": "planks_jungle"
+      },
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Acacia Wood Planks",
+      "textures": {
+        "all": "planks_acacia"
+      },
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Dark Oak Wood Planks",
+      "textures": {
+        "all": "planks_big_oak"
+      },
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Bedrock",
+      "textures": {
+        "all": "bedrock"
+      }
+    },
+    {
+      "displayName": "Sand",
+      "textures": {
+        "all": "sand"
+      },
+      "shape": "falling",
+      "material": "sand",
+      "stepSound": "sand"
+    },
+    {
+      "displayName": "Red Sand",
+      "textures": {
+        "all": "red_sand"
+      },
+      "shape": "falling",
+      "material": "sand",
+      "stepSound": "sand"
+    },
+    {
+      "displayName": "Gravel",
+      "textures": {
+        "all": "gravel"
+      },
+      "shape": "falling",
+      "material": "ground",
+      "stepSound": "gravel"
+    },
+    {
+      "displayName": "Gold Ore",
+      "textures": {
+        "all": "gold_ore"
+      }
+    },
+    {
+      "displayName": "Iron Ore",
+      "textures": {
+        "all": "iron_ore"
+      }
+    },
+    {
+      "displayName": "Coal Ore",
+      "textures": {
+        "all": "coal_ore"
+      }
+    },
+    {
+      "displayName": "Lapis Lazuli Ore",
+      "textures": {
+        "all": "lapis_ore"
+      }
+    },
+    {
+      "displayName": "Redstone Ore",
+      "textures": {
+        "all": "redstone_ore"
+      }
+    },
+    {
+      "displayName": "Diamond Ore",
+      "textures": {
+        "all": "diamond_ore"
+      }
+    },
+    {
+      "displayName": "Emerald Ore",
+      "textures": {
+        "all": "emerald_ore"
+      }
+    },
+    {
+      "displayName": "Quartz Ore",
+      "textures": {
+        "all": "quartz_ore"
+      }
+    },
+    {
+      "displayName": "Oak Wood",
+      "textures": {
+        "end": "log_oak_top",
+        "side": "log_oak"
+      },
+      "shape": "rotating",
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Spruce Wood",
+      "textures": {
+        "end": "log_spruce_top",
+        "side": "log_spruce"
+      },
+      "shape": "rotating",
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Birch Wood",
+      "textures": {
+        "end": "log_birch_top",
+        "side": "log_birch"
+      },
+      "shape": "rotating",
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Jungle Wood",
+      "textures": {
+        "end": "log_jungle_top",
+        "side": "log_jungle"
+      },
+      "shape": "rotating",
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Acacia Wood",
+      "textures": {
+        "end": "log_acacia_top",
+        "side": "log_acacia"
+      },
+      "shape": "rotating",
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Dark Oak Wood",
+      "textures": {
+        "end": "log_big_oak_top",
+        "side": "log_big_oak"
+      },
+      "shape": "rotating",
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Oak Leaves",
+      "textures": {
+        "all": "leaves_oak"
+      },
+      "shape": "leaves",
+      "hardness": 0.2,
+      "material": "leaves",
+      "stepSound": "grass",
+      "lightOpacity": 1
+    },
+    {
+      "displayName": "Spruce Leaves",
+      "textures": {
+        "all": "leaves_spruce"
+      },
+      "shape": "leaves",
+      "hardness": 0.2,
+      "material": "leaves",
+      "stepSound": "grass",
+      "lightOpacity": 1
+    },
+    {
+      "displayName": "Birch Leaves",
+      "textures": {
+        "all": "leaves_birch"
+      },
+      "shape": "leaves",
+      "hardness": 0.2,
+      "material": "leaves",
+      "stepSound": "grass",
+      "lightOpacity": 1
+    },
+    {
+      "displayName": "Jungle Leaves",
+      "textures": {
+        "all": "leaves_jungle"
+      },
+      "shape": "leaves",
+      "hardness": 0.2,
+      "material": "leaves",
+      "stepSound": "grass",
+      "lightOpacity": 1
+    },
+    {
+      "displayName": "Acacia Leaves",
+      "textures": {
+        "all": "leaves_acacia"
+      },
+      "shape": "leaves",
+      "hardness": 0.2,
+      "material": "leaves",
+      "stepSound": "grass",
+      "lightOpacity": 1
+    },
+    {
+      "displayName": "Dark Oak Leaves",
+      "textures": {
+        "all": "leaves_big_oak"
+      },
+      "shape": "leaves",
+      "hardness": 0.2,
+      "material": "leaves",
+      "stepSound": "grass",
+      "lightOpacity": 1
+    },
+    {
+      "displayName": "Sponge",
+      "textures": {
+        "all": "sponge"
+      },
+      "material": "sponge",
+      "stepSound": "grass"
+    },
+    {
+      "displayName": "Glass",
+      "textures": {
+        "all": "glass"
+      },
+      "shape": "glass",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "opaque": false,
+      "lightOpacity": 0
+    },
+    {
+      "displayName": "Lapis Lazuli Block",
+      "textures": {
+        "all": "lapis_block"
+      },
+      "hardness": 3.0
+    },
+    {
+      "displayName": "Sandstone",
+      "textures": {
+        "down": "sandstone_bottom",
+        "up": "sandstone_top",
+        "allSides": "sandstone_normal"
+      },
+      "hardness": 0.8
+    },
+    {
+      "displayName": "Chiseled Sandstone",
+      "textures": {
+        "down": "sandstone_bottom",
+        "up": "sandstone_top",
+        "allSides": "sandstone_carved"
+      },
+      "hardness": 0.8
+    },
+    {
+      "displayName": "Smooth Sandstone",
+      "textures": {
+        "down": "sandstone_bottom",
+        "up": "sandstone_top",
+        "allSides": "sandstone_smooth"
+      },
+      "hardness": 0.8
+    },
+    {
+      "displayName": "Bed",
+      "textures": {
+        "headParticle": "bed_head_top",
+        "headTop": "bed_head_top",
+        "headBase": "planks_oak",
+        "headEnd": "bed_head_end",
+        "headSide": "bed_head_side",
+        "feetParticle": "bed_feet_top",
+        "feetTop": "bed_feet_top",
+        "feetBase": "planks_oak",
+        "feetEnd": "bed_feet_end",
+        "feetSide": "bed_feet_side"
+      },
+      "shape": "bed",
+      "hardness": 0.2,
+      "material": "cloth",
+      "stepSound": "cloth",
+      "enableStats": false
+    },
+    {
+      "displayName": "Cobweb",
+      "textures": {
+        "cross": "web"
+      },
+      "shape": "web",
+      "hardness": 4.0,
+      "lightOpacity": 1
+    },
+    {
+      "displayName": "Dead Bush",
+      "textures": {
+        "cross": "deadbush"
+      },
+      "shape": "bush",
+      "hardness": 0.0,
+      "stepSound": "grass",
+      "isDeadBush": true
+    },
+    {
+      "displayName": "Grass",
+      "textures": {
+        "cross": "tallgrass"
+      },
+      "shape": "bush",
+      "hardness": 0.0,
+      "stepSound": "grass",
+      "needsColoring": true
+    },
+    {
+      "displayName": "Fern",
+      "textures": {
+        "cross": "fern"
+      },
+      "shape": "bush",
+      "hardness": 0.0,
+      "stepSound": "grass",
+      "needsColoring": true
+    },
+    {
+      "displayName": "Wool",
+      "textures": {
+        "all": "wool_colored_white"
+      },
+      "hardness": 0.8,
+      "material": "cloth",
+      "stepSound": "cloth"
+    },
+    {
+      "displayName": "Orange Wool",
+      "textures": {
+        "all": "wool_colored_orange"
+      },
+      "hardness": 0.8,
+      "material": "cloth",
+      "stepSound": "cloth"
+    },
+    {
+      "displayName": "Magenta Wool",
+      "textures": {
+        "all": "wool_colored_magenta"
+      },
+      "hardness": 0.8,
+      "material": "cloth",
+      "stepSound": "cloth"
+    },
+    {
+      "displayName": "Light Blue Wool",
+      "textures": {
+        "all": "wool_colored_light_blue"
+      },
+      "hardness": 0.8,
+      "material": "cloth",
+      "stepSound": "cloth"
+    },
+    {
+      "displayName": "Yellow Wool",
+      "textures": {
+        "all": "wool_colored_yellow"
+      },
+      "hardness": 0.8,
+      "material": "cloth",
+      "stepSound": "cloth"
+    },
+    {
+      "displayName": "Lime Wool",
+      "textures": {
+        "all": "wool_colored_lime"
+      },
+      "hardness": 0.8,
+      "material": "cloth",
+      "stepSound": "cloth"
+    },
+    {
+      "displayName": "Pink Wool",
+      "textures": {
+        "all": "wool_colored_pink"
+      },
+      "hardness": 0.8,
+      "material": "cloth",
+      "stepSound": "cloth"
+    },
+    {
+      "displayName": "Gray Wool",
+      "textures": {
+        "all": "wool_colored_gray"
+      },
+      "hardness": 0.8,
+      "material": "cloth",
+      "stepSound": "cloth"
+    },
+    {
+      "displayName": "Light Gray Wool",
+      "textures": {
+        "all": "wool_colored_silver"
+      },
+      "hardness": 0.8,
+      "material": "cloth",
+      "stepSound": "cloth"
+    },
+    {
+      "displayName": "Cyan Wool",
+      "textures": {
+        "all": "wool_colored_cyan"
+      },
+      "hardness": 0.8,
+      "material": "cloth",
+      "stepSound": "cloth"
+    },
+    {
+      "displayName": "Purple Wool",
+      "textures": {
+        "all": "wool_colored_purple"
+      },
+      "hardness": 0.8,
+      "material": "cloth",
+      "stepSound": "cloth"
+    },
+    {
+      "displayName": "Blue Wool",
+      "textures": {
+        "all": "wool_colored_blue"
+      },
+      "hardness": 0.8,
+      "material": "cloth",
+      "stepSound": "cloth"
+    },
+    {
+      "displayName": "Brown Wool",
+      "textures": {
+        "all": "wool_colored_brown"
+      },
+      "hardness": 0.8,
+      "material": "cloth",
+      "stepSound": "cloth"
+    },
+    {
+      "displayName": "Green Wool",
+      "textures": {
+        "all": "wool_colored_green"
+      },
+      "hardness": 0.8,
+      "material": "cloth",
+      "stepSound": "cloth"
+    },
+    {
+      "displayName": "Red Wool",
+      "textures": {
+        "all": "wool_colored_red"
+      },
+      "hardness": 0.8,
+      "material": "cloth",
+      "stepSound": "cloth"
+    },
+    {
+      "displayName": "Black Wool",
+      "textures": {
+        "all": "wool_colored_black"
+      },
+      "hardness": 0.8,
+      "material": "cloth",
+      "stepSound": "cloth"
+    },
+    {
+      "displayName": "Dandelion",
+      "textures": {
+        "cross": "flower_dandelion"
+      },
+      "shape": "flower",
+      "hardness": 0.0,
+      "stepSound": "plant"
+    },
+    {
+      "displayName": "Poppy",
+      "textures": {
+        "cross": "flower_rose"
+      },
+      "shape": "flower",
+      "hardness": 0.0,
+      "stepSound": "plant"
+    },
+    {
+      "displayName": "Blue Orchid",
+      "textures": {
+        "cross": "flower_blue_orchid"
+      },
+      "shape": "flower",
+      "hardness": 0.0,
+      "stepSound": "plant"
+    },
+    {
+      "displayName": "Allium",
+      "textures": {
+        "cross": "flower_allium"
+      },
+      "shape": "flower",
+      "hardness": 0.0,
+      "stepSound": "plant"
+    },
+    {
+      "displayName": "Azure Bluet",
+      "textures": {
+        "cross": "flower_houstonia"
+      },
+      "shape": "flower",
+      "hardness": 0.0,
+      "stepSound": "plant"
+    },
+    {
+      "displayName": "Red Tulip",
+      "textures": {
+        "cross": "flower_tulip_red"
+      },
+      "shape": "flower",
+      "hardness": 0.0,
+      "stepSound": "plant"
+    },
+    {
+      "displayName": "Orange Tulip",
+      "textures": {
+        "cross": "flower_tulip_orange"
+      },
+      "shape": "flower",
+      "hardness": 0.0,
+      "stepSound": "plant"
+    },
+    {
+      "displayName": "White Tulip",
+      "textures": {
+        "cross": "flower_tulip_white"
+      },
+      "shape": "flower",
+      "hardness": 0.0,
+      "stepSound": "plant"
+    },
+    {
+      "displayName": "Pink Tulip",
+      "textures": {
+        "cross": "flower_tulip_pink"
+      },
+      "shape": "flower",
+      "hardness": 0.0,
+      "stepSound": "plant"
+    },
+    {
+      "displayName": "Oxeye Daisy",
+      "textures": {
+        "cross": "flower_oxeye_daisy"
+      },
+      "shape": "flower",
+      "hardness": 0.0,
+      "stepSound": "plant"
+    },
+    {
+      "displayName": "Brown Mushroom",
+      "textures": {
+        "all": "mushroom_brown"
+      },
+      "shape": "mushroom",
+      "hardness": 0.0,
+      "stepSound": "grass",
+      "lightLevel": 0.125
+    },
+    {
+      "displayName": "Red Mushroom",
+      "textures": {
+        "all": "mushroom_red"
+      },
+      "shape": "mushroom",
+      "hardness": 0.0,
+      "stepSound": "grass"
+    },
+    {
+      "displayName": "Block of Gold",
+      "textures": {
+        "all": "gold_block"
+      },
+      "hardness": 3.0,
+      "stepSound": "metal",
+      "beaconBase": true
+    },
+    {
+      "displayName": "Block of Iron",
+      "textures": {
+        "all": "iron_block"
+      },
+      "hardness": 3.0,
+      "stepSound": "metal",
+      "beaconBase": true
+    },
+    {
+      "displayName": "Block of Diamond",
+      "textures": {
+        "all": "diamond_block"
+      },
+      "hardness": 3.0,
+      "stepSound": "metal",
+      "beaconBase": true
+    },
+    {
+      "displayName": "Block of Emerald",
+      "textures": {
+        "all": "emerald_block"
+      },
+      "hardness": 3.0,
+      "stepSound": "metal",
+      "beaconBase": true
+    },
+    {
+      "displayName": "Block of Redstone",
+      "textures": {
+        "all": "redstone_block"
+      },
+      "hardness": 3.0,
+      "stepSound": "metal"
+    },
+    {
+      "displayName": "Block of Coal",
+      "textures": {
+        "all": "coal_block"
+      },
+      "hardness": 3.0,
+      "stepSound": "piston",
+      "beaconBase": true
+    },
+    {
+      "displayName": "Stone Slab",
+      "textures": {
+        "down": "stone_slab_top",
+        "up": "stone_slab_top",
+        "allSides": "stone_slab_side"
+      },
+      "shape": "slab",
+      "hardness": 2.0,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Sandstone Slab",
+      "textures": {
+        "down": "sandstone_bottom",
+        "up": "sandstone_top",
+        "allSides": "sandstone_normal"
+      },
+      "shape": "slab",
+      "hardness": 2.0,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Cobblestone Slab",
+      "textures": {
+        "all": "cobblestone"
+      },
+      "shape": "slab",
+      "hardness": 2.0,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Bricks Slab",
+      "textures": {
+        "all": "brick"
+      },
+      "shape": "slab",
+      "hardness": 2.0,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Stone Bricks Slab",
+      "textures": {
+        "all": "stonebrick"
+      },
+      "shape": "slab",
+      "hardness": 2.0,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Nether Brick Slab",
+      "textures": {
+        "all": "nether_brick"
+      },
+      "shape": "slab",
+      "hardness": 2.0,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Quartz Slab",
+      "textures": {
+        "down": "quartz_block_bottom",
+        "up": "quartz_block_top",
+        "allSides": "quartz_block_side"
+      },
+      "shape": "slab",
+      "hardness": 2.0,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Bricks",
+      "textures": {
+        "all": "brick"
+      },
+      "hardness": 2.0,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "TNT",
+      "textures": {
+        "down": "tnt_bottom",
+        "up": "tnt_top",
+        "allSides": "tnt_side"
+      },
+      "hardness": 0.0,
+      "material": "tnt",
+      "stepSound": "grass"
+    },
+    {
+      "displayName": "Bookshelf",
+      "textures": {
+        "down": "planks_oak",
+        "up": "planks_oak",
+        "allSides": "bookshelf"
+      },
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Obsidian",
+      "textures": {
+        "all": "obsidian"
+      },
+      "hardness": 50.0,
+      "resistance": 2000.0,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Torch",
+      "textures": {
+        "on": "torch_on"
+      },
+      "shape": "torch",
+      "hardness": 0.0,
+      "material": "circuits",
+      "stepSound": "wood",
+      "lightLevel": 0.9375
+    },
+    {
+      "displayName": "Oak Wood Stairs",
+      "textures": {
+        "all": "planks_oak"
+      },
+      "shape": "stair",
+      "hardness": 2.0,
+      "material": "wood",
+      "stepSound": "wood",
+      "opaque": false
+    },
+    {
+      "displayName": "Spruce Wood Stairs",
+      "textures": {
+        "all": "planks_spruce"
+      },
+      "shape": "stair",
+      "hardness": 2.0,
+      "material": "wood",
+      "stepSound": "wood",
+      "opaque": false
+    },
+    {
+      "displayName": "Birch Wood Stairs",
+      "textures": {
+        "all": "planks_birch"
+      },
+      "shape": "stair",
+      "hardness": 2.0,
+      "material": "wood",
+      "stepSound": "wood",
+      "opaque": false
+    },
+    {
+      "displayName": "Jungle Wood Stairs",
+      "textures": {
+        "all": "planks_jungle"
+      },
+      "shape": "stair",
+      "hardness": 2.0,
+      "material": "wood",
+      "stepSound": "wood",
+      "opaque": false
+    },
+    {
+      "displayName": "Acacia Wood Stairs",
+      "textures": {
+        "all": "planks_acacia"
+      },
+      "shape": "stair",
+      "hardness": 2.0,
+      "material": "wood",
+      "stepSound": "wood",
+      "opaque": false
+    },
+    {
+      "displayName": "Dark Oak Wood Stairs",
+      "textures": {
+        "all": "planks_big_oak"
+      },
+      "shape": "stair",
+      "hardness": 2.0,
+      "material": "wood",
+      "stepSound": "wood",
+      "opaque": false
+    },
+    {
+      "displayName": "Farmland",
+      "textures": {
+        "down": "dirt",
+        "allSides": "dirt",
+        "dryUp": "farmland_dry",
+        "wetUp": "farmland_wet"
+      },
+      "shape": "farmland",
+      "hardness": 0.6,
+      "stepSound": "gravel"
+    },
+    {
+      "displayName": "Sign",
+      "textures": {
+        "all": "planks_oak"
+      },
+      "shape": "sign",
+      "hardness": 1.0,
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Wooden Door",
+      "textures": {
+        "bottom": "door_wood_lower",
+        "top": "door_wood_upper"
+      },
+      "shape": "door",
+      "hardness": 3.0,
+      "material": "wood",
+      "stepSound": "wood",
+      "enableStats": false
+    },
+    {
+      "displayName": "Ladder",
+      "textures": {
+        "all": "ladder"
+      },
+      "shape": "ladder",
+      "hardness": 0.4,
+      "stepSound": "ladder"
+    },
+    {
+      "displayName": "Rail",
+      "textures": {
+        "rail": "rail_normal",
+        "turned": "rail_normal_turned"
+      },
+      "shape": "rail",
+      "hardness": 0.7,
+      "stepSound": "metal"
+    },
+    {
+      "displayName": "Cobblestone Stairs",
+      "textures": {
+        "all": "cobblestone"
+      },
+      "shape": "stair",
+      "hardness": 2.0,
+      "stepSound": "piston",
+      "opaque": false
+    },
+    {
+      "displayName": "Lever",
+      "textures": {
+        "all": "lever"
+      },
+      "shape": "lever",
+      "hardness": 0.5,
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Stone Pressure Plate",
+      "textures": {
+        "all": "stone"
+      },
+      "shape": "pressure_plate",
+      "hardness": 0.5,
+      "stepSound": "piston",
+      "sensitivity": "mobs"
+    },
+    {
+      "displayName": "Iron Door",
+      "textures": {
+        "bottom": "door_iron_lower",
+        "top": "door_iron_upper"
+      },
+      "shape": "door",
+      "hardness": 5.0,
+      "material": "iron",
+      "stepSound": "metal",
+      "enableStats": false
+    },
+    {
+      "displayName": "Wooden Pressure Plate",
+      "textures": {
+        "all": "planks_oak"
+      },
+      "shape": "pressure_plate",
+      "hardness": 0.5,
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Redstone Torch",
+      "textures": {
+        "on": "redstone_torch_on",
+        "off": "redstone_torch_off"
+      },
+      "shape": "redstone_torch",
+      "hardness": 0.0,
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Stone Button",
+      "textures": {
+        "all": "stone"
+      },
+      "shape": "button",
+      "hardness": 0.5,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Snow",
+      "textures": {
+        "all": "snow"
+      },
+      "shape": "layer",
+      "hardness": 0.1,
+      "material": "snow",
+      "stepSound": "snow",
+      "lightOpacity": 0
+    },
+    {
+      "displayName": "Ice",
+      "textures": {
+        "all": "ice"
+      },
+      "hardness": 0.5,
+      "material": "ice",
+      "stepSound": "glass",
+      "slipperiness": 0.98,
+      "translucent": true
+    },
+    {
+      "displayName": "Snow Block",
+      "textures": {
+        "all": "snow"
+      },
+      "hardness": 0.2,
+      "material": "crafted_snow",
+      "stepSound": "snow"
+    },
+    {
+      "displayName": "Cactus",
+      "textures": {
+        "bottom": "cactus_bottom",
+        "top": "cactus_top",
+        "side": "cactus_side"
+      },
+      "shape": "cactus",
+      "hardness": 0.4,
+      "material": "cactus",
+      "stepSound": "cloth"
+    },
+    {
+      "displayName": "Clay",
+      "textures": {
+        "all": "clay"
+      },
+      "hardness": 0.6,
+      "material": "clay",
+      "stepSound": "gravel"
+    },
+    {
+      "displayName": "Sugar Cane",
+      "textures": {
+        "all": "reeds"
+      },
+      "shape": "sugar_cane",
+      "hardness": 0.0,
+      "material": "plants",
+      "stepSound": "grass",
+      "enableStats": false,
+      "renderColor": 16777215
+    },
+    {
+      "displayName": "Jukebox",
+      "textures": {
+        "down": "jukebox_top",
+        "up": "jukebox_top",
+        "allSides": "jukebox_side"
+      },
+      "hardness": 2.0,
+      "material": "wood",
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Wooden Fence",
+      "textures": {
+        "all": "planks_oak"
+      },
+      "shape": "fence",
+      "hardness": 2.0,
+      "resistance": 5.0,
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Pumpkin",
+      "textures": {
+        "top": "pumpkin_top",
+        "faceOff": "pumpkin_face_off",
+        "face": "pumpkin_face_on",
+        "side": "pumpkin_side"
+      },
+      "shape": "directional",
+      "hardness": 1.0,
+      "material": "gourd",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Netherrack",
+      "textures": {
+        "all": "netherrack"
+      },
+      "hardness": 0.4,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Soul Sand",
+      "textures": {
+        "all": "soul_sand"
+      },
+      "hardness": 0.5,
+      "material": "sand",
+      "stepSound": "sand"
+    },
+    {
+      "displayName": "Glowstone",
+      "textures": {
+        "all": "glowstone"
+      },
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "lightLevel": 1.0
+    },
+    {
+      "displayName": "Jack-O-Lantern",
+      "textures": {
+        "top": "pumpkin_top",
+        "face": "pumpkin_face_on",
+        "side": "pumpkin_side"
+      },
+      "shape": "directional",
+      "hardness": 1.0,
+      "material": "gourd",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Cake",
+      "textures": {
+        "bottom": "cake_bottom",
+        "top": "cake_top",
+        "side": "cake_side",
+        "inner": "cake_inner"
+      },
+      "shape": "cake",
+      "hardness": 0.5,
+      "material": "cake",
+      "stepSound": "cloth"
+    },
+    {
+      "displayName": "White Stained Glass",
+      "textures": {
+        "all": "glass_white"
+      },
+      "shape": "glass",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Orange Stained Glass",
+      "textures": {
+        "all": "glass_orange"
+      },
+      "shape": "glass",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Magenta Stained Glass",
+      "textures": {
+        "all": "glass_magenta"
+      },
+      "shape": "glass",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Light Blue Stained Glass",
+      "textures": {
+        "all": "glass_light_blue"
+      },
+      "shape": "glass",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Yellow Stained Glass",
+      "textures": {
+        "all": "glass_yellow"
+      },
+      "shape": "glass",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Lime Stained Glass",
+      "textures": {
+        "all": "glass_lime"
+      },
+      "shape": "glass",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Pink Stained Glass",
+      "textures": {
+        "all": "glass_pink"
+      },
+      "shape": "glass",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Gray Stained Glass",
+      "textures": {
+        "all": "glass_gray"
+      },
+      "shape": "glass",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Light Gray Stained Glass",
+      "textures": {
+        "all": "glass_silver"
+      },
+      "shape": "glass",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Cyan Stained Glass",
+      "textures": {
+        "all": "glass_cyan"
+      },
+      "shape": "glass",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Purple Stained Glass",
+      "textures": {
+        "all": "glass_purple"
+      },
+      "shape": "glass",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Blue Stained Glass",
+      "textures": {
+        "all": "glass_blue"
+      },
+      "shape": "glass",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Brown Stained Glass",
+      "textures": {
+        "all": "glass_brown"
+      },
+      "shape": "glass",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Green Stained Glass",
+      "textures": {
+        "all": "glass_green"
+      },
+      "shape": "glass",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Red Stained Glass",
+      "textures": {
+        "all": "glass_red"
+      },
+      "shape": "glass",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Black Stained Glass",
+      "textures": {
+        "all": "glass_black"
+      },
+      "shape": "glass",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Trapdoor",
+      "textures": {
+        "all": "trapdoor"
+      },
+      "shape": "trapdoor",
+      "hardness": 3.0,
+      "material": "wood",
+      "stepSound": "wood",
+      "enableStats": false
+    },
+    {
+      "displayName": "Stone Bricks",
+      "textures": {
+        "all": "stonebrick"
+      },
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Mossy Stone Bricks",
+      "textures": {
+        "all": "stonebrick_mossy"
+      },
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Cracked Stone Bricks",
+      "textures": {
+        "all": "stonebrick_cracked"
+      },
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Chiseled Stone Bricks",
+      "textures": {
+        "all": "stonebrick_carved"
+      },
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Iron Bars",
+      "textures": {
+        "edge": "iron_bars",
+        "bars": "iron_bars"
+      },
+      "shape": "bars",
+      "hardness": 5.0,
+      "material": "iron",
+      "stepSound": "metal"
+    },
+    {
+      "displayName": "Glass Pane",
+      "textures": {
+        "edge": "glass_pane_top",
+        "pane": "glass"
+      },
+      "shape": "pane",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass"
+    },
+    {
+      "displayName": "White Stained Glass Pane",
+      "textures": {
+        "edge": "glass_pane_top_white",
+        "pane": "glass_white"
+      },
+      "shape": "pane",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Orange Stained Glass Pane",
+      "textures": {
+        "edge": "glass_pane_top_orange",
+        "pane": "glass_orange"
+      },
+      "shape": "pane",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Magenta Stained Glass Pane",
+      "textures": {
+        "edge": "glass_pane_top_magenta",
+        "pane": "glass_magenta"
+      },
+      "shape": "pane",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Light Blue Stained Glass Pane",
+      "textures": {
+        "edge": "glass_pane_top_light_blue",
+        "pane": "glass_light_blue"
+      },
+      "shape": "pane",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Yellow Stained Glass Pane",
+      "textures": {
+        "edge": "glass_pane_top_yellow",
+        "pane": "glass_yellow"
+      },
+      "shape": "pane",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Lime Stained Glass Pane",
+      "textures": {
+        "edge": "glass_pane_top_lime",
+        "pane": "glass_lime"
+      },
+      "shape": "pane",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Pink Stained Glass Pane",
+      "textures": {
+        "edge": "glass_pane_top_pink",
+        "pane": "glass_pink"
+      },
+      "shape": "pane",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Gray Stained Glass Pane",
+      "textures": {
+        "edge": "glass_pane_top_gray",
+        "pane": "glass_gray"
+      },
+      "shape": "pane",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Light Gray Stained Glass Pane",
+      "textures": {
+        "edge": "glass_pane_top_silver",
+        "pane": "glass_silver"
+      },
+      "shape": "pane",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Cyan Stained Glass Pane",
+      "textures": {
+        "edge": "glass_pane_top_cyan",
+        "pane": "glass_cyan"
+      },
+      "shape": "pane",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Purple Stained Glass Pane",
+      "textures": {
+        "edge": "glass_pane_top_purple",
+        "pane": "glass_purple"
+      },
+      "shape": "pane",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Blue Stained Glass Pane",
+      "textures": {
+        "edge": "glass_pane_top_blue",
+        "pane": "glass_blue"
+      },
+      "shape": "pane",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Brown Stained Glass Pane",
+      "textures": {
+        "edge": "glass_pane_top_brown",
+        "pane": "glass_brown"
+      },
+      "shape": "pane",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Green Stained Glass Pane",
+      "textures": {
+        "edge": "glass_pane_top_green",
+        "pane": "glass_green"
+      },
+      "shape": "pane",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Red Stained Glass Pane",
+      "textures": {
+        "edge": "glass_pane_top_red",
+        "pane": "glass_red"
+      },
+      "shape": "pane",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Black Stained Glass Pane",
+      "textures": {
+        "edge": "glass_pane_top_black",
+        "pane": "glass_black"
+      },
+      "shape": "pane",
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "stained": true
+    },
+    {
+      "displayName": "Melon",
+      "textures": {
+        "down": "melon_top",
+        "up": "melon_top",
+        "allSides": "melon_side"
+      },
+      "hardness": 1.0,
+      "material": "gourd",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Vine",
+      "textures": {
+        "all": "vine"
+      },
+      "shape": "vine",
+      "hardness": 0.2,
+      "material": "vine",
+      "stepSound": "grass"
+    },
+    {
+      "displayName": "Fence Gate",
+      "textures": {
+        "all": "planks_oak"
+      },
+      "shape": "fence_gate",
+      "hardness": 2.0,
+      "resistance": 5.0,
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Brick Stairs",
+      "textures": {
+        "all": "brick"
+      },
+      "shape": "stair",
+      "stepSound": "piston",
+      "opaque": false
+    },
+    {
+      "displayName": "Stone Brick Stair",
+      "textures": {
+        "all": "stonebrick"
+      },
+      "shape": "stair",
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Mycelium",
+      "textures": {
+        "down": "dirt",
+        "up": "mycelium_top",
+        "allSides": "mycelium_side"
+      },
+      "hardness": 0.6,
+      "material": "grass",
+      "stepSound": "grass"
+    },
+    {
+      "displayName": "Lily Pad",
+      "textures": {
+        "all": "waterlily"
+      },
+      "shape": "lilypad",
+      "hardness": 0.0,
+      "material": "plants",
+      "stepSound": "grass",
+      "renderColor": 4764952
+    },
+    {
+      "displayName": "Nether Brick",
+      "textures": {
+        "all": "nether_brick"
+      },
+      "hardness": 2.0,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Nether Brick Fence",
+      "textures": {
+        "all": "nether_brick"
+      },
+      "shape": "fence",
+      "hardness": 2.0,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Nether Brick Stairs",
+      "textures": {
+        "all": "nether_brick"
+      },
+      "shape": "stair",
+      "hardness": 2.0,
+      "stepSound": "piston",
+      "opaque": false
+    },
+    {
+      "displayName": "Enchanting Table",
+      "textures": {
+        "down": "enchanting_table_bottom",
+        "up": "enchanting_table_top",
+        "allSides": "enchanting_table_side"
+      },
+      "shape": "enchanting_table",
+      "hardness": 5.0,
+      "resistance": 2000.0
+    },
+    {
+      "displayName": "Brewing Stand",
+      "textures": {
+        "base": "brewing_stand_base",
+        "side": "brewing_stand"
+      },
+      "shape": "brewing_stand",
+      "hardness": 0.5,
+      "material": "iron",
+      "lightLevel": 0.125
+    },
+    {
+      "displayName": "Cauldron",
+      "textures": {
+        "bottom": "cauldron_bottom",
+        "top": "cauldron_top",
+        "inside": "cauldron_inner",
+        "allSides": "cauldron_side",
+        "water": "water_still"
+      },
+      "shape": "cauldron",
+      "hardness": 2.0,
+      "material": "iron"
+    },
+    {
+      "displayName": "End Stone",
+      "textures": {
+        "all": "end_stone"
+      },
+      "hardness": 3.0,
+      "resistance": 15.0,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Dragon Egg",
+      "textures": {
+        "all": "dragon_egg"
+      },
+      "shape": "dragon_egg",
+      "hardness": 3.0,
+      "resistance": 15.0,
+      "stepSound": "piston",
+      "lightLevel": 0.125
+    },
+    {
+      "displayName": "Redstone Lamp",
+      "textures": {
+        "on": "redstone_lamp_on",
+        "off": "redstone_lamp_off"
+      },
+      "shape": "redstone_lamp",
+      "hardness": 0.3,
+      "material": "redstone_light",
+      "stepSound": "glass"
+    },
+    {
+      "displayName": "Oak Wood Slab",
+      "textures": {
+        "all": "planks_oak"
+      },
+      "shape": "slab",
+      "hardness": 2.0,
+      "resistance": 5.0,
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Spruce Wood Slab",
+      "textures": {
+        "all": "planks_spruce"
+      },
+      "shape": "slab",
+      "hardness": 2.0,
+      "resistance": 5.0,
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Birch Wood Slab",
+      "textures": {
+        "all": "planks_birch"
+      },
+      "shape": "slab",
+      "hardness": 2.0,
+      "resistance": 5.0,
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Jungle Wood Slab",
+      "textures": {
+        "all": "planks_jungle"
+      },
+      "shape": "slab",
+      "hardness": 2.0,
+      "resistance": 5.0,
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Acacia Wood Slab",
+      "textures": {
+        "all": "planks_acacia"
+      },
+      "shape": "slab",
+      "hardness": 2.0,
+      "resistance": 5.0,
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Dark Oak Wood Slab",
+      "textures": {
+        "all": "planks_big_oak"
+      },
+      "shape": "slab",
+      "hardness": 2.0,
+      "resistance": 5.0,
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Cocoa Beans",
+      "textures": {
+        "stage_0": "cocoa_stage_0",
+        "stage_1": "cocoa_stage_1",
+        "stage_2": "cocoa_stage_2"
+      },
+      "shape": "cocoa",
+      "hardness": 0.2,
+      "resistance": 5.0,
+      "material": "plants",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Sandstone Stairs",
+      "textures": {
+        "down": "sandstone_bottom",
+        "up": "sandstone_top",
+        "allSides": "sandstone_normal"
+      },
+      "shape": "stair",
+      "hardness": 0.8,
+      "stepSound": "piston",
+      "opaque": false
+    },
+    {
+      "displayName": "Tripwire Hook",
+      "textures": {
+        "all": "trip_wire_source"
+      },
+      "shape": "tripwire_hook",
+      "material": "circuits"
+    },
+    {
+      "displayName": "Tripwire",
+      "textures": {
+        "all": "trip_wire"
+      },
+      "shape": "tripwire",
+      "material": "circuits"
+    },
+    {
+      "displayName": "Beacon",
+      "textures": {
+        "glass": "glass",
+        "obsidian": "obsidian",
+        "beacon": "beacon"
+      },
+      "shape": "beacon",
+      "hardness": 3.0,
+      "material": "glass",
+      "lightLevel": 1.0
+    },
+    {
+      "displayName": "Cobblestone Wall",
+      "textures": {
+        "all": "cobblestone"
+      },
+      "shape": "wall"
+    },
+    {
+      "displayName": "Mossy Cobblestone Wall",
+      "textures": {
+        "all": "cobblestone_mossy"
+      },
+      "shape": "wall"
+    },
+    {
+      "displayName": "Flower Pot",
+      "textures": {
+        "all": "flower_pot"
+      },
+      "shape": "flower_pot",
+      "hardness": 0.0,
+      "material": "circuits"
+    },
+    {
+      "displayName": "Carrots",
+      "textures": {
+        "stage_0": "carrots_stage_0",
+        "stage_1": "carrots_stage_1",
+        "stage_2": "carrots_stage_2"
+      },
+      "shape": "crop",
+      "hardness": 0.0,
+      "stepSound": "grass"
+    },
+    {
+      "displayName": "Potatoes",
+      "textures": {
+        "stage_0": "potatoes_stage_0",
+        "stage_1": "potatoes_stage_1",
+        "stage_2": "potatoes_stage_2"
+      },
+      "shape": "crop",
+      "hardness": 0.0,
+      "stepSound": "grass"
+    },
+    {
+      "displayName": "Wooden Button",
+      "textures": {
+        "all": "planks_oak"
+      },
+      "shape": "button",
+      "hardness": 0.5,
+      "material": "circuits",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Anvil",
+      "textures": {
+        "base": "anvil_base",
+        "undamaged": "anvil_top_damaged_0",
+        "slightly_damaged": "anvil_top_damaged_1",
+        "very_damaged": "anvil_top_damaged_2"
+      },
+      "shape": "anvil",
+      "hardness": 5.0,
+      "resistance": 2000.0,
+      "material": "anvil",
+      "stepSound": "anvil"
+    },
+    {
+      "displayName": "Light Weighted Pressure Plate",
+      "textures": {
+        "all": "iron_block"
+      },
+      "shape": "weighted_pressure_plate",
+      "hardness": 0.5,
+      "material": "iron",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Heavy Weighted Pressure Plate",
+      "textures": {
+        "all": "gold_block"
+      },
+      "shape": "weighted_pressure_plate",
+      "hardness": 0.5,
+      "material": "iron",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Daylight Detector",
+      "textures": {
+        "down": "daylight_detector_side",
+        "up": "daylight_detector_top",
+        "allSides": "daylight_detector_side"
+      },
+      "shape": "daylight_detector",
+      "hardness": 0.2,
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Quartz Block",
+      "textures": {
+        "down": "quartz_block_bottom",
+        "up": "quartz_block_top",
+        "allSides": "quartz_block_side"
+      },
+      "hardness": 0.8,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Chiseled Quartz Block",
+      "textures": {
+        "down": "quartz_block_chiseled_top",
+        "up": "quartz_block_chiseled_top",
+        "allSides": "quartz_block_chiseled"
+      },
+      "hardness": 0.8,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Quartz Stairs",
+      "textures": {
+        "down": "quartz_block_bottom",
+        "up": "quartz_block_top",
+        "allSides": "quartz_block_side"
+      },
+      "shape": "stair",
+      "hardness": 2.0,
+      "stepSound": "piston",
+      "opaque": false
+    },
+    {
+      "displayName": "Pillar Quartz Block",
+      "textures": {
+        "end": "quartz_block_lines_top",
+        "side": "quartz_block_lines"
+      },
+      "shape": "rotating",
+      "hardness": 0.8,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Activator Rail",
+      "textures": {
+        "rail": "rail_activator",
+        "powered": "rail_activator_powered"
+      },
+      "shape": "rail",
+      "hardness": 0.7,
+      "material": "circuits",
+      "stepSound": "metal"
+    },
+    {
+      "displayName": "White Stained Clay",
+      "textures": {
+        "all": "hardened_clay_stained_white"
+      },
+      "hardness": 1.25,
+      "resistance": 7.0,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Orange Stained Clay",
+      "textures": {
+        "all": "hardened_clay_stained_orange"
+      },
+      "hardness": 1.25,
+      "resistance": 7.0,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Magenta Stained Clay",
+      "textures": {
+        "all": "hardened_clay_stained_magenta"
+      },
+      "hardness": 1.25,
+      "resistance": 7.0,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Light Blue Stained Clay",
+      "textures": {
+        "all": "hardened_clay_stained_light_blue"
+      },
+      "hardness": 1.25,
+      "resistance": 7.0,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Yellow Stained Clay",
+      "textures": {
+        "all": "hardened_clay_stained_yellow"
+      },
+      "hardness": 1.25,
+      "resistance": 7.0,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Lime Stained Clay",
+      "textures": {
+        "all": "hardened_clay_stained_lime"
+      },
+      "hardness": 1.25,
+      "resistance": 7.0,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Pink Stained Clay",
+      "textures": {
+        "all": "hardened_clay_stained_pink"
+      },
+      "hardness": 1.25,
+      "resistance": 7.0,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Gray Stained Clay",
+      "textures": {
+        "all": "hardened_clay_stained_gray"
+      },
+      "hardness": 1.25,
+      "resistance": 7.0,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Light Gray Stained Clay",
+      "textures": {
+        "all": "hardened_clay_stained_silver"
+      },
+      "hardness": 1.25,
+      "resistance": 7.0,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Cyan Stained Clay",
+      "textures": {
+        "all": "hardened_clay_stained_cyan"
+      },
+      "hardness": 1.25,
+      "resistance": 7.0,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Purple Stained Clay",
+      "textures": {
+        "all": "hardened_clay_stained_purple"
+      },
+      "hardness": 1.25,
+      "resistance": 7.0,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Blue Stained Clay",
+      "textures": {
+        "all": "hardened_clay_stained_blue"
+      },
+      "hardness": 1.25,
+      "resistance": 7.0,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Brown Stained Clay",
+      "textures": {
+        "all": "hardened_clay_stained_brown"
+      },
+      "hardness": 1.25,
+      "resistance": 7.0,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Green Stained Clay",
+      "textures": {
+        "all": "hardened_clay_stained_green"
+      },
+      "hardness": 1.25,
+      "resistance": 7.0,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Red Stained Clay",
+      "textures": {
+        "all": "hardened_clay_stained_red"
+      },
+      "hardness": 1.25,
+      "resistance": 7.0,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Black Stained Clay",
+      "textures": {
+        "all": "hardened_clay_stained_black"
+      },
+      "hardness": 1.25,
+      "resistance": 7.0,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Hay Bale",
+      "textures": {
+        "end": "hay_block_top",
+        "side": "hay_block_side"
+      },
+      "shape": "rotating",
+      "hardness": 0.5,
+      "material": "grass",
+      "stepSound": "grass"
+    },
+    {
+      "displayName": "Carpet",
+      "textures": {
+        "all": "wool_colored_white"
+      },
+      "shape": "carpet",
+      "hardness": 0.1,
+      "material": "carpet",
+      "stepSound": "cloth",
+      "lightOpacity": 0
+    },
+    {
+      "displayName": "Orange Carpet",
+      "textures": {
+        "all": "wool_colored_orange"
+      },
+      "shape": "carpet",
+      "hardness": 0.1,
+      "material": "carpet",
+      "stepSound": "cloth",
+      "lightOpacity": 0
+    },
+    {
+      "displayName": "Magenta Carpet",
+      "textures": {
+        "all": "wool_colored_magenta"
+      },
+      "shape": "carpet",
+      "hardness": 0.1,
+      "material": "carpet",
+      "stepSound": "cloth",
+      "lightOpacity": 0
+    },
+    {
+      "displayName": "Light Blue Carpet",
+      "textures": {
+        "all": "wool_colored_light_blue"
+      },
+      "shape": "carpet",
+      "hardness": 0.1,
+      "material": "carpet",
+      "stepSound": "cloth",
+      "lightOpacity": 0
+    },
+    {
+      "displayName": "Yellow Carpet",
+      "textures": {
+        "all": "wool_colored_yellow"
+      },
+      "shape": "carpet",
+      "hardness": 0.1,
+      "material": "carpet",
+      "stepSound": "cloth",
+      "lightOpacity": 0
+    },
+    {
+      "displayName": "Lime Carpet",
+      "textures": {
+        "all": "wool_colored_lime"
+      },
+      "shape": "carpet",
+      "hardness": 0.1,
+      "material": "carpet",
+      "stepSound": "cloth",
+      "lightOpacity": 0
+    },
+    {
+      "displayName": "Pink Carpet",
+      "textures": {
+        "all": "wool_colored_pink"
+      },
+      "shape": "carpet",
+      "hardness": 0.1,
+      "material": "carpet",
+      "stepSound": "cloth",
+      "lightOpacity": 0
+    },
+    {
+      "displayName": "Gray Carpet",
+      "textures": {
+        "all": "wool_colored_gray"
+      },
+      "shape": "carpet",
+      "hardness": 0.1,
+      "material": "carpet",
+      "stepSound": "cloth",
+      "lightOpacity": 0
+    },
+    {
+      "displayName": "Light Gray Carpet",
+      "textures": {
+        "all": "wool_colored_silver"
+      },
+      "shape": "carpet",
+      "hardness": 0.1,
+      "material": "carpet",
+      "stepSound": "cloth",
+      "lightOpacity": 0
+    },
+    {
+      "displayName": "Cyan Carpet",
+      "textures": {
+        "all": "wool_colored_cyan"
+      },
+      "shape": "carpet",
+      "hardness": 0.1,
+      "material": "carpet",
+      "stepSound": "cloth",
+      "lightOpacity": 0
+    },
+    {
+      "displayName": "Purple Carpet",
+      "textures": {
+        "all": "wool_colored_purple"
+      },
+      "shape": "carpet",
+      "hardness": 0.1,
+      "material": "carpet",
+      "stepSound": "cloth",
+      "lightOpacity": 0
+    },
+    {
+      "displayName": "Blue Carpet",
+      "textures": {
+        "all": "wool_colored_blue"
+      },
+      "shape": "carpet",
+      "hardness": 0.1,
+      "material": "carpet",
+      "stepSound": "cloth",
+      "lightOpacity": 0
+    },
+    {
+      "displayName": "Brown Carpet",
+      "textures": {
+        "all": "wool_colored_brown"
+      },
+      "shape": "carpet",
+      "hardness": 0.1,
+      "material": "carpet",
+      "stepSound": "cloth",
+      "lightOpacity": 0
+    },
+    {
+      "displayName": "Green Carpet",
+      "textures": {
+        "all": "wool_colored_green"
+      },
+      "shape": "carpet",
+      "hardness": 0.1,
+      "material": "carpet",
+      "stepSound": "cloth",
+      "lightOpacity": 0
+    },
+    {
+      "displayName": "Red Carpet",
+      "textures": {
+        "all": "wool_colored_red"
+      },
+      "shape": "carpet",
+      "hardness": 0.1,
+      "material": "carpet",
+      "stepSound": "cloth",
+      "lightOpacity": 0
+    },
+    {
+      "displayName": "Black Carpet",
+      "textures": {
+        "all": "wool_colored_black"
+      },
+      "shape": "carpet",
+      "hardness": 0.1,
+      "material": "carpet",
+      "stepSound": "cloth",
+      "lightOpacity": 0
+    },
+    {
+      "displayName": "Hardened Clay",
+      "textures": {
+        "all": "hardened_clay"
+      }
+    },
+    {
+      "displayName": "Packed Ice",
+      "textures": {
+        "all": "ice_packed"
+      },
+      "hardness": 0.5,
+      "material": "packed_ice",
+      "stepSound": "glass",
+      "slipperiness": 0.98
+    },
+    {
+      "displayName": "Sunflower",
+      "textures": {
+        "bottom": "double_plant_sunflower_bottom",
+        "top": "double_plant_sunflower_top",
+        "front": "double_plant_sunflower_front",
+        "back": "double_plant_sunflower_back"
+      },
+      "shape": "double_plant",
+      "hardness": 0.0,
+      "material": "plants",
+      "stepSound": "plant",
+      "isSunflower": true
+    },
+    {
+      "displayName": "Lilac",
+      "textures": {
+        "bottom": "double_plant_syringa_bottom",
+        "top": "double_plant_syringa_top"
+      },
+      "shape": "double_plant",
+      "hardness": 0.0,
+      "material": "plants",
+      "stepSound": "plant"
+    },
+    {
+      "displayName": "Double Tallgrass",
+      "textures": {
+        "bottom": "double_plant_grass_bottom",
+        "top": "double_plant_grass_top"
+      },
+      "shape": "double_plant",
+      "hardness": 0.0,
+      "material": "plants",
+      "stepSound": "plant",
+      "needsColoring": true
+    },
+    {
+      "displayName": "Large Fern",
+      "textures": {
+        "bottom": "double_plant_fern_bottom",
+        "top": "double_plant_fern_top"
+      },
+      "shape": "double_plant",
+      "hardness": 0.0,
+      "material": "plants",
+      "stepSound": "plant",
+      "needsColoring": true
+    },
+    {
+      "displayName": "Rose Bush",
+      "textures": {
+        "bottom": "double_plant_rose_bottom",
+        "top": "double_plant_rose_top"
+      },
+      "shape": "double_plant",
+      "hardness": 0.0,
+      "material": "plants",
+      "stepSound": "plant"
+    },
+    {
+      "displayName": "Peony",
+      "textures": {
+        "bottom": "double_plant_paeonia_bottom",
+        "top": "double_plant_paeonia_top"
+      },
+      "shape": "double_plant",
+      "hardness": 0.0,
+      "material": "plants",
+      "stepSound": "plant"
+    },
+    {
+      "displayName": "Granite",
+      "textures": {
+        "all": "granite"
+      }
+    },
+    {
+      "displayName": "Polished Granite",
+      "textures": {
+        "all": "polished_granite"
+      }
+    },
+    {
+      "displayName": "Diorite",
+      "textures": {
+        "all": "diorite"
+      }
+    },
+    {
+      "displayName": "Polished Diorite",
+      "textures": {
+        "all": "polished_diorite"
+      }
+    },
+    {
+      "displayName": "Andesite",
+      "textures": {
+        "all": "andesite"
+      }
+    },
+    {
+      "displayName": "Polished Andesite",
+      "textures": {
+        "all": "polished_andesite"
+      }
+    },
+    {
+      "displayName": "Coarse Dirt",
+      "textures": {
+        "all": "coarse_dirt"
+      },
+      "material": "ground",
+      "stepSound": "gravel"
+    },
+    {
+      "displayName": "Prismarine",
+      "textures": {
+        "all": "prismarine_rough"
+      }
+    },
+    {
+      "displayName": "Prismarine Bricks",
+      "textures": {
+        "all": "prismarine_bricks"
+      }
+    },
+    {
+      "displayName": "Dark Prismarine",
+      "textures": {
+        "all": "prismarine_dark"
+      }
+    },
+    {
+      "displayName": "Red Sandstone",
+      "textures": {
+        "down": "red_sandstone_bottom",
+        "up": "red_sandstone_top",
+        "allSides": "red_sandstone_normal"
+      },
+      "hardness": 0.8
+    },
+    {
+      "displayName": "Chiseled Red Sandstone",
+      "textures": {
+        "down": "red_sandstone_bottom",
+        "up": "red_sandstone_top",
+        "allSides": "red_sandstone_carved"
+      },
+      "hardness": 0.8
+    },
+    {
+      "displayName": "Smooth Red Sandstone",
+      "textures": {
+        "down": "red_sandstone_bottom",
+        "up": "red_sandstone_top",
+        "allSides": "red_sandstone_smooth"
+      },
+      "hardness": 0.8
+    },
+    {
+      "displayName": "Red Sandstone Slab",
+      "textures": {
+        "down": "red_sandstone_bottom",
+        "up": "red_sandstone_top",
+        "allSides": "red_sandstone_normal"
+      },
+      "shape": "slab",
+      "hardness": 2.0,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Red Sandstone Stairs",
+      "textures": {
+        "down": "red_sandstone_bottom",
+        "up": "red_sandstone_top",
+        "allSides": "red_sandstone_normal"
+      },
+      "shape": "stair",
+      "hardness": 0.8,
+      "stepSound": "piston",
+      "opaque": false
+    },
+    {
+      "displayName": "Iron Trapdoor",
+      "textures": {
+        "all": "iron_block"
+      },
+      "shape": "trapdoor",
+      "hardness": 5.0,
+      "resistance": 25.0,
+      "material": "iron"
+    },
+    {
+      "displayName": "Sea Lantern",
+      "textures": {
+        "all": "sea_lantern"
+      },
+      "hardness": 0.3,
+      "material": "glass",
+      "stepSound": "glass",
+      "lightLevel": 1.0
+    },
+    {
+      "displayName": "Wet Sponge",
+      "textures": {
+        "all": "sponge_wet"
+      },
+      "material": "sponge",
+      "stepSound": "grass"
+    },
+    {
+      "displayName": "Slime Block",
+      "textures": {
+        "all": "slime"
+      },
+      "shape": "slime_block",
+      "hardness": 0.0,
+      "resistance": 0.0
+    },
+    {
+      "displayName": "Spruce Wood Fence",
+      "textures": {
+        "all": "planks_spruce"
+      },
+      "shape": "fence",
+      "hardness": 2.0,
+      "resistance": 5.0,
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Birch Wood Fence",
+      "textures": {
+        "all": "planks_birch"
+      },
+      "shape": "fence",
+      "hardness": 2.0,
+      "resistance": 5.0,
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Jungle Wood Fence",
+      "textures": {
+        "all": "planks_jungle"
+      },
+      "shape": "fence",
+      "hardness": 2.0,
+      "resistance": 5.0,
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Acacia Wood Fence",
+      "textures": {
+        "all": "planks_acacia"
+      },
+      "shape": "fence",
+      "hardness": 2.0,
+      "resistance": 5.0,
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Dark Oak Wood Fence",
+      "textures": {
+        "all": "planks_big_oak"
+      },
+      "shape": "fence",
+      "hardness": 2.0,
+      "resistance": 5.0,
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Spruce Wood Fence Gate",
+      "textures": {
+        "all": "planks_spruce"
+      },
+      "shape": "fence_gate",
+      "hardness": 2.0,
+      "resistance": 5.0,
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Birch Wood Fence Gate",
+      "textures": {
+        "all": "planks_birch"
+      },
+      "shape": "fence_gate",
+      "hardness": 2.0,
+      "resistance": 5.0,
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Jungle Wood Fence Gate",
+      "textures": {
+        "all": "planks_jungle"
+      },
+      "shape": "fence_gate",
+      "hardness": 2.0,
+      "resistance": 5.0,
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Acacia Wood Fence Gate",
+      "textures": {
+        "all": "planks_acacia"
+      },
+      "shape": "fence_gate",
+      "hardness": 2.0,
+      "resistance": 5.0,
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Dark Oak Wood Fence Gate",
+      "textures": {
+        "all": "planks_big_oak"
+      },
+      "shape": "fence_gate",
+      "hardness": 2.0,
+      "resistance": 5.0,
+      "material": "wood",
+      "stepSound": "wood"
+    },
+    {
+      "displayName": "Spruce Wood Door",
+      "textures": {
+        "bottom": "door_spruce_lower",
+        "top": "door_spruce_upper"
+      },
+      "shape": "door",
+      "hardness": 3.0,
+      "material": "wood",
+      "stepSound": "wood",
+      "enableStats": false
+    },
+    {
+      "displayName": "Birch Wood Door",
+      "textures": {
+        "bottom": "door_birch_lower",
+        "top": "door_birch_upper"
+      },
+      "shape": "door",
+      "hardness": 3.0,
+      "material": "wood",
+      "stepSound": "wood",
+      "enableStats": false
+    },
+    {
+      "displayName": "Jungle Wood Door",
+      "textures": {
+        "bottom": "door_jungle_lower",
+        "top": "door_jungle_upper"
+      },
+      "shape": "door",
+      "hardness": 3.0,
+      "material": "wood",
+      "stepSound": "wood",
+      "enableStats": false
+    },
+    {
+      "displayName": "Acacia Wood Door",
+      "textures": {
+        "bottom": "door_acacia_lower",
+        "top": "door_acacia_upper"
+      },
+      "shape": "door",
+      "hardness": 3.0,
+      "material": "wood",
+      "stepSound": "wood",
+      "enableStats": false
+    },
+    {
+      "displayName": "Dark Oak Wood Door",
+      "textures": {
+        "bottom": "door_dark_oak_lower",
+        "top": "door_dark_oak_upper"
+      },
+      "shape": "door",
+      "hardness": 3.0,
+      "material": "wood",
+      "stepSound": "wood",
+      "enableStats": false
+    },
+    {
+      "displayName": "End Rod",
+      "textures": {
+        "all": "end_rod"
+      },
+      "shape": "end_rod",
+      "hardness": 0.0,
+      "material": "wood"
+    },
+    {
+      "displayName": "End Stone Bricks",
+      "textures": {
+        "all": "end_bricks"
+      },
+      "resistance": 0.8
+    },
+    {
+      "displayName": "Chorus Plant",
+      "textures": {
+        "all": "chorus_plant"
+      },
+      "shape": "chorus_plant"
+    },
+    {
+      "displayName": "Chorus Flower",
+      "textures": {
+        "alive": "chorus_flower",
+        "dead": "chorus_flower_dead"
+      },
+      "shape": "chorus_plant"
+    },
+    {
+      "displayName": "Purpur Block",
+      "textures": {
+        "all": "purpur_block"
+      }
+    },
+    {
+      "displayName": "Purpur Pillar",
+      "textures": {
+        "end": "purpur_pillar_top",
+        "side": "purpur_pillar"
+      },
+      "shape": "rotating"
+    },
+    {
+      "displayName": "Purpur Slab",
+      "textures": {
+        "all": "purpur_block"
+      },
+      "shape": "slab",
+      "hardness": 2.0,
+      "stepSound": "piston"
+    },
+    {
+      "displayName": "Purpur Stairs",
+      "textures": {
+        "all": "purpur_block"
+      },
+      "shape": "stair",
+      "hardness": 2.0,
+      "stepSound": "piston",
+      "opaque": false
+    },
+    {
+      "displayName": "Grass Path",
+      "textures": {
+        "down": "dirt",
+        "up": "grass_path_top",
+        "allSides": "grass_path_side"
+      },
+      "shape": "grass_path"
+    }
+  ]
+}

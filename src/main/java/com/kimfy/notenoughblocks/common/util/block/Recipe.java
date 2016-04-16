@@ -19,45 +19,6 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * This class represents the recipe specified in JSON. Here are all the allowed
- * formats you can use: //TODO Move to the docs
- * Remember, a recipe must be unique, it cannot be the same as another item's recipe.
- *
- * <pre>
- *     // Primitive
- *     {
- *         "recipe": "minecraft:item:meta" // Drops 1 of the block, cannot have an amount param
- *     }
- *
- *     // Array
- *     {
- *          // Shaped recipe
- *         "recipe": [
- *              {
- *                  "amount": 8 // How many should the craft return. MUST be inside an object.
- *              },
- *              // Shaped recipe
- *              // Look at the below as the crafting grid in game, each array represents the row in the crafting table
- *              // The following would produce a shaped recipe. {@code null} MUST be put on empty slots
- *              [ null, "cobblestone", null ], // Row 1
- *              [ null, "stick", null ],       // Row 2
- *              [ null, "stick", null ]        // Row 3
- *         ]
- *
- *         // Shapeless recipe
- *         // Shapeless recipes are made with just one array, you can still give it an options object.
- *         // Since shapeless recipes do not care about an item's position in the crafting grid, you can
- *         // fill up an entire array from 1-9 with items.
- *         "recipe": [
- *              [ "torch", "crafting_table", "iron_ingot" ], // Array representing the item, do not put any {@code null}'s in here
- *              { "amount": 4 }
- *         ]
- *
- *         // The output would be 4 of the block
- *     }
- * </pre>
- */
 public class Recipe implements IRegisterable
 {
     private ItemStack output;
@@ -155,7 +116,7 @@ public class Recipe implements IRegisterable
                             }
                         }
                     }
-                    recipe = new Recipe(width, height, ingredients.toArray(new ItemStack[ingredients.size()]), output); // TODO: OutputSize
+                    recipe = new Recipe(width, height, ingredients.toArray(new ItemStack[ingredients.size()]), output);
                 }
                 else
                 {
@@ -169,7 +130,7 @@ public class Recipe implements IRegisterable
                             }
                         }
                     }
-                    recipe = new Recipe(ingredients.toArray(new ItemStack[ingredients.size()]), output); // TODO: OutputSize
+                    recipe = new Recipe(ingredients.toArray(new ItemStack[ingredients.size()]), output);
                 }
                 return recipe;
             }

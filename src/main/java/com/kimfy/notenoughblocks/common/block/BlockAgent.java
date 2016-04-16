@@ -44,8 +44,8 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
     @Getter private boolean isStained;
     /** The index represents the metadata */
     private List<Boolean> isSilkTouch = new ArrayList<>(16);
-    private int     lightOpacity;
-    private float   slipperiness;
+    private int lightOpacity;
+    private float slipperiness;
 
     @Override
     public void setBeaconBaseable(boolean isBeaconBase)

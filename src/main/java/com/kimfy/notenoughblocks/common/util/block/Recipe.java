@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
+import net.minecraft.util.JsonUtils;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.lang.reflect.Type;
@@ -18,6 +19,45 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * This class represents the recipe specified in JSON. Here are all the allowed
+ * formats you can use: //TODO Move to the docs
+ * Remember, a recipe must be unique, it cannot be the same as another item's recipe.
+ *
+ * <pre>
+ *     // Primitive
+ *     {
+ *         "recipe": "minecraft:item:meta" // Drops 1 of the block, cannot have an amount param
+ *     }
+ *
+ *     // Array
+ *     {
+ *          // Shaped recipe
+ *         "recipe": [
+ *              {
+ *                  "amount": 8 // How many should the craft return. MUST be inside an object.
+ *              },
+ *              // Shaped recipe
+ *              // Look at the below as the crafting grid in game, each array represents the row in the crafting table
+ *              // The following would produce a shaped recipe. {@code null} MUST be put on empty slots
+ *              [ null, "cobblestone", null ], // Row 1
+ *              [ null, "stick", null ],       // Row 2
+ *              [ null, "stick", null ]        // Row 3
+ *         ]
+ *
+ *         // Shapeless recipe
+ *         // Shapeless recipes are made with just one array, you can still give it an options object.
+ *         // Since shapeless recipes do not care about an item's position in the crafting grid, you can
+ *         // fill up an entire array from 1-9 with items.
+ *         "recipe": [
+ *              [ "torch", "crafting_table", "iron_ingot" ], // Array representing the item, do not put any {@code null}'s in here
+ *              { "amount": 4 }
+ *         ]
+ *
+ *         // The output would be 4 of the block
+ *     }
+ * </pre>
+ */
 public class Recipe implements IRegisterable
 {
     private ItemStack output;
@@ -52,15 +92,9 @@ public class Recipe implements IRegisterable
         this(ingredients, 1);
     }
 
-    public Recipe setOutput(Block block, int metadata, int amount)
-    {
-        this.output = new ItemStack(Item.getItemFromBlock(block), amount, metadata);
-        return this;
-    }
-
     public Recipe setOutput(Block block, int metadata)
     {
-        this.setOutput(block, metadata, 1);
+        this.output = new ItemStack(Item.getItemFromBlock(block), this.outputAmount, metadata);
         return this;
     }
 
@@ -101,38 +135,106 @@ public class Recipe implements IRegisterable
             {
                 ingredients = new LinkedList<>();
                 JsonArray jsonRecipe = src.getAsJsonArray();
-                width = jsonRecipe.get(0).getAsJsonArray().size(); // get the size of the first array
-                height = jsonRecipe.size();
+
+                JsonObject options = hasOptions(jsonRecipe);
+                int output = options != null ? JsonUtils.getInt(options, "amount", 1) : 1;
+                JsonArray temp = getFirstArray(jsonRecipe);
+
+                width =  temp != null ? temp.size() : 3; // jsonRecipe.get(0).getAsJsonArray().size(); // get the size of the first array
+                height = getNumberOfArrays(jsonRecipe); // jsonRecipe.size();
 
                 if (!this.isShapeless(jsonRecipe))
                 {
                     for (JsonElement row : jsonRecipe)
                     {
-                        for (JsonElement slot : row.getAsJsonArray())
+                        if (row.isJsonArray())
                         {
-                            ingredients.add(slot.isJsonNull() ? null : MinecraftUtilities.strToItemStack(slot.getAsString()));
+                            for (JsonElement slot : row.getAsJsonArray())
+                            {
+                                ingredients.add(slot.isJsonNull() ? null : MinecraftUtilities.strToItemStack(slot.getAsString())); // Only primitives allowed
+                            }
                         }
                     }
-                    recipe = new Recipe(width, height, ingredients.toArray(new ItemStack[ingredients.size()]), 1); // TODO: OutputSize
+                    recipe = new Recipe(width, height, ingredients.toArray(new ItemStack[ingredients.size()]), output); // TODO: OutputSize
                 }
                 else
                 {
                     for (JsonElement row : jsonRecipe)
                     {
-                        for (JsonElement slot : row.getAsJsonArray())
+                        if (row.isJsonArray())
                         {
-                            ingredients.add(slot.isJsonNull() ? null : MinecraftUtilities.strToItemStack(slot.getAsString()));
+                            for (JsonElement slot : row.getAsJsonArray())
+                            {
+                                ingredients.add(slot.isJsonNull() ? null : MinecraftUtilities.strToItemStack(slot.getAsString()));
+                            }
                         }
                     }
-                    recipe = new Recipe(ingredients.toArray(new ItemStack[ingredients.size()]), 1); // TODO: OutputSize
+                    recipe = new Recipe(ingredients.toArray(new ItemStack[ingredients.size()]), output); // TODO: OutputSize
                 }
                 return recipe;
             }
-            else if (src.isJsonPrimitive())
+            else if (src.isJsonPrimitive()) // No output allowed on primitives
             {
                 ingredients = new ArrayList<>(1);
                 ingredients.add(0, MinecraftUtilities.strToItemStack(src.getAsString()));
                 return new Recipe(ingredients.toArray(new ItemStack[ingredients.size()]));
+            }
+            return null;
+        }
+
+        /**
+         * Loops through the given array and checks if there's a {@link JsonObject}
+         * present. If there is, return it, else, return null;
+         *
+         * @param array The json array to check
+         * @return A {@link JsonObject} if one is found
+         */
+        private JsonObject hasOptions(JsonArray array)
+        {
+            for (JsonElement e : array)
+            {
+                if (e.isJsonObject())
+                {
+                    return e.getAsJsonObject();
+                }
+            }
+            return null;
+        }
+
+        /**
+         * Returns the amount of arrays found in this array
+         *
+         * @param array The array to check
+         * @return The amount of arrays found
+         */
+        private int getNumberOfArrays(JsonArray array)
+        {
+            int found = 0;
+
+            for (JsonElement e : array)
+            {
+                if (e.isJsonArray())
+                {
+                    found++;
+                }
+            }
+            return found;
+        }
+
+        /**
+         * Returns the first JsonArray it finds
+         *
+         * @param array The array to check
+         * @return The first array in this array, otherwise null
+         */
+        private JsonArray getFirstArray(JsonArray array)
+        {
+            for (JsonElement e : array)
+            {
+                if (e.isJsonArray())
+                {
+                    return e.getAsJsonArray();
+                }
             }
             return null;
         }
@@ -164,6 +266,15 @@ public class Recipe implements IRegisterable
         public JsonElement serialize(Recipe src, Type typeOfSrc, JsonSerializationContext context)
         {
             JsonArray recipe = new JsonArray();
+
+            if (src.outputAmount > 1) // output amount is always set when it's over 1
+            {
+                JsonPrimitive outputAmount = new JsonPrimitive(src.outputAmount);
+                JsonObject options = new JsonObject();
+                options.add("amount", outputAmount);
+                recipe.add(options);
+            }
+
             if (src.isShapeless())
             {
                 JsonArray row = new JsonArray();

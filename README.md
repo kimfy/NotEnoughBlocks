@@ -4,4 +4,4 @@
 
 Cloning NotEnoughBlocks:
 
-1.9: `git clone -b MC-1.9 https://github.com/kimfy/NotEnoughBlocks.git`
+1.9: `git clone https://github.com/kimfy/NotEnoughBlocks.git`

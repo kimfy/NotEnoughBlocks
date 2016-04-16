@@ -126,7 +126,7 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
 
         if (modelBlock == null)
         {
-            modelBlock = data.get(0);
+            modelBlock = get(0);
         }
 
         return modelBlock;
@@ -193,7 +193,7 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
 
             int count = block.quantityDropped(state, fortune, rand);
 
-            IntStream.range(0, count).forEach(i -> {
+            IntStream.range(0, ++count).forEach(i -> {
                 Item item = block.getItemDropped(state, rand, fortune);
                 if (item != null)
                 {

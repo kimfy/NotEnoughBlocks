@@ -2,11 +2,11 @@ package com.kimfy.notenoughblocks.client.file.json;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.kimfy.notenoughblocks.NotEnoughBlocks;
 import com.kimfy.notenoughblocks.common.block.IBlockProperties;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
 import com.kimfy.notenoughblocks.common.util.Constants;
 import com.kimfy.notenoughblocks.common.util.FileUtilities;
+import com.kimfy.notenoughblocks.common.util.Log;
 import com.kimfy.notenoughblocks.common.util.Utilities;
 import com.kimfy.notenoughblocks.common.util.block.Shape;
 import net.minecraft.block.Block;
@@ -18,7 +18,6 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameData;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -35,7 +34,6 @@ import java.util.Map;
 @SideOnly(Side.CLIENT)
 public class OneEight
 {
-    private static Logger logger = NotEnoughBlocks.logger;
     public static List<Block> blocks = new ArrayList<>();
     // The folder my blockstate files are written to
     private static File blockstateFolder = new File("resourcepacks/" + Constants.MOD_NAME + "/assets/" + Constants.MOD_ID + "/blockstates/");
@@ -89,22 +87,22 @@ public class OneEight
     {
         if (blocks == null || blocks.isEmpty())
         {
-            NotEnoughBlocks.logger.error("Cannot register item models. No blocks from NotEnoughBlocks present!");
+            Log.error("Cannot register item models. No blocks from NotEnoughBlocks present!");
             return;
         }
-        //logger.info("[NEB]: registerItemModels()");
+        //Log.info("[NEB]: registerItemModels()");
         if (blockstateFolder.listFiles().length >= 1)
         {
-            //logger.info("[NEB]: listFiles() is over 1");
+            //Log.info("[NEB]: listFiles() is over 1");
             Gson gson = new Gson();
 
             for (File f : blockstateFolder.listFiles())
             {
-                //logger.info("[NEB]: Found file: " + f.getName());
+                //Log.info("[NEB]: Found file: " + f.getName());
 
                 if (f.isFile() && f.getName().endsWith(".json"))
                 {
-                    // logger.info("[NEB]: " + f.getName() + " is a json. Moving on");
+                    // Log.info("[NEB]: " + f.getName() + " is a json. Moving on");
                     try
                     {
                         Type type = new TypeToken<Map<String, Object>>() {}.getType();
@@ -121,36 +119,36 @@ public class OneEight
                                 int metadata = ((Number) entry.get("metadata")).intValue();
                                 String variant   = (String) entry.get("variant");
 
-                                //logger.info("===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # =====");
-                                //logger.info("INFORMATION: Got block with given information:");
-                                //logger.info("Name: " + blockName);
-                                //logger.info("Metadata: " + metadata);
-                                //logger.info("Variant: " + variant);
-                                //logger.info("===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # =====");
+                                //Log.info("===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # =====");
+                                //Log.info("INFORMATION: Got block with given information:");
+                                //Log.info("Name: " + blockName);
+                                //Log.info("Metadata: " + metadata);
+                                //Log.info("Variant: " + variant);
+                                //Log.info("===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # =====");
 
                                 ResourceLocation rl = new ResourceLocation(Constants.MOD_ID, blockName);
                                 Block block = Block.blockRegistry.getObject(rl);
 
                                 if (block != null)
                                 {
-                                    //logger.info("[NEB]: block is not null, registering item model");
+                                    //Log.info("[NEB]: block is not null, registering item model");
                                     registerItem(block, metadata, blockName, variant);
                                 }
                                 else
                                 {
-                                    logger.error("===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # =====");
-                                    logger.error("ERROR: Could not register item variant for block with given information:");
-                                    logger.error("Name: " + blockName);
-                                    logger.error("Metadata: " + metadata);
-                                    logger.error("Variant: " + variant);
-                                    logger.error("Report this to the mod author!");
-                                    logger.error("===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # =====");
+                                    Log.error("===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # =====");
+                                    Log.error("ERROR: Could not register item variant for block with given information:");
+                                    Log.error("Name: " + blockName);
+                                    Log.error("Metadata: " + metadata);
+                                    Log.error("Variant: " + variant);
+                                    Log.error("Report this to the mod author!");
+                                    Log.error("===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # =====");
                                 }
                             }
                         }
                         else
                         {
-                            logger.error("Key: inventory_renders not found in blockstate.json: " + f.getName() + ". Report this to the mod author!");
+                            Log.error("Key: inventory_renders not found in blockstate.json: " + f.getName() + ". Report this to the mod author!");
                         }
                     }
                     catch (FileNotFoundException e)
@@ -182,7 +180,7 @@ public class OneEight
         }
         catch (Exception e)
         {
-            NotEnoughBlocks.logger.error("Exception when registering item in OneEight#registerItem. Block {}, metadata {}, blockName {}", block, metadata, blockName, e);
+            Log.error("Exception when registering item in OneEight#registerItem. Block {}, metadata {}, blockName {}", block, metadata, blockName, e);
         }
     }
 
@@ -208,7 +206,7 @@ public class OneEight
                 }
                 catch (NullPointerException e)
                 {
-                    NotEnoughBlocks.logger.error("ERROR: NPE when invoking getRegistryName() on Block {}", block, e);
+                    Log.error("ERROR: NPE when invoking getRegistryName() on Block {}", block, e);
                 }
             }
         }

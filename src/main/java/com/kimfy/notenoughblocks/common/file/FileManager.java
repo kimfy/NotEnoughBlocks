@@ -1,9 +1,8 @@
 package com.kimfy.notenoughblocks.common.file;
 
-import com.kimfy.notenoughblocks.NotEnoughBlocks;
 import com.kimfy.notenoughblocks.common.file.resourcepack.ResourcePack;
 import com.kimfy.notenoughblocks.common.util.Constants;
-import org.apache.logging.log4j.Logger;
+import com.kimfy.notenoughblocks.common.util.Log;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -12,7 +11,6 @@ import java.util.List;
 public class FileManager
 {
     public static List<String> textures = new ArrayList<>();
-    public static Logger logger = NotEnoughBlocks.logger;
     public static File configFolder = new File(Constants.PATH_MOD_CONFIG_BASE);
     public static File configResourcePacksFolder = new File(Constants.PATH_MOD_CONFIG_RESOURCE_PACKS);
     public static File configJsonFolder = new File(Constants.PATH_MOD_CONFIG_JSON);
@@ -30,7 +28,7 @@ public class FileManager
 
     public void findAndProcessResourcePacks()
     {
-        logger.info("Searching {} for resource packs", configResourcePacksFolder.getAbsolutePath());
+        Log.info("Searching {} for resource packs", configResourcePacksFolder.getAbsolutePath());
         for (File file : configResourcePacksFolder.listFiles())
         {
             /* Only process files that end with .zip and are valid filenames.
@@ -41,7 +39,7 @@ public class FileManager
             if (isZipFile(file) && isFileNameValid)
             {
                 String fileName = file.getName().replace(".zip", "");
-                logger.info("Found resource pack: " + fileName);
+                Log.info("Found resource pack: " + fileName);
 
                 ResourcePack resourcePack = new ResourcePack(file, fileName);
                     resourcePack.extract();
@@ -51,7 +49,7 @@ public class FileManager
             }
             else if (!isFileNameValid)
             {
-                logger.error("Found resource pack \"{}\" but it's name is invalid. Use only characters/underscores/dashes/numbers.", file.getName());
+                Log.error("Found resource pack \"{}\" but it's name is invalid. Use only characters/underscores/dashes/numbers.", file.getName());
             }
         }
     }

@@ -1,8 +1,8 @@
 package com.kimfy.notenoughblocks.common.util.block;
 
 import com.google.gson.*;
-import com.kimfy.notenoughblocks.NotEnoughBlocks;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
+import com.kimfy.notenoughblocks.common.util.Log;
 import com.kimfy.notenoughblocks.common.util.MinecraftUtilities;
 import com.kimfy.notenoughblocks.common.util.Utilities;
 import net.minecraft.item.Item;
@@ -83,7 +83,7 @@ public class Drop
             }
             else
             {
-                NotEnoughBlocks.logger.error("Type {} is not supported as drop. It has to be either a String or Object", element.getClass());
+                Log.error("Type {} is not supported as drop. It has to be either a String or Object", element.getClass());
             }
             return null;
         }
@@ -119,7 +119,7 @@ public class Drop
         {
             if (!model.has("name"))
             {
-                NotEnoughBlocks.logger.error("Error: drop {} is missing the name key", model.toString(), new JsonSyntaxException("Missing required members! Do not report this!"));
+                Log.error("Error: drop {} is missing the name key", model.toString(), new JsonSyntaxException("Missing required members! Do not report this!"));
             }
 
             String modid, itemName;

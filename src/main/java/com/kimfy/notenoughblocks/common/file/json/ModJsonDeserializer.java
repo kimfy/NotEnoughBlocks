@@ -1,7 +1,7 @@
 package com.kimfy.notenoughblocks.common.file.json;
 
 import com.google.gson.*;
-import com.kimfy.notenoughblocks.NotEnoughBlocks;
+import com.kimfy.notenoughblocks.common.util.Log;
 import com.kimfy.notenoughblocks.common.util.Utilities;
 import net.minecraft.util.JsonUtils;
 
@@ -40,7 +40,7 @@ public class ModJsonDeserializer implements JsonDeserializer
         }
         else
         {
-            NotEnoughBlocks.logger.error("Malformed JSON: Missing blocks array - you should probably make one, as without one I won't be doing much");
+            Log.error("Malformed JSON: Missing blocks array - you should probably make one, as without one I won't be doing much");
         }
 
         return ret;

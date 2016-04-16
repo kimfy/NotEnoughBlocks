@@ -1,7 +1,5 @@
 package com.kimfy.notenoughblocks.common.util;
 
-import com.kimfy.notenoughblocks.NotEnoughBlocks;
-
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,7 +14,7 @@ public class Registrar
     {
         if (modRegistry.isEmpty())
         {
-            NotEnoughBlocks.logger.info("There are no objects to register");
+            Log.info("There are no objects to register");
         }
         else
         {

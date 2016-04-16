@@ -2,19 +2,18 @@ package com.kimfy.notenoughblocks.common.file.resourcepack;
 
 import com.google.common.io.Files;
 import com.google.gson.Gson;
-import com.kimfy.notenoughblocks.NotEnoughBlocks;
 import com.kimfy.notenoughblocks.common.file.FileManager;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
 import com.kimfy.notenoughblocks.common.file.json.Blocks;
 import com.kimfy.notenoughblocks.common.util.Constants;
 import com.kimfy.notenoughblocks.common.util.FileUtilities;
+import com.kimfy.notenoughblocks.common.util.Log;
 import com.kimfy.notenoughblocks.common.util.Utilities;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.FolderResourcePack;
 import net.minecraft.client.resources.IResourcePack;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import org.apache.commons.io.FileUtils;
-import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -64,14 +63,13 @@ public class ResourcePack
         }
         catch (ReflectionHelper.UnableToAccessFieldException e)
         {
-            NotEnoughBlocks.logger.error("[NotEnoughBlocks] Error when injecting resource pack. Did the deobfuscated name {} or the obfuscated name {} change?", DEOBFUSCATED_NAME, OBFUSCATED_NAME,  e);
+            Log.error("[NotEnoughBlocks] Error when injecting resource pack. Did the deobfuscated name {} or the obfuscated name {} change?", DEOBFUSCATED_NAME, OBFUSCATED_NAME,  e);
         }
 
         Minecraft.getMinecraft().refreshResources();
     }
 
     private List<BlockJson> blocks = new ArrayList<>();
-    private static Logger logger = NotEnoughBlocks.logger;
 
     public void setBlocks()
     {
@@ -102,7 +100,7 @@ public class ResourcePack
             }
             else
             {
-                logger.info("Block: " + block.getDisplayName() + " cannot be created from resource pack as not all the required textures for it was found. Textures needed for block to be created: " + block.getTextureMap());
+                Log.info("Block: " + block.getDisplayName() + " cannot be created from resource pack as not all the required textures for it was found. Textures needed for block to be created: " + block.getTextureMap());
             }
         }
         this.blocks.addAll(tempBlockList);
@@ -117,7 +115,7 @@ public class ResourcePack
     {
         File temp = new File(Constants.PATH_MOD_CONFIG_RESOURCE_PACKS + name + "_extracted/assets/minecraft/textures/blocks/");
         String destination = Constants.PATH_MOD_TEXTURES_BLOCKS;
-        logger.info("Moving from " + temp.getAbsolutePath() + " to " + destination);
+        Log.info("Moving from " + temp.getAbsolutePath() + " to " + destination);
 
         if (temp.exists())
         {
@@ -151,7 +149,7 @@ public class ResourcePack
         }
         else
         {
-            logger.info("Resource Pack " + name + " has been extracted, but the folder does not exist. REPORT THIS!");
+            Log.info("Resource Pack " + name + " has been extracted, but the folder does not exist. REPORT THIS!");
         }
     }
 
@@ -184,45 +182,19 @@ public class ResourcePack
             {
                 if (temp.createNewFile())
                 {
-                    boolean developer = true;
-                    if (developer)
-                    {
-                        // GsonBuilder gsonBuilder = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting();
-                        // gsonBuilder.registerTypeAdapter(BlockJson.class, new BlockJson.Serializer());
-                        // Gson gson = gsonBuilder.create();
-                        Gson gson = Utilities.GSON;
+                    Gson gson = Utilities.GSON;
 
-                        Map<String, List<BlockJson>> resourcePackMap = new LinkedHashMap<>(1);
-                        resourcePackMap.put("blocks", blocks);
+                    Map<String, List<BlockJson>> resourcePackMap = new LinkedHashMap<>(1);
+                    resourcePackMap.put("blocks", blocks);
 
-                        FileWriter fileWriter = new FileWriter(temp);
-                        fileWriter.write(gson.toJson(resourcePackMap));
-                        fileWriter.flush();
-                        fileWriter.close();
-                    }
-
-                    /* Write to it */
-                    //Map<String, List<BlockJson>> blockMap = new LinkedHashMap<>();
-                    //blockMap.put("blocks", blocks);
-                    //Gson gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();
-
-                    //try
-                    //{
-                    //    FileWriter fileWriter = new FileWriter(temp);
-                    //    String toWrite = gson.toJson(blockMap);
-                    //    fileWriter.write(toWrite);
-                    //    fileWriter.flush();
-                    //    fileWriter.close();
-                    //}
-                    //catch (IOException e)
-                    //{
-                    //    logger.error("Something went wrong when writing to json file for " + name);
-                    //    e.printStackTrace();
-                    //}
+                    FileWriter fileWriter = new FileWriter(temp);
+                    fileWriter.write(gson.toJson(resourcePackMap));
+                    fileWriter.flush();
+                    fileWriter.close();
                 }
                 else
                 {
-                    logger.error("Something went wrong when creating json file for " + name);
+                    Log.error("Something went wrong when creating json file for " + name);
                 }
             }
             catch (IOException e)

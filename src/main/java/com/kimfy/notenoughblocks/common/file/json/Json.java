@@ -2,7 +2,7 @@ package com.kimfy.notenoughblocks.common.file.json;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.kimfy.notenoughblocks.NotEnoughBlocks;
+import com.kimfy.notenoughblocks.common.util.Log;
 import lombok.Getter;
 
 import java.io.File;
@@ -45,7 +45,7 @@ public class Json
         }
         catch (Exception e)
         {
-            NotEnoughBlocks.logger.error("Something went really wrong when parsing {}!", file.getName(), e);
+            Log.error("Something went really wrong when parsing {}!", file.getName(), e);
         }
         return;
     }

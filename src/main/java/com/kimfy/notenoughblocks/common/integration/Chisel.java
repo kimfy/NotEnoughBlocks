@@ -5,15 +5,10 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.kimfy.notenoughblocks.common.block.IBlockProperties;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
-import com.kimfy.notenoughblocks.common.util.CollectionUtilities;
-import com.kimfy.notenoughblocks.common.util.Constants;
-import com.kimfy.notenoughblocks.common.util.FileUtilities;
-import com.kimfy.notenoughblocks.common.util.Utilities;
+import com.kimfy.notenoughblocks.common.util.*;
 import net.minecraft.block.Block;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.io.Serializable;
 import java.lang.reflect.Type;
@@ -71,7 +66,6 @@ import java.util.List;
  */
 public class Chisel implements Serializable
 {
-    protected static final transient Logger logger = LogManager.getLogger(Constants.MOD_NAME + ":Chisel");
     public static final transient String MOD_ID = "chisel";
 
     public Chisel() {}
@@ -118,11 +112,11 @@ public class Chisel implements Serializable
             {
                 if (FMLInterModComms.sendMessage(MOD_ID, "variation:add", toSend))
                 {
-                    logger.info("Successfully sent ".concat(toSend).concat(" to chisel"));
+                    Log.info("Successfully sent ".concat(toSend).concat(" to chisel"));
                 }
                 else
                 {
-                    logger.error("Error: Something went wrong when sending `"
+                    Log.error("Error: Something went wrong when sending `"
                                          .concat(toSend)
                                          .concat("` to chisel.\nReport this!")
                                 );
@@ -230,7 +224,7 @@ public class Chisel implements Serializable
                              {
                                  names.put(block.getUnlocalizedName(), 0);
                              }
-                             //names.forEach((K, V) -> logger.info(K + "|" + V + "|" + getChiselGroupBasedOnDisplayName(K) + "|" + block.getUnlocalizedName().replace("tile.", "")));
+                             //names.forEach((K, V) -> Log.info(K + "|" + V + "|" + getChiselGroupBasedOnDisplayName(K) + "|" + block.getUnlocalizedName().replace("tile.", "")));
                             names.forEach((displayName, metadata) -> {
                                              values.add(createJsonOutput(displayName, GameRegistry.findUniqueIdentifierFor(block).name, metadata));
                                           });
@@ -279,7 +273,7 @@ public class Chisel implements Serializable
         {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             String json = gson.toJson(values);
-            logger.info(json);
+            Log.info(json);
         }
         catch (Exception e)
         {

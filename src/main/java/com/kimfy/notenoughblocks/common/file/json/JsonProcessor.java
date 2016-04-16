@@ -1,9 +1,9 @@
 package com.kimfy.notenoughblocks.common.file.json;
 
 import com.google.common.base.Joiner;
-import com.kimfy.notenoughblocks.NotEnoughBlocks;
 import com.kimfy.notenoughblocks.common.block.*;
 import com.kimfy.notenoughblocks.common.util.Constants;
+import com.kimfy.notenoughblocks.common.util.Log;
 import com.kimfy.notenoughblocks.common.util.Utilities;
 import com.kimfy.notenoughblocks.common.util.block.Recipe;
 import com.kimfy.notenoughblocks.common.util.block.Shape;
@@ -13,7 +13,6 @@ import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import org.apache.commons.io.FileUtils;
-import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,7 +23,6 @@ public class JsonProcessor
 {
     public static File jsonFolder = new File(Constants.PATH_MOD_CONFIG_JSON);
     public static List<Json> jsons = new ArrayList<>();
-    private static Logger logger = NotEnoughBlocks.logger;
 
     public void loadFiles()
     {
@@ -34,12 +32,12 @@ public class JsonProcessor
 
             if (isJson(file))
             {
-                logger.info("Found JSON file " + fileName);
+                Log.info("Found JSON file " + fileName);
                 jsons.add(new Json(file, fileName.replace(".json", "")));
             }
             else
             {
-                logger.info("File " + fileName + " is not a JSON file. SKIPPING");
+                Log.info("File " + fileName + " is not a JSON file. SKIPPING");
             }
         }
     }
@@ -66,7 +64,7 @@ public class JsonProcessor
         }
         else
         {
-            logger.info("There are no JSON files to process...");
+            Log.info("There are no JSON files to process...");
         }
     }
 
@@ -193,7 +191,7 @@ public class JsonProcessor
         }
         catch (Exception e)
         {
-            NotEnoughBlocks.logger.error("Failed to create Block for Blocks {} ", BlockJson.getDisplayNamesFromBlocks(blocks), e);
+            Log.error("Failed to create Block for Blocks {} ", BlockJson.getDisplayNamesFromBlocks(blocks), e);
         }
     }
 
@@ -279,7 +277,7 @@ public class JsonProcessor
 
                 if (langMapSize != langFileSize)
                 {
-                    NotEnoughBlocks.logger.info("[" + Constants.MOD_NAME + "] " + "Writing lang file...");
+                    Log.info("Writing lang file...");
                     // Delete file if it exists and write to a new one
                     langFile.delete();
                     FileUtils.writeByteArrayToFile(langFile, converted.getBytes());
@@ -287,12 +285,12 @@ public class JsonProcessor
                 else
                 {
                     // Language file is equal to the code generated one. Do nothing!
-                    NotEnoughBlocks.logger.info("[" + Constants.MOD_NAME + "] " + "Language file already exists, ignoring!");
+                    Log.info("Language file already exists, ignoring!");
                 }
             }
             catch (IOException e)
             {
-                NotEnoughBlocks.logger.error("ERROR: Failed to write lang file! Report this!");
+                Log.error("Failed to write lang file! Report this!");
             }
         }
     }

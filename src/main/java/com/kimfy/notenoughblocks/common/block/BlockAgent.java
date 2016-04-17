@@ -36,7 +36,7 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
         this.block = block;
         this.blockCount = data.size();
         this.data = data;
-        this.blockShape = getModelBlock().getRealShape();
+        this.blockShape = getModelBlock().getShape();
     }
 
     @Getter private boolean isBeaconBase;
@@ -152,7 +152,7 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
     public Material getMaterial(IBlockState state)
     {
         int metadata = block.damageDropped(state);
-        return get(metadata).getRealMaterial();
+        return get(metadata).getMaterial();
     }
 
     public SoundType getStepSound()

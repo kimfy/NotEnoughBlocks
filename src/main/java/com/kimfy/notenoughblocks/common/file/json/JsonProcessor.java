@@ -137,9 +137,9 @@ public class JsonProcessor
     private void registerBlocks(List<BlockJson> blocks, Json json, int index)
     {
         BlockJson model = blocks.get(0);
-        Shape shape = model.getRealShape();
+        Shape shape = model.getShape();
 
-        Material material = model.getRealMaterial();
+        Material material = model.getMaterial();
         String unlocalizedName = json.getName() + "_" + model.getShape() + "_" + index;
         ResourceLocation rl = new ResourceLocation(Constants.MOD_ID, unlocalizedName);
         Class<?> blockClass;
@@ -201,7 +201,7 @@ public class JsonProcessor
         BlockJson model = blocks.get(0);
 
         block.setUnlocalizedName(Constants.MOD_ID + ":" + unlocalizedName);
-        block.setCreativeTab(model.getRealCreativeTab());
+        block.setCreativeTab(model.getCreativeTab());
         block.setHardness(model.getHardness());
         block.setResistance(model.getResistance());
         block.setLightLevel(model.getLightLevel());
@@ -213,8 +213,8 @@ public class JsonProcessor
         block.setBlockStainable(model.isStained());
         block.setSlipperiness(model.getSlipperiness());
 
-        block.setBlockSoundType(model.getRealSoundType());
-        block.setBlockMaterial(model.getRealMaterial());
+        block.setBlockSoundType(model.getStepSound());
+        block.setBlockMaterial(model.getMaterial());
 
         /* Metadata specific operations */
         for (int metadata = 0; metadata < blocks.size(); metadata++)
@@ -222,7 +222,7 @@ public class JsonProcessor
             BlockJson modelBlock = blocks.get(metadata);
 
             block.isSilkTouchable(modelBlock.isSilkTouch(), metadata);
-            setDisplayName(block, unlocalizedName, metadata, modelBlock.getDisplayName());
+            this.setDisplayName(block, unlocalizedName, metadata, modelBlock.getDisplayName());
             this.setBlockRecipe(modelBlock, block, metadata);
         }
     }

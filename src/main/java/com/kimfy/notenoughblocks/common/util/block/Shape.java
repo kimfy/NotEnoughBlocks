@@ -2,103 +2,124 @@ package com.kimfy.notenoughblocks.common.util.block;
 
 import com.kimfy.notenoughblocks.common.block.*;
 import com.kimfy.notenoughblocks.common.item.*;
+import com.kimfy.notenoughblocks.common.util.Log;
 import lombok.Getter;
 import net.minecraft.block.Block;
-import net.minecraft.item.ItemBlock;
+import net.minecraft.item.Item;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Getter
-public enum Shape
+public class Shape
 {
-    CUBE(16, NEBBlock.class, NEBItemBlock.class),
-    STAIR(1, NEBBlockStair.class, NEBItemBlockStair.class),
-    SLAB(8, NEBBlockSlab.class, NEBItemBlockSlab.class),
-    GLASS(16, NEBBlockGlass.class, NEBItemBlock.class),
-    WALL(16, NEBBlockWall.class, NEBItemBlock.class),
-    FENCE(16, NEBBlockFence.class, NEBItemBlock.class),
-    ANVIL(1, NEBBlockAnvil.class, NEBItemBlockAnvil.class),
-    BREWING_STAND(16, NEBBlockBrewingStand.class, NEBItemBlock.class),
-    PRESSURE_PLATE(1, NEBBlockPressurePlate.class, NEBItemBlock.class),
-    BEACON(16, NEBBlockBeacon.class, NEBItemBlock.class),
-    BED(1, NEBBlockBed.class, NEBItemBlockBed.class),
-    BUSH(16, NEBBlockBush.class, NEBItemBlock.class), // Small grass, fern, dead bush
-    BUTTON(1, NEBBlockButton.class, NEBItemBlock.class),
-    CACTUS(16, null, null),
-    CAKE(16, null, null),
-    CARPET(16, NEBBlockCarpet.class, NEBItemBlock.class),
-    CAULDRON(1, NEBBlockCauldron.class, NEBItemBlock.class),
-    COCOA(16, null, null),
-    CROP(4, null, null),
-    DAYLIGHT_DETECTOR(1, null, null),
-    DIRECTIONAL(1, NEBBlockDirectional.class, NEBItemBlock.class),
-    DOOR(1, NEBBlockDoor.class, NEBItemBlockDoor.class),
-    DOUBLE_PLANT(8, NEBBlockDoublePlant.class, NEBItemBlock.class),
-    DRAGON_EGG(16, null, null),
-    ENCHANTING_TABLE(16, null, null),
-    FALLING(16, NEBBlockFalling.class, NEBItemBlock.class),
-    FENCE_GATE(1, NEBBlockFenceGate.class, NEBItemBlock.class),
-    FARMLAND(16, null, null),
-    FLOWER(16, NEBBlockFlower.class, NEBItemBlock.class),
-    FLOWER_POT(16, null, null),
-    GRASS(16, NEBBlockGrass.class, NEBItemBlock.class),
-    ICE(16, CUBE.getBlockClass(), CUBE.getItemClass()),
-    LADDER(16, null, null),
-    LEAVES(16, null, null),
-    LEVER(16, null, null),
-    LILYPAD(16, null, null),
-    LIQUID(16, null, null),
-    MUSHROOM(16, null, null),
-    MUSHROOM_BLOCK(3, null, null),
-    PANE(16, NEBBlockPane.class, NEBItemBlock.class),
-    BARS(16, NEBBlockPane.class, NEBItemBlock.class),
-    RAIL(16, null, null),
-    REDSTONE_LAMP(8, null, null),
-    REDSTONE_TORCH(1, null, null),
-    SUGAR_CANE(16, null, null),
-    ROTATING(4, NEBBlockRotating.class, NEBItemBlock.class),
-    SAPLING(16, null, null),
-    SIGN(16, null, null),
-    SKULL(16, null, null),
-    SLIME_BLOCK(16, null, null),
-    LAYER(1, NEBBlockLayer.class, NEBItemBlockLayer.class),
-    TORCH(1, null, null),
-    TRAPDOOR(1, NEBBlockTrapDoor.class, NEBItemBlock.class),
-    TRIPWIRE(16, null, null),
-    TRIPWIRE_HOOK(16, null, null),
-    VINE(4, null, null),
-    WEB(16, NEBBlockWeb.class, NEBItemBlock.class),
-    WEIGHTED_PRESSURE_PLATE(16, null, null),
+    public static Map<String, Shape> shapes = new HashMap<>();
+
+    public static final Shape CUBE = new Shape("cube", 16, NEBBlock.class, NEBItemBlock.class);
+    public static final Shape STAIR = new Shape("stair", 1, NEBBlockStair.class, NEBItemBlockStair.class);
+    public static final Shape SLAB = new Shape("slab", 8, NEBBlockSlab.class, NEBItemBlockSlab.class);
+    public static final Shape GLASS = new Shape("glass", 16, NEBBlockGlass.class, NEBItemBlock.class);
+    public static final Shape WALL = new Shape("wall", 16, NEBBlockWall.class, NEBItemBlock.class);
+    public static final Shape FENCE = new Shape("fence", 16, NEBBlockFence.class, NEBItemBlock.class);
+    public static final Shape ANVIL = new Shape("anvil", 1, NEBBlockAnvil.class, NEBItemBlockAnvil.class);
+    public static final Shape BREWING_STAND = new Shape("brewing_stand", 16, NEBBlockBrewingStand.class, NEBItemBlock.class);
+    public static final Shape PRESSURE_PLATE = new Shape("pressure_plate", 1, NEBBlockPressurePlate.class, NEBItemBlock.class);
+    public static final Shape BEACON = new Shape("beacon", 16, NEBBlockBeacon.class, NEBItemBlock.class);
+    public static final Shape BED = new Shape("bed", 1, NEBBlockBed.class, NEBItemBlockBed.class);
+    public static final Shape BUSH = new Shape("bush", 16, NEBBlockBush.class, NEBItemBlock.class);
+    public static final Shape BUTTON = new Shape("button", 1, NEBBlockButton.class, NEBItemBlock.class);
+    public static final Shape CACTUS = new Shape("cactus", 16, null, null);
+    public static final Shape CAKE = new Shape("cake", 16, null, null);
+    public static final Shape CARPET = new Shape("carpet", 16, NEBBlockCarpet.class, NEBItemBlock.class);
+    public static final Shape CAULDRON = new Shape("cauldron", 1, NEBBlockCauldron.class, NEBItemBlock.class);
+    public static final Shape COCOA = new Shape("cocoa", 16, null, null);
+    public static final Shape CROP = new Shape("crop", 4, null, null);
+    public static final Shape DAYLIGHT_DETECTOR = new Shape("daylight_detector", 1, null, null);
+    public static final Shape DIRECTIONAL = new Shape("directional", 1, NEBBlockDirectional.class, NEBItemBlock.class);
+    public static final Shape DOOR = new Shape("door", 1, NEBBlockDoor.class, NEBItemBlockDoor.class);
+    public static final Shape DOUBLE_PLANT = new Shape("double_plant", 8, NEBBlockDoublePlant.class, NEBItemBlock.class);
+    public static final Shape DRAGON_EGG = new Shape("dragon_egg", 16, null, null);
+    public static final Shape ENCHANTING_TABLE = new Shape("enchanting_table", 16, null, null);
+    public static final Shape FALLING = new Shape("falling", 16, NEBBlockFalling.class, NEBItemBlock.class);
+    public static final Shape FENCE_GATE = new Shape("fence_gate", 1, NEBBlockFenceGate.class, NEBItemBlock.class);
+    public static final Shape FARMLAND = new Shape("farmland", 16, null, null);
+    public static final Shape FLOWER = new Shape("flower", 16, NEBBlockFlower.class, NEBItemBlock.class);
+    public static final Shape FLOWER_POT = new Shape("flower_pot", 16, null, null);
+    public static final Shape GRASS = new Shape("grass", 16, NEBBlockGrass.class, NEBItemBlock.class);
+    public static final Shape ICE = new Shape("ice", 16, CUBE.getBlockClass(), CUBE.getItemClass());
+    public static final Shape LADDER = new Shape("ladder", 16, null, null);
+    public static final Shape LEAVES = new Shape("leaves", 16, null, null);
+    public static final Shape LEVER = new Shape("lever", 16, null, null);
+    public static final Shape LILYPAD = new Shape("lilypad", 16, null, null);
+    public static final Shape LIQUID = new Shape("liquid", 16, null, null);
+    public static final Shape MUSHROOM = new Shape("mushroom", 16, null, null);
+    public static final Shape MUSHROOM_BLOCK = new Shape("mushroom_block", 3, null, null);
+    public static final Shape PANE = new Shape("pane", 16, NEBBlockPane.class, NEBItemBlock.class);
+    public static final Shape BARS = new Shape("bars", 16, NEBBlockPane.class, NEBItemBlock.class);
+    public static final Shape RAIL = new Shape("rail", 16, null, null);
+    public static final Shape REDSTONE_LAMP = new Shape("redstone_lamp", 8, null, null);
+    public static final Shape REDSTONE_TORCH = new Shape("redstone_torch", 1, null, null);
+    public static final Shape SUGAR_CANE = new Shape("sugar_cane", 16, null, null);
+    public static final Shape ROTATING = new Shape("rotating", 4, NEBBlockRotating.class, NEBItemBlock.class);
+    public static final Shape SAPLING = new Shape("sapling", 16, null, null);
+    public static final Shape SIGN = new Shape("sign", 16, null, null);
+    public static final Shape SKULL = new Shape("skull", 16, null, null);
+    public static final Shape SLIME_BLOCK = new Shape("slime_block", 16, null, null);
+    public static final Shape LAYER = new Shape("layer", 1, NEBBlockLayer.class, NEBItemBlockLayer.class);
+    public static final Shape TORCH = new Shape("torch", 1, null, null);
+    public static final Shape TRAPDOOR = new Shape("trapdoor", 1, NEBBlockTrapDoor.class, NEBItemBlock.class);
+    public static final Shape TRIPWIRE = new Shape("tripwire", 16, null, null);
+    public static final Shape TRIPWIRE_HOOK = new Shape("tripwire_hook", 16, null, null);
+    public static final Shape VINE = new Shape("vine", 4, null, null);
+    public static final Shape WEB = new Shape("web", 16, NEBBlockWeb.class, NEBItemBlock.class);
+    public static final Shape WEIGHTED_PRESSURE_PLATE = new Shape("weighted_pressure_plate", 16, null, null);
 
     /* 1.9 */
-    CHORUS_PLANT(16, null, null),
-    CHORUS_FLOWER(16, null, null),
-    END_ROD(16, null, null),
-    GRASS_PATH(16, null, null);
+    public static final Shape CHORUS_PLANT = new Shape("chorus_plant", 16, null, null);
+    public static final Shape CHORUS_FLOWER = new Shape("chorus_flower", 16, null, null);
+    public static final Shape END_ROD = new Shape("end_rod", 16, null, null);
+    public static final Shape GRASS_PATH = new Shape("grass_path", 16, null, null);
 
-    private int maxSubBlocks;
-    private Class<? extends Block> blockClass;
-    private  Class<? extends ItemBlock> itemClass;
+    private final String name;
+    private final int maxSubBlocks;
+    private final Class<? extends Block> blockClass;
+    private final Class<? extends Item> itemClass;
 
-    Shape(int maxSubBlocks, Class<?> cls, Class<?> itemClass)
+    public Shape(String name, int maxSubBlocks, Class<? extends Block> blockClass, Class<? extends Item> itemClass)
     {
+        this.name = name;
         this.maxSubBlocks = maxSubBlocks;
-        this.blockClass = (Class<? extends Block>) cls;
-        this.itemClass = (Class<? extends ItemBlock>) itemClass;
+        this.blockClass = blockClass;
+        this.itemClass = itemClass;
+        this.register();
+    }
+
+    private void register()
+    {
+        shapes.put(this.getName(), this);
     }
 
     public static Shape get(String shape)
     {
-        for (Shape v : values())
+        if (shapes.containsKey(shape))
         {
-            if (v.name().equalsIgnoreCase(shape))
-            {
-                return v;
-            }
+            return shapes.get(shape);
         }
-        throw new IllegalArgumentException("Shape: " + shape + " does not exist. Refer to the wiki for valid shapes!");
+        else
+        {
+            Log.error("Shape {} does not exist");
+            return CUBE;
+        }
     }
 
     public boolean isMetadataBlock()
     {
         return this.maxSubBlocks > 1;
+    }
+
+    @Override
+    public String toString()
+    {
+        return this.getName();
     }
 }

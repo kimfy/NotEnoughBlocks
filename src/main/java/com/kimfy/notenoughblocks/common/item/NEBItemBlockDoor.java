@@ -1,7 +1,6 @@
 package com.kimfy.notenoughblocks.common.item;
 
 import com.kimfy.notenoughblocks.common.block.IBlockProperties;
-import com.kimfy.notenoughblocks.common.util.block.EnumCreativeTab;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.SoundType;
@@ -22,7 +21,7 @@ public class NEBItemBlockDoor extends ItemBlock
     {
         super(block);
         block.setCreativeTab(null);
-        this.setCreativeTab(EnumCreativeTab.get(((IBlockProperties) block).getData().get(0).getCreativeTab()).getCreativeTab());
+        this.setCreativeTab(((IBlockProperties) block).getData().get(0).getCreativeTab());
     }
 
     /**

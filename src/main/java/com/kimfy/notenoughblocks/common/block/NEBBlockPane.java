@@ -31,7 +31,7 @@ public class NEBBlockPane extends BlockPane implements IBlockProperties
         super(materialIn, true);
         this.canDrop = true; // What is this even
         this.agent = new BlockAgent<>(this, data);
-        if (getModelBlock().getRealShape() == Shape.PANE)
+        if (getModelBlock().getShape() == Shape.PANE)
         {
             this.isStainedCached = getModelBlock().isStained();
         }

@@ -11,7 +11,7 @@ public class Category
 
     int getMaxBlocks()
     {
-        return block.getRealShape().getMaxSubBlocks();
+        return block.getShape().getMaxSubBlocks();
     }
 
     @Override

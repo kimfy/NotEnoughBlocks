@@ -14,7 +14,7 @@ public class NEBBlockPressurePlate extends BlockPressurePlate implements IBlockP
 
     public NEBBlockPressurePlate(Material materialIn, List<BlockJson> data)
     {
-        super(materialIn, data.get(0).getRealSensitivity());
+        super(materialIn, data.get(0).getSensitivity());
         this.agent = new BlockAgent<>(this, data);
     }
 }

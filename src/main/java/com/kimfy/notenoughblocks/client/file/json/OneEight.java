@@ -51,7 +51,7 @@ public class OneEight
             for (Block block : blocks)
             {
                 List<BlockJson> blockJsons = ((IBlockProperties) block).getData();
-                String shape = blockJsons.get(0).getShape();
+                String shape = blockJsons.get(0).getShape().getName();
                 String registryName = block.getRegistryName().getResourcePath();
                 String blockName = registryName;//block.getRegistryName().substring(block.getRegistryName().indexOf(':') + 1);
                 String fileName = blockName + ".json";

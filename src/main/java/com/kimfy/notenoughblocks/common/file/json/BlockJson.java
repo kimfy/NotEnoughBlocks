@@ -34,10 +34,10 @@ public class BlockJson
 
     /* Block Specific Properties  */
     protected int maxStackSize           = 64;
-    protected String creativeTab         = "buildingblocks";
-    protected String shape               = "cube";
+    protected CreativeTabs creativeTab   = CreativeTabs.tabBlock;
+    protected Shape shape                = Shape.CUBE;
     protected float  resistance          = 10.0F;
-    protected String stepSound           = "stone";
+    protected SoundType stepSound        = SoundType.STONE;
     protected boolean opaque             = true;
     protected boolean stained            = false;
     protected String toolType            = null;
@@ -46,14 +46,14 @@ public class BlockJson
     protected boolean silkTouch          = true;
     protected boolean enchAmplifier      = false;
     protected float slipperiness         = 0.6F;
-    protected String sensitivity         = "everything";
+    protected BlockPressurePlate.Sensitivity sensitivity = BlockPressurePlate.Sensitivity.EVERYTHING;
     protected boolean canBlockGrass      = false;
     protected float particleGravity      = 1.0F;
     protected boolean enableStats        = true;
     protected String buttonType          = null; // Valid types are 'wooden' and 'stone'
 
     /* 1.9 made these metadata specific */
-    protected String material            = "rock"; // TODO: Add delegate methods in BlockAgent for these values
+    protected Material material          = Material.rock; // TODO: Add delegate methods in BlockAgent for these values
     protected float  hardness            = 1.5F;   //
     protected int lightOpacity           = 255;    //
     protected float lightLevel           = 0.0F;   //
@@ -71,10 +71,6 @@ public class BlockJson
     protected boolean needsColoring = false; // Used by Double Plants to determine their item color
 
     protected Category category;
-    protected Shape realShape;
-    protected Material realMaterial;
-    protected SoundType realSoundType;
-    protected CreativeTabs realCreativeTab;
 
     /* Mod Integration */
     protected Chisel chisel;
@@ -88,51 +84,6 @@ public class BlockJson
     }
 
     /* ========== Getters ========== */
-
-    public Shape getRealShape()
-    {
-        if (this.realShape == null)
-        {
-            this.realShape = Shape.get(this.shape);
-        }
-        return this.realShape;
-    }
-
-
-    public Material getRealMaterial()
-    {
-        if (this.realMaterial == null)
-        {
-            this.realMaterial = EnumMaterial.get(material).getMaterial();
-        }
-        return realMaterial;
-    }
-
-
-    public SoundType getRealSoundType()
-    {
-        if (this.realSoundType == null)
-        {
-            this.realSoundType = EnumSoundType.get(stepSound).getSoundType();
-        }
-        return this.realSoundType;
-    }
-
-
-    public CreativeTabs getRealCreativeTab()
-    {
-        if (this.realCreativeTab == null)
-        {
-            this.realCreativeTab = EnumCreativeTab.get(creativeTab).getCreativeTab();
-        }
-        return this.realCreativeTab;
-    }
-
-    public BlockPressurePlate.Sensitivity getRealSensitivity()
-    {
-        String tmp = sensitivity.toUpperCase();
-        return BlockPressurePlate.Sensitivity.valueOf(tmp);
-    }
 
     public Category getCategory()
     {
@@ -194,11 +145,6 @@ public class BlockJson
         return textures;
     }
 
-    public String getShape()
-    {
-        return shape;
-    }
-
     public String getButtonType()
     {
         return buttonType == null ? "wooden" : buttonType;
@@ -230,10 +176,10 @@ public class BlockJson
     {
         return "BlockJson{" +
                 "maxStackSize=" + maxStackSize +
-                ", creativeTab='" + creativeTab + '\'' +
+                ", creativeTab='" + CreativeTab.toString(this.getCreativeTab()) + '\'' +
                 ", shape='" + shape + '\'' +
                 ", resistance=" + resistance +
-                ", stepSound='" + stepSound + '\'' +
+                ", stepSound='" + SoundTypes.toString(this.getStepSound()) + '\'' +
                 ", opaque=" + opaque +
                 ", stained=" + stained +
                 ", toolType='" + toolType + '\'' +
@@ -242,7 +188,7 @@ public class BlockJson
                 ", silkTouch=" + silkTouch +
                 ", enchAmplifier=" + enchAmplifier +
                 ", slipperiness=" + slipperiness +
-                ", sensitivity='" + sensitivity + '\'' +
+                ", sensitivity='" + com.kimfy.notenoughblocks.common.util.block.Sensitivity.toString(this.getSensitivity()) + '\'' +
                 ", canBlockGrass=" + canBlockGrass +
                 ", particleGravity=" + particleGravity +
                 ", enableStats=" + enableStats +
@@ -308,12 +254,12 @@ public class BlockJson
             block.displayName        = JsonUtils.getString(json, "displayName", "Default Block Name");
             block.textures           = objectToMap(json, "textures", null);
             block.maxStackSize       = JsonUtils.getInt(json, "maxStackSize", 64);
-            block.creativeTab        = JsonUtils.getString(json, "creativeTab", "buildingblocks");
-            block.shape              = JsonUtils.getString(json, "shape", "cube");
+            block.creativeTab        = CreativeTab.get(JsonUtils.getString(json, "creativeTab", "buildingblocks")).getCreativeTab();
+            block.shape              = Shape.get(JsonUtils.getString(json, "shape", "cube"));
             block.hardness           = JsonUtils.getFloat(json, "hardness", 1.5F);
             block.resistance         = JsonUtils.getFloat(json, "resistance", 10.0F);
-            block.material           = JsonUtils.getString(json, "material", "rock");
-            block.stepSound          = JsonUtils.getString(json, "stepSound", "stone");
+            block.material           = Materials.get(JsonUtils.getString(json, "material", "rock")).getMaterial();
+            block.stepSound          = SoundTypes.get(JsonUtils.getString(json, "stepSound", "stone")).getSoundType();
             block.opaque             = JsonUtils.getBoolean(json, "opaque", true);
             block.stained            = JsonUtils.getBoolean(json, "stained", false);
             block.toolType           = JsonUtils.getString(json, "toolType", null);
@@ -322,7 +268,7 @@ public class BlockJson
             block.silkTouch          = JsonUtils.getBoolean(json, "silkTouch", true);
             block.enchAmplifier      = JsonUtils.getBoolean(json, "enchAmplifier", false);
             block.slipperiness       = JsonUtils.getFloat(json, "slipperiness", 0.6F);
-            block.sensitivity        = JsonUtils.getString(json, "sensitivity", "everything");
+            block.sensitivity        = Sensitivity.get(JsonUtils.getString(json, "sensitivity", "everything")).getSensitivity();
             block.canBlockGrass      = JsonUtils.getBoolean(json, "canBlockGrass", false);
             block.particleGravity    = JsonUtils.getFloat(json, "particleGravity", 1.0F);
             block.mobility           = JsonUtils.getInt(json, "mobility", 0);
@@ -390,15 +336,15 @@ public class BlockJson
         {
             JsonObject json = new JsonObject();
 
-            addProperty(json, "displayName", block.getDisplayName(), "You forgot to name me! Bastard!");
+            addProperty(json, "displayName", block.getDisplayName(), "displayName");
             addTextures(json, block);
             addProperty(json, "maxStackSize", block.getMaxStackSize(), 64);
-            addProperty(json, "creativeTab", block.getCreativeTab(), "buildingblocks");
-            addProperty(json, "shape", block.getShape(), "cube");
+            addProperty(json, "creativeTab", CreativeTab.toString(block.getCreativeTab()), "buildingblocks");
+            addProperty(json, "shape", block.getShape().getName(), "cube");
             addProperty(json, "hardness", block.getHardness(), 1.5F);
             addProperty(json, "resistance", block.getResistance(), 10.0F);
-            addProperty(json, "material", block.getMaterial(), "rock");
-            addProperty(json, "stepSound", block.getStepSound(), "stone");
+            addProperty(json, "material", Materials.toString(block.getMaterial()), "rock");
+            addProperty(json, "stepSound", SoundTypes.toString(block.getStepSound()), "stone");
             addProperty(json, "opaque", block.isOpaque(), true);
             addProperty(json, "stained", block.isStained(), false);
             addProperty(json, "toolType", block.getToolType(), "");
@@ -407,7 +353,7 @@ public class BlockJson
             addProperty(json, "silkTouch", block.isSilkTouch(), true);
             addProperty(json, "enchAmplifier", block.isEnchAmplifier(), false);
             addProperty(json, "slipperiness", block.getSlipperiness(), 0.6F);
-            addProperty(json, "sensitivity", block.getSensitivity(), "everything");
+            addProperty(json, "sensitivity", Sensitivity.toString(block.getSensitivity()), "everything");
             addProperty(json, "canBlockGrass", block.isCanBlockGrass(), false);
             addProperty(json, "particleGravity", block.getParticleGravity(), 1.0F);
             addProperty(json, "mobility", block.getMobility(), 0);

@@ -35,7 +35,7 @@ public class NEBBlock extends Block implements IBlockProperties
     {
         super(material);
         this.agent = new BlockAgent<>(this, data);
-        this.BLOCK_SHAPE = agent.getModelBlock().getRealShape();
+        this.BLOCK_SHAPE = agent.getModelBlock().getShape();
 
         int blockCount = data.size();
         this.VARIANT = ModPropertyInteger.create("metadata", blockCount);
@@ -137,7 +137,7 @@ public class NEBBlock extends Block implements IBlockProperties
             BlockJson model = this.data.get(0);
             block.setHardness(model.getHardness());
             block.setResistance(model.getResistance());
-            block.setBlockSoundType(model.getRealSoundType());
+            block.setBlockSoundType(model.getStepSound());
             return block;
         }
 

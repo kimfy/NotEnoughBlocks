@@ -107,7 +107,7 @@ public class Shape
         }
         else
         {
-            Log.error("Shape {} does not exist");
+            Log.error("Shape {} does not exist", shape);
             return CUBE;
         }
     }

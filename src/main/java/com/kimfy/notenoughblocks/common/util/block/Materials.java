@@ -72,7 +72,7 @@ public class Materials
         }
         else
         {
-            Log.error("Material {} does not exist");
+            Log.error("Material {} does not exist", material);
             return ROCK;
         }
     }

@@ -41,16 +41,16 @@ public class SoundTypes
         soundTypes.put(this.getName(), this);
     }
 
-    public static SoundTypes get(final String material)
+    public static SoundTypes get(final String soundType)
     {
-        String name = material.toLowerCase();
+        String name = soundType.toLowerCase();
         if (soundTypes.containsKey(name))
         {
             return soundTypes.get(name);
         }
         else
         {
-            Log.error("SoundType {} does not exist");
+            Log.error("SoundType {} does not exist", soundType);
             return STONE;
         }
     }

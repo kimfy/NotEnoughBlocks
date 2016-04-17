@@ -32,16 +32,16 @@ public class Sensitivity
         sensitivities.put(this.getName(), this);
     }
 
-    public static Sensitivity get(final String material)
+    public static Sensitivity get(final String sensitivity)
     {
-        String name = material.toLowerCase();
+        String name = sensitivity.toLowerCase();
         if (sensitivities.containsKey(name))
         {
             return sensitivities.get(name);
         }
         else
         {
-            Log.error("Sensitivity {} does not exist");
+            Log.error("Sensitivity {} does not exist", sensitivity);
             return EVERYTHING;
         }
     }

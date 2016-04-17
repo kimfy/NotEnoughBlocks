@@ -51,7 +51,7 @@ public class CreativeTab
         }
         else
         {
-            Log.error("CreativeTab {} does not exist");
+            Log.error("CreativeTab {} does not exist", creativeTab);
             return BUILDINGBLOCKS;
         }
     }

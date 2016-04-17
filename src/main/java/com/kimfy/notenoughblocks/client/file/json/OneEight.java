@@ -228,17 +228,10 @@ public class OneEight
         return ret;
     }
 
-    // private static Gson GSON = new Gson();
-    // private static Gson gsonBuilder = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-
     private static void writeBlockStateForSlab(String blockName, List<BlockJson> blockJsons, String blockStateTemplate, File blockStateFile)
     {
         if (!blockName.contains("slab_double"))
         {
-            //FileReader fileReader = new FileReader(blockStateTemplate);
-            //Type type = new TypeToken<Map<String, Object>>(){}.getType();
-            //Map<String, Object> blockStateFileMap = gson.fromJson(fileReader, type);
-
             Map<String, Object> blockStateFileMap = new LinkedHashMap<>();
             blockStateFileMap.put("forge_marker", (int) 1);
             blockStateFileMap.put("block_name", blockName);
@@ -321,7 +314,6 @@ public class OneEight
             BlockJson modelBlock = blockJsons.get(metadata);
             Map<String, Object> inventoryRender = new LinkedHashMap<>();
             inventoryRender.put("metadata", metadata);
-            //inventoryRender.put("variant", "east=false,metadata="+ String.valueOf(metadata) +",north=true,south=true,up=true,west=false");
             inventoryRender.put("variant",inventoryRenderVariant.replace("#metadata", String.valueOf(metadata)));
             inventoryRenders.add(inventoryRender);
             Map<String, Object> templateVariants = null;

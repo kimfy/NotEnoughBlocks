@@ -13,7 +13,6 @@ public class CreativeTab
 {
     public static Map<String, CreativeTab> creativeTabs = new HashMap<>();
 
-    public static final CreativeTab BLOCKS = new CreativeTab("blocks", CreativeTabs.tabBlock);
     public static final CreativeTab BUILDINGBLOCKS = new CreativeTab("buildingblocks", CreativeTabs.tabBlock);
     public static final CreativeTab DECORATIONS = new CreativeTab("decorations", CreativeTabs.tabDecorations);
     public static final CreativeTab REDSTONE = new CreativeTab("redstone", CreativeTabs.tabRedstone);

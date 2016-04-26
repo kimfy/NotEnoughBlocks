@@ -2,9 +2,11 @@ package com.kimfy.notenoughblocks.common.block;
 
 import com.kimfy.notenoughblocks.common.block.properties.ModPropertyInteger;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
+import com.kimfy.notenoughblocks.common.util.MinecraftUtilities;
 import lombok.experimental.Delegate;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -29,7 +31,6 @@ public class NEBBlockBrewingStand extends Block implements IBlockProperties
 {
     public static final PropertyInteger BOTTLE_LEVEL = PropertyInteger.create("bottles", 0, 3);
     private final ModPropertyInteger VARIANT;
-    private final BlockStateContainer BLOCKSTATE_REAL;
 
     protected static final AxisAlignedBB BASE_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.125D, 1.0D);
     protected static final AxisAlignedBB STAND_AABB = new AxisAlignedBB(0.4375D, 0.0D, 0.4375D, 0.5625D, 0.875D, 0.5625D);
@@ -41,10 +42,10 @@ public class NEBBlockBrewingStand extends Block implements IBlockProperties
     {
         super(material);
         this.agent = new BlockAgent<>(this, data);
-
-        int blockCount = data.size();
-        this.VARIANT = ModPropertyInteger.create("metadata", blockCount);
-        this.BLOCKSTATE_REAL = createRealBlockState();
+        int variants = data.size();
+        this.VARIANT = ModPropertyInteger.create("metadata", variants);
+        this.addBlockStateProperties(new IProperty[] {VARIANT, BOTTLE_LEVEL});
+        MinecraftUtilities.overwriteBlockState(this);
         this.setupStates();
     }
 
@@ -52,17 +53,6 @@ public class NEBBlockBrewingStand extends Block implements IBlockProperties
     {
         IBlockState blockState = getBlockState().getBaseState().withProperty(VARIANT, 0).withProperty(BOTTLE_LEVEL, 0);
         this.setDefaultState(blockState);
-    }
-
-    @Override
-    public BlockStateContainer getBlockState()
-    {
-        return this.BLOCKSTATE_REAL;
-    }
-
-    private BlockStateContainer createRealBlockState()
-    {
-        return new BlockStateContainer(this, VARIANT, BOTTLE_LEVEL);
     }
 
     @Override
@@ -92,7 +82,7 @@ public class NEBBlockBrewingStand extends Block implements IBlockProperties
     @Override
     public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
     {
-        return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)));
+        return new ItemStack(this, 1, this.getMetaFromState(state));
     }
 
     /**

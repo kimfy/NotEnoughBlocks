@@ -200,16 +200,20 @@ public class JsonProcessor
         blocks.forEach( v -> v.setUnlocalizedName(unlocalizedName));
         BlockJson model = blocks.get(0);
 
+        /* Block setters */
         block.setUnlocalizedName(Constants.MOD_ID + ":" + unlocalizedName);
         block.setCreativeTab(model.getCreativeTab());
         block.setHardness(model.getHardness());
         block.setResistance(model.getResistance());
         block.setLightLevel(model.getLightLevel());
+        block.setLightOpacity(model.getLightOpacity());
+        /** See {@link Block} */
+        // TODO: block.fullBlock = getDefaultState.isOpaqueCube
+        // TODO: block.lightOpacity = block.fullBlock ? 255 : 0;
+        // TODO: block.translucent = !block.blockMaterial.blocksLight();
 
         /* IBlockProperties setters */
         block.setBeaconBaseable(model.isBeaconBase());
-        block.setBlockLightOpacity(model.getLightOpacity());
-        //block.setBlockOpaqueness(model.isOpaque()); // Removed because inconvenient for everyone
         block.setBlockStainable(model.isStained());
         block.setSlipperiness(model.getSlipperiness());
 
@@ -220,8 +224,6 @@ public class JsonProcessor
         for (int metadata = 0; metadata < blocks.size(); metadata++)
         {
             BlockJson modelBlock = blocks.get(metadata);
-
-            block.isSilkTouchable(modelBlock.isSilkTouch(), metadata);
             this.setDisplayName(block, unlocalizedName, metadata, modelBlock.getDisplayName());
             this.setBlockRecipe(modelBlock, block, metadata);
         }

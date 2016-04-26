@@ -2,10 +2,12 @@ package com.kimfy.notenoughblocks.common.block;
 
 import com.kimfy.notenoughblocks.common.block.properties.ModPropertyInteger;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
+import com.kimfy.notenoughblocks.common.util.MinecraftUtilities;
 import lombok.experimental.Delegate;
 import net.minecraft.block.BlockDoublePlant;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -30,7 +32,6 @@ import java.util.Random;
  */
 public class NEBBlockDoublePlant extends BlockDoublePlant implements IBlockProperties, IGrowable, IShearable, IPlantable
 {
-    private final BlockStateContainer BLOCKSTATE_REAL;
     private final ModPropertyInteger VARIANT;
 
     @Delegate
@@ -43,7 +44,8 @@ public class NEBBlockDoublePlant extends BlockDoublePlant implements IBlockPrope
 
         int blockCount = data.size();
         this.VARIANT = ModPropertyInteger.create("metadata", blockCount);
-        this.BLOCKSTATE_REAL = createRealBlockState();
+        this.addBlockStateProperties(new IProperty[] {VARIANT, HALF, FACING});
+        MinecraftUtilities.overwriteBlockState(this);
         this.setupStates();
     }
 
@@ -54,17 +56,6 @@ public class NEBBlockDoublePlant extends BlockDoublePlant implements IBlockPrope
                 .withProperty(HALF, EnumBlockHalf.LOWER)
                 .withProperty(FACING, EnumFacing.NORTH);
         this.setDefaultState(blockState);
-    }
-
-    @Override
-    public BlockStateContainer getBlockState()
-    {
-        return this.BLOCKSTATE_REAL;
-    }
-
-    private BlockStateContainer createRealBlockState()
-    {
-        return new BlockStateContainer(this, VARIANT, HALF, FACING);
     }
 
     @Override

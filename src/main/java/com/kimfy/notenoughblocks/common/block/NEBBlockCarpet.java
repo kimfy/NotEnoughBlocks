@@ -2,6 +2,7 @@ package com.kimfy.notenoughblocks.common.block;
 
 import com.kimfy.notenoughblocks.common.block.properties.ModPropertyInteger;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
+import com.kimfy.notenoughblocks.common.util.MinecraftUtilities;
 import lombok.experimental.Delegate;
 import net.minecraft.block.BlockCarpet;
 import net.minecraft.block.material.MapColor;
@@ -20,7 +21,6 @@ import java.util.List;
 public class NEBBlockCarpet extends BlockCarpet implements IBlockProperties
 {
     private final ModPropertyInteger VARIANT;
-    private final BlockStateContainer BLOCKSTATE_REAL;
 
     @Delegate
     private final BlockAgent<NEBBlockCarpet> agent;
@@ -32,26 +32,15 @@ public class NEBBlockCarpet extends BlockCarpet implements IBlockProperties
 
         int blockCount = data.size();
         this.VARIANT = ModPropertyInteger.create("metadata", blockCount);
-        this.BLOCKSTATE_REAL = createRealBlockState();
+        this.addBlockStateProperty(VARIANT);
+        MinecraftUtilities.overwriteBlockState(this);
         this.setupStates();
     }
 
     private void setupStates()
     {
         IBlockState blockState = getBlockState().getBaseState().withProperty(VARIANT, 0);
-        blockState = blockState.withProperty(VARIANT, 0);
         this.setDefaultState(blockState);
-    }
-
-    @Override
-    public BlockStateContainer getBlockState()
-    {
-        return this.BLOCKSTATE_REAL;
-    }
-
-    private BlockStateContainer createRealBlockState()
-    {
-        return new BlockStateContainer(this, VARIANT);
     }
 
     @Override
@@ -75,7 +64,7 @@ public class NEBBlockCarpet extends BlockCarpet implements IBlockProperties
     @Override
     public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
     {
-        return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)));
+        return new ItemStack(this, 1, this.getMetaFromState(state));
     }
 
     /**
@@ -86,7 +75,6 @@ public class NEBBlockCarpet extends BlockCarpet implements IBlockProperties
     {
         return getMetaFromState(state);
     }
-
 
     /**
      * Get the MapColor for this Block and the given BlockState

@@ -50,19 +50,19 @@ public class BlockJson
     protected boolean canBlockGrass      = false;
     protected float particleGravity      = 1.0F;
     protected boolean enableStats        = true;
-    protected String buttonType          = null; // Valid types are 'wooden' and 'stone'
+    protected String buttonType          = null;
 
     /* 1.9 made these metadata specific */
-    protected Material material          = Material.rock; // TODO: Add delegate methods in BlockAgent for these values
+    protected Material material          = Material.rock; //
     protected float  hardness            = 1.5F;   //
-    protected int lightOpacity           = 255;    //
+    protected int lightOpacity           = 255;    // Let shape handle this
     protected float lightLevel           = 0.0F;   //
-    protected boolean neighborBrightness = false;  //
-    protected boolean fullBlock          = true;   //
-    protected boolean fullCube           = true;   //
+    protected boolean neighborBrightness = false;  // Not accessible to end user | Let shape handle this
+    protected boolean fullBlock          = true;   // Not accessible to end user | Let shape handle this
+    protected boolean fullCube           = true;   // Not accessible to end user | Let shape handle this
     protected boolean translucent        = false;  //
     protected boolean canProvidePower    = false;  //
-    protected int mobility               = 0;      //
+    protected int mobility               = 0;      // Not accessible to end user
 
     /* Visual */
     protected int renderColor       = -1;

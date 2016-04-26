@@ -2,9 +2,11 @@ package com.kimfy.notenoughblocks.common.block;
 
 import com.kimfy.notenoughblocks.common.block.properties.ModPropertyInteger;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
+import com.kimfy.notenoughblocks.common.util.MinecraftUtilities;
 import lombok.experimental.Delegate;
 import net.minecraft.block.BlockLog;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
@@ -16,7 +18,6 @@ import java.util.List;
 public class NEBBlockRotating extends BlockLog implements IBlockProperties
 {
     private final ModPropertyInteger VARIANT;
-    private final BlockStateContainer BLOCKSTATE_REAL;
 
     @Delegate
     private final BlockAgent<NEBBlockRotating> agent;
@@ -28,7 +29,8 @@ public class NEBBlockRotating extends BlockLog implements IBlockProperties
 
         int blockCount = data.size();
         this.VARIANT = ModPropertyInteger.create("metadata", blockCount);
-        this.BLOCKSTATE_REAL = createRealBlockState();
+        this.addBlockStateProperties(new IProperty[] {LOG_AXIS, VARIANT});
+        MinecraftUtilities.overwriteBlockState(this);
         this.setupStates();
     }
 
@@ -39,22 +41,10 @@ public class NEBBlockRotating extends BlockLog implements IBlockProperties
     }
 
     @Override
-    public BlockStateContainer getBlockState()
-    {
-        return this.BLOCKSTATE_REAL;
-    }
-
-    private BlockStateContainer createRealBlockState()
-    {
-        return new BlockStateContainer(this, LOG_AXIS, VARIANT);
-    }
-
-    @Override
     protected BlockStateContainer createBlockState()
     {
-        return Blocks.air.getBlockState();
+        return Blocks.log.getBlockState();
     }
-
 
     /**
      * Convert the given metadata into a BlockState for this Block

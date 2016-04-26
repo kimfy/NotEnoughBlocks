@@ -17,7 +17,7 @@ public class Shape
 
     public static final Shape CUBE = new Shape("cube", 16, NEBBlock.class, NEBItemBlock.class);
     public static final Shape STAIR = new Shape("stair", 1, NEBBlockStair.class, NEBItemBlockStair.class);
-    public static final Shape SLAB = new Shape("slab", 8, NEBBlockSlab.class, NEBItemBlockSlab.class);
+    public static final Shape SLAB = new Shape("slab", 8, NEBBlockSlab.class, NEBItemBlockSlab.class).setLightOpacity(255);
     public static final Shape GLASS = new Shape("glass", 16, NEBBlockGlass.class, NEBItemBlock.class);
     public static final Shape WALL = new Shape("wall", 16, NEBBlockWall.class, NEBItemBlock.class);
     public static final Shape FENCE = new Shape("fence", 16, NEBBlockFence.class, NEBItemBlock.class);
@@ -71,7 +71,7 @@ public class Shape
     public static final Shape TRIPWIRE = new Shape("tripwire", 16, null, null);
     public static final Shape TRIPWIRE_HOOK = new Shape("tripwire_hook", 16, null, null);
     public static final Shape VINE = new Shape("vine", 4, null, null);
-    public static final Shape WEB = new Shape("web", 16, NEBBlockWeb.class, NEBItemBlock.class);
+    public static final Shape WEB = new Shape("web", 16, NEBBlockWeb.class, NEBItemBlock.class).setLightOpacity(1);
     public static final Shape WEIGHTED_PRESSURE_PLATE = new Shape("weighted_pressure_plate", 16, null, null);
 
     /* 1.9 */
@@ -79,6 +79,8 @@ public class Shape
     public static final Shape CHORUS_FLOWER = new Shape("chorus_flower", 16, null, null);
     public static final Shape END_ROD = new Shape("end_rod", 16, null, null);
     public static final Shape GRASS_PATH = new Shape("grass_path", 16, null, null);
+
+    private int lightOpacity = 255;
 
     private final String name;
     private final int maxSubBlocks;
@@ -121,5 +123,16 @@ public class Shape
     public String toString()
     {
         return this.getName();
+    }
+
+    private Shape setLightOpacity(int lightOpacity)
+    {
+        this.lightOpacity = lightOpacity;
+        return this;
+    }
+
+    public int getLightOpacity()
+    {
+        return this.lightOpacity;
     }
 }

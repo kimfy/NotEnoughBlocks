@@ -2,6 +2,7 @@ package com.kimfy.notenoughblocks.common.block;
 
 import com.kimfy.notenoughblocks.common.block.properties.ModPropertyInteger;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
+import com.kimfy.notenoughblocks.common.util.MinecraftUtilities;
 import lombok.experimental.Delegate;
 import net.minecraft.block.BlockGlass;
 import net.minecraft.block.material.Material;
@@ -32,9 +33,8 @@ import java.util.Random;
 public class NEBBlockGlass extends BlockGlass implements IBlockProperties
 {
     private final ModPropertyInteger VARIANT;
-    private final BlockStateContainer BLOCKSTATE_REAL;
 
-    @Delegate(excludes = Excludes.class)
+    @Delegate
     private final BlockAgent<NEBBlockGlass> agent;
 
     public NEBBlockGlass(Material material, List<BlockJson> data)
@@ -42,29 +42,17 @@ public class NEBBlockGlass extends BlockGlass implements IBlockProperties
         super(material, false);
         this.agent = new BlockAgent<>(this, data);
 
-        int blockCount = data.size();
-        this.VARIANT = ModPropertyInteger.create("metadata", blockCount);
-        this.BLOCKSTATE_REAL = createRealBlockState();
+        int variants = data.size();
+        this.VARIANT = ModPropertyInteger.create("metadata", variants);
+        this.addBlockStateProperty(VARIANT);
+        MinecraftUtilities.overwriteBlockState(this);
         this.setupStates();
     }
-
 
     private void setupStates()
     {
         IBlockState blockState = getBlockState().getBaseState().withProperty(VARIANT, 0);
-        blockState = blockState.withProperty(VARIANT, 0);
         this.setDefaultState(blockState);
-    }
-
-    @Override
-    public BlockStateContainer getBlockState()
-    {
-        return this.BLOCKSTATE_REAL;
-    }
-
-    private BlockStateContainer createRealBlockState()
-    {
-        return new BlockStateContainer(this, VARIANT);
     }
 
     @Override
@@ -94,17 +82,7 @@ public class NEBBlockGlass extends BlockGlass implements IBlockProperties
     @Override
     public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
     {
-        return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)));
-    }
-
-    /**
-     * Methods that should not be forwarded
-     * to the delegate/agent when called
-     */
-    private interface Excludes
-    {
-        int damageDropped(IBlockState blockState);
-        ItemStack getPickBlock(RayTraceResult target, World world, BlockPos pos, EntityPlayer player);
+        return new ItemStack(this, 1, this.getMetaFromState(state));
     }
 
     @Override

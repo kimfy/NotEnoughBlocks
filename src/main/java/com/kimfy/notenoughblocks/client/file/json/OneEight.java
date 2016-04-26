@@ -181,6 +181,12 @@ public class OneEight
         catch (Exception e)
         {
             Log.error("Exception when registering item in OneEight#registerItem. Block {}, metadata {}, blockName {}", block, metadata, blockName, e);
+            /*
+             * FIXME
+             * If an error is catched here, that means the @param Block is null. Maybe create a method "flush"
+             * that removes all blockstates generated, display an error message on screen and have the user
+             * reload his game? This will solve errors like when the blocklist has changed etc
+             */
         }
     }
 

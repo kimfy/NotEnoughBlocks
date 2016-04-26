@@ -1,7 +1,6 @@
 package com.kimfy.notenoughblocks.common.block;
 
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
-import lombok.experimental.Delegate;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -19,13 +18,9 @@ import java.util.Random;
 
 public class NEBBlockWeb extends NEBBlock implements IBlockProperties
 {
-    @Delegate
-    private final BlockAgent<NEBBlockWeb> agent;
-
     public NEBBlockWeb(Material material, List<BlockJson> data)
     {
         super(material, data);
-        this.agent = new BlockAgent<>(this, data);
     }
 
     /**

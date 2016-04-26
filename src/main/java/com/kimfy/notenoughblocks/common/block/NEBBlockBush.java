@@ -2,6 +2,7 @@ package com.kimfy.notenoughblocks.common.block;
 
 import com.kimfy.notenoughblocks.common.block.properties.ModPropertyInteger;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
+import com.kimfy.notenoughblocks.common.util.MinecraftUtilities;
 import lombok.experimental.Delegate;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.material.Material;
@@ -19,7 +20,6 @@ import java.util.List;
 public class NEBBlockBush extends BlockBush implements IBlockProperties
 {
     protected final ModPropertyInteger VARIANT;
-    private final BlockStateContainer BLOCKSTATE_REAL;
 
     @Delegate
     private final BlockAgent<NEBBlockBush> agent;
@@ -27,13 +27,11 @@ public class NEBBlockBush extends BlockBush implements IBlockProperties
     public NEBBlockBush(Material materialIn, List<BlockJson> data)
     {
         super(materialIn);
-        float f = 0.4F;
-        //this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.8F, 0.5F + f);
         this.agent = new BlockAgent<>(this, data);
-
-        int blockCount = data.size();
-        this.VARIANT = ModPropertyInteger.create("metadata", blockCount);
-        this.BLOCKSTATE_REAL = createRealBlockState();
+        int variants = data.size();
+        this.VARIANT = ModPropertyInteger.create("metadata", variants);
+        this.addBlockStateProperty(VARIANT);
+        MinecraftUtilities.overwriteBlockState(this);
         this.setupStates();
     }
 
@@ -41,17 +39,6 @@ public class NEBBlockBush extends BlockBush implements IBlockProperties
     {
         IBlockState blockState = getBlockState().getBaseState().withProperty(VARIANT, 0);
         this.setDefaultState(blockState);
-    }
-
-    @Override
-    public BlockStateContainer getBlockState()
-    {
-        return this.BLOCKSTATE_REAL;
-    }
-
-    private BlockStateContainer createRealBlockState()
-    {
-        return new BlockStateContainer(this, VARIANT);
     }
 
     @Override
@@ -81,6 +68,6 @@ public class NEBBlockBush extends BlockBush implements IBlockProperties
     @Override
     public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
     {
-        return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)));
+        return new ItemStack(this, 1, this.getMetaFromState(state));
     }
 }

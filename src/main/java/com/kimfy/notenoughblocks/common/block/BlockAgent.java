@@ -7,6 +7,7 @@ import lombok.Getter;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -29,34 +30,23 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
     private final T block;
     private final List<BlockJson> data;
     private final int blockCount;
-    private final Shape blockShape;
+    private final Shape SHAPE;
 
     public BlockAgent(T block, List<BlockJson> data)
     {
         this.block = block;
         this.blockCount = data.size();
         this.data = data;
-        this.blockShape = getModelBlock().getShape();
+        this.SHAPE = getModelBlock().getShape();
     }
 
     @Getter private boolean isBeaconBase;
-    @Getter private boolean isOpaque;
     @Getter private boolean isStained;
-    /** The index represents the metadata */
-    private List<Boolean> isSilkTouch = new ArrayList<>(16);
-    private int lightOpacity;
-    private float slipperiness;
 
     @Override
     public void setBeaconBaseable(boolean isBeaconBase)
     {
         this.isBeaconBase = isBeaconBase;
-    }
-
-    @Override
-    @Deprecated
-    public void setBlockOpaqueness(boolean isOpaque)
-    {
     }
 
     @Override
@@ -66,22 +56,15 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
     }
 
     @Override
-    public void isSilkTouchable(boolean isSilkTouch, int metadata)
-    {
-        this.isSilkTouch.add(metadata, isSilkTouch);
-    }
-
-    @Override
     public void setBlockLightOpacity(int lightOpacity)
     {
-        this.lightOpacity = lightOpacity;
+        this.block.setLightOpacity(lightOpacity);
     }
 
     @Override
     public void setSlipperiness(float slipperiness)
     {
-        this.slipperiness = slipperiness;
-        block.slipperiness = slipperiness;
+        this.block.slipperiness = slipperiness;
     }
 
     @Override
@@ -95,12 +78,9 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
         return this;
     }
 
-    private Material blockMaterial;
-
     @Override
     public void setBlockMaterial(Material material)
     {
-        this.blockMaterial = material;
     }
 
     private SoundType soundType;
@@ -109,6 +89,34 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
     public void setBlockSoundType(SoundType soundType)
     {
         this.soundType = soundType;
+    }
+
+    public List<IProperty> blockStateProperties = new ArrayList<>();
+
+    @Override
+    public IProperty[] getBlockStateProperties()
+    {
+        return blockStateProperties.toArray(new IProperty[blockStateProperties.size()]);
+    }
+
+    @Override
+    public void addBlockStateProperty(IProperty<?> property)
+    {
+        if (property == null)
+            throw new NullPointerException("IProperty cannot be null");
+        this.blockStateProperties.add(property);
+    }
+
+    @Override
+    public void addBlockStateProperties(IProperty<?>... properties)
+    {
+        for (IProperty<?> p : properties) addBlockStateProperty(p);
+    }
+
+    @Override
+    public Shape getShape()
+    {
+        return this.SHAPE;
     }
 
     private BlockJson modelBlock;
@@ -139,6 +147,11 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
         return data.get(metadata);
     }
 
+    public BlockJson get(IBlockState state)
+    {
+        return get(this.block.damageDropped(state));
+    }
+
     public int getBlockVariant(IBlockAccess world, BlockPos pos)
     {
         IBlockState state = world.getBlockState(pos);
@@ -149,40 +162,76 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
 
     protected static java.util.Random RANDOM = new java.util.Random();
 
+    @SuppressWarnings("unused")
     public Material getMaterial(IBlockState state)
     {
-        int metadata = block.damageDropped(state);
-        return get(metadata).getMaterial();
+        return get(state).getMaterial();
     }
 
+    @SuppressWarnings("unused")
+    public float getBlockHardness(IBlockState state, World worldIn, BlockPos pos)
+    {
+        return get(state).getHardness();
+    }
+
+    @SuppressWarnings("unused")
+    public int getLightOpacity(IBlockState state)
+    {
+        return get(state).getLightOpacity();
+    }
+
+    @SuppressWarnings("unused")
+    public int getLightValue(IBlockState state)
+    {
+        return (int)(15.0F * get(state).getLightLevel());
+    }
+
+    @SideOnly(Side.CLIENT)
+    @SuppressWarnings("unused")
+    public boolean isTranslucent(IBlockState state)
+    {
+        return get(state).isTranslucent();
+    }
+
+    @SuppressWarnings("unused")
+    public boolean canProvidePower(IBlockState state)
+    {
+        return get(state).isCanProvidePower();
+    }
+
+    @SuppressWarnings("unused")
     public SoundType getStepSound()
     {
         return this.soundType;
     }
 
+
     @SideOnly(Side.CLIENT)
+    @SuppressWarnings("unused")
     public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> list)
     {
         IntStream.range(0, blockCount).forEach(metadata -> list.add(new ItemStack(item, 1, metadata)));
     }
 
+    @SuppressWarnings("unused")
     public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player)
     {
-        return get(block.damageDropped(state)).isSilkTouch();
+        return get(state).isSilkTouch();
     }
 
+    @SuppressWarnings("unused")
     public boolean isBeaconBase(IBlockAccess world, BlockPos pos, BlockPos beacon)
     {
-        int metadata = getBlockVariant(world, pos);
-        return this.get(metadata).isBeaconBase();
+        return this.get(world.getBlockState(pos)).isBeaconBase();
     }
 
+    @SuppressWarnings("unused")
     public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
     {
         List<ItemStack> ret = new ArrayList<>();
         int metadata = state.getBlock().damageDropped(state);
 
-        if (get(metadata).getDrop() != null)
+        if (!get(metadata).getDrop().isEmpty())
         {
             BlockJson model = get(metadata);
             ret.addAll(model.getDrop().stream().map(Drop::getItemStack).collect(Collectors.toCollection(ArrayList<ItemStack>::new)));
@@ -193,7 +242,7 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
 
             int count = block.quantityDropped(state, fortune, rand);
 
-            IntStream.range(0, ++count).forEach(i -> {
+            IntStream.range(0, count).forEach(i -> {
                 Item item = block.getItemDropped(state, rand, fortune);
                 if (item != null)
                 {
@@ -202,11 +251,5 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
             });
         }
         return ret;
-    }
-
-    @SideOnly(Side.CLIENT)
-    public boolean isTranslucent(IBlockState state)
-    {
-        return get(block.damageDropped(state)).isTranslucent();
     }
 }

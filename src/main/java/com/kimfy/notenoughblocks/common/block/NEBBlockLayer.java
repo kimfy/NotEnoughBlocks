@@ -1,6 +1,7 @@
 package com.kimfy.notenoughblocks.common.block;
 
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
+import com.kimfy.notenoughblocks.common.util.MinecraftUtilities;
 import lombok.experimental.Delegate;
 import net.minecraft.block.BlockSnow;
 import net.minecraft.block.material.Material;
@@ -13,7 +14,6 @@ import java.util.List;
 
 public class NEBBlockLayer extends BlockSnow implements IBlockProperties
 {
-    private final BlockStateContainer BLOCKSTATE_REAL;
     public static final PropertyInteger LAYERS = BlockSnow.LAYERS;
 
     @Delegate
@@ -24,8 +24,8 @@ public class NEBBlockLayer extends BlockSnow implements IBlockProperties
         super();
         this.agent = new BlockAgent<>(this, data);
         this.setTickRandomly(true);
-
-        this.BLOCKSTATE_REAL = createRealBlockState();
+        this.addBlockStateProperty(LAYERS);
+        MinecraftUtilities.overwriteBlockState(this);
         this.setupStates();
     }
 
@@ -33,17 +33,6 @@ public class NEBBlockLayer extends BlockSnow implements IBlockProperties
     {
         IBlockState blockState = getBlockState().getBaseState().withProperty(LAYERS, 1);
         this.setDefaultState(blockState);
-    }
-
-    @Override
-    public BlockStateContainer getBlockState()
-    {
-        return this.BLOCKSTATE_REAL;
-    }
-
-    private BlockStateContainer createRealBlockState()
-    {
-        return new BlockStateContainer(this, LAYERS);
     }
 
     @Override

@@ -388,6 +388,7 @@
       },
       "shape": "web",
       "hardness": 4.0,
+      "material": "web",
       "lightOpacity": 1
     },
     {
@@ -1049,6 +1050,7 @@
       "textures": {
         "all": "ice"
       },
+      "shape": "ice",
       "hardness": 0.5,
       "material": "ice",
       "stepSound": "glass",

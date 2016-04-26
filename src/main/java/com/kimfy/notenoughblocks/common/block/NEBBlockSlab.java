@@ -33,8 +33,7 @@ public abstract class NEBBlockSlab extends BlockSlab implements IBlockProperties
 
         int count = data.size();
         this.VARIANT = ModPropertyInteger.create("metadata", count);
-        this.blockStateReal = createRealBlockState();
-
+        this.BLOCK_STATE_REAL = createRealBlockState();
         this.setupStates();
     }
 
@@ -97,21 +96,21 @@ public abstract class NEBBlockSlab extends BlockSlab implements IBlockProperties
     protected BlockStateContainer createBlockState()
     {
         //return this.isDouble() ? new BlockState(this, new IProperty[] {BlockStoneSlab.SEAMLESS, VARIANT}) : new BlockState(this, new IProperty[] {HALF, VARIANT});
-        return Blocks.air.getBlockState();
+        return this.isDouble() ? Blocks.double_stone_slab.getBlockState() : Blocks.stone_slab.getBlockState();
     }
 
     private BlockStateContainer createRealBlockState()
     {
         //return this.isDouble() ? new BlockState(this, new IProperty[] {BlockStoneSlab.SEAMLESS, VARIANT}) : new BlockState(this, new IProperty[] {HALF, VARIANT});
-        return this.isDouble() ? new BlockStateContainer(this, VARIANT): new BlockStateContainer(this, HALF, VARIANT);
+        return this.isDouble() ? new BlockStateContainer(this, VARIANT) : new BlockStateContainer(this, new IProperty[] {HALF, VARIANT});
     }
 
-    private BlockStateContainer blockStateReal;
+    private final BlockStateContainer BLOCK_STATE_REAL;
 
     @Override
     public BlockStateContainer getBlockState()
     {
-        return blockStateReal;
+        return BLOCK_STATE_REAL;
     }
 
     /**
@@ -132,14 +131,13 @@ public abstract class NEBBlockSlab extends BlockSlab implements IBlockProperties
     @Override
     public int damageDropped(IBlockState state)
     {
-        //return getMetaFromState(state);
         return state.getValue(VARIANT);
     }
 
     @Override
     public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
     {
-        return new ItemStack(this, 1, getMetaFromState(world.getBlockState(pos)));
+        return new ItemStack(this, 1, this.damageDropped(state));
     }
 
     @Override

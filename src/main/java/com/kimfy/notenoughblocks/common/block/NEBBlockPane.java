@@ -2,6 +2,7 @@ package com.kimfy.notenoughblocks.common.block;
 
 import com.kimfy.notenoughblocks.common.block.properties.ModPropertyInteger;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
+import com.kimfy.notenoughblocks.common.util.MinecraftUtilities;
 import com.kimfy.notenoughblocks.common.util.block.Shape;
 import lombok.experimental.Delegate;
 import net.minecraft.block.BlockPane;
@@ -21,7 +22,6 @@ public class NEBBlockPane extends BlockPane implements IBlockProperties
 {
     private final boolean canDrop;
     private final ModPropertyInteger VARIANT;
-    private final BlockStateContainer BLOCKSTATE_REAL;
 
     @Delegate
     private final BlockAgent<NEBBlockPane> agent;
@@ -35,10 +35,10 @@ public class NEBBlockPane extends BlockPane implements IBlockProperties
         {
             this.isStainedCached = getModelBlock().isStained();
         }
-
-        int blockCount = data.size();
-        this.VARIANT = ModPropertyInteger.create("metadata", blockCount);
-        this.BLOCKSTATE_REAL = createRealBlockState();
+        int variants = data.size();
+        this.VARIANT = ModPropertyInteger.create("metadata", variants);
+        this.addBlockStateProperties(new IProperty[] {NORTH, EAST, SOUTH, WEST, VARIANT});
+        MinecraftUtilities.overwriteBlockState(this);
         this.setupStates();
     }
 
@@ -51,17 +51,6 @@ public class NEBBlockPane extends BlockPane implements IBlockProperties
                 .withProperty(SOUTH, false)
                 .withProperty(WEST, false);
         this.setDefaultState(blockState);
-    }
-
-    @Override
-    public BlockStateContainer getBlockState()
-    {
-        return this.BLOCKSTATE_REAL;
-    }
-
-    private BlockStateContainer createRealBlockState()
-    {
-        return new BlockStateContainer(this, new IProperty[]{ VARIANT, NORTH, EAST, WEST, SOUTH });
     }
 
     @Override

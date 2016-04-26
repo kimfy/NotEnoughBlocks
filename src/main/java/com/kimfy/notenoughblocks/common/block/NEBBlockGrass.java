@@ -2,11 +2,13 @@ package com.kimfy.notenoughblocks.common.block;
 
 import com.kimfy.notenoughblocks.common.block.properties.ModPropertyInteger;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
+import com.kimfy.notenoughblocks.common.util.MinecraftUtilities;
 import lombok.experimental.Delegate;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockGrass;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
@@ -23,7 +25,6 @@ import java.util.Random;
 public class NEBBlockGrass extends Block implements IGrowable, IBlockProperties
 {
     private final ModPropertyInteger VARIANT;
-    private final BlockStateContainer BLOCKSTATE_REAL;
 
     @Delegate
     private final BlockAgent<NEBBlockGrass> agent;
@@ -34,9 +35,10 @@ public class NEBBlockGrass extends Block implements IGrowable, IBlockProperties
         this.setTickRandomly(true);
         this.agent = new BlockAgent<>(this, data);
 
-        int blockCount = data.size();
-        this.VARIANT = ModPropertyInteger.create("metadata", blockCount);
-        this.BLOCKSTATE_REAL = createRealBlockState();
+        int variants = data.size();
+        this.VARIANT = ModPropertyInteger.create("metadata", variants);
+        this.addBlockStateProperties(new IProperty[]{VARIANT, BlockGrass.SNOWY});
+        MinecraftUtilities.overwriteBlockState(this);
         this.setupStates();
     }
 
@@ -47,20 +49,9 @@ public class NEBBlockGrass extends Block implements IGrowable, IBlockProperties
     }
 
     @Override
-    public BlockStateContainer getBlockState()
-    {
-        return this.BLOCKSTATE_REAL;
-    }
-
-    private BlockStateContainer createRealBlockState()
-    {
-        return new BlockStateContainer(this, BlockGrass.SNOWY, VARIANT);
-    }
-
-    @Override
     protected BlockStateContainer createBlockState()
     {
-        return Blocks.air.getBlockState();
+        return Blocks.grass.getBlockState();
     }
 
     @Override

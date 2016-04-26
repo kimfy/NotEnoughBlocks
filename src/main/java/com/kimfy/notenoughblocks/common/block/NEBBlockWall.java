@@ -2,6 +2,7 @@ package com.kimfy.notenoughblocks.common.block;
 
 import com.kimfy.notenoughblocks.common.block.properties.ModPropertyInteger;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
+import com.kimfy.notenoughblocks.common.util.MinecraftUtilities;
 import lombok.experimental.Delegate;
 import net.minecraft.block.BlockWall;
 import net.minecraft.block.material.Material;
@@ -15,7 +16,6 @@ import java.util.List;
 public class NEBBlockWall extends BlockWall implements IBlockProperties
 {
     private final ModPropertyInteger VARIANT;
-    private final BlockStateContainer BLOCKSTATE_REAL;
 
     @Delegate
     private final BlockAgent<NEBBlockWall> agent;
@@ -27,7 +27,8 @@ public class NEBBlockWall extends BlockWall implements IBlockProperties
 
         int blockCount = data.size();
         this.VARIANT = ModPropertyInteger.create("metadata", blockCount);
-        this.BLOCKSTATE_REAL = createRealBlockState();
+        this.addBlockStateProperties(new IProperty[]{VARIANT, UP, NORTH, EAST, SOUTH, WEST});
+        MinecraftUtilities.overwriteBlockState(this);
         this.setupStates();
     }
 
@@ -41,17 +42,6 @@ public class NEBBlockWall extends BlockWall implements IBlockProperties
                 .withProperty(WEST, false)
                 .withProperty(VARIANT, 0);
         this.setDefaultState(blockState);
-    }
-
-    @Override
-    public BlockStateContainer getBlockState()
-    {
-        return this.BLOCKSTATE_REAL;
-    }
-
-    private BlockStateContainer createRealBlockState()
-    {
-        return new BlockStateContainer(this, new IProperty[]{ UP, NORTH, EAST, SOUTH, WEST, VARIANT});
     }
 
     @Override

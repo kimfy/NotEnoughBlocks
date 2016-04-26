@@ -1,9 +1,13 @@
 package com.kimfy.notenoughblocks.common.util;
 
+import com.kimfy.notenoughblocks.common.block.IBlockProperties;
+import net.minecraft.block.Block;
+import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.registry.GameData;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
 public class MinecraftUtilities
 {
@@ -75,6 +79,32 @@ public class MinecraftUtilities
 
     public static boolean itemExists(ResourceLocation rl)
     {
-        return GameData.getItemRegistry().containsKey(rl);
+        return Item.itemRegistry.containsKey(rl);
+    }
+
+    /**
+     * Overwrites the final field {@link Block#blockState} with a new BlockState. The reason this method
+     * exists is so I can dynamically create Block State properties. They have to be final for some reason
+     * but that's <i>impossible</i> when the Block State is set in the constructor of {@link Block}, I think.
+     *
+     * @param block The block to give a new Block State
+     * @param <T>
+     */
+    public static <T extends Block & IBlockProperties> void overwriteBlockState(T block)
+    {
+        try
+        {                                                                                                                        // deobf        obf  srg_name
+            ReflectionHelper.setPrivateValue(Block.class, block, createOverrideBlockState(block, block.getBlockStateProperties()), "blockState", "A", "field_176227_L");
+        }
+        catch (Exception e)
+        {
+            // Do nothing as it's MOST likely because the field does not exist in the current environment (obf/deobf)
+            // e.printStackTrace();
+        }
+    }
+
+    private static BlockStateContainer createOverrideBlockState(Block block, IProperty<?>... properties)
+    {
+        return new BlockStateContainer(block, properties);
     }
 }

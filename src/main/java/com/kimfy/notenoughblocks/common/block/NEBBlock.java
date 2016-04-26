@@ -2,6 +2,7 @@ package com.kimfy.notenoughblocks.common.block;
 
 import com.kimfy.notenoughblocks.common.block.properties.ModPropertyInteger;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
+import com.kimfy.notenoughblocks.common.util.MinecraftUtilities;
 import com.kimfy.notenoughblocks.common.util.block.Shape;
 import lombok.experimental.Delegate;
 import net.minecraft.block.Block;
@@ -25,8 +26,6 @@ import java.util.List;
 public class NEBBlock extends Block implements IBlockProperties
 {
     public final ModPropertyInteger VARIANT;
-    private final BlockStateContainer BLOCKSTATE_REAL;
-    private final Shape BLOCK_SHAPE;
 
     @Delegate
     private final BlockAgent<NEBBlock> agent;
@@ -35,11 +34,10 @@ public class NEBBlock extends Block implements IBlockProperties
     {
         super(material);
         this.agent = new BlockAgent<>(this, data);
-        this.BLOCK_SHAPE = agent.getModelBlock().getShape();
-
-        int blockCount = data.size();
-        this.VARIANT = ModPropertyInteger.create("metadata", blockCount);
-        this.BLOCKSTATE_REAL = createRealBlockState();
+        int variants = data.size();
+        this.VARIANT = ModPropertyInteger.create("metadata", variants);
+        this.addBlockStateProperty(VARIANT);
+        MinecraftUtilities.overwriteBlockState(this);
         this.setupStates();
     }
 
@@ -47,17 +45,6 @@ public class NEBBlock extends Block implements IBlockProperties
     {
         IBlockState blockState = getBlockState().getBaseState().withProperty(VARIANT, 0);
         this.setDefaultState(blockState);
-    }
-
-    @Override
-    public BlockStateContainer getBlockState()
-    {
-        return this.BLOCKSTATE_REAL;
-    }
-
-    private BlockStateContainer createRealBlockState()
-    {
-        return new BlockStateContainer(this, VARIANT);
     }
 
     @Override
@@ -87,20 +74,21 @@ public class NEBBlock extends Block implements IBlockProperties
     @Override
     public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
     {
-        return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)));
+        return new ItemStack(this, 1, this.getMetaFromState(state));
     }
 
-    public Shape getBlockShape()
+    /* ========== Layer / Render / Client | Start ========== */
+
+    @Override
+    public boolean isOpaqueCube(IBlockState state)
     {
-        return this.BLOCK_SHAPE;
+        return getShape() != Shape.ICE;
     }
-
-    /* ========== Layer / Render / Client ========== */
 
     @Override
     public BlockRenderLayer getBlockLayer()
     {
-        if (getBlockShape() == Shape.ICE)
+        if (getShape() == Shape.ICE)
         {
             return BlockRenderLayer.TRANSLUCENT;
         }
@@ -110,17 +98,12 @@ public class NEBBlock extends Block implements IBlockProperties
     @SideOnly(Side.CLIENT)
     public boolean shouldSideBeRendered(IBlockState state, IBlockAccess worldIn, BlockPos pos, EnumFacing side)
     {
-        Block block = state.getBlock();
-
-        if (getBlockShape() == Shape.ICE)
-        {
-            if (block == this)
-            {
-                return false;
-            }
-        }
-        return super.shouldSideBeRendered(state, worldIn, pos, side);
+        IBlockState iBlockState = worldIn.getBlockState(pos.offset(side));
+        Block block = iBlockState.getBlock();
+        return (getShape() == Shape.ICE && block == this) ? false : super.shouldSideBeRendered(state, worldIn, pos, side);
     }
+
+    /* ========== Layer / Render / Client | End ========== */
 
     protected static class Builder
     {

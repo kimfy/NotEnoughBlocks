@@ -1,8 +1,10 @@
 package com.kimfy.notenoughblocks.common.block;
 
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
+import com.kimfy.notenoughblocks.common.util.block.Shape;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
 
 import java.util.List;
 
@@ -10,13 +12,8 @@ import java.util.List;
 public interface IBlockProperties
 {   
     void setBeaconBaseable(boolean isBeaconBase);
-
-    @Deprecated
-    void setBlockOpaqueness(boolean isOpaque);
     
     void setBlockStainable(boolean isStained);
-
-    void isSilkTouchable(boolean isSilkTouch, int metadata);
     
     void setBlockLightOpacity(int lightOpacity);
 
@@ -29,4 +26,12 @@ public interface IBlockProperties
     void setBlockMaterial(Material material);
 
     void setBlockSoundType(SoundType soundType);
+
+    IProperty<?>[] getBlockStateProperties();
+
+    void addBlockStateProperty(IProperty<?> property);
+
+    void addBlockStateProperties(IProperty<?>... property);
+
+    Shape getShape();
 }

@@ -16,6 +16,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -53,12 +54,6 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
     public void setBlockStainable(boolean isStained)
     {
         this.isStained = isStained;
-    }
-
-    @Override
-    public void setBlockLightOpacity(int lightOpacity)
-    {
-        this.block.setLightOpacity(lightOpacity);
     }
 
     @Override
@@ -140,6 +135,26 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
         return modelBlock;
     }
 
+    @Override
+    public void setUseNeighborBrightness(boolean useNeighborBrightness)
+    {
+        try
+        {
+            ReflectionHelper.setPrivateValue(Block.class, this.block, useNeighborBrightness, "p", "useNeighborBrightness");
+        }
+        catch (Exception e) {} // Catching so it doesn't crash when trying to set "useNeighborBrightness" in obfuscated env
+    }
+
+    @Override
+    public void setTranslucency(boolean translucent)
+    {
+        try
+        {
+            ReflectionHelper.setPrivateValue(Block.class, this.block, translucent, "n", "translucent");
+        }
+        catch (Exception e) {} // Catching so it doesn't crash when trying to set "useNeighborBrightness" in obfuscated env
+    }
+
     /* ========== Helpers ========== */
 
     public BlockJson get(int metadata)
@@ -191,6 +206,12 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
     public boolean isTranslucent(IBlockState state)
     {
         return get(state).isTranslucent();
+    }
+
+    @SuppressWarnings("unused")
+    public boolean getUseNeighborBrightness(IBlockState state)
+    {
+        return get(state).isNeighborBrightness();
     }
 
     @SuppressWarnings("unused")

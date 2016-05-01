@@ -216,7 +216,8 @@ public class JsonProcessor
         block.setBeaconBaseable(model.isBeaconBase());
         block.setBlockStainable(model.isStained());
         block.setSlipperiness(model.getSlipperiness());
-
+        block.setUseNeighborBrightness(model.isNeighborBrightness());
+        block.setTranslucency(model.isTranslucent());
         block.setBlockSoundType(model.getStepSound());
         block.setBlockMaterial(model.getMaterial());
 

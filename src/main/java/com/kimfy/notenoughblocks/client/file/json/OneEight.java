@@ -10,12 +10,10 @@ import com.kimfy.notenoughblocks.common.util.Log;
 import com.kimfy.notenoughblocks.common.util.Utilities;
 import com.kimfy.notenoughblocks.common.util.block.Shape;
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.registry.GameData;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -67,6 +65,9 @@ public class OneEight
 
                     switch (shape)
                     {
+                        /*
+                         * Slab is special case because it has both the half slab to register, and the full block model when slabs are stacked. Generify this at some point
+                         */
                         case "slab":
                         {
                             writeBlockStateForSlab(blockName, blockJsons, null, outputFile);
@@ -83,6 +84,7 @@ public class OneEight
         }
     }
 
+    // TODO: Convert this to JsonObjects
     public static void registerItemModels()
     {
         if (blocks == null || blocks.isEmpty())
@@ -93,16 +95,12 @@ public class OneEight
         //Log.info("[NEB]: registerItemModels()");
         if (blockstateFolder.listFiles().length >= 1)
         {
-            //Log.info("[NEB]: listFiles() is over 1");
             Gson gson = new Gson();
 
             for (File f : blockstateFolder.listFiles())
             {
-                //Log.info("[NEB]: Found file: " + f.getName());
-
                 if (f.isFile() && f.getName().endsWith(".json"))
                 {
-                    // Log.info("[NEB]: " + f.getName() + " is a json. Moving on");
                     try
                     {
                         Type type = new TypeToken<Map<String, Object>>() {}.getType();
@@ -115,23 +113,13 @@ public class OneEight
                             List<Map<String, Object>> inventoryRenders = (List<Map<String, Object>>) blockStateMap.get("inventory_renders");
                             for (Map<String, Object> entry : inventoryRenders)
                             {
-                                //String blockName = (String) entry.get("block");
                                 int metadata = ((Number) entry.get("metadata")).intValue();
                                 String variant   = (String) entry.get("variant");
-
-                                //Log.info("===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # =====");
-                                //Log.info("INFORMATION: Got block with given information:");
-                                //Log.info("Name: " + blockName);
-                                //Log.info("Metadata: " + metadata);
-                                //Log.info("Variant: " + variant);
-                                //Log.info("===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # =====");
-
                                 ResourceLocation rl = new ResourceLocation(Constants.MOD_ID, blockName);
                                 Block block = Block.blockRegistry.getObject(rl);
 
                                 if (block != null)
                                 {
-                                    //Log.info("[NEB]: block is not null, registering item model");
                                     registerItem(block, metadata, blockName, variant);
                                 }
                                 else
@@ -143,6 +131,7 @@ public class OneEight
                                     Log.error("Variant: " + variant);
                                     Log.error("Report this to the mod author!");
                                     Log.error("===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # ===== # =====");
+                                    throw new NullPointerException("Tried registering null block. See big message above");
                                 }
                             }
                         }
@@ -161,17 +150,6 @@ public class OneEight
         }
     }
 
-    private static void registerItem(Item item, int metadata, ModelResourceLocation mrl)
-    {
-        ModelLoader.setCustomModelResourceLocation(item, metadata, mrl);
-        Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, metadata, mrl);
-    }
-
-    private static void registerItem(Block block, int metadata, ModelResourceLocation mrl)
-    {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), metadata, mrl);
-    }
-
     private static void registerItem(Block block, int metadata, String blockName, String variant)
     {
         try
@@ -180,7 +158,7 @@ public class OneEight
         }
         catch (Exception e)
         {
-            Log.error("Exception when registering item in OneEight#registerItem. Block {}, metadata {}, blockName {}", block, metadata, blockName, e);
+            Log.error("Error when trying to register inventory model for Block {}, with metadata {}", blockName, metadata);
             /*
              * FIXME
              * If an error is catched here, that means the @param Block is null. Maybe create a method "flush"
@@ -198,23 +176,10 @@ public class OneEight
     public static List<Block> getBlocksFromMod(String modId)
     {
         List<Block> temp = new ArrayList<>();
-
-        for (Block block : GameData.getBlockRegistry())
+        for (Block block : Block.blockRegistry)
         {
-            if (block != null)
-            {
-                try
-                {
-                    if (block.getRegistryName().getResourceDomain().equals(modId))
-                    {
-                        temp.add(block);
-                    }
-                }
-                catch (NullPointerException e)
-                {
-                    Log.error("ERROR: NPE when invoking getRegistryName() on Block {}", block, e);
-                }
-            }
+            if (block != null && block.getRegistryName().getResourceDomain().equals(modId))
+                temp.add(block);
         }
         return temp;
     }
@@ -361,7 +326,7 @@ public class OneEight
                     }
                 }
             }
-            else if (populateDefaultsSection && metadata == 0)
+            else if (metadata == 0)
             {
                 // Add in a defaults section - used for stairs, so we don't populate every single fucking variant
                 // when it doesn't have to be populated

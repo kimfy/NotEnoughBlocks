@@ -249,8 +249,7 @@
       "shape": "leaves",
       "hardness": 0.2,
       "material": "leaves",
-      "stepSound": "plant",
-      "lightOpacity": 1
+      "stepSound": "plant"
     },
     {
       "displayName": "Spruce Leaves",
@@ -260,8 +259,7 @@
       "shape": "leaves",
       "hardness": 0.2,
       "material": "leaves",
-      "stepSound": "plant",
-      "lightOpacity": 1
+      "stepSound": "plant"
     },
     {
       "displayName": "Birch Leaves",
@@ -271,8 +269,7 @@
       "shape": "leaves",
       "hardness": 0.2,
       "material": "leaves",
-      "stepSound": "plant",
-      "lightOpacity": 1
+      "stepSound": "plant"
     },
     {
       "displayName": "Jungle Leaves",
@@ -282,8 +279,7 @@
       "shape": "leaves",
       "hardness": 0.2,
       "material": "leaves",
-      "stepSound": "plant",
-      "lightOpacity": 1
+      "stepSound": "plant"
     },
     {
       "displayName": "Acacia Leaves",
@@ -293,8 +289,7 @@
       "shape": "leaves",
       "hardness": 0.2,
       "material": "leaves",
-      "stepSound": "plant",
-      "lightOpacity": 1
+      "stepSound": "plant"
     },
     {
       "displayName": "Dark Oak Leaves",
@@ -304,8 +299,7 @@
       "shape": "leaves",
       "hardness": 0.2,
       "material": "leaves",
-      "stepSound": "plant",
-      "lightOpacity": 1
+      "stepSound": "plant"
     },
     {
       "displayName": "Sponge",
@@ -324,8 +318,7 @@
       "hardness": 0.3,
       "material": "glass",
       "stepSound": "glass",
-      "opaque": false,
-      "lightOpacity": 0
+      "opaque": false
     },
     {
       "displayName": "Lapis Lazuli Block",
@@ -388,8 +381,7 @@
       },
       "shape": "web",
       "hardness": 4.0,
-      "material": "web",
-      "lightOpacity": 1
+      "material": "web"
     },
     {
       "displayName": "Dead Bush",
@@ -853,8 +845,7 @@
       "shape": "stair",
       "hardness": 2.0,
       "material": "wood",
-      "stepSound": "wood",
-      "opaque": false
+      "stepSound": "wood"
     },
     {
       "displayName": "Spruce Wood Stairs",
@@ -864,8 +855,7 @@
       "shape": "stair",
       "hardness": 2.0,
       "material": "wood",
-      "stepSound": "wood",
-      "opaque": false
+      "stepSound": "wood"
     },
     {
       "displayName": "Birch Wood Stairs",
@@ -875,8 +865,7 @@
       "shape": "stair",
       "hardness": 2.0,
       "material": "wood",
-      "stepSound": "wood",
-      "opaque": false
+      "stepSound": "wood"
     },
     {
       "displayName": "Jungle Wood Stairs",
@@ -886,8 +875,7 @@
       "shape": "stair",
       "hardness": 2.0,
       "material": "wood",
-      "stepSound": "wood",
-      "opaque": false
+      "stepSound": "wood"
     },
     {
       "displayName": "Acacia Wood Stairs",
@@ -897,8 +885,7 @@
       "shape": "stair",
       "hardness": 2.0,
       "material": "wood",
-      "stepSound": "wood",
-      "opaque": false
+      "stepSound": "wood"
     },
     {
       "displayName": "Dark Oak Wood Stairs",
@@ -908,8 +895,7 @@
       "shape": "stair",
       "hardness": 2.0,
       "material": "wood",
-      "stepSound": "wood",
-      "opaque": false
+      "stepSound": "wood"
     },
     {
       "displayName": "Farmland",
@@ -1042,8 +1028,7 @@
       "shape": "layer",
       "hardness": 0.1,
       "material": "snow",
-      "stepSound": "snow",
-      "lightOpacity": 0
+      "stepSound": "snow"
     },
     {
       "displayName": "Ice",
@@ -1054,8 +1039,7 @@
       "hardness": 0.5,
       "material": "ice",
       "stepSound": "glass",
-      "slipperiness": 0.98,
-      "translucent": true
+      "slipperiness": 0.98
     },
     {
       "displayName": "Snow Block",
@@ -2215,8 +2199,7 @@
       "shape": "carpet",
       "hardness": 0.1,
       "material": "carpet",
-      "stepSound": "cloth",
-      "lightOpacity": 0
+      "stepSound": "cloth"
     },
     {
       "displayName": "Orange Carpet",
@@ -2226,8 +2209,7 @@
       "shape": "carpet",
       "hardness": 0.1,
       "material": "carpet",
-      "stepSound": "cloth",
-      "lightOpacity": 0
+      "stepSound": "cloth"
     },
     {
       "displayName": "Magenta Carpet",
@@ -2237,8 +2219,7 @@
       "shape": "carpet",
       "hardness": 0.1,
       "material": "carpet",
-      "stepSound": "cloth",
-      "lightOpacity": 0
+      "stepSound": "cloth"
     },
     {
       "displayName": "Light Blue Carpet",
@@ -2248,8 +2229,7 @@
       "shape": "carpet",
       "hardness": 0.1,
       "material": "carpet",
-      "stepSound": "cloth",
-      "lightOpacity": 0
+      "stepSound": "cloth"
     },
     {
       "displayName": "Yellow Carpet",
@@ -2259,8 +2239,7 @@
       "shape": "carpet",
       "hardness": 0.1,
       "material": "carpet",
-      "stepSound": "cloth",
-      "lightOpacity": 0
+      "stepSound": "cloth"
     },
     {
       "displayName": "Lime Carpet",
@@ -2270,8 +2249,7 @@
       "shape": "carpet",
       "hardness": 0.1,
       "material": "carpet",
-      "stepSound": "cloth",
-      "lightOpacity": 0
+      "stepSound": "cloth"
     },
     {
       "displayName": "Pink Carpet",
@@ -2281,8 +2259,7 @@
       "shape": "carpet",
       "hardness": 0.1,
       "material": "carpet",
-      "stepSound": "cloth",
-      "lightOpacity": 0
+      "stepSound": "cloth"
     },
     {
       "displayName": "Gray Carpet",
@@ -2292,8 +2269,7 @@
       "shape": "carpet",
       "hardness": 0.1,
       "material": "carpet",
-      "stepSound": "cloth",
-      "lightOpacity": 0
+      "stepSound": "cloth"
     },
     {
       "displayName": "Light Gray Carpet",
@@ -2303,8 +2279,7 @@
       "shape": "carpet",
       "hardness": 0.1,
       "material": "carpet",
-      "stepSound": "cloth",
-      "lightOpacity": 0
+      "stepSound": "cloth"
     },
     {
       "displayName": "Cyan Carpet",
@@ -2314,8 +2289,7 @@
       "shape": "carpet",
       "hardness": 0.1,
       "material": "carpet",
-      "stepSound": "cloth",
-      "lightOpacity": 0
+      "stepSound": "cloth"
     },
     {
       "displayName": "Purple Carpet",
@@ -2325,8 +2299,7 @@
       "shape": "carpet",
       "hardness": 0.1,
       "material": "carpet",
-      "stepSound": "cloth",
-      "lightOpacity": 0
+      "stepSound": "cloth"
     },
     {
       "displayName": "Blue Carpet",
@@ -2336,8 +2309,7 @@
       "shape": "carpet",
       "hardness": 0.1,
       "material": "carpet",
-      "stepSound": "cloth",
-      "lightOpacity": 0
+      "stepSound": "cloth"
     },
     {
       "displayName": "Brown Carpet",
@@ -2347,8 +2319,7 @@
       "shape": "carpet",
       "hardness": 0.1,
       "material": "carpet",
-      "stepSound": "cloth",
-      "lightOpacity": 0
+      "stepSound": "cloth"
     },
     {
       "displayName": "Green Carpet",
@@ -2358,8 +2329,7 @@
       "shape": "carpet",
       "hardness": 0.1,
       "material": "carpet",
-      "stepSound": "cloth",
-      "lightOpacity": 0
+      "stepSound": "cloth"
     },
     {
       "displayName": "Red Carpet",
@@ -2369,8 +2339,7 @@
       "shape": "carpet",
       "hardness": 0.1,
       "material": "carpet",
-      "stepSound": "cloth",
-      "lightOpacity": 0
+      "stepSound": "cloth"
     },
     {
       "displayName": "Black Carpet",
@@ -2380,8 +2349,7 @@
       "shape": "carpet",
       "hardness": 0.1,
       "material": "carpet",
-      "stepSound": "cloth",
-      "lightOpacity": 0
+      "stepSound": "cloth"
     },
     {
       "displayName": "Hardened Clay",

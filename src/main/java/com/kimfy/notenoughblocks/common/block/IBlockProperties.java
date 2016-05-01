@@ -8,14 +8,11 @@ import net.minecraft.block.properties.IProperty;
 
 import java.util.List;
 
-
 public interface IBlockProperties
 {   
     void setBeaconBaseable(boolean isBeaconBase);
     
     void setBlockStainable(boolean isStained);
-    
-    void setBlockLightOpacity(int lightOpacity);
 
     void setSlipperiness(float slipperiness);
 
@@ -34,4 +31,8 @@ public interface IBlockProperties
     void addBlockStateProperties(IProperty<?>... property);
 
     Shape getShape();
+
+    void setUseNeighborBrightness(boolean useNeighborBrightness);
+
+    void setTranslucency(boolean translucent);
 }

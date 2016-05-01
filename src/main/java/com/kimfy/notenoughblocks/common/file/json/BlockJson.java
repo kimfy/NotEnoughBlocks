@@ -57,9 +57,9 @@ public class BlockJson
     protected float  hardness            = 1.5F;   //
     protected int lightOpacity           = 255;    // Let shape handle this
     protected float lightLevel           = 0.0F;   //
-    protected boolean neighborBrightness = false;  // Not accessible to end user | Let shape handle this
-    protected boolean fullBlock          = true;   // Not accessible to end user | Let shape handle this
-    protected boolean fullCube           = true;   // Not accessible to end user | Let shape handle this
+    protected boolean neighborBrightness = false;  // TODO: Not accessible to end user | Let shape handle this
+    protected boolean fullBlock          = true;   // TODO: Not accessible to end user | Let shape handle this
+    protected boolean fullCube           = true;   // TODO: Not accessible to end user | Let shape handle this
     protected boolean translucent        = false;  //
     protected boolean canProvidePower    = false;  //
     protected int mobility               = 0;      // Not accessible to end user
@@ -250,12 +250,11 @@ public class BlockJson
         {
             JsonObject json = element.getAsJsonObject();
             BlockJson block = new BlockJson();
-
+            block.shape              = Shape.get(JsonUtils.getString(json, "shape", "cube"));
             block.displayName        = JsonUtils.getString(json, "displayName", "Default Block Name");
             block.textures           = objectToMap(json, "textures", null);
             block.maxStackSize       = JsonUtils.getInt(json, "maxStackSize", 64);
             block.creativeTab        = CreativeTab.get(JsonUtils.getString(json, "creativeTab", "buildingblocks")).getCreativeTab();
-            block.shape              = Shape.get(JsonUtils.getString(json, "shape", "cube"));
             block.hardness           = JsonUtils.getFloat(json, "hardness", 1.5F);
             block.resistance         = JsonUtils.getFloat(json, "resistance", 10.0F);
             block.material           = Materials.get(JsonUtils.getString(json, "material", "rock")).getMaterial();
@@ -273,9 +272,9 @@ public class BlockJson
             block.particleGravity    = JsonUtils.getFloat(json, "particleGravity", 1.0F);
             block.mobility           = JsonUtils.getInt(json, "mobility", 0);
             block.enableStats        = JsonUtils.getBoolean(json, "enableStats", true);
-            block.neighborBrightness = JsonUtils.getBoolean(json, "neighborBrightness", false);
+            block.neighborBrightness = JsonUtils.getBoolean(json, "neighborBrightness", block.getShape().useNeighborBrightness());
             block.lightLevel         = JsonUtils.getFloat(json, "lightLevel", 0.0F);
-            block.lightOpacity       = JsonUtils.getInt(json, "lightOpacity", 255);
+            block.lightOpacity       = JsonUtils.getInt(json, "lightOpacity", block.getShape().getLightOpacity());
             block.buttonType         = JsonUtils.getString(json, "buttonType", null);
             /* Visual */
             block.renderColor        = JsonUtils.getInt(json, "renderColor", -1);
@@ -285,7 +284,7 @@ public class BlockJson
             /* 1.9 */
             block.fullBlock          = JsonUtils.getBoolean(json, "fullBlock", true);
             block.fullCube           = JsonUtils.getBoolean(json, "fullCube", true);
-            block.translucent        = JsonUtils.getBoolean(json, "translucent", false);
+            block.translucent        = JsonUtils.getBoolean(json, "translucent", block.getShape().isTranslucent());
             block.canProvidePower    = JsonUtils.getBoolean(json, "canProvidePower", false);
 
             this.setBlockDrops(block, json);
@@ -358,9 +357,9 @@ public class BlockJson
             addProperty(json, "particleGravity", block.getParticleGravity(), 1.0F);
             addProperty(json, "mobility", block.getMobility(), 0);
             addProperty(json, "enableStats", block.isEnableStats(), true);
-            addProperty(json, "neighborBrightness", block.isNeighborBrightness(), false);
+            addProperty(json, "neighborBrightness", block.isNeighborBrightness(), block.getShape().useNeighborBrightness());
             addProperty(json, "lightLevel", block.getLightLevel(), 0.0F);
-            addProperty(json, "lightOpacity", block.getLightOpacity(), 255);
+            addProperty(json, "lightOpacity", block.getLightOpacity(), block.getShape().getLightOpacity());
             addProperty(json, "buttonType", block.getButtonType(), "");
 
             /* Visual Effects */
@@ -372,7 +371,7 @@ public class BlockJson
             /* 1.9 */
             addProperty(json, "fullBlock", block.isFullBlock(), true);
             addProperty(json, "fullCube", block.isFullCube(), true);
-            addProperty(json, "translucent", block.isTranslucent(), false);
+            addProperty(json, "translucent", block.isTranslucent(), block.getShape().isTranslucent());
             addProperty(json, "canProvidePower", block.isCanProvidePower(), false);
 
             this.setBlockDrops(json, block);

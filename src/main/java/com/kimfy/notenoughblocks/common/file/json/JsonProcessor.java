@@ -207,10 +207,6 @@ public class JsonProcessor
         block.setResistance(model.getResistance());
         block.setLightLevel(model.getLightLevel());
         block.setLightOpacity(model.getLightOpacity());
-        /** See {@link Block} */
-        // TODO: block.fullBlock = getDefaultState.isOpaqueCube
-        // TODO: block.lightOpacity = block.fullBlock ? 255 : 0;
-        // TODO: block.translucent = !block.blockMaterial.blocksLight();
 
         /* IBlockProperties setters */
         block.setBeaconBaseable(model.isBeaconBase());

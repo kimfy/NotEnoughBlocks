@@ -188,7 +188,6 @@ public class Chisel implements Serializable
     }
 
     /**
-     * TODO: Rename method
      *
      * Loops through the current blockList, grabs blocks registered from Minecraft
      * For each block it generates an entry in 'chisel.json' located in

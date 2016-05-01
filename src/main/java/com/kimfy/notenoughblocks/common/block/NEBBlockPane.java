@@ -17,7 +17,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-// TODO: Lighting is a bit off / the block is very dark
 public class NEBBlockPane extends BlockPane implements IBlockProperties
 {
     private final boolean canDrop;

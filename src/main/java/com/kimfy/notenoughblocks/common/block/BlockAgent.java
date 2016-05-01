@@ -76,6 +76,11 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
     @Override
     public void setBlockMaterial(Material material)
     {
+        try
+        {
+            ReflectionHelper.setPrivateValue(Block.class, this.block, material, "x", "blockMaterial");
+        }
+        catch (Exception e) {} // Catching so it doesn't crash when trying to set "blockMaterial" in obfuscated env
     }
 
     private SoundType soundType;
@@ -152,7 +157,7 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
         {
             ReflectionHelper.setPrivateValue(Block.class, this.block, translucent, "n", "translucent");
         }
-        catch (Exception e) {} // Catching so it doesn't crash when trying to set "useNeighborBrightness" in obfuscated env
+        catch (Exception e) {} // Catching so it doesn't crash when trying to set "translucent" in obfuscated env
     }
 
     /* ========== Helpers ========== */

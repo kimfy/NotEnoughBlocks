@@ -1,6 +1,7 @@
 package com.kimfy.notenoughblocks.common.util;
 
 import com.kimfy.notenoughblocks.common.block.IBlockProperties;
+import com.kimfy.notenoughblocks.common.util.block.Materials;
 import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
@@ -146,6 +147,7 @@ public class MinecraftUtilities
                             TextFormatting.GOLD + "" + TextFormatting.BOLD  + "Block Properties:",
                             "  Owner: " + rl.getResourceDomain(),
                             "  Path: " + rl.getResourcePath(),
+                            "  Material: " + Materials.toString(block.getMaterial(state)),
                             "  Hardness: " + ReflectionHelper.getPrivateValue(Block.class, block, "blockHardness"),
                             "  Resistance: " + ReflectionHelper.getPrivateValue(Block.class, block, "blockResistance"),
                             TextFormatting.GREEN + "" + TextFormatting.BOLD + "Render Properties:",

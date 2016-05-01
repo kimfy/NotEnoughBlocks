@@ -63,7 +63,7 @@ public class Materials
         materials.put(this.name, this);
     }
 
-    public static Materials get(final String material)
+    public static Materials get(String material)
     {
         String name = material.toLowerCase();
         if (materials.containsKey(name))

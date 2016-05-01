@@ -53,15 +53,15 @@ public class BlockJson
     protected String buttonType          = null;
 
     /* 1.9 made these metadata specific */
-    protected Material material          = Material.rock; //
-    protected float  hardness            = 1.5F;   //
+    protected Material material          = Material.rock;
+    protected float  hardness            = 1.5F;
     protected int lightOpacity           = 255;    // Let shape handle this
-    protected float lightLevel           = 0.0F;   //
-    protected boolean neighborBrightness = false;  // TODO: Not accessible to end user | Let shape handle this
-    protected boolean fullBlock          = true;   // TODO: Not accessible to end user | Let shape handle this
-    protected boolean fullCube           = true;   // TODO: Not accessible to end user | Let shape handle this
-    protected boolean translucent        = false;  //
-    protected boolean canProvidePower    = false;  //
+    protected float lightLevel           = 0.0F;
+    protected boolean neighborBrightness = false;  // Shape handles this
+    protected boolean fullBlock          = true;   // Not accessible to end user
+    protected boolean fullCube           = true;   // Not accessible to end user
+    protected boolean translucent        = false;
+    protected boolean canProvidePower    = false;
     protected int mobility               = 0;      // Not accessible to end user
 
     /* Visual */

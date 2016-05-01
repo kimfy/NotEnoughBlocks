@@ -138,34 +138,34 @@ public class Blocks
         // // Redstone Wire
         // // Crafting Table
         // // Wheat
-        // blockList.add(new BlockJson().displayName("Farmland").shape("farmland").hardness(0.6F).stepSound("gravel").textures("down: dirt, allSides: dirt, dryUp: farmland_dry, wetUp: farmland_wet")); // TODO: Implement
+        // blockList.add(new BlockJson().displayName("Farmland").shape("farmland").hardness(0.6F).stepSound("gravel").textures("down: dirt, allSides: dirt, dryUp: farmland_dry, wetUp: farmland_wet")); 
         // // Furnace
-        // blockList.add(new BlockJson().displayName("Sign").shape("sign").hardness(1.0F).stepSound("wood").textures("all: planks_oak")); // TODO: Implement
+        // blockList.add(new BlockJson().displayName("Sign").shape("sign").hardness(1.0F).stepSound("wood").textures("all: planks_oak")); 
         // blockList.add(woodDoor = new BlockJson().displayName("Wooden Door").shape("door").material("wood").hardness(3.0F).stepSound("wood").enableStats(false).textures("bottom: door_wood_lower, top: door_wood_upper"));
-        // blockList.add(new BlockJson().displayName("Ladder").shape("ladder").hardness(0.4F).stepSound("ladder").textures("all: ladder")); // TODO: Implement
-        // blockList.add(new BlockJson().displayName("Rail").shape("rail").hardness(0.7F).stepSound("metal").textures("rail: rail_normal, turned: rail_normal_turned")); // TODO: Implement
+        // blockList.add(new BlockJson().displayName("Ladder").shape("ladder").hardness(0.4F).stepSound("ladder").textures("all: ladder")); 
+        // blockList.add(new BlockJson().displayName("Rail").shape("rail").hardness(0.7F).stepSound("metal").textures("rail: rail_normal, turned: rail_normal_turned")); 
         // blockList.add(new BlockJson().displayName("Cobblestone Stairs").shape("stair").hardness(2.0F).resistance(10.0F).stepSound("piston").opaque(false).textures("all: cobblestone"));
-        // blockList.add(new BlockJson().displayName("Lever").shape("lever").hardness(0.5F).stepSound("wood").textures("all: lever")); // TODO: Implement
+        // blockList.add(new BlockJson().displayName("Lever").shape("lever").hardness(0.5F).stepSound("wood").textures("all: lever")); 
         // blockList.add(new BlockJson().displayName("Stone Pressure Plate").shape("pressure_plate").sensitivity("mobs").material("rock").hardness(0.5F).stepSound("piston").textures("all: stone"));
         // blockList.add(new BlockJson().displayName("Iron Door").shape("door").material("iron").hardness(5.0F).stepSound("metal").enableStats(false).textures("bottom: door_iron_lower, top: door_iron_upper"));
         // blockList.add(new BlockJson().displayName("Wooden Pressure Plate").shape("pressure_plate").sensitivity("everything").material("wood").hardness(0.5F).stepSound("wood").textures("all: planks_oak"));
-        // blockList.add(new BlockJson().displayName("Redstone Torch").shape("redstone_torch").hardness(0.0F).material("wood").stepSound("wood").textures("on: redstone_torch_on, off: redstone_torch_off")); // TODO: Implement
+        // blockList.add(new BlockJson().displayName("Redstone Torch").shape("redstone_torch").hardness(0.0F).material("wood").stepSound("wood").textures("on: redstone_torch_on, off: redstone_torch_off")); 
         // blockList.add(new BlockJson().displayName("Stone Button").shape("button").hardness(0.5F).stepSound("piston").textures("all: stone"));
         // blockList.add(new BlockJson().displayName("Snow").shape("layer").material("snow").hardness(0.1F).stepSound("snow").lightOpacity(0).textures("all: snow"));
         // blockList.add(new BlockJson().displayName("Ice").material("ice").slipperiness(0.98F).hardness(0.5F).stepSound("glass").textures("all: ice"));
         // blockList.add(new BlockJson().displayName("Snow Block").material("crafted_snow").hardness(0.2F).stepSound("snow").textures("all: snow"));
-        // blockList.add(new BlockJson().displayName("Cactus").shape("cactus").material("cactus").hardness(0.4F).stepSound("cloth").textures("bottom: cactus_bottom, top: cactus_top, side: cactus_side")); // TODO: Implement
+        // blockList.add(new BlockJson().displayName("Cactus").shape("cactus").material("cactus").hardness(0.4F).stepSound("cloth").textures("bottom: cactus_bottom, top: cactus_top, side: cactus_side")); 
         // blockList.add(new BlockJson().displayName("Clay").material("clay").hardness(0.6F).stepSound("gravel").textures("all: clay"));
         // blockList.add(new BlockJson().displayName("Sugar Cane").shape("sugar_cane").material("plants").hardness(0.0F).stepSound("grass").enableStats(false).renderColor(16777215).textures("all: reeds"));
-        // blockList.add(new BlockJson().displayName("Jukebox").material("wood").hardness(2.0F).resistance(10.0F).stepSound("piston").textures("down: jukebox_top, up: jukebox_top, allSides: jukebox_side")); // TODO: Implement
+        // blockList.add(new BlockJson().displayName("Jukebox").material("wood").hardness(2.0F).resistance(10.0F).stepSound("piston").textures("down: jukebox_top, up: jukebox_top, allSides: jukebox_side")); 
         // blockList.add(woodFence = new BlockJson().displayName("Wooden Fence").shape("fence").material("wood").hardness(2.0F).resistance(5.0F).stepSound("wood").textures("all: planks_oak"));
         // blockList.add(new BlockJson().displayName("Pumpkin").shape("directional").material("gourd").hardness(1.0F).stepSound("wood").textures("top: pumpkin_top, faceOff: pumpkin_face_off, face: pumpkin_face_on, side: pumpkin_side"));
         // blockList.add(new BlockJson().displayName("Netherrack").hardness(0.4F).stepSound("piston").textures("all: netherrack"));
         // blockList.add(new BlockJson().displayName("Soul Sand").material("sand").hardness(0.5F).stepSound("sand").textures("all: soul_sand"));
         // // Portal Block
         // blockList.add(lamp = new BlockJson().displayName("Glowstone").material("glass").hardness(0.3F).stepSound("glass").lightLevel(1.0F).textures("all: glowstone"));
-        // blockList.add(new BlockJson().displayName("Jack-O-Lantern").shape("directional").material("gourd").hardness(1.0F).stepSound("wood").textures("top: pumpkin_top, face: pumpkin_face_on, side: pumpkin_side")); // TODO: Implement
-        // blockList.add(new BlockJson().displayName("Cake").shape("cake").material("cake").hardness(0.5F).stepSound("cloth").textures("bottom: cake_bottom, top: cake_top, side: cake_side, inner: cake_inner")); // TODO: Implement
+        // blockList.add(new BlockJson().displayName("Jack-O-Lantern").shape("directional").material("gourd").hardness(1.0F).stepSound("wood").textures("top: pumpkin_top, face: pumpkin_face_on, side: pumpkin_side")); 
+        // blockList.add(new BlockJson().displayName("Cake").shape("cake").material("cake").hardness(0.5F).stepSound("cloth").textures("bottom: cake_bottom, top: cake_top, side: cake_side, inner: cake_inner")); 
         // // Redstone Repeater
         // blockList.add(tmp = new BlockJson().displayName("White Stained Glass").shape("glass").stained(true).material("glass").hardness(0.3F).stepSound("glass").textures("all: glass_white"));
         // blockList.add(new BlockJson().displayName("Orange Stained Glass").parent(tmp).textures("all: glass_orange"));
@@ -194,8 +194,8 @@ public class Blocks
         // blockList.add(new BlockJson().displayName("Mossy Stone Bricks").parent(tmp).textures("all: stonebrick_mossy"));
         // blockList.add(new BlockJson().displayName("Cracked Stone Bricks").parent(tmp).textures("all: stonebrick_cracked"));
         // blockList.add(new BlockJson().displayName("Chiseled Stone Bricks").parent(tmp).textures("all: stonebrick_carved"));
-        // //blockList.add(tmp = new BlockJson().displayName("Brown Mushroom Block").shape("mushroom_block").material("wood").hardness(0.2F).stepSound("wood").textures({"mushroom_block_skin_stem", "mushroom_block_skin_brown", "mushroom_block_inside"})); // TODO: Implement
-        // //blockList.add(new BlockJson().displayName("Red Mushroom Block").parent(tmp).textures({"mushroom_block_skin_stem", "mushroom_block_skin_red", "mushroom_block_inside"})); // TODO: Implement
+        // //blockList.add(tmp = new BlockJson().displayName("Brown Mushroom Block").shape("mushroom_block").material("wood").hardness(0.2F).stepSound("wood").textures({"mushroom_block_skin_stem", "mushroom_block_skin_brown", "mushroom_block_inside"})); 
+        // //blockList.add(new BlockJson().displayName("Red Mushroom Block").parent(tmp).textures({"mushroom_block_skin_stem", "mushroom_block_skin_red", "mushroom_block_inside"})); 
         // blockList.add(new BlockJson().displayName("Iron Bars").shape("bars").material("iron").hardness(5.0F).resistance(10.0F).stepSound("metal").textures("edge: iron_bars, bars: iron_bars"));
         // blockList.add(new BlockJson().displayName("Glass Pane").shape("pane").material("glass").hardness(0.3F).stepSound("glass").textures("edge: glass_pane_top, pane: glass"));
         // blockList.add(tmp = new BlockJson().displayName("White Stained Glass Pane").shape("pane").stained(true).material("glass").hardness(0.3F).stepSound("glass").textures("edge: glass_pane_top_white, pane: glass_white"));
@@ -222,19 +222,19 @@ public class Blocks
         // blockList.add(new BlockJson().displayName("Brick Stairs").shape("stair").stepSound("piston").opaque(false).textures("all: brick"));
         // blockList.add(new BlockJson().displayName("Stone Brick Stair").shape("stair").stepSound("piston").textures("all: stonebrick"));
         // blockList.add(new BlockJson().displayName("Mycelium").material("grass").hardness(0.6F).stepSound("grass").textures("down: dirt, up: mycelium_top, allSides: mycelium_side"));
-        // blockList.add(new BlockJson().displayName("Lily Pad").shape("lilypad").material("plants").hardness(0.0F).stepSound("grass").renderColor(4764952 /*TODO: Default this to use Blocks.lilypad.getRenderColor(...)*/).textures("all: waterlily"));
+        // blockList.add(new BlockJson().displayName("Lily Pad").shape("lilypad").material("plants").hardness(0.0F).stepSound("grass").renderColor(4764952
         // blockList.add(tmp = new BlockJson().displayName("Nether Brick").hardness(2.0F).resistance(10.0F).stepSound("piston").textures("all: nether_brick"));
         // blockList.add(new BlockJson().displayName("Nether Brick Fence").parent(tmp).shape("fence").textures("all: nether_brick"));
         // //blockList.add(new BlockJson().displayName("Nether Brick Slab").parent(tmp).shape("slab").textures("all: nether_brick"));
         // blockList.add(new BlockJson().displayName("Nether Brick Stairs").parent(tmp).shape("stair").opaque(false).textures("all: nether_brick"));
         // // Nether Wart
-        // blockList.add(new BlockJson().displayName("Enchanting Table").shape("enchanting_table").hardness(5.0F).resistance(2000.0F).textures("down: enchanting_table_bottom, up: enchanting_table_top, allSides: enchanting_table_side")); // TODO: Implement
-        // blockList.add(new BlockJson().displayName("Brewing Stand").shape("brewing_stand").material("iron").hardness(0.5F).lightLevel(0.125F).textures("base: brewing_stand_base, side: brewing_stand")); // TODO: Implement
-        // blockList.add(new BlockJson().displayName("Cauldron").shape("cauldron").material("iron").hardness(2.0F).textures("bottom: cauldron_bottom, top: cauldron_top, inside: cauldron_inner, allSides: cauldron_side, water: water_still")); // TODO: Implement
+        // blockList.add(new BlockJson().displayName("Enchanting Table").shape("enchanting_table").hardness(5.0F).resistance(2000.0F).textures("down: enchanting_table_bottom, up: enchanting_table_top, allSides: enchanting_table_side")); 
+        // blockList.add(new BlockJson().displayName("Brewing Stand").shape("brewing_stand").material("iron").hardness(0.5F).lightLevel(0.125F).textures("base: brewing_stand_base, side: brewing_stand")); 
+        // blockList.add(new BlockJson().displayName("Cauldron").shape("cauldron").material("iron").hardness(2.0F).textures("bottom: cauldron_bottom, top: cauldron_top, inside: cauldron_inner, allSides: cauldron_side, water: water_still")); 
         // // End Portal
         // // End Portal Frame
         // blockList.add(new BlockJson().displayName("End Stone").hardness(3.0F).resistance(15.0F).stepSound("piston").textures("all: end_stone"));
-        // blockList.add(new BlockJson().displayName("Dragon Egg").shape("dragon_egg").hardness(3.0F).resistance(15.0F).stepSound("piston").lightLevel(0.125F).textures("all: dragon_egg")); // TODO: Implement
+        // blockList.add(new BlockJson().displayName("Dragon Egg").shape("dragon_egg").hardness(3.0F).resistance(15.0F).stepSound("piston").lightLevel(0.125F).textures("all: dragon_egg")); 
         // blockList.add(new BlockJson().displayName("Redstone Lamp").shape("redstone_lamp").material("redstone_light").hardness(0.3F).stepSound("glass").textures("on: redstone_lamp_on, off: redstone_lamp_off"));
         // /* Wooden Slabs */
         // blockList.add(tmp = new BlockJson().displayName("Oak Wood Slab").shape("slab").material("wood").hardness(2.0F).resistance(5.0F).stepSound("wood").textures("all: planks_oak"));
@@ -243,17 +243,17 @@ public class Blocks
         // blockList.add(new BlockJson().displayName("Jungle Wood Slab").parent(tmp).textures("all: planks_jungle"));
         // blockList.add(new BlockJson().displayName("Acacia Wood Slab").parent(tmp).textures("all: planks_acacia"));
         // blockList.add(new BlockJson().displayName("Dark Oak Wood Slab").parent(tmp).textures("all: planks_big_oak"));
-        // blockList.add(new BlockJson().displayName("Cocoa Beans").shape("cocoa").material("plants").hardness(0.2F).resistance(5.0F).stepSound("wood").textures("stage_0: cocoa_stage_0, stage_1: cocoa_stage_1, stage_2: cocoa_stage_2")); // TODO: Implement
+        // blockList.add(new BlockJson().displayName("Cocoa Beans").shape("cocoa").material("plants").hardness(0.2F).resistance(5.0F).stepSound("wood").textures("stage_0: cocoa_stage_0, stage_1: cocoa_stage_1, stage_2: cocoa_stage_2")); 
         // blockList.add(new BlockJson().displayName("Sandstone Stairs").shape("stair").hardness(0.8F).stepSound("piston").opaque(false).textures("down: sandstone_bottom, up: sandstone_top, allSides: sandstone_normal"));
         // // Ender Chest
-        // blockList.add(new BlockJson().displayName("Tripwire Hook").shape("tripwire_hook").material("circuits").textures("all: trip_wire_source")); // TODO: Implement
+        // blockList.add(new BlockJson().displayName("Tripwire Hook").shape("tripwire_hook").material("circuits").textures("all: trip_wire_source")); 
         // blockList.add(new BlockJson().displayName("Tripwire").shape("tripwire").material("circuits").textures("all: trip_wire"));
         // // Command Block
-        // blockList.add(new BlockJson().displayName("Beacon").shape("beacon").material("glass").hardness(3.0F).lightLevel(1.0F).textures("glass: glass, obsidian: obsidian, beacon: beacon")); // TODO: Implement
+        // blockList.add(new BlockJson().displayName("Beacon").shape("beacon").material("glass").hardness(3.0F).lightLevel(1.0F).textures("glass: glass, obsidian: obsidian, beacon: beacon")); 
         // blockList.add(new BlockJson().displayName("Cobblestone Wall").shape("wall").textures("all: cobblestone"));
         // blockList.add(new BlockJson().displayName("Mossy Cobblestone Wall").shape("wall").textures("all: cobblestone_mossy"));
-        // blockList.add(new BlockJson().displayName("Flower Pot").shape("flower_pot").material("circuits").hardness(0.0F).stepSound("stone").textures("all: flower_pot")); // TODO: Implement
-        // blockList.add(new BlockJson().displayName("Carrots").shape("crop").hardness(0.0F).stepSound("grass").textures("stage_0: carrots_stage_0, stage_1: carrots_stage_1, stage_2: carrots_stage_2")); // TODO: Implement
+        // blockList.add(new BlockJson().displayName("Flower Pot").shape("flower_pot").material("circuits").hardness(0.0F).stepSound("stone").textures("all: flower_pot")); 
+        // blockList.add(new BlockJson().displayName("Carrots").shape("crop").hardness(0.0F).stepSound("grass").textures("stage_0: carrots_stage_0, stage_1: carrots_stage_1, stage_2: carrots_stage_2")); 
         // blockList.add(new BlockJson().displayName("Potatoes").shape("crop").hardness(0.0F).stepSound("grass").textures("stage_0: potatoes_stage_0, stage_1: potatoes_stage_1, stage_2: potatoes_stage_2"));
         // blockList.add(new BlockJson().displayName("Wooden Button").shape("button").material("circuits").hardness(0.5F).stepSound("wood").textures("all: planks_oak"));
         // // Skulls. All logic lies in their item and we're not saving any Item textures. Maybe I'll implement that by copying over the respective textures.

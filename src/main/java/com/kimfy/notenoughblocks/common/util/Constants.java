@@ -4,7 +4,7 @@ public class Constants
 {
     public static final String MOD_ID = "notenoughblocks";
     public static final String MOD_NAME = "NotEnoughBlocks";
-    public static final String MOD_VERSION = "1.0.0";
+    public static final String MOD_VERSION = "%VERSION%";
     public static final String LANG_DEFAULT = "en_US";
     public static final String CLIENT_PROXY = "com.kimfy.notenoughblocks.client.ClientProxy";
     public static final String COMMON_PROXY = "com.kimfy.notenoughblocks.common.ServerProxy";

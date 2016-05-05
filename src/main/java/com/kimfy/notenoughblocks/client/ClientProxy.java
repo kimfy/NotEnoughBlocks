@@ -8,6 +8,8 @@ import com.kimfy.notenoughblocks.common.block.NEBBlockDoublePlant;
 import com.kimfy.notenoughblocks.common.block.NEBBlockFenceGate;
 import com.kimfy.notenoughblocks.common.file.resourcepack.ResourcePack;
 import com.kimfy.notenoughblocks.common.util.Constants;
+import com.kimfy.notenoughblocks.common.util.Log;
+import com.kimfy.notenoughblocks.common.util.block.Shape;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBed;
 import net.minecraft.block.BlockDoor;
@@ -30,6 +32,7 @@ public class ClientProxy extends ServerProxy
     public void preInit(FMLPreInitializationEvent event)
     {   
         super.preInit(event);
+        this.logUnfinishedBlockShapes();
         OneEight.writeBlockStateFiles();
         OneEight.registerItemModels();
         this.ignoreBlockProperties();
@@ -72,5 +75,14 @@ public class ClientProxy extends ServerProxy
         {
             ModelLoader.setCustomStateMapper(block, new StateMap.Builder().ignore(new IProperty[]{ toIgnore }).build());
         }
+    }
+
+    private void logUnfinishedBlockShapes()
+    {
+        Log.debug("The following shapes are not yet supported:");
+        Shape.shapes.values()
+                .stream()
+                .filter(shape -> shape.getBlockClass() == null && shape.getItemClass() == null)
+                .forEach(shape -> Log.info(shape.getName().toUpperCase()));
     }
 }

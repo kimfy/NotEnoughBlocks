@@ -7,6 +7,7 @@ import lombok.Getter;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 
+import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -88,7 +89,7 @@ public class Shape
     @Getter private final Class<? extends Block> blockClass;
     @Getter private final Class<? extends Item> itemClass;
 
-    public Shape(String name, int maxSubBlocks, Class<? extends Block> blockClass, Class<? extends Item> itemClass)
+    public Shape(String name, int maxSubBlocks, @Nullable Class<? extends Block> blockClass, @Nullable Class<? extends Item> itemClass)
     {
         this.name = name;
         this.maxSubBlocks = maxSubBlocks;

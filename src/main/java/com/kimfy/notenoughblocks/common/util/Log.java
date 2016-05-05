@@ -15,6 +15,11 @@ public class Log
         log(Level.ERROR, message, params);
     }
 
+    public static void debug(String message, Object... params)
+    {
+        log(Level.DEBUG, message, params);
+    }
+
     public static void log(Level logLevel, String message, Object... params)
     {
         LogManager.getLogger(Constants.MOD_ID).log(logLevel, "[" + Constants.MOD_NAME + "] " + message, params);

@@ -73,6 +73,7 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
         return this;
     }
 
+    // TODO: Do not use reflection here, very bad practice
     @Override
     public void setBlockMaterial(Material material)
     {
@@ -140,6 +141,7 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
         return modelBlock;
     }
 
+    // TODO: Do not use reflection here, very bad practice
     @Override
     public void setUseNeighborBrightness(boolean useNeighborBrightness)
     {
@@ -150,6 +152,7 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
         catch (Exception e) {} // Catching so it doesn't crash when trying to set "useNeighborBrightness" in obfuscated env
     }
 
+    // TODO: Do not use reflection here, very bad practice
     @Override
     public void setTranslucency(boolean translucent)
     {

@@ -3,7 +3,6 @@ package com.kimfy.notenoughblocks.common.file.json;
 import com.google.gson.*;
 import com.kimfy.notenoughblocks.common.block.IBlockProperties;
 import com.kimfy.notenoughblocks.common.file.FileManager;
-import com.kimfy.notenoughblocks.common.integration.Chisel;
 import com.kimfy.notenoughblocks.common.util.Utilities;
 import com.kimfy.notenoughblocks.common.util.block.*;
 import lombok.Getter;
@@ -71,9 +70,6 @@ public class BlockJson
     protected boolean needsColoring = false; // Used by Double Plants to determine their item color
 
     protected Category category;
-
-    /* Mod Integration */
-    protected Chisel chisel;
 
     /* ========== Setters ========== */
 

@@ -116,7 +116,7 @@ public class OneEight
                                 int metadata = ((Number) entry.get("metadata")).intValue();
                                 String variant   = (String) entry.get("variant");
                                 ResourceLocation rl = new ResourceLocation(Constants.MOD_ID, blockName);
-                                Block block = Block.blockRegistry.getObject(rl);
+                                Block block = Block.REGISTRY.getObject(rl);
 
                                 if (block != null)
                                 {
@@ -176,7 +176,7 @@ public class OneEight
     public static List<Block> getBlocksFromMod(String modId)
     {
         List<Block> temp = new ArrayList<>();
-        for (Block block : Block.blockRegistry)
+        for (Block block : Block.REGISTRY)
         {
             if (block != null && block.getRegistryName().getResourceDomain().equals(modId))
                 temp.add(block);

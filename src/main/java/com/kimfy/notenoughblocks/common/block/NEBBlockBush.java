@@ -44,7 +44,7 @@ public class NEBBlockBush extends BlockBush implements IBlockProperties
     @Override
     protected BlockStateContainer createBlockState()
     {
-        return Blocks.tallgrass.getBlockState();
+        return Blocks.TALLGRASS.getBlockState();
     }
 
     @Override

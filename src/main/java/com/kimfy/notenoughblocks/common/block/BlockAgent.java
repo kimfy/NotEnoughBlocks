@@ -167,6 +167,11 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
 
     public BlockJson get(int metadata)
     {
+        if (metadata >= data.size())
+        {
+            com.kimfy.notenoughblocks.common.util.Log.error("BlockAgent#get: cannot access data({}) because data()#size = {}", metadata, this.data.size());
+            return get(0);
+        }
         return data.get(metadata);
     }
 

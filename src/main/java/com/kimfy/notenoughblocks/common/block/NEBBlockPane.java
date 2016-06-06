@@ -55,7 +55,7 @@ public class NEBBlockPane extends BlockPane implements IBlockProperties
     @Override
     protected BlockStateContainer createBlockState()
     {
-        return Blocks.glass_pane.getBlockState();
+        return Blocks.GLASS_PANE.getBlockState();
     }
 
     @Override

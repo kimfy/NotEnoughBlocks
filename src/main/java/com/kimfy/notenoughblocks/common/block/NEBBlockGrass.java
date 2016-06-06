@@ -51,7 +51,7 @@ public class NEBBlockGrass extends Block implements IGrowable, IBlockProperties
     @Override
     protected BlockStateContainer createBlockState()
     {
-        return Blocks.grass.getBlockState();
+        return Blocks.GRASS.getBlockState();
     }
 
     @Override
@@ -80,12 +80,12 @@ public class NEBBlockGrass extends Block implements IGrowable, IBlockProperties
     public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos)
     {
         Block block = worldIn.getBlockState(pos.up()).getBlock();
-        return state.withProperty(BlockGrass.SNOWY, block == Blocks.snow || block == Blocks.snow_layer);
+        return state.withProperty(BlockGrass.SNOWY, block == Blocks.SNOW || block == Blocks.SNOW_LAYER);
     }
 
     public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
     {
-        Blocks.grass.updateTick(worldIn, pos, state, rand);
+        Blocks.GRASS.updateTick(worldIn, pos, state, rand);
     }
 
     @SideOnly(Side.CLIENT)
@@ -110,6 +110,6 @@ public class NEBBlockGrass extends Block implements IGrowable, IBlockProperties
     @Override
     public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state)
     {
-        Blocks.grass.grow(worldIn, rand, pos, state);
+        Blocks.GRASS.grow(worldIn, rand, pos, state);
     }
 }

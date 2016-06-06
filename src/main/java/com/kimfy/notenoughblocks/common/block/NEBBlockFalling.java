@@ -45,7 +45,7 @@ public class NEBBlockFalling extends BlockFalling implements IBlockProperties
     @Override
     protected BlockStateContainer createBlockState()
     {
-        return Blocks.sand.getBlockState();
+        return Blocks.SAND.getBlockState();
     }
 
     @Override

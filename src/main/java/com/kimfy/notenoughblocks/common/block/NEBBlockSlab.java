@@ -96,7 +96,7 @@ public abstract class NEBBlockSlab extends BlockSlab implements IBlockProperties
     protected BlockStateContainer createBlockState()
     {
         //return this.isDouble() ? new BlockState(this, new IProperty[] {BlockStoneSlab.SEAMLESS, VARIANT}) : new BlockState(this, new IProperty[] {HALF, VARIANT});
-        return this.isDouble() ? Blocks.double_stone_slab.getBlockState() : Blocks.stone_slab.getBlockState();
+        return this.isDouble() ? Blocks.DOUBLE_STONE_SLAB.getBlockState() : Blocks.STONE_SLAB.getBlockState();
     }
 
     private BlockStateContainer createRealBlockState()

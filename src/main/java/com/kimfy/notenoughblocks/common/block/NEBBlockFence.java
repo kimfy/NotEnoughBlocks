@@ -23,7 +23,7 @@ public class NEBBlockFence extends BlockFence implements IBlockProperties
 
     public NEBBlockFence(Material material, List<BlockJson> data)
     {
-        super(material, MapColor.adobeColor);
+        super(material, MapColor.ADOBE);
         this.agent = new BlockAgent<>(this, data);
         int variants = data.size();
         this.VARIANT = ModPropertyInteger.create("metadata", variants);
@@ -46,7 +46,7 @@ public class NEBBlockFence extends BlockFence implements IBlockProperties
     @Override
     protected BlockStateContainer createBlockState()
     {
-        return Blocks.oak_fence.getBlockState();
+        return Blocks.OAK_FENCE.getBlockState();
     }
 
     @Override

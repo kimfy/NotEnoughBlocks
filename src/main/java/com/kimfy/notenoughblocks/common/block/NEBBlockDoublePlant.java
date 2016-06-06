@@ -61,7 +61,7 @@ public class NEBBlockDoublePlant extends BlockDoublePlant implements IBlockPrope
     @Override
     protected BlockStateContainer createBlockState()
     {
-        return Blocks.double_plant.getBlockState();
+        return Blocks.DOUBLE_PLANT.getBlockState();
     }
 
     /* ========== BlockDoublePlant ========== */

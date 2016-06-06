@@ -59,7 +59,7 @@ public class NEBBlockWeb extends NEBBlock implements IBlockProperties
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
-        return Items.string;
+        return Items.STRING;
     }
 
     @Override

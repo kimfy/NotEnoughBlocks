@@ -22,7 +22,7 @@ public class NEBBlockWall extends BlockWall implements IBlockProperties
 
     public NEBBlockWall(Material material, List<BlockJson> data)
     {
-        super(Blocks.stone);
+        super(Blocks.STONE);
         this.agent = new BlockAgent<>(this, data);
 
         int blockCount = data.size();
@@ -47,7 +47,7 @@ public class NEBBlockWall extends BlockWall implements IBlockProperties
     @Override
     protected BlockStateContainer createBlockState()
     {
-        return Blocks.cobblestone_wall.getBlockState();
+        return Blocks.COBBLESTONE_WALL.getBlockState();
     }
 
     @Override

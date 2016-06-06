@@ -58,7 +58,7 @@ public class NEBBlockBrewingStand extends Block implements IBlockProperties
     @Override
     protected BlockStateContainer createBlockState()
     {
-        return Blocks.air.getBlockState();
+        return Blocks.AIR.getBlockState();
     }
 
     @Override

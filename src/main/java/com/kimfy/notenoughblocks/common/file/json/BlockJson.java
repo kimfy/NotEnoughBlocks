@@ -34,7 +34,7 @@ public class BlockJson
 
     /* Block Specific Properties  */
     protected int maxStackSize           = 64;
-    protected CreativeTabs creativeTab   = CreativeTabs.tabBlock;
+    protected CreativeTabs creativeTab   = CreativeTabs.BUILDING_BLOCKS;
     protected Shape shape                = Shape.CUBE;
     protected float  resistance          = 10.0F;
     protected SoundType stepSound        = SoundType.STONE;
@@ -53,7 +53,7 @@ public class BlockJson
     protected String buttonType          = null;
 
     /* 1.9 made these metadata specific */
-    protected Material material          = Material.rock;
+    protected Material material          = Material.ROCK;
     protected float  hardness            = 1.5F;
     protected int lightOpacity           = 255;    // Let shape handle this
     protected float lightLevel           = 0.0F;

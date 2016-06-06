@@ -131,7 +131,7 @@ public class Drop
             min = JsonUtils.getInt(model, "min", 0);
             max = JsonUtils.getInt(model, "max", 0);
 
-            Item item = Item.itemRegistry.getObject(new ResourceLocation(modid, itemName));
+            Item item = Item.REGISTRY.getObject(new ResourceLocation(modid, itemName));
             if (min == 0 && max == 0)
             {
                 return new Drop(item, metadata, amount, 0, 0);

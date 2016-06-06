@@ -81,7 +81,7 @@ public class MinecraftUtilities
         if (modid != null && name != null)
         {
             ResourceLocation rl = new ResourceLocation(modid, name);
-            return  itemExists(rl) ? Item.itemRegistry.getObject(rl) : null;
+            return  itemExists(rl) ? Item.REGISTRY.getObject(rl) : null;
         }
         return null;
     }
@@ -93,7 +93,7 @@ public class MinecraftUtilities
 
     public static boolean itemExists(ResourceLocation rl)
     {
-        return Item.itemRegistry.containsKey(rl);
+        return Item.REGISTRY.containsKey(rl);
     }
 
     /**

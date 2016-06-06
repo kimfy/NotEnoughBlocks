@@ -50,7 +50,7 @@ public class NEBItemBlockDoor extends ItemBlock
                 int j = enumfacing.getFrontOffsetZ();
                 boolean flag = i < 0 && hitZ < 0.5F || i > 0 && hitZ > 0.5F || j < 0 && hitX > 0.5F || j > 0 && hitX < 0.5F;
                 placeDoor(worldIn, pos, enumfacing, this.block, flag);
-                SoundType soundtype = this.block.getStepSound();
+                SoundType soundtype = this.block.getSoundType();
                 worldIn.playSound(playerIn, pos, soundtype.getPlaceSound(), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
                 --stack.stackSize;
                 return EnumActionResult.SUCCESS;

@@ -46,7 +46,7 @@ public class NEBBlockCarpet extends BlockCarpet implements IBlockProperties
     @Override
     protected BlockStateContainer createBlockState()
     {
-        return Blocks.carpet.getBlockState();
+        return Blocks.CARPET.getBlockState();
     }
 
     @Override
@@ -81,6 +81,6 @@ public class NEBBlockCarpet extends BlockCarpet implements IBlockProperties
      */
     public MapColor getMapColor(IBlockState state)
     {
-        return MapColor.adobeColor;
+        return MapColor.ADOBE;
     }
 }

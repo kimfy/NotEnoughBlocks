@@ -38,7 +38,7 @@ public class NEBBlockLayer extends BlockSnow implements IBlockProperties
     @Override
     protected BlockStateContainer createBlockState()
     {
-        return Blocks.snow_layer.getBlockState();
+        return Blocks.SNOW_LAYER.getBlockState();
     }
 
     /**

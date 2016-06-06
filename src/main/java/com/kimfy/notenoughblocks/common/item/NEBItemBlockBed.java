@@ -66,7 +66,7 @@ public class NEBItemBlockBed extends NEBItemBlock
                         worldIn.setBlockState(blockpos, iblockstate2, 11);
                     }
 
-                    SoundType soundtype = iblockstate1.getBlock().getStepSound();
+                    SoundType soundtype = iblockstate1.getBlock().getSoundType();
                     worldIn.playSound(null, pos, soundtype.getPlaceSound(), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
                     --stack.stackSize;
                     return EnumActionResult.SUCCESS;

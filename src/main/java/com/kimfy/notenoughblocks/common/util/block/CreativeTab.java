@@ -13,18 +13,18 @@ public class CreativeTab
 {
     public static Map<String, CreativeTab> creativeTabs = new HashMap<>();
 
-    public static final CreativeTab BUILDINGBLOCKS = new CreativeTab("buildingblocks", CreativeTabs.tabBlock);
-    public static final CreativeTab DECORATIONS = new CreativeTab("decorations", CreativeTabs.tabDecorations);
-    public static final CreativeTab REDSTONE = new CreativeTab("redstone", CreativeTabs.tabRedstone);
-    public static final CreativeTab TRANSPORT = new CreativeTab("transport", CreativeTabs.tabTransport);
-    public static final CreativeTab MISC = new CreativeTab("misc", CreativeTabs.tabMisc);
-    public static final CreativeTab SEARCH = new CreativeTab("search", CreativeTabs.tabAllSearch);
-    public static final CreativeTab FOOD = new CreativeTab("food", CreativeTabs.tabFood);
-    public static final CreativeTab TOOLS = new CreativeTab("tools", CreativeTabs.tabTools);
-    public static final CreativeTab COMBAT = new CreativeTab("combat", CreativeTabs.tabCombat);
-    public static final CreativeTab BREWING = new CreativeTab("brewing", CreativeTabs.tabBrewing);
-    public static final CreativeTab MATERIALS = new CreativeTab("materials", CreativeTabs.tabMaterials);
-    public static final CreativeTab INVENTORY = new CreativeTab("inventory", CreativeTabs.tabInventory);
+    public static final CreativeTab BUILDINGBLOCKS = new CreativeTab("buildingblocks", CreativeTabs.BUILDING_BLOCKS);
+    public static final CreativeTab DECORATIONS = new CreativeTab("decorations", CreativeTabs.DECORATIONS);
+    public static final CreativeTab REDSTONE = new CreativeTab("redstone", CreativeTabs.REDSTONE);
+    public static final CreativeTab TRANSPORT = new CreativeTab("transport", CreativeTabs.TRANSPORTATION);
+    public static final CreativeTab MISC = new CreativeTab("misc", CreativeTabs.MISC);
+    public static final CreativeTab SEARCH = new CreativeTab("search", CreativeTabs.SEARCH);
+    public static final CreativeTab FOOD = new CreativeTab("food", CreativeTabs.FOOD);
+    public static final CreativeTab TOOLS = new CreativeTab("tools", CreativeTabs.TOOLS);
+    public static final CreativeTab COMBAT = new CreativeTab("combat", CreativeTabs.COMBAT);
+    public static final CreativeTab BREWING = new CreativeTab("brewing", CreativeTabs.BREWING);
+    public static final CreativeTab MATERIALS = new CreativeTab("materials", CreativeTabs.MATERIALS);
+    public static final CreativeTab INVENTORY = new CreativeTab("inventory", CreativeTabs.INVENTORY);
 
     private final String name;
     private final CreativeTabs creativeTab;

@@ -43,7 +43,7 @@ public class NEBBlockRotating extends BlockLog implements IBlockProperties
     @Override
     protected BlockStateContainer createBlockState()
     {
-        return Blocks.log.getBlockState();
+        return Blocks.LOG.getBlockState();
     }
 
     /**

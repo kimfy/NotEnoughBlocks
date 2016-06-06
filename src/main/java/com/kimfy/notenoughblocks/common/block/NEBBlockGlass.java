@@ -58,7 +58,7 @@ public class NEBBlockGlass extends BlockGlass implements IBlockProperties
     @Override
     protected BlockStateContainer createBlockState()
     {
-        return Blocks.glass.getBlockState();
+        return Blocks.GLASS.getBlockState();
     }
 
     @Override

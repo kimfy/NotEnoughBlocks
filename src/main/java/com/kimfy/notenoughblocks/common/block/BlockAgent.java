@@ -73,7 +73,7 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
         return this;
     }
 
-    // TODO: Do not use reflection here, very bad practice
+    // TODO: Do not use reflection here
     @Override
     public void setBlockMaterial(Material material)
     {
@@ -84,12 +84,15 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
         catch (Exception e) {} // Catching so it doesn't crash when trying to set "blockMaterial" in obfuscated env
     }
 
-    private SoundType soundType;
-
     @Override
     public void setBlockSoundType(SoundType soundType)
     {
-        this.soundType = soundType;
+        // Routed through because setBlockSoundType is protected (1.9.4)
+        try
+        {
+            ReflectionHelper.setPrivateValue(Block.class, this.block, soundType, "v", "blockSoundType");
+        }
+        catch (Exception e) {} // Catching so it doesn't crash when trying to set "blockSoundType" in obfuscated env
     }
 
     public List<IProperty> blockStateProperties = new ArrayList<>();
@@ -141,7 +144,7 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
         return modelBlock;
     }
 
-    // TODO: Do not use reflection here, very bad practice
+    // TODO: Do not use reflection here
     @Override
     public void setUseNeighborBrightness(boolean useNeighborBrightness)
     {
@@ -152,7 +155,7 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
         catch (Exception e) {} // Catching so it doesn't crash when trying to set "useNeighborBrightness" in obfuscated env
     }
 
-    // TODO: Do not use reflection here, very bad practice
+    // TODO: Do not use reflection here
     @Override
     public void setTranslucency(boolean translucent)
     {
@@ -231,12 +234,6 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
     public boolean canProvidePower(IBlockState state)
     {
         return get(state).isCanProvidePower();
-    }
-
-    @SuppressWarnings("unused")
-    public SoundType getStepSound()
-    {
-        return this.soundType;
     }
 
 

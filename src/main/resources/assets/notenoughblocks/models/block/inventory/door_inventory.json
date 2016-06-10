@@ -1,5 +1,12 @@
 {
     "parent": "block/block",
+    "display": {
+        "gui": {
+            "rotation":    [ 30, 135, 0 ],
+            "translation": [ -1.5, -2.3, 0 ],
+            "scale":       [ 0.425, 0.425, 0.425 ]
+        }
+    },
 	"elements": [
 		{
 			"from": [ 0, 16, 0 ],

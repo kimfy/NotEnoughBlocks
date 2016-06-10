@@ -1,6 +1,7 @@
 package com.kimfy.notenoughblocks.client;
 
 import com.kimfy.notenoughblocks.client.file.json.OneEight;
+import com.kimfy.notenoughblocks.client.file.json.OneEightV2;
 import com.kimfy.notenoughblocks.common.ServerProxy;
 import com.kimfy.notenoughblocks.common.block.NEBBlockBed;
 import com.kimfy.notenoughblocks.common.block.NEBBlockDoor;
@@ -35,6 +36,7 @@ public class ClientProxy extends ServerProxy
         this.logUnfinishedBlockShapes();
         OneEight.writeBlockStateFiles();
         OneEight.registerItemModels();
+        OneEightV2.load();
         this.ignoreBlockProperties();
         this.registerResourcePack();
     }

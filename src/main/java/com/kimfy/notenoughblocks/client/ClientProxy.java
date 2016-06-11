@@ -82,7 +82,7 @@ public class ClientProxy extends ServerProxy
     private void logUnfinishedBlockShapes()
     {
         Log.debug("The following shapes are not yet supported:");
-        Shape.shapes.values()
+        Shape.SHAPES.values()
                 .stream()
                 .filter(shape -> shape.getBlockClass() == null && shape.getItemClass() == null)
                 .forEach(shape -> Log.info(shape.getName().toUpperCase()));

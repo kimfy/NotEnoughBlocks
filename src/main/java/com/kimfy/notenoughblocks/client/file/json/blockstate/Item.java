@@ -3,13 +3,11 @@ package com.kimfy.notenoughblocks.client.file.json.blockstate;
 import com.google.gson.*;
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
-import lombok.Setter;
 import net.minecraft.util.JsonUtils;
 
 import java.lang.reflect.Type;
 
 @Getter
-@Setter
 class Item
 {
     /**
@@ -23,6 +21,18 @@ class Item
     @SerializedName("variant") private String variant;
 
     public Item() {}
+
+    public Item setMetadata(int metadata)
+    {
+        this.metadata = metadata;
+        return this;
+    }
+
+    public Item setVariant(String variant)
+    {
+        this.variant = variant;
+        return this;
+    }
 
     public static class Deserializer implements JsonDeserializer<Item>
     {

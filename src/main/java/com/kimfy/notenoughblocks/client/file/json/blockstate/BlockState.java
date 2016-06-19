@@ -170,7 +170,8 @@ class BlockState
             {
                 JsonArray itemRenders = new JsonArray();
                 json.add("item_renders", itemRenders);
-                blockState.getItemRenders().forEach(item -> OneEightV2.GSON.toJsonTree(item, Item.class));
+                blockState.getItemRenders().forEach(item ->
+                        itemRenders.add(OneEightV2.GSON.toJsonTree(item, Item.class)));
             }
 
             return json;

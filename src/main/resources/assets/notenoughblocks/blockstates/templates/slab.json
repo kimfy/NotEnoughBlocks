@@ -1,6 +1,7 @@
 {
 	"variants": {
 		"half=bottom,metadata=#metadata": { "model": "notenoughblocks:half_slab" },
-		"half=top,metadata=#metadata":    { "model": "notenoughblocks:upper_slab" }
+		"half=top,metadata=#metadata":    { "model": "notenoughblocks:upper_slab" },
+        "item,metadata=#metadata":        { "model": "notenoughblocks:inventory/slab_inventory" }
 	}
 }

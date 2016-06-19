@@ -61,7 +61,8 @@ class Variant
      */
     public static Variant deepCopy(Variant variant)
     {
-        return OneEightV2.GSON.fromJson(OneEightV2.GSON.toJsonTree(variant, Variant.class), Variant.class);
+        return OneEightV2.GSON.fromJson(OneEightV2.GSON.toJsonTree(variant, Variant.class), Variant.class)
+                .setName(variant.getName());
     }
 
     public static class Deserializer implements JsonDeserializer<Variant>

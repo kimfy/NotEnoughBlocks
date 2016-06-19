@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import net.minecraft.util.JsonUtils;
 
 import javax.annotation.Nullable;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class JsonUtilities
@@ -17,6 +18,6 @@ public class JsonUtilities
     {
         if (!JsonUtils.hasField(json, propertyName)) return fallBack;
         json = JsonUtils.getJsonObject(json, propertyName);
-        return GSON.<Map<K, V>>fromJson(json, Map.class);
+        return GSON.<LinkedHashMap<K, V>>fromJson(json, Map.class);
     }
 }

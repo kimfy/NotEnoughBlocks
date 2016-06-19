@@ -18,7 +18,7 @@ public class Utilities
     /**
      * Deep clones the given List. Had to implement
      * this because Java's default cloning sucks ass and
-     * only makes a shallow copy of the Object.
+     * only makes a shallow deepCopy of the Object.
      * 
      * @return A deep-copied <code> List <BlockJson> </code>
      */

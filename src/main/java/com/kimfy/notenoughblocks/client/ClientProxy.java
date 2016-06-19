@@ -1,7 +1,7 @@
 package com.kimfy.notenoughblocks.client;
 
 import com.kimfy.notenoughblocks.client.file.json.OneEight;
-import com.kimfy.notenoughblocks.client.file.json.OneEightV2;
+import com.kimfy.notenoughblocks.client.file.json.blockstate.OneEightV2;
 import com.kimfy.notenoughblocks.common.ServerProxy;
 import com.kimfy.notenoughblocks.common.block.NEBBlockBed;
 import com.kimfy.notenoughblocks.common.block.NEBBlockDoor;

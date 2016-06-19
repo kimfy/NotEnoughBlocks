@@ -29,6 +29,7 @@ import java.util.Map;
  * The purpose of this Class is to handle writing blockstate files for all blocks under this mod
  * # === UNSTABLE === # === UNSTABLE === # === UNSTABLE === # === UNSTABLE === # === UNSTABLE === # === UNSTABLE === #
  */
+@Deprecated
 @SideOnly(Side.CLIENT)
 public class OneEight
 {

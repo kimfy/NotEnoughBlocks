@@ -142,8 +142,8 @@ public class JsonProcessor
         Material material = model.getMaterial();
         String unlocalizedName = json.getName() + "_" + model.getShape() + "_" + index;
         ResourceLocation rl = new ResourceLocation(Constants.MOD_ID, unlocalizedName);
-        Class<?> blockClass;
-        Class<?> itemClass;
+        Class<? extends Block> blockClass;
+        Class<? extends Item> itemClass;
         Block block;
         Item item;
 
@@ -180,7 +180,7 @@ public class JsonProcessor
                     Constructor<?> blockConstructor = blockClass.getConstructor(Material.class, List.class); // block
                     Constructor<?> itemConstructor = itemClass.getConstructor(Block.class);
 
-                    block = (Block & IBlockProperties) blockConstructor.newInstance(material, Utilities.deepCloneList(blocks));
+                    block = (Block) blockConstructor.newInstance(material, Utilities.deepCloneList(blocks));
                     item = (Item) itemConstructor.newInstance(block);
 
                     GameRegistry.register(block, rl);

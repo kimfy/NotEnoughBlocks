@@ -50,6 +50,7 @@ public final class OneEightV2
         this.getBlocks();
         if (!this.blocks.isEmpty())
         {
+            BLOCK_STATE_FOLDER.mkdirs();
             this.populateShapesTable();
             this.writeBlockStates();
             this.registerItemModels();
@@ -163,7 +164,7 @@ public final class OneEightV2
     {
         String blockName = block.getRegistryName().getResourcePath();
         return Arrays.stream(BLOCK_STATE_FOLDER.list())
-                .anyMatch(f -> f.equals(blockName));
+                .anyMatch(f -> f.equals(String.format("%s.%s", blockName, "json")));
     }
 
     private void createBlockStateFor(IBlockProperties block, Shape shape, BlockState blockState)

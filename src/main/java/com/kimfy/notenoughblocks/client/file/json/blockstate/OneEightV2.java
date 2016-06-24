@@ -294,7 +294,6 @@ public final class OneEightV2
         String fileName = String.format("%s.json", registryName.getResourcePath());
         File output = new File(String.format("%s/%s", BLOCK_STATE_FOLDER.getAbsolutePath(), fileName));
         String content = OneEightV2.GSON.toJson(blockState, BlockState.class);
-        Log.info("Writing block state json for {}", registryName);
 
         try
         {

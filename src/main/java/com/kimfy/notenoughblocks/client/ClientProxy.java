@@ -33,7 +33,6 @@ public class ClientProxy extends ServerProxy
     public void preInit(FMLPreInitializationEvent event)
     {   
         super.preInit(event);
-        this.logUnfinishedBlockShapes();
         OneEightV2.load();
         this.ignoreBlockProperties();
         this.registerResourcePack();
@@ -78,14 +77,5 @@ public class ClientProxy extends ServerProxy
         {
             ModelLoader.setCustomStateMapper(block, new StateMap.Builder().ignore(new IProperty[]{ toIgnore }).build());
         }
-    }
-
-    private void logUnfinishedBlockShapes()
-    {
-        Log.debug("The following shapes are not yet supported:");
-        Shape.SHAPES.values()
-                .stream()
-                .filter(shape -> shape.getBlockClass() == null && shape.getItemClass() == null)
-                .forEach(shape -> Log.info(shape.getName().toUpperCase()));
     }
 }

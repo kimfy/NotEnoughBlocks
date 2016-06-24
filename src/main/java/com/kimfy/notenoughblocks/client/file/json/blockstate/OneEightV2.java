@@ -2,6 +2,7 @@ package com.kimfy.notenoughblocks.client.file.json.blockstate;
 
 import com.google.gson.*;
 import com.kimfy.notenoughblocks.common.block.IBlockProperties;
+import com.kimfy.notenoughblocks.common.file.json.BlockJson;
 import com.kimfy.notenoughblocks.common.util.Constants;
 import com.kimfy.notenoughblocks.common.util.Log;
 import com.kimfy.notenoughblocks.common.util.block.Shape;
@@ -21,6 +22,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @SideOnly(Side.CLIENT)
 public final class OneEightV2
@@ -192,6 +194,7 @@ public final class OneEightV2
             }
             this.setTextureMap(block, blockState, variants, metadata);
             this.setItemRenders(shape, blockState, metadata);
+            this.handleSpecialVariants(block, metadata, variants);
         }
         this.writeBlockStateToFile(blockState, ((Block) block).getRegistryName());
     }
@@ -208,6 +211,35 @@ public final class OneEightV2
         blockState.getItemRenders().add(new Item()
                 .setMetadata(metadata)
                 .setVariant(shape.isMetadataBlock() ? String.format("item,metadata=%s", metadata) : "item"));
+    }
+
+    /**
+     * Some variants need their models changed, the sunflower for example, cannot have the same model as all the other
+     * double plants, it needs a special one. So we change the model path here to accommodate for that.
+     */
+    private void handleSpecialVariants(IBlockProperties block, int metadata, List<Variant> variants)
+    {
+        BlockJson model = block.getBlockAgent().get(metadata);
+        if (model.isSunflower())
+        {
+            variants.stream()
+                .map(Optional::of)
+                .flatMap(o -> o.isPresent() ? Stream.of(o.get()) : Stream.empty()).forEach(variant ->
+                {
+                    Model m;
+                    if (variant.getName().contains("half=upper"))
+                    {
+                        m = variant.getModel();
+                        m.setModel(String.format("%s:double_plant_sunflower_top", Constants.MOD_ID));
+                    }
+                    else if (variant.getName().contains("item"))
+                    {
+                        m = variant.getModel();
+                        m.setModel(String.format("%s:inventory/double_plant_sunflower_inventory", Constants.MOD_ID));
+                    }
+                });
+            return;
+        }
     }
 
     private List<Variant> copyTemplateVariants(List<Variant> variants)

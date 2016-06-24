@@ -34,8 +34,6 @@ public class ClientProxy extends ServerProxy
     {   
         super.preInit(event);
         this.logUnfinishedBlockShapes();
-        //OneEight.writeBlockStateFiles();
-        //OneEight.registerItemModels();
         OneEightV2.load();
         this.ignoreBlockProperties();
         this.registerResourcePack();

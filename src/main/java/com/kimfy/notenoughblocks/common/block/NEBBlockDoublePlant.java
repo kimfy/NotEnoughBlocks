@@ -25,11 +25,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-/**
- * TODO: Improve this class
- * Needs adding:
- * 1. Sunflowers are fucked - the top part isn't connected to the bottom
- */
 public class NEBBlockDoublePlant extends BlockDoublePlant implements IBlockProperties, IGrowable, IShearable, IPlantable
 {
     private final ModPropertyInteger VARIANT;
@@ -66,6 +61,11 @@ public class NEBBlockDoublePlant extends BlockDoublePlant implements IBlockPrope
 
     /* ========== BlockDoublePlant ========== */
 
+    @Override
+    public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state)
+    {
+        return new ItemStack(this, 1, this.getVariant(worldIn, pos));
+    }
 
     public int getVariant(IBlockAccess worldIn, BlockPos pos)
     {
@@ -94,9 +94,6 @@ public class NEBBlockDoublePlant extends BlockDoublePlant implements IBlockPrope
     @Override
     public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient)
     {
-        //BlockDoublePlant.EnumPlantType blockdoubleplant$enumplanttype = this.getVariant(worldIn, pos);
-        int variant = this.getVariant(worldIn, pos);
-        //return blockdoubleplant$enumplanttype != BlockDoublePlant.EnumPlantType.GRASS && blockdoubleplant$enumplanttype != BlockDoublePlant.EnumPlantType.FERN;
         return true;
     }
 

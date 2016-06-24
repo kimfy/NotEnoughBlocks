@@ -124,10 +124,9 @@ public class MinecraftUtilities
 
     public static class EventHandler
     {
-        public EventHandler()
-        {
-        }
+        public EventHandler() {}
 
+        @SuppressWarnings("unused")
         @SubscribeEvent
         public void onPlayerClickBlock(PlayerInteractEvent.RightClickBlock event)
         {
@@ -135,7 +134,7 @@ public class MinecraftUtilities
             World world = event.getWorld();
             EntityPlayer player = event.getEntityPlayer();
 
-            if (pos != null && world != null && player != null && world.isRemote && event.getHand() == EnumHand.MAIN_HAND && player.capabilities.isCreativeMode && event.getItemStack() == null) // Process on client only
+            if (world.isRemote && player != null && player.capabilities.isCreativeMode && event.getItemStack() == null)
             {
                 try
                 {

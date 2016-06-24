@@ -1018,7 +1018,10 @@
       },
       "shape": "button",
       "hardness": 0.5,
-      "stepSound": "stone"
+      "material": "circuits",
+      "stepSound": "stone",
+      "buttonOnSound": "stone",
+      "buttonOffSound": "stone"
     },
     {
       "displayName": "Snow",
@@ -1935,7 +1938,9 @@
       "shape": "button",
       "hardness": 0.5,
       "material": "circuits",
-      "stepSound": "wood"
+      "stepSound": "wood",
+      "buttonOnSound": "wood",
+      "buttonOffSound": "wood"
     },
     {
       "displayName": "Anvil",

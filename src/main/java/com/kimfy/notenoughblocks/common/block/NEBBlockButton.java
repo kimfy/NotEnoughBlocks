@@ -5,6 +5,8 @@ import lombok.experimental.Delegate;
 import net.minecraft.block.BlockButton;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -25,12 +27,12 @@ public class NEBBlockButton extends BlockButton implements IBlockProperties
     @Override
     protected void playClickSound(@Nullable EntityPlayer player, World worldIn, BlockPos pos)
     {
-        // TODO
+        worldIn.playSound(player, pos, this.get(worldIn.getBlockState(pos)).getButtonOnSound(), SoundCategory.BLOCKS, 0.3F, 0.6F);
     }
 
     @Override
     protected void playReleaseSound(World worldIn, BlockPos pos)
     {
-        // TODO
+        worldIn.playSound(null, pos, this.get(worldIn.getBlockState(pos)).getButtonOffSound(), SoundCategory.BLOCKS, 0.3F, 0.5F);
     }
 }

@@ -9,8 +9,11 @@ import lombok.Getter;
 import net.minecraft.block.BlockPressurePlate;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.audio.Sound;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.util.JsonUtils;
+import net.minecraft.util.SoundEvent;
 
 import java.lang.reflect.Type;
 import java.util.*;
@@ -68,6 +71,10 @@ public class BlockJson
     protected boolean isSunflower   = false;
     protected boolean isDeadBush    = false;
     protected boolean needsColoring = false; // Used by Double Plants to determine their item color
+
+    /* Miscellaneous */
+    protected SoundEvent buttonOnSound  = SoundEvents.BLOCK_STONE_BUTTON_CLICK_ON;
+    protected SoundEvent buttonOffSound = SoundEvents.BLOCK_STONE_BUTTON_CLICK_OFF;
 
     protected Category category;
 
@@ -282,6 +289,8 @@ public class BlockJson
             block.fullCube           = JsonUtils.getBoolean(json, "fullCube", true);
             block.translucent        = JsonUtils.getBoolean(json, "translucent", block.getShape().isTranslucent());
             block.canProvidePower    = JsonUtils.getBoolean(json, "canProvidePower", false);
+            /* Miscellaneous */
+            this.setButtonSoundType(block, json);
 
             this.setBlockDrops(block, json);
             this.setBlockRecipe(block, json);
@@ -289,6 +298,14 @@ public class BlockJson
             // block.oreDict
 
             return block;
+        }
+
+        private void setButtonSoundType(BlockJson model, JsonObject json)
+        {
+            if (!JsonUtils.hasField(json, "buttonOnSound") && !JsonUtils.hasField(json, "buttonOffSound"))
+                return;
+            model.buttonOnSound  = ButtonSoundType.getSound(JsonUtils.getString(json, "buttonOnSound"));
+            model.buttonOffSound = ButtonSoundType.getSound(JsonUtils.getString(json, "buttonOffSound"));
         }
 
         private void setBlockDrops(BlockJson model, JsonObject json)
@@ -370,12 +387,22 @@ public class BlockJson
             addProperty(json, "translucent", block.isTranslucent(), block.getShape().isTranslucent());
             addProperty(json, "canProvidePower", block.isCanProvidePower(), false);
 
+            /* Miscellaneous */
+            if (block.getShape() == Shape.BUTTON)
+                this.addButtonSoundType(json, block);
+
             this.setBlockDrops(json, block);
             this.setBlockRecipe(json, block);
             // model.lore
             // model.oreDict
 
             return json;
+        }
+
+        private void addButtonSoundType(JsonObject json, BlockJson block)
+        {
+            this.addProperty(json, "buttonOnSound", ButtonSoundType.toString(block.buttonOnSound), "wood");
+            this.addProperty(json, "buttonOffSound", ButtonSoundType.toString(block.buttonOffSound), "wood");
         }
 
         private void setBlockDrops(JsonObject json, BlockJson block)

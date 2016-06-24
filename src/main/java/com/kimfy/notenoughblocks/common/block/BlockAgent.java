@@ -11,6 +11,7 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
@@ -191,7 +192,7 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
 
     /* ========== Delegated from Block ========== */
 
-    protected static java.util.Random RANDOM = new java.util.Random();
+    private static java.util.Random RANDOM = new java.util.Random();
 
     @SuppressWarnings("unused")
     public Material getMaterial(IBlockState state)

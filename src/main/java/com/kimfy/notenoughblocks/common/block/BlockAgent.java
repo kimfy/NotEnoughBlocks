@@ -1,6 +1,7 @@
 package com.kimfy.notenoughblocks.common.block;
 
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
+import com.kimfy.notenoughblocks.common.util.Log;
 import com.kimfy.notenoughblocks.common.util.block.Drop;
 import com.kimfy.notenoughblocks.common.util.block.Shape;
 import lombok.Getter;
@@ -11,7 +12,6 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
@@ -85,6 +85,7 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
         catch (Exception e) {} // Catching so it doesn't crash when trying to set "blockMaterial" in obfuscated env
     }
 
+    // TODO: Maybe not do this
     @Override
     public void setBlockSoundType(SoundType soundType)
     {
@@ -173,7 +174,7 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
     {
         if (metadata >= data.size())
         {
-            com.kimfy.notenoughblocks.common.util.Log.error("BlockAgent#get: cannot access data({}) because data()#size = {}", metadata, this.data.size());
+            Log.error("BlockAgent#get: cannot access data({}) because data()#size = {}", metadata, this.data.size());
             return get(0);
         }
         return data.get(metadata);

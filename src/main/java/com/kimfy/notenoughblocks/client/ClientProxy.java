@@ -8,8 +8,6 @@ import com.kimfy.notenoughblocks.common.block.NEBBlockDoublePlant;
 import com.kimfy.notenoughblocks.common.block.NEBBlockFenceGate;
 import com.kimfy.notenoughblocks.common.file.resourcepack.ResourcePack;
 import com.kimfy.notenoughblocks.common.util.Constants;
-import com.kimfy.notenoughblocks.common.util.Log;
-import com.kimfy.notenoughblocks.common.util.block.Shape;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBed;
 import net.minecraft.block.BlockDoor;

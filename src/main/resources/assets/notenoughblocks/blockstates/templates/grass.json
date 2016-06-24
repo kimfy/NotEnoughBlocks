@@ -1,5 +1,4 @@
 {
-	"__comment": "TODO: Fix grass in inventory not having a color for the top texture. Maybe it's a map color thing in BlockGrass",
     "variants": {
         "metadata=#metadata,snowy=false": [
             { "model": "notenoughblocks:grass_normal" },

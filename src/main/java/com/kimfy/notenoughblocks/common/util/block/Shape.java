@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class Shape
 {
-    public static Map<String, Shape> shapes = new HashMap<>();
+    public static final Map<String, Shape> SHAPES = new HashMap<>();
 
     public static final Shape CUBE = new Shape("cube", 16, NEBBlock.class, NEBItemBlock.class);
     public static final Shape STAIR = new Shape("stair", 1, NEBBlockStair.class, NEBItemBlockStair.class).useNeighborBrightness(true);
@@ -100,14 +100,14 @@ public class Shape
 
     private void register()
     {
-        shapes.put(this.getName(), this);
+        SHAPES.put(this.getName(), this);
     }
 
     public static Shape get(String shape)
     {
-        if (shapes.containsKey(shape))
+        if (SHAPES.containsKey(shape))
         {
-            return shapes.get(shape);
+            return SHAPES.get(shape);
         }
         else
         {

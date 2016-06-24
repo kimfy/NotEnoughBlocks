@@ -15,6 +15,11 @@ public class Log
         log(Level.ERROR, message, params);
     }
 
+    public static void warn(String message, Object... params)
+    {
+        log(Level.WARN, message, params);
+    }
+
     public static void debug(String message, Object... params)
     {
         log(Level.DEBUG, message, params);

@@ -1,6 +1,6 @@
 package com.kimfy.notenoughblocks.client;
 
-import com.kimfy.notenoughblocks.client.file.json.OneEight;
+import com.kimfy.notenoughblocks.client.file.json.blockstate.OneEightV2;
 import com.kimfy.notenoughblocks.common.ServerProxy;
 import com.kimfy.notenoughblocks.common.block.NEBBlockBed;
 import com.kimfy.notenoughblocks.common.block.NEBBlockDoor;
@@ -24,6 +24,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @SideOnly(Side.CLIENT)
 public class ClientProxy extends ServerProxy
@@ -33,8 +34,7 @@ public class ClientProxy extends ServerProxy
     {   
         super.preInit(event);
         this.logUnfinishedBlockShapes();
-        OneEight.writeBlockStateFiles();
-        OneEight.registerItemModels();
+        OneEightV2.load();
         this.ignoreBlockProperties();
         this.registerResourcePack();
     }
@@ -58,7 +58,10 @@ public class ClientProxy extends ServerProxy
 
     private void ignoreBlockProperties()
     {
-        List<Block> blocks = OneEight.blocks;
+        List<Block> blocks = Block.REGISTRY.getKeys().stream()
+                .filter(rl -> rl.getResourceDomain().equals(Constants.MOD_ID))
+                .map(Block.REGISTRY::getObject)
+                .collect(Collectors.toList());
 
         for (Block block : blocks)
         {
@@ -80,7 +83,7 @@ public class ClientProxy extends ServerProxy
     private void logUnfinishedBlockShapes()
     {
         Log.debug("The following shapes are not yet supported:");
-        Shape.shapes.values()
+        Shape.SHAPES.values()
                 .stream()
                 .filter(shape -> shape.getBlockClass() == null && shape.getItemClass() == null)
                 .forEach(shape -> Log.info(shape.getName().toUpperCase()));

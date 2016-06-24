@@ -1,6 +1,6 @@
 {
     "variants": {
-        "metadata=#metadata":      { "model": "cube", "uvLock": true },
+        "metadata=#metadata":      { "model": "minecraft:cube" },
         "item,metadata=#metadata": { "model": "notenoughblocks:inventory/cube_inventory" }
     }
 }

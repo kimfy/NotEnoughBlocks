@@ -111,7 +111,6 @@ public class ResourcePack
         FileUtilities.extractZip(file, Constants.PATH_MOD_CONFIG_RESOURCE_PACKS + name + "_extracted");
     }
 
-    // TODO: Implement hasAlreadyBeenMoved and cache the results
     public void move()
     {
         File temp = new File(Constants.PATH_MOD_CONFIG_RESOURCE_PACKS + name + "_extracted/assets/minecraft/textures/blocks/");

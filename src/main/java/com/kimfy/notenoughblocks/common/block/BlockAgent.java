@@ -85,7 +85,7 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
         catch (Exception e) {} // Catching so it doesn't crash when trying to set "blockMaterial" in obfuscated env
     }
 
-    // TODO: Maybe not do this
+    // TODO: Maybe not do this and generify it upon block creation instead? I don't know how I'd do it
     @Override
     public void setBlockSoundType(SoundType soundType)
     {

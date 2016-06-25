@@ -151,7 +151,7 @@ public class JsonProcessor
         {
             blockClass = shape.getBlockClass();
             itemClass = shape.getItemClass();
-            if (blockClass != null)
+            if (blockClass != null && itemClass != null)
             {
                 if (shape == Shape.SLAB) // TODO: Generify this
                 {

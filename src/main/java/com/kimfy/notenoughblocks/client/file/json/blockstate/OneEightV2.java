@@ -4,12 +4,12 @@ import com.google.gson.*;
 import com.kimfy.notenoughblocks.common.block.IBlockProperties;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
 import com.kimfy.notenoughblocks.common.util.Constants;
+import com.kimfy.notenoughblocks.common.util.JsonUtilities;
 import com.kimfy.notenoughblocks.common.util.Log;
 import com.kimfy.notenoughblocks.common.util.block.Shape;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Blocks;
-import net.minecraft.util.JsonUtils;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
@@ -71,7 +71,7 @@ public final class OneEightV2
                 continue;
             }
 
-            String blockName = JsonUtils.getString(src, "block_name");
+            String blockName = JsonUtilities.getString(src, "block_name");
             List<Item> items = this.getItemRenders(src);
             items.forEach(i -> this.registerItemModel(blockName, i));
         }
@@ -97,7 +97,7 @@ public final class OneEightV2
     private List<Item> getItemRenders(JsonObject src)
     {
         List<Item> itemRenders = new LinkedList<>();
-        for (JsonElement e : JsonUtils.getJsonArray(src, "item_renders"))
+        for (JsonElement e : JsonUtilities.getJsonArray(src, "item_renders"))
         {
             itemRenders.add(GSON.fromJson(e, Item.class));
         }

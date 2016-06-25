@@ -1,5 +1,6 @@
 package com.kimfy.notenoughblocks.common.item;
 
+import lombok.experimental.Delegate;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSnow;
 import net.minecraft.block.SoundType;
@@ -15,13 +16,16 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class NEBItemBlockLayer extends ItemBlock
+public class NEBItemBlockLayer extends ItemBlock implements IItemProperties
 {
     private final Block block;
+    @Delegate
+    private final ItemAgent<NEBItemBlockLayer> agent;
 
     public NEBItemBlockLayer(Block block)
     {
         super(block);
+        this.agent = new ItemAgent<>(this);
         this.block = block;
         this.setMaxDamage(0);
         this.setHasSubtypes(true);

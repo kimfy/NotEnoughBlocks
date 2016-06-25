@@ -3,17 +3,21 @@ package com.kimfy.notenoughblocks.common.item;
 import com.kimfy.notenoughblocks.common.block.NEBBlockBush;
 import com.kimfy.notenoughblocks.common.block.NEBBlockDoublePlant;
 import com.kimfy.notenoughblocks.common.block.NEBBlockGrass;
+import lombok.experimental.Delegate;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
-public class NEBItemBlock extends ItemBlock
+public class NEBItemBlock extends ItemBlock implements IItemProperties
 {
     private final boolean isColoredBlock;
+    @Delegate
+    private final ItemAgent<NEBItemBlock> agent;
 
     public NEBItemBlock(Block block)
     {
         super(block);
+        this.agent = new ItemAgent<>(this);
         this.setHasSubtypes(true);
         this.setMaxDamage(0);
         this.isColoredBlock = block instanceof NEBBlockGrass || block instanceof NEBBlockBush || block instanceof NEBBlockDoublePlant;

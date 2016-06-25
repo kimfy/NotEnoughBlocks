@@ -2,8 +2,8 @@ package com.kimfy.notenoughblocks.client.file.json.blockstate;
 
 import com.google.gson.*;
 import com.google.gson.annotations.SerializedName;
+import com.kimfy.notenoughblocks.common.util.JsonUtilities;
 import lombok.Getter;
-import net.minecraft.util.JsonUtils;
 
 import java.lang.reflect.Type;
 
@@ -41,8 +41,8 @@ class Item
             JsonObject json = src.getAsJsonObject();
             Item item = new Item();
 
-            if (JsonUtils.hasField(json, "metadata")) item.setMetadata(JsonUtils.getInt(json, "metadata"));
-            if (JsonUtils.hasField(json, "variant")) item.setVariant(JsonUtils.getString(json, "variant"));
+            if (JsonUtilities.hasField(json, "metadata")) item.setMetadata(JsonUtilities.getInt(json, "metadata"));
+            if (JsonUtilities.hasField(json, "variant")) item.setVariant(JsonUtilities.getString(json, "variant"));
 
             return item;
         }

@@ -5,6 +5,7 @@ import com.kimfy.notenoughblocks.common.util.block.Shape;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
+import net.minecraft.util.ResourceLocation;
 
 import java.util.List;
 
@@ -35,4 +36,6 @@ public interface IBlockProperties
     void setUseNeighborBrightness(boolean useNeighborBrightness);
 
     void setTranslucency(boolean translucent);
+
+    void register(ResourceLocation registryName);
 }

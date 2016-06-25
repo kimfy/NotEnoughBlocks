@@ -2,6 +2,7 @@ package com.kimfy.notenoughblocks.common.util.block;
 
 import com.google.gson.*;
 import com.kimfy.notenoughblocks.common.util.IRegisterable;
+import com.kimfy.notenoughblocks.common.util.JsonUtilities;
 import com.kimfy.notenoughblocks.common.util.MinecraftUtilities;
 import com.kimfy.notenoughblocks.common.util.Registrar;
 import net.minecraft.block.Block;
@@ -10,7 +11,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
-import net.minecraft.util.JsonUtils;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.lang.reflect.Type;
@@ -98,7 +98,7 @@ public class Recipe implements IRegisterable
                 JsonArray jsonRecipe = src.getAsJsonArray();
 
                 JsonObject options = hasOptions(jsonRecipe);
-                int output = options != null ? JsonUtils.getInt(options, "amount", 1) : 1;
+                int output = options != null ? JsonUtilities.getInt(options, "amount", 1) : 1;
                 JsonArray temp = getFirstArray(jsonRecipe);
 
                 width =  temp != null ? temp.size() : 3; // jsonRecipe.get(0).getAsJsonArray().size(); // get the size of the first array

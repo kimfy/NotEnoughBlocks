@@ -14,9 +14,11 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -80,7 +82,7 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
     {
         try
         {
-            ReflectionHelper.setPrivateValue(Block.class, this.block, material, "x", "blockMaterial");
+            ReflectionHelper.setPrivateValue(Block.class, this.block, material, "field_149764_J", "x", "blockMaterial");
         }
         catch (Exception e) {} // Catching so it doesn't crash when trying to set "blockMaterial" in obfuscated env
     }
@@ -92,7 +94,7 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
         // Routed through because setBlockSoundType is protected (1.9.4)
         try
         {
-            ReflectionHelper.setPrivateValue(Block.class, this.block, soundType, "v", "blockSoundType");
+            ReflectionHelper.setPrivateValue(Block.class, this.block, soundType, "field_149762_H", "v", "blockSoundType");
         }
         catch (Exception e) {} // Catching so it doesn't crash when trying to set "blockSoundType" in obfuscated env
     }
@@ -152,7 +154,7 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
     {
         try
         {
-            ReflectionHelper.setPrivateValue(Block.class, this.block, useNeighborBrightness, "p", "useNeighborBrightness");
+            ReflectionHelper.setPrivateValue(Block.class, this.block, useNeighborBrightness, "field_149783_u", "p", "useNeighborBrightness");
         }
         catch (Exception e) {} // Catching so it doesn't crash when trying to set "useNeighborBrightness" in obfuscated env
     }
@@ -163,9 +165,15 @@ public class BlockAgent<T extends Block & IBlockProperties> implements IBlockPro
     {
         try
         {
-            ReflectionHelper.setPrivateValue(Block.class, this.block, translucent, "n", "translucent");
+            ReflectionHelper.setPrivateValue(Block.class, this.block, translucent, "field_149785_s", "n", "translucent");
         }
         catch (Exception e) {} // Catching so it doesn't crash when trying to set "translucent" in obfuscated env
+    }
+
+    @Override
+    public void register(ResourceLocation registryName)
+    {
+        GameRegistry.register(block, registryName);
     }
 
     /* ========== Helpers ========== */

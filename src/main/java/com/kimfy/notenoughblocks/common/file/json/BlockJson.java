@@ -3,6 +3,7 @@ package com.kimfy.notenoughblocks.common.file.json;
 import com.google.gson.*;
 import com.kimfy.notenoughblocks.common.block.IBlockProperties;
 import com.kimfy.notenoughblocks.common.file.FileManager;
+import com.kimfy.notenoughblocks.common.util.JsonUtilities;
 import com.kimfy.notenoughblocks.common.util.Utilities;
 import com.kimfy.notenoughblocks.common.util.block.*;
 import lombok.Getter;
@@ -11,7 +12,6 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.util.JsonUtils;
 import net.minecraft.util.SoundEvent;
 
 import java.lang.reflect.Type;
@@ -252,42 +252,42 @@ public class BlockJson
         {
             JsonObject json = element.getAsJsonObject();
             BlockJson block = new BlockJson();
-            block.shape              = Shape.get(JsonUtils.getString(json, "shape", "cube"));
-            block.displayName        = JsonUtils.getString(json, "displayName", "Default Block Name");
+            block.shape              = Shape.get(JsonUtilities.getString(json, "shape", "cube"));
+            block.displayName        = JsonUtilities.getString(json, "displayName", "Default Block Name");
             block.textures           = objectToMap(json, "textures", null);
-            block.maxStackSize       = JsonUtils.getInt(json, "maxStackSize", 64);
-            block.creativeTab        = CreativeTab.get(JsonUtils.getString(json, "creativeTab", "buildingblocks")).getCreativeTab();
-            block.hardness           = JsonUtils.getFloat(json, "hardness", 1.5F);
-            block.resistance         = JsonUtils.getFloat(json, "resistance", 10.0F);
-            block.material           = Materials.get(JsonUtils.getString(json, "material", "rock")).getMaterial();
-            block.stepSound          = SoundTypes.get(JsonUtils.getString(json, "stepSound", "stone")).getSoundType();
-            block.opaque             = JsonUtils.getBoolean(json, "opaque", true);
-            block.stained            = JsonUtils.getBoolean(json, "stained", false);
-            block.toolType           = JsonUtils.getString(json, "toolType", null);
-            block.harvestLevel       = JsonUtils.getInt(json, "harvestLevel", 0);
-            block.beaconBase         = JsonUtils.getBoolean(json, "beaconBase", false);
-            block.silkTouch          = JsonUtils.getBoolean(json, "silkTouch", true);
-            block.enchAmplifier      = JsonUtils.getBoolean(json, "enchAmplifier", false);
-            block.slipperiness       = JsonUtils.getFloat(json, "slipperiness", 0.6F);
-            block.sensitivity        = Sensitivity.get(JsonUtils.getString(json, "sensitivity", "everything")).getSensitivity();
-            block.canBlockGrass      = JsonUtils.getBoolean(json, "canBlockGrass", false);
-            block.particleGravity    = JsonUtils.getFloat(json, "particleGravity", 1.0F);
-            block.mobility           = JsonUtils.getInt(json, "mobility", 0);
-            block.enableStats        = JsonUtils.getBoolean(json, "enableStats", true);
-            block.neighborBrightness = JsonUtils.getBoolean(json, "neighborBrightness", block.getShape().useNeighborBrightness());
-            block.lightLevel         = JsonUtils.getFloat(json, "lightLevel", 0.0F);
-            block.lightOpacity       = JsonUtils.getInt(json, "lightOpacity", block.getShape().getLightOpacity());
-            block.buttonType         = JsonUtils.getString(json, "buttonType", null);
+            block.maxStackSize       = JsonUtilities.getInt(json, "maxStackSize", 64);
+            block.creativeTab        = CreativeTab.get(JsonUtilities.getString(json, "creativeTab", "buildingblocks")).getCreativeTab();
+            block.hardness           = JsonUtilities.getFloat(json, "hardness", 1.5F);
+            block.resistance         = JsonUtilities.getFloat(json, "resistance", 10.0F);
+            block.material           = Materials.get(JsonUtilities.getString(json, "material", "rock")).getMaterial();
+            block.stepSound          = SoundTypes.get(JsonUtilities.getString(json, "stepSound", "stone")).getSoundType();
+            block.opaque             = JsonUtilities.getBoolean(json, "opaque", true);
+            block.stained            = JsonUtilities.getBoolean(json, "stained", false);
+            block.toolType           = JsonUtilities.getString(json, "toolType", null);
+            block.harvestLevel       = JsonUtilities.getInt(json, "harvestLevel", 0);
+            block.beaconBase         = JsonUtilities.getBoolean(json, "beaconBase", false);
+            block.silkTouch          = JsonUtilities.getBoolean(json, "silkTouch", true);
+            block.enchAmplifier      = JsonUtilities.getBoolean(json, "enchAmplifier", false);
+            block.slipperiness       = JsonUtilities.getFloat(json, "slipperiness", 0.6F);
+            block.sensitivity        = Sensitivity.get(JsonUtilities.getString(json, "sensitivity", "everything")).getSensitivity();
+            block.canBlockGrass      = JsonUtilities.getBoolean(json, "canBlockGrass", false);
+            block.particleGravity    = JsonUtilities.getFloat(json, "particleGravity", 1.0F);
+            block.mobility           = JsonUtilities.getInt(json, "mobility", 0);
+            block.enableStats        = JsonUtilities.getBoolean(json, "enableStats", true);
+            block.neighborBrightness = JsonUtilities.getBoolean(json, "neighborBrightness", block.getShape().useNeighborBrightness());
+            block.lightLevel         = JsonUtilities.getFloat(json, "lightLevel", 0.0F);
+            block.lightOpacity       = JsonUtilities.getInt(json, "lightOpacity", block.getShape().getLightOpacity());
+            block.buttonType         = JsonUtilities.getString(json, "buttonType", null);
             /* Visual */
-            block.renderColor        = JsonUtils.getInt(json, "renderColor", -1);
-            block.isSunflower        = JsonUtils.getBoolean(json, "isSunflower", false);
-            block.isDeadBush         = JsonUtils.getBoolean(json, "isDeadBush", false);
-            block.needsColoring      = JsonUtils.getBoolean(json, "needsColoring", false);
+            block.renderColor        = JsonUtilities.getInt(json, "renderColor", -1);
+            block.isSunflower        = JsonUtilities.getBoolean(json, "isSunflower", false);
+            block.isDeadBush         = JsonUtilities.getBoolean(json, "isDeadBush", false);
+            block.needsColoring      = JsonUtilities.getBoolean(json, "needsColoring", false);
             /* 1.9 */
-            block.fullBlock          = JsonUtils.getBoolean(json, "fullBlock", true);
-            block.fullCube           = JsonUtils.getBoolean(json, "fullCube", true);
-            block.translucent        = JsonUtils.getBoolean(json, "translucent", block.getShape().isTranslucent());
-            block.canProvidePower    = JsonUtils.getBoolean(json, "canProvidePower", false);
+            block.fullBlock          = JsonUtilities.getBoolean(json, "fullBlock", true);
+            block.fullCube           = JsonUtilities.getBoolean(json, "fullCube", true);
+            block.translucent        = JsonUtilities.getBoolean(json, "translucent", block.getShape().isTranslucent());
+            block.canProvidePower    = JsonUtilities.getBoolean(json, "canProvidePower", false);
             /* Miscellaneous */
             this.setButtonSoundType(block, json);
 
@@ -301,15 +301,15 @@ public class BlockJson
 
         private void setButtonSoundType(BlockJson model, JsonObject json)
         {
-            if (!JsonUtils.hasField(json, "buttonOnSound") && !JsonUtils.hasField(json, "buttonOffSound"))
+            if (!JsonUtilities.hasField(json, "buttonOnSound") && !JsonUtilities.hasField(json, "buttonOffSound"))
                 return;
-            model.buttonOnSound  = ButtonSoundType.getSound(JsonUtils.getString(json, "buttonOnSound"));
-            model.buttonOffSound = ButtonSoundType.getSound(JsonUtils.getString(json, "buttonOffSound"));
+            model.buttonOnSound  = ButtonSoundType.getSound(JsonUtilities.getString(json, "buttonOnSound"));
+            model.buttonOffSound = ButtonSoundType.getSound(JsonUtilities.getString(json, "buttonOffSound"));
         }
 
         private void setBlockDrops(BlockJson model, JsonObject json)
         {
-            if (JsonUtils.hasField(json, "drop"))
+            if (JsonUtilities.hasField(json, "drop"))
             {
                 JsonElement drop = json.get("drop");
                 Drop.Deserializer.walk(model, drop);
@@ -318,7 +318,7 @@ public class BlockJson
 
         private void setBlockRecipe(BlockJson model, JsonObject json)
         {
-            if (JsonUtils.hasField(json, "recipe"))
+            if (JsonUtilities.hasField(json, "recipe"))
             {
                 JsonElement recipe = json.get("recipe");
                 model.recipe = Utilities.GSON.fromJson(recipe, Recipe.class);

@@ -1,7 +1,12 @@
 package com.kimfy.notenoughblocks.common.block;
 
+import com.kimfy.notenoughblocks.common.ServerProxy;
 import com.kimfy.notenoughblocks.common.block.properties.ModPropertyInteger;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
+import com.kimfy.notenoughblocks.common.file.json.Json;
+import com.kimfy.notenoughblocks.common.item.NEBItemBlockSlab;
+import com.kimfy.notenoughblocks.common.util.Constants;
+import com.kimfy.notenoughblocks.common.util.Utilities;
 import lombok.experimental.Delegate;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
@@ -13,9 +18,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.List;
 
@@ -23,7 +30,7 @@ public abstract class NEBBlockSlab extends BlockSlab implements IBlockProperties
 {
     private final ModPropertyInteger VARIANT;
 
-    @Delegate
+    @Delegate(excludes = Excludes.class)
     private final BlockAgent<NEBBlockSlab> agent;
 
     public NEBBlockSlab(Material materialIn, List<BlockJson> data)
@@ -144,5 +151,44 @@ public abstract class NEBBlockSlab extends BlockSlab implements IBlockProperties
     public Comparable<?> getTypeForItem(ItemStack stack)
     {
         return stack.getMetadata() & 7;
+    }
+
+    /**
+     * Registers both half and double slab with items. Register method in NEBItemBlockSlab is empty because I've put
+     * the implementation here. I do not want to deal with this slab stuff anymore, it's horrendous and my system isn't,
+     * the most expandable either, but I don't care, it's working, smile!
+     */
+    public void register(ResourceLocation registryName)
+    {
+        this.setRegistryName(registryName);
+        NEBItemBlockSlab   itemSlabHalf           = new NEBItemBlockSlab(this);
+        ResourceLocation   slabDoubleRegistryName = new ResourceLocation(Constants.MOD_ID, this.getRegistryName().getResourcePath().replace("_slab_", "_slab_double_"));
+        NEBBlockSlabDouble blockSlabDouble        = new NEBBlockSlabDouble(this.blockMaterial, Utilities.deepCloneList(this.getData()));
+        NEBItemBlockSlab   itemSlabDouble         = new NEBItemBlockSlab(blockSlabDouble);
+
+        itemSlabHalf.setSingleSlab(this);
+        itemSlabHalf.setDoubleSlab(blockSlabDouble);
+
+        itemSlabDouble.setSingleSlab(this);
+        itemSlabDouble.setDoubleSlab(blockSlabDouble);
+
+        GameRegistry.register(this);
+        GameRegistry.register(itemSlabHalf, this.getRegistryName());
+
+        GameRegistry.register(blockSlabDouble, slabDoubleRegistryName);
+        GameRegistry.register(itemSlabDouble, slabDoubleRegistryName);
+
+        ServerProxy.JSON_PROCESSOR.setBlockProperties(this, this.getData(), this.getRegistryName());
+        ServerProxy.JSON_PROCESSOR.setBlockProperties(blockSlabDouble, blockSlabDouble.getData(), blockSlabDouble.getRegistryName());
+    }
+
+    private interface Excludes
+    {
+        /**
+         * We are excluding this method and adding a custom implementation because the Slab block has two blocks it
+         * needs to register - which only adds clutter in
+         * {@link com.kimfy.notenoughblocks.common.file.json.JsonProcessor#registerBlocks(List, Json, int)}
+         */
+        void register(ResourceLocation registryName);
     }
 }

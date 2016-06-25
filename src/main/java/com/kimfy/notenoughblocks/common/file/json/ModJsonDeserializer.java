@@ -1,9 +1,9 @@
 package com.kimfy.notenoughblocks.common.file.json;
 
 import com.google.gson.*;
+import com.kimfy.notenoughblocks.common.util.JsonUtilities;
 import com.kimfy.notenoughblocks.common.util.Log;
 import com.kimfy.notenoughblocks.common.util.Utilities;
-import net.minecraft.util.JsonUtils;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -29,9 +29,9 @@ public class ModJsonDeserializer implements JsonDeserializer
     {
         List<BlockJson> ret = new ArrayList<>();
 
-        if (JsonUtils.hasField(node, "blocks"))
+        if (JsonUtilities.hasField(node, "blocks"))
         {
-            for (JsonElement e : JsonUtils.getJsonArray(node, "blocks"))
+            for (JsonElement e : JsonUtilities.getJsonArray(node, "blocks"))
             {
                 JsonObject model = e.getAsJsonObject();
                 BlockJson block = Utilities.GSON.fromJson(model, BlockJson.class);

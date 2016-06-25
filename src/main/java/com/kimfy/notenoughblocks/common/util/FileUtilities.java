@@ -1,9 +1,12 @@
 package com.kimfy.notenoughblocks.common.util;
 
+import com.kimfy.notenoughblocks.NotEnoughBlocks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.IResource;
 import net.minecraft.client.resources.IResourceManager;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.FMLLaunchHandler;
+import org.apache.commons.io.IOUtils;
 
 import java.io.*;
 import java.util.Enumeration;
@@ -103,24 +106,45 @@ public class FileUtilities
      * Base directory would be assets/modid/ - if your file is located in assets/modid/json/file.json
      * you'd call getFileFromAssets(RL(modid, "json/file.json"));
      */
-    public static String getFileFromAssets(ResourceLocation resourceLocation)
+    public static String getFileFromAssets(ResourceLocation rl)
     {
-        StringBuilder stringBuilder = new StringBuilder();
+        if (FMLLaunchHandler.side().isServer())
+        {
+            String path = String.format("assets/%s/%s", rl.getResourceDomain(), rl.getResourcePath());
+            InputStream in = FileUtilities.class.getClass()
+                    .getResourceAsStream(path);
+            return getContent(in);
+        }
+        else if (FMLLaunchHandler.side().isClient())
+        {
+            IResource iResource = null;
+            try
+            {
+                iResource = getResourceManager().getResource(rl);
+                return getContent(iResource.getInputStream());
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+    public static String getContent(InputStream in)
+    {
+        if (in == null) return null;
+        StringWriter sw = new StringWriter();
         try
         {
-            IResource iResource = getResourceManager().getResource(resourceLocation);
-
-            int ch;
-            while ((ch = iResource.getInputStream().read()) != -1)
-            {
-                stringBuilder.append((char) ch);
-            }
+            IOUtils.copy(in, sw, "UTF-8");
+            return sw.toString();
         }
         catch (IOException e)
         {
             e.printStackTrace();
         }
-        return stringBuilder.toString();
+        return null;
     }
 
     public static String getFileFromAssets(String path)
@@ -128,27 +152,28 @@ public class FileUtilities
         return getFileFromAssets(new ResourceLocation(Constants.MOD_ID, path));
     }
 
-    public static boolean exists(ResourceLocation resourceLocation)
+    public static InputStream getFile(ResourceLocation rl)
     {
-        try
+        if (FMLLaunchHandler.side().isServer())
         {
-            getResourceManager().getResource(resourceLocation);
-            return true;
+            String path = String.format("assets/%s/%s", rl.getResourceDomain(), rl.getResourcePath());
+            ClassLoader cl = NotEnoughBlocks.class.getClassLoader();
+            return cl.getResourceAsStream(path);
         }
-        catch (IOException e)
+        else if (FMLLaunchHandler.side().isClient())
         {
-            if (e instanceof FileNotFoundException)
+            try
             {
-                return false;
+                return getResourceManager().getResource(rl).getInputStream();
             }
-            e.printStackTrace();
+            catch (IOException e)
+            {
+                if (e instanceof FileNotFoundException)
+                    return null;
+                e.printStackTrace();
+            }
         }
-        return false;
-    }
-
-    public static boolean exists(String path)
-    {
-        return exists(new ResourceLocation(Constants.MOD_ID, path));
+        return null;
     }
 
     public static void write(File file, String content)

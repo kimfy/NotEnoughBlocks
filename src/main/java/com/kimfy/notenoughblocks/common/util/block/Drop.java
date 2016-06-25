@@ -2,12 +2,12 @@ package com.kimfy.notenoughblocks.common.util.block;
 
 import com.google.gson.*;
 import com.kimfy.notenoughblocks.common.file.json.BlockJson;
+import com.kimfy.notenoughblocks.common.util.JsonUtilities;
 import com.kimfy.notenoughblocks.common.util.Log;
 import com.kimfy.notenoughblocks.common.util.MinecraftUtilities;
 import com.kimfy.notenoughblocks.common.util.Utilities;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.JsonUtils;
 import net.minecraft.util.ResourceLocation;
 
 import java.lang.reflect.Type;
@@ -124,12 +124,12 @@ public class Drop
 
             String modid, itemName;
             int metadata, min, max, amount;
-            modid = JsonUtils.getString(model, "modid", "minecraft");
-            itemName = JsonUtils.getString(model, "name");
-            metadata = JsonUtils.getInt(model, "metadata", 0);
-            amount = JsonUtils.getInt(model, "amount", 1);
-            min = JsonUtils.getInt(model, "min", 0);
-            max = JsonUtils.getInt(model, "max", 0);
+            modid = JsonUtilities.getString(model, "modid", "minecraft");
+            itemName = JsonUtilities.getString(model, "name");
+            metadata = JsonUtilities.getInt(model, "metadata", 0);
+            amount = JsonUtilities.getInt(model, "amount", 1);
+            min = JsonUtilities.getInt(model, "min", 0);
+            max = JsonUtilities.getInt(model, "max", 0);
 
             Item item = Item.REGISTRY.getObject(new ResourceLocation(modid, itemName));
             if (min == 0 && max == 0)

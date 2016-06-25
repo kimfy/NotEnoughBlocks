@@ -1,6 +1,7 @@
 package com.kimfy.notenoughblocks.common.item;
 
 import com.kimfy.notenoughblocks.common.block.IBlockProperties;
+import lombok.experimental.Delegate;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.SoundType;
@@ -15,11 +16,15 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class NEBItemBlockDoor extends ItemBlock
+public class NEBItemBlockDoor extends ItemBlock implements IItemProperties
 {
+    @Delegate
+    private final ItemAgent<NEBItemBlockDoor> agent;
+
     public NEBItemBlockDoor(Block block)
     {
         super(block);
+        this.agent = new ItemAgent<>(this);
         block.setCreativeTab(null);
         this.setCreativeTab(((IBlockProperties) block).getData().get(0).getCreativeTab());
     }

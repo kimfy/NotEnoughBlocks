@@ -3,11 +3,11 @@ package com.kimfy.notenoughblocks.client.file.json.blockstate;
 import com.google.gson.*;
 import com.google.gson.annotations.SerializedName;
 import com.kimfy.notenoughblocks.common.util.FileUtilities;
+import com.kimfy.notenoughblocks.common.util.JsonUtilities;
 import com.kimfy.notenoughblocks.common.util.Log;
 import com.kimfy.notenoughblocks.common.util.block.Shape;
 import lombok.Getter;
 import lombok.Setter;
-import net.minecraft.util.JsonUtils;
 
 import java.lang.reflect.Type;
 import java.util.LinkedList;
@@ -96,21 +96,21 @@ class BlockState
             JsonObject json = src.getAsJsonObject();
             BlockState blockState = new BlockState();
 
-            if (JsonUtils.hasField(json, "forge_marker"))
-                blockState.setForgeMarker(JsonUtils.getInt(json, "forge_marker"));
+            if (JsonUtilities.hasField(json, "forge_marker"))
+                blockState.setForgeMarker(JsonUtilities.getInt(json, "forge_marker"));
 
-            if (JsonUtils.hasField(json, "block_name"))
-                blockState.setBlockName(JsonUtils.getString(json, "block_name"));
+            if (JsonUtilities.hasField(json, "block_name"))
+                blockState.setBlockName(JsonUtilities.getString(json, "block_name"));
 
-            if (JsonUtils.hasField(json, "defaults"))
+            if (JsonUtilities.hasField(json, "defaults"))
                 blockState.setDefaults(OneEightV2.GSON.fromJson(
-                        JsonUtils.getJsonObject(json, "defaults"),
+                        JsonUtilities.getJsonObject(json, "defaults"),
                         Default.class));
 
-            if (JsonUtils.hasField(json, "variants"))
+            if (JsonUtilities.hasField(json, "variants"))
             {
                 blockState.setVariants(new LinkedList<>());
-                JsonObject variants = JsonUtils.getJsonObject(json, "variants");
+                JsonObject variants = JsonUtilities.getJsonObject(json, "variants");
 
                 for (Map.Entry<String, JsonElement> entry : variants.entrySet())
                 {
@@ -125,10 +125,10 @@ class BlockState
                 Log.warn("BlockState does not contain any variants");
             }
 
-            if (JsonUtils.hasField(json, "item_renders"))
+            if (JsonUtilities.hasField(json, "item_renders"))
             {
                 blockState.setItemRenders(new LinkedList<>());
-                JsonArray items = JsonUtils.getJsonArray(json, "item_renders");
+                JsonArray items = JsonUtilities.getJsonArray(json, "item_renders");
                 items.forEach(item -> blockState.getItemRenders().add(OneEightV2.GSON.fromJson(item, Item.class)));
             }
 

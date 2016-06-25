@@ -1,7 +1,10 @@
 package com.kimfy.notenoughblocks.common.file.json;
 
 import com.google.common.base.Joiner;
-import com.kimfy.notenoughblocks.common.block.*;
+import com.kimfy.notenoughblocks.common.block.IBlockProperties;
+import com.kimfy.notenoughblocks.common.block.NEBBlockDoor;
+import com.kimfy.notenoughblocks.common.block.NEBBlockStair;
+import com.kimfy.notenoughblocks.common.item.IItemProperties;
 import com.kimfy.notenoughblocks.common.util.Constants;
 import com.kimfy.notenoughblocks.common.util.Log;
 import com.kimfy.notenoughblocks.common.util.Utilities;
@@ -11,7 +14,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -141,67 +143,48 @@ public class JsonProcessor
 
         Material material = model.getMaterial();
         String unlocalizedName = json.getName() + "_" + model.getShape() + "_" + index;
-        ResourceLocation rl = new ResourceLocation(Constants.MOD_ID, unlocalizedName);
+        ResourceLocation registryName = new ResourceLocation(Constants.MOD_ID, unlocalizedName);
         Class<? extends Block> blockClass;
         Class<? extends Item> itemClass;
         Block block;
         Item item;
 
-        try
+
+        blockClass = shape.getBlockClass();
+        itemClass = shape.getItemClass();
+
+        if (blockClass != null && itemClass != null)
         {
-            blockClass = shape.getBlockClass();
-            itemClass = shape.getItemClass();
-            if (blockClass != null && itemClass != null)
+            try
             {
-                if (shape == Shape.SLAB) // TODO: Generify this
-                {
-                    Constructor<?> itemConstructor = itemClass.getConstructor(Block.class, NEBBlockSlabHalf.class, NEBBlockSlabDouble.class);
+                Constructor<?> blockConstructor = blockClass.getConstructor(Material.class, List.class);
+                Constructor<?> itemConstructor = itemClass.getConstructor(Block.class);
 
-                    NEBBlockSlabHalf slabHalf     = new NEBBlockSlabHalf(material, Utilities.deepCloneList(blocks));
-                    NEBBlockSlabDouble slabDouble = new NEBBlockSlabDouble(material, Utilities.deepCloneList(blocks));
-
-                    Item itemSlabHalf   = (Item) itemConstructor.newInstance(slabHalf, slabHalf, slabDouble);
-                    Item itemSlabDouble = (Item) itemConstructor.newInstance(slabDouble, slabHalf, slabDouble);
-
-                    String slabDoubleUnlocalizedName = json.getName() + "_" + model.getShape() + "_double_" + index;
-                    setBlockProperties((Block & IBlockProperties) slabHalf, blocks, unlocalizedName);
-                    setBlockProperties((Block & IBlockProperties) slabDouble, blocks, slabDoubleUnlocalizedName);
-
-                    ResourceLocation rlHalfSlab = new ResourceLocation(Constants.MOD_ID, unlocalizedName);
-                    GameRegistry.register(slabHalf, rlHalfSlab);
-                    GameRegistry.register(itemSlabHalf, rlHalfSlab);
-
-                    ResourceLocation rlDoubleSlab = new ResourceLocation(Constants.MOD_ID, slabDoubleUnlocalizedName);
-                    GameRegistry.register(slabDouble, rlDoubleSlab);
-                    GameRegistry.register(itemSlabDouble, rlDoubleSlab);
-                }
-                else
-                {
-                    Constructor<?> blockConstructor = blockClass.getConstructor(Material.class, List.class); // block
-                    Constructor<?> itemConstructor = itemClass.getConstructor(Block.class);
-
-                    block = (Block) blockConstructor.newInstance(material, Utilities.deepCloneList(blocks));
-                    item = (Item) itemConstructor.newInstance(block);
-
-                    GameRegistry.register(block, rl);
-                    GameRegistry.register(item, rl);
-                    setBlockProperties((Block & IBlockProperties) block, blocks, unlocalizedName);
-                }
+                block = (Block) blockConstructor.newInstance(material, Utilities.deepCloneList(blocks));
+                item = (Item) itemConstructor.newInstance(block);
+                ((IBlockProperties) block).register(registryName);
+                ((IItemProperties) item).register(registryName);
+                this.setBlockProperties((Block & IBlockProperties) block, blocks, registryName);
+            }
+            catch (Exception e)
+            {
+                Log.error("Failed to create Block for Blocks {} Stacktrace:", BlockJson.getDisplayNamesFromBlocks(blocks));
+                e.printStackTrace();
             }
         }
-        catch (Exception e)
+        else
         {
-            Log.error("Failed to create Block for Blocks {} ", BlockJson.getDisplayNamesFromBlocks(blocks), e);
+            Log.info("Shape {} is not supported yet, but I do know about it! You should bug the author about it!", shape);
         }
     }
 
-    private <T extends Block & IBlockProperties> void setBlockProperties(T block, List<BlockJson> blocks, String unlocalizedName)
+    public <T extends Block & IBlockProperties> void setBlockProperties(T block, List<BlockJson> blocks, ResourceLocation registryName)
     {
-        blocks.forEach( v -> v.setUnlocalizedName(unlocalizedName));
+        blocks.forEach( v -> v.setUnlocalizedName(registryName.getResourcePath()));
         BlockJson model = blocks.get(0);
 
         /* Block setters */
-        block.setUnlocalizedName(Constants.MOD_ID + ":" + unlocalizedName);
+        block.setUnlocalizedName(registryName.toString());
         block.setCreativeTab(model.getCreativeTab());
         block.setHardness(model.getHardness());
         block.setResistance(model.getResistance());
@@ -221,7 +204,7 @@ public class JsonProcessor
         for (int metadata = 0; metadata < blocks.size(); metadata++)
         {
             BlockJson modelBlock = blocks.get(metadata);
-            this.setDisplayName(block, unlocalizedName, metadata, modelBlock.getDisplayName());
+            this.setDisplayName(block, registryName.getResourcePath(), metadata, modelBlock.getDisplayName());
             this.setBlockRecipe(modelBlock, block, metadata);
         }
     }

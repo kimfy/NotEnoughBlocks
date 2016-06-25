@@ -17,7 +17,7 @@ public class Shape
 
     public static final Shape CUBE = new Shape("cube", 16, NEBBlock.class, NEBItemBlock.class);
     public static final Shape STAIR = new Shape("stair", 1, NEBBlockStair.class, NEBItemBlockStair.class).useNeighborBrightness(true);
-    public static final Shape SLAB = new Shape("slab", 8, NEBBlockSlab.class, NEBItemBlockSlab.class).setLightOpacity(255).useNeighborBrightness(true);
+    public static final Shape SLAB = new Shape("slab", 8, NEBBlockSlabHalf.class, NEBItemBlockSlab.class).setLightOpacity(255).useNeighborBrightness(true);
     public static final Shape GLASS = new Shape("glass", 16, NEBBlockGlass.class, NEBItemBlock.class).setLightOpacity(0).useNeighborBrightness(true);
     public static final Shape WALL = new Shape("wall", 16, NEBBlockWall.class, NEBItemBlock.class).setLightOpacity(0).useNeighborBrightness(true);
     public static final Shape FENCE = new Shape("fence", 16, NEBBlockFence.class, NEBItemBlock.class).setLightOpacity(0).useNeighborBrightness(true);

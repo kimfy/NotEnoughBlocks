@@ -13,6 +13,8 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class ServerProxy
 {
+    public static final JsonProcessor JSON_PROCESSOR = new JsonProcessor();
+
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
@@ -22,9 +24,8 @@ public class ServerProxy
             fileManager.makeDirectories();
             fileManager.findAndProcessResourcePacks();
 
-        JsonProcessor jsonProcessor = new JsonProcessor();
-            jsonProcessor.loadFiles();
-            jsonProcessor.processData();
+        JSON_PROCESSOR.loadFiles();
+        JSON_PROCESSOR.processData();
 
         JsonProcessor.injectLanguageMap();
         MinecraftForge.EVENT_BUS.register(new MinecraftUtilities.EventHandler());

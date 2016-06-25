@@ -5,7 +5,6 @@ import com.google.gson.annotations.SerializedName;
 import com.kimfy.notenoughblocks.common.util.JsonUtilities;
 import lombok.Getter;
 import lombok.Setter;
-import net.minecraft.util.JsonUtils;
 
 import java.lang.reflect.Type;
 import java.util.Map;
@@ -60,12 +59,12 @@ class Model
             JsonObject json = src.getAsJsonObject();
             Model model = new Model();
 
-            if (JsonUtils.hasField(json, "model")) model.setModel(JsonUtils.getString(json, "model", "null"));
-            if (JsonUtils.hasField(json, "x")) model.setX(JsonUtils.getInt(json, "x", 0));
-            if (JsonUtils.hasField(json, "y")) model.setY(JsonUtils.getInt(json, "y", 0));
-            if (JsonUtils.hasField(json, "uvlock")) model.setUvLock(JsonUtils.getBoolean(json, "uvlock", false));
-            if (JsonUtils.hasField(json, "weight")) model.setWeight(JsonUtils.getInt(json, "weight", 1));
-            if (JsonUtils.hasField(json, "textures")) model.setTextures(JsonUtilities.getMap(json, "textures", null));
+            if (JsonUtilities.hasField(json, "model")) model.setModel(JsonUtilities.getString(json, "model", "null"));
+            if (JsonUtilities.hasField(json, "x")) model.setX(JsonUtilities.getInt(json, "x", 0));
+            if (JsonUtilities.hasField(json, "y")) model.setY(JsonUtilities.getInt(json, "y", 0));
+            if (JsonUtilities.hasField(json, "uvlock")) model.setUvLock(JsonUtilities.getBoolean(json, "uvlock", false));
+            if (JsonUtilities.hasField(json, "weight")) model.setWeight(JsonUtilities.getInt(json, "weight", 1));
+            if (JsonUtilities.hasField(json, "textures")) model.setTextures(JsonUtilities.getMap(json, "textures", null));
 
             return model;
         }
